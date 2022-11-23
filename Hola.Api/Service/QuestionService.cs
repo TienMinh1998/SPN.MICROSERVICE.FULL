@@ -3,13 +3,10 @@ using Hola.Core.Helper;
 using Hola.Core.Model;
 using Hola.Core.Service;
 using Microsoft.Extensions.Options;
-using static Google.Cloud.Storage.V1.UrlSigner;
-using static Hola.Core.Common.Constants;
+
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Hola.Core.Common;
-using Microsoft.VisualBasic;
 using Hola.Api.Models.Questions;
 
 namespace Hola.Api.Service

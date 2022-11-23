@@ -22,7 +22,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerUI;
-using UploadandDownloadFiles.Services;
+
 
 namespace Hola.Api
 {
@@ -42,7 +42,6 @@ namespace Hola.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.InstallerServicesInAssembly(Configuration);
-            services.AddTransient<KycWebService>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Hola.Api", Version = " v1" });
@@ -89,7 +88,7 @@ namespace Hola.Api
                 });
             services.Configure<SettingModel>(Configuration.GetSection("SettingApp"));
             services.AddSingleton<IActiveTokenHandler>(new ActiveTokenHandler());
-            services.AddTransient<IFileService, FileService>();
+     
 
         }
 

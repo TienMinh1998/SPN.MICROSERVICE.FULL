@@ -28,54 +28,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Update="assets\Docs\Agency Application Form_EN.docx">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-      <None Update="assets\Docs\AgencyApplicationForm_EN.docx">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-      <None Update="assets\Docs\AgencyApplicationForm_ES.docx">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-      <None Update="assets\Docs\AgencyApplicationFrom_KR.docx">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-      <None Update="assets\Docs\AgencyDeclarationForm_EN.docx">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-      <None Update="assets\Docs\AgencyDeclarationForm_ES.docx">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-      <None Update="assets\Docs\AgencyDeclarationForm_KR.docx">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-      <None Update="assets\Docs\HolaPayOathProofread.docx">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-      <None Update="assets\Docs\올라페이이용서약서.docx">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-      <None Update="assets\Flags\1.png">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-      <None Update="assets\Flags\3.png">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-      <None Update="assets\Flags\4.png">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-      <None Update="assets\Flags\5.png">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-      <None Update="assets\Flags\6.png">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-      <None Update="assets\Flags\7.png">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-    </ItemGroup>
-
-    <ItemGroup>
+      <Folder Include="Service\FilterExtension\" />
       <Folder Include="wwwroot\" />
     </ItemGroup>
 

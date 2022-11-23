@@ -9,13 +9,13 @@ namespace Hola.Api.Controllers
 {
     public class QuestionController : ControllerBase
     {
-        private readonly ILogger<AgencyManagementController> _logger;
+      
         private readonly IOptions<SettingModel> _config;
         private readonly QuestionService qesQuestionService;
 
-        public QuestionController(ILogger<AgencyManagementController> logger, IOptions<SettingModel> config, QuestionService qesQuestionService)
+        public QuestionController( IOptions<SettingModel> config, QuestionService qesQuestionService)
         {
-            _logger = logger;
+           
             _config = config;
             this.qesQuestionService = qesQuestionService;
         }
