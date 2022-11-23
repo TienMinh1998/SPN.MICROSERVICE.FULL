@@ -47,6 +47,11 @@ namespace Hola.Api.Controllers
             var result = await qesQuestionService.GetAllQuestion();
             return JsonResponseModel.Success(result);
         }
-
+        [HttpPost("minhtien")]
+        public async Task<JsonResponseModel> Test()
+        {
+            var result = await qesQuestionService.GetAllQuestion();
+            return JsonResponseModel.Success(result);
+        }
     }
 }
