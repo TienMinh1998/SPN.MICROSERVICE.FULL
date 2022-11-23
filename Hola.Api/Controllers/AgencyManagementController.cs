@@ -36,35 +36,6 @@ namespace Hola.Api.Controllers
             _logger = logger;
             this.qesQuestionService = qesQuestionService;
         }
-        /// <summary>
-        /// nvmTien
-        /// </summary>
-        /// <param name="filters"></param>
-        /// <returns></returns>
-        [HttpPost("GetCategories")]
-        public async Task<JsonResponseModel> Search()
-        {
-            var result = await qesQuestionService.GetAllQuestion();
-            return JsonResponseModel.Success(result);
-        }
-        [HttpPost("minhtien")]
-        public async Task<JsonResponseModel> Test()
-        {
-            var result = await qesQuestionService.GetAllQuestion();
-            return JsonResponseModel.Success(result);
-        }
 
-        [HttpPost("minhtie2n")]
-        public async Task<JsonResponseModel> Tes22t()
-        {
-            var result = await qesQuestionService.GetAllQuestion();
-            return JsonResponseModel.Success(result);
-        }
-        [HttpPost("minhtie21212n")]
-        public async Task<JsonResponseModel> Tes22t12()
-        {
-            var result = await qesQuestionService.GetAllQuestion();
-            return JsonResponseModel.Success(result);
-        }
     }
 }
