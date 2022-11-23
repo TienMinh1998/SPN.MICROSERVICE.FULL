@@ -1,0 +1,118 @@
+import groovy.json.*
+
+pipeline {
+  agent { label 'Hola2' }
+  options {
+    ansiColor("xterm")
+    skipStagesAfterUnstable()
+  }
+  stages {
+    stage("Build") {
+      when {
+        anyOf {
+          expression { triggeredByDevelop() }
+          expression { triggeredByPR() }
+        }
+      }
+      steps {
+        script {
+          println "Building the Dev image"
+          addUserToGroup()
+             dockerBuild()
+        }
+      }
+    }
+    stage("Stage Deploy Dev") {
+      when {
+        anyOf {
+          expression { triggeredByDevelop() }
+          expression { triggeredByPR() }
+        }
+      }
+      steps {
+        script {
+         println "Deploy Dev Container"
+         dockerRun()
+        }
+      }
+    }
+    // stage("Stage Deploy Prod") {
+    //   when {
+    //     anyOf {
+    //       expression { triggeredByMaster() }
+    //     }
+    //   }
+    //   steps {
+    //     script {
+    //       println "Building the Prod image"
+    //       addUserToGroup()
+    //       dockerBuild("${env.GIT_COMMIT}-prod")
+    //     }
+
+    //     script {
+    //     println "Deploy new version to K8S Prod"
+    //      gcloudKubeconfig()
+    //      helmUpgrade("${env.GIT_BRANCH}","${env.GIT_COMMIT}-prod")
+    //      helmUpgrade("citycasino","${env.GIT_COMMIT}-prod")
+    //     }
+    //   }
+    // }
+    stage('Cleanup') {
+      steps {
+        cleanWs()
+      }
+    }
+  }
+}
+
+// return true if job is trigger by GitHub push to Master branch
+Boolean triggeredByDevelop() {
+  return (env.GIT_BRANCH == "staging")
+}
+// return true if job is trigger by GitHub push to Master branch
+Boolean triggeredByMaster() {
+  return (env.GIT_BRANCH == "master")
+}
+// return true if job is trigger by GitHub push to feature branch which has a PR
+Boolean triggeredByPR() {
+  return (env.CHANGE_ID ? true : false)
+}
+ void addUserToGroup() {
+    try {
+      sh("sudo usermod -aG docker azureuser")
+      sh("sudo chmod 666 /var/run/docker.sock")
+    } catch(ex) {
+      error("addUserToGroup(): failed to build docker image.\nDetails: ${ex.getMessage()}")
+    }
+  }
+  void dockerBuild() {
+     try {
+      sh("sudo docker build -f Hola.Api.Config/Dockerfile -t hola_config .")
+      sh("sudo docker build -f Hola.Api/Dockerfile -t hola_api .")
+      sh("sudo docker build -f Hola.Api.Transfer/Dockerfile -t hola_transfer .")
+      sh("sudo docker build -f Hola.Api.User/Dockerfile -t hola_user .")
+     }
+     catch(ex) {
+      error("dockerBuild(): failed to build docker image.\nDetails: ${ex.getMessage()}")
+    }
+}
+ void dockerRun() {
+     try {
+      sh("sudo docker container stop hola_config")
+      sh("sudo docker container stop  hola_api")
+      sh("sudo docker container stop hola_transfer")
+      sh("sudo docker container stop hola_user")
+      sh("sudo docker container rm hola_config")
+      sh("sudo docker container rm hola_api")
+      sh("sudo docker container rm hola_transfer")
+      sh("sudo docker container rm hola_user")
+      sh("sudo docker run -it -d --name hola_config -p 8011:80 hola_config")
+      sh("sudo docker run -it -d -v /mnt/Image:/app/wwwroot/weelpay/Image -v /mnt/Document:/app/wwwroot/weelpay/Document --name hola_api -p 8044:80 hola_api")
+      sh("sudo docker run -it -d --restart always --name hola_transfer -p 8033:80 hola_transfer")
+      sh("sudo docker run -it -d -v /mnt/Image:/app/wwwroot/weelpay/Image -v /mnt/Document:/app/wwwroot/weelpay/Document --name hola_user -p 8022:80 hola_user")
+     }
+     catch(ex) {
+      error("dockerBuild(): failed to build docker image.\nDetails: ${ex.getMessage()}")
+    }
+}
+
