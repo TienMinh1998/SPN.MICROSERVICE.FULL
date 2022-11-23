@@ -6,6 +6,7 @@
         public const string  COMMOND_DB = "commond_db";
         public const string TRANSACTION_DB = "transaction_db";
         public const string MESSAGE_DB = "Message_db";
+        public const string DEFAULT_DB = "postgres";
         public const int ZEZO = 0;
         /// <summary>
         /// MSG for CRUD & Log

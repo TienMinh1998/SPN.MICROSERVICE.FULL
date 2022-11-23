@@ -11,6 +11,7 @@ namespace Hola.Api.Installers
         {
             services.AddTransient<KycWebService>();
             services.AddTransient<IFileService, FileService>();
+            services.AddTransient<QuestionService>();
         }
     }
 }
