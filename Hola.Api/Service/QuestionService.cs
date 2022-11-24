@@ -59,7 +59,7 @@ namespace Hola.Api.Service
             };
             setting.Connection += "Database=" + database;
             var sql = "insert into qes.question (category_id, questionname, answer, created_on) " +
-                      $"values ({addQuestion.Category_Id},'{addQuestion.QuestionName}',now());";
+                      $"values ({addQuestion.Category_Id},'{addQuestion.QuestionName}',{addQuestion.Answer},now());";
             var result = await Excecute(setting.Connection, sql);
 
             return true;
