@@ -21,8 +21,8 @@ namespace Hola.Api.Controllers
         }
 
 
-        [HttpPost("GetCategories")]
-        public async Task<JsonResponseModel> Search()
+        [HttpGet("GetCategories")]
+        public async Task<JsonResponseModel> GetAllCategory()
         {
             var result = await qesQuestionService.GetAllCategory();
             return JsonResponseModel.Success(result);
