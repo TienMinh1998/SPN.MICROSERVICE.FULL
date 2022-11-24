@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System.Threading.Tasks;
+using Hola.Api.Models.Questions;
 
 namespace Hola.Api.Controllers
 {
@@ -32,6 +33,13 @@ namespace Hola.Api.Controllers
         public async Task<JsonResponseModel> GetQuestionById(int ID)
         {
             var result = await qesQuestionService.GetListQuestionByCategoryId(ID);
+            return JsonResponseModel.Success(result);
+        }
+
+        [HttpPost("AddQuestion")]
+        public async Task<JsonResponseModel> AddQuestion(QuestionAddModel model)
+        {
+            var result = await qesQuestionService.AddQuestion(model);
             return JsonResponseModel.Success(result);
         }
     }
