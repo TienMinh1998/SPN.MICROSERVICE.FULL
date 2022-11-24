@@ -37,7 +37,7 @@ namespace Hola.Api.Controllers
         }
 
         [HttpPost("AddQuestion")]
-        public async Task<JsonResponseModel> AddQuestion(QuestionAddModel model)
+        public async Task<JsonResponseModel> AddQuestion([FromBody] QuestionAddModel model)
         {
             var result = await qesQuestionService.AddQuestion(model);
             return JsonResponseModel.Success(result);
