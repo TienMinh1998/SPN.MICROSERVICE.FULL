@@ -28,10 +28,10 @@ namespace Hola.Api.Controllers
             return JsonResponseModel.Success(result);
         }
 
-        [HttpPost("GetQuestion")]
-        public async Task<JsonResponseModel> GetQuestionById(int categoryid)
+        [HttpGet("GetQuestion/{ID}")]
+        public async Task<JsonResponseModel> GetQuestionById(int ID)
         {
-            var result = await qesQuestionService.GetListQuestionByCategoryId(categoryid);
+            var result = await qesQuestionService.GetListQuestionByCategoryId(ID);
             return JsonResponseModel.Success(result);
         }
     }

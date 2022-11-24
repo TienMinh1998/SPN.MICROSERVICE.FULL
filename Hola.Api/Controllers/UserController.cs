@@ -12,8 +12,6 @@ namespace Hola.Api.Controllers
                 
         }
 
-
-
         [HttpPost("Login")]
         public async Task<JsonResponseModel> Search()
         {
