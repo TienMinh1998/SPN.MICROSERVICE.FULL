@@ -33,7 +33,7 @@ namespace Hola.Api.Service
                 Provider = _options.Value.Provider
             };
             setting.Connection += "Database=" + database;
-            var sql = "SELECT id, name, define, created_on FROM qes.categories;";
+            var sql = "SELECT id, name, define, created_on, \"Image\" FROM qes.categories;";
             var result = await QueryToListAsync<CategoryModel>(setting.Connection, sql);
 
             return result;
