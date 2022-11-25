@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Hola.Core.Common;
 using Hola.Api.Models.Questions;
+using Microsoft.VisualBasic;
+using StackExchange.Redis;
 
 namespace Hola.Api.Service
 {
@@ -60,6 +62,20 @@ namespace Hola.Api.Service
             setting.Connection += "Database=" + database;
             var sql = "insert into qes.question (category_id, questionname, answer, created_on,\"ImageSource\") " +
                       $"values ({addQuestion.Category_Id},'{addQuestion.QuestionName}','{addQuestion.Answer}',now(),'{addQuestion.ImageSource}');";
+            var result = await Excecute(setting.Connection, sql);
+
+            return true;
+        }
+
+        public async Task<bool> DeleteQuestion(int questionID)
+        {
+            SettingModel setting = new SettingModel()
+            {
+                Connection = _options.Value.Connection,
+                Provider = _options.Value.Provider
+            };
+            setting.Connection += "Database=" + database;
+            string sql = $"UPDATE qes.question SET is_delete = 1 WHERE id = {questionID};";
             var result = await Excecute(setting.Connection, sql);
 
             return true;
