@@ -49,7 +49,6 @@ namespace Hola.GoogleCloudStorage
             }
 
         }
-     
         public string UploadDocument(string path, string useid, string fileName, string credentials_path)
         {
             try
@@ -103,8 +102,6 @@ namespace Hola.GoogleCloudStorage
                 throw;
             }
         }
-
-
         public string UploadFile(string path, string useId, string fileName, string credentials_path,string folder,string contentType)
         {
             try
@@ -141,7 +138,6 @@ namespace Hola.GoogleCloudStorage
             }
 
         }
-
         private string GetURL(string bucketName, string objectName, string credentialFilePath)
         {
             try

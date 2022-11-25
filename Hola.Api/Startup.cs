@@ -88,8 +88,6 @@ namespace Hola.Api
                 });
             services.Configure<SettingModel>(Configuration.GetSection("SettingApp"));
             services.AddSingleton<IActiveTokenHandler>(new ActiveTokenHandler());
-     
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
