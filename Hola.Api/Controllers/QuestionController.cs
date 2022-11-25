@@ -42,5 +42,14 @@ namespace Hola.Api.Controllers
             var result = await qesQuestionService.AddQuestion(model);
             return JsonResponseModel.Success(result);
         }
+
+
+
+        [HttpPost("DeleteQuestion")]
+        public async Task<JsonResponseModel> AddQuestion(int Id)
+        {
+            var result = await qesQuestionService.DeleteQuestion(Id);
+            return JsonResponseModel.Success(result);
+        }
     }
 }
