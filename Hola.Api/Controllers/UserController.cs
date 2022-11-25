@@ -12,7 +12,7 @@ namespace Hola.Api.Controllers
                 
         }
 
-        [HttpPost("Login")]
+        [HttpPost("LoginUser")]
         public async Task<JsonResponseModel> Search()
         {
             return JsonResponseModel.Success();
