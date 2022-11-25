@@ -47,7 +47,7 @@ namespace Hola.Api.Service
                 Provider = _options.Value.Provider
             };
             setting.Connection += "Database=" + database;
-            var sql = $"SELECT id, category_id, questionname, answer, created_on, is_delete,\"ImageSource\" FROM qes.question WHERE category_id= {categoryID}";
+            var sql = $"SELECT id, category_id, questionname, answer, created_on, is_delete,\"ImageSource\" FROM qes.question WHERE category_id= {categoryID} and is_delete = 0;";
             var result = await QueryToListAsync<QuestionModel>(setting.Connection, sql);
             return result;
         }
