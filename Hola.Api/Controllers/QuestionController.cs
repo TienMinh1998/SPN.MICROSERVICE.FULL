@@ -32,7 +32,14 @@ namespace Hola.Api.Controllers
         [HttpGet("GetQuestion/{ID}")]
         public async Task<JsonResponseModel> GetQuestionById(int ID)
         {
-            var result = await qesQuestionService.GetListQuestionByCategoryId(ID);
+            var result = await qesQuestionService.GetListQuestionByCategoryId(ID,1);
+            return JsonResponseModel.Success(result);
+        }
+
+        [HttpGet("GetQuestionDeleted/{ID}")]
+        public async Task<JsonResponseModel> GetQuestionDeletedById(int ID)
+        {
+            var result = await qesQuestionService.GetListQuestionByCategoryId(ID,0);
             return JsonResponseModel.Success(result);
         }
 
