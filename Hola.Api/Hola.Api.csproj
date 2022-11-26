@@ -28,7 +28,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Service\FilterExtension\" />
       <Folder Include="wwwroot\" />
     </ItemGroup>
 

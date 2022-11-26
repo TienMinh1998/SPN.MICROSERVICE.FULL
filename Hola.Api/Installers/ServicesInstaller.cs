@@ -10,6 +10,7 @@ namespace Hola.Api.Installers
         public void InstallServices(IServiceCollection services, IConfiguration configuration)
         {
             services.AddTransient<QuestionService>();
+            services.AddSingleton<CategoryService>();
         }
     }
 }
