@@ -51,7 +51,6 @@ namespace Hola.Api.Controllers
         }
 
 
-
         [HttpPost("DeleteQuestion")]
         public async Task<JsonResponseModel> AddQuestion([FromBody] DeleteQuestionRequest request)
         {

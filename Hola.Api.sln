@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hola.Core", "Hola.Core\Hola
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hola.GoogleCloudStorage", "Hola.GoogleCloudStorage\Hola.GoogleCloudStorage.csproj", "{D96C4AE9-12EC-4849-A82E-D12CE079BDD4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseCore.Domain", "DatabaseCore.Domain\DatabaseCore.Domain.csproj", "{2CAD2823-BB68-4FC6-9D89-01F03A7E1DFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseCore.Infrastructure", "DatabaseCore.Infrastructure\DatabaseCore.Infrastructure.csproj", "{1DF72863-A0AD-49DF-B41C-D0AB596FE8E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{D96C4AE9-12EC-4849-A82E-D12CE079BDD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D96C4AE9-12EC-4849-A82E-D12CE079BDD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D96C4AE9-12EC-4849-A82E-D12CE079BDD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CAD2823-BB68-4FC6-9D89-01F03A7E1DFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CAD2823-BB68-4FC6-9D89-01F03A7E1DFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CAD2823-BB68-4FC6-9D89-01F03A7E1DFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CAD2823-BB68-4FC6-9D89-01F03A7E1DFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DF72863-A0AD-49DF-B41C-D0AB596FE8E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DF72863-A0AD-49DF-B41C-D0AB596FE8E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DF72863-A0AD-49DF-B41C-D0AB596FE8E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DF72863-A0AD-49DF-B41C-D0AB596FE8E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
