@@ -26,7 +26,7 @@ namespace Hola.Api.Controllers
 
 
         [HttpPost("UpdateDeviceToken")]
-        public async Task<JsonResponseModel> UpdateDeviceToken(UpdateDeviceTokenRequest updateRequest)
+        public async Task<JsonResponseModel> UpdateDeviceToken([FromBody] UpdateDeviceTokenRequest updateRequest)
         {
             // Get result From service
             try
