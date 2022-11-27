@@ -12,6 +12,7 @@ namespace Hola.Api.Installers
             services.AddTransient<QuestionService>();
             services.AddSingleton<CategoryService>();
             services.AddTransient<AccountService>();
+            services.AddTransient<FirebaseService>();
         }
     }
 }
