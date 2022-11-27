@@ -19,7 +19,7 @@ namespace Hola.Api.Controllers
 
 
         [HttpPost("PushMessage")]
-        public async Task<JsonResponseModel> Push(PushNotificationRequest pushNotificationRequest)
+        public async Task<JsonResponseModel> Push([FromBody] PushNotificationRequest pushNotificationRequest)
         {
             FirebaseService firebaseService = new FirebaseService();
             var result =await  firebaseService.Push(pushNotificationRequest);
