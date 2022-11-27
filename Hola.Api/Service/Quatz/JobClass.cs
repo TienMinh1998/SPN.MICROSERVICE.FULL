@@ -28,11 +28,11 @@ namespace Hola.Api.Service.Quatz
         {
             try
             {
-                var result = await qesQuestionService.GetListQuestionByCategoryId(1, 1);
+                var result = await qesQuestionService.GetListQuestionByCategoryId(1, 0);
                 Random rnd = new Random();
                 var index = rnd.Next(result.Count);
                 var questionRadom = result[index];
-
+                // Lấy ra thông tin deviceToken 
 
                 PushNotificationRequest request = new PushNotificationRequest()
                 {
