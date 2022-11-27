@@ -1,7 +1,9 @@
-﻿using Hola.Core.Common;
+﻿using Hola.Api.Models.Questions;
+using Hola.Core.Common;
 using Hola.Core.Model;
 using Hola.Core.Service;
 using Microsoft.Extensions.Options;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Hola.Api.Service
@@ -30,6 +32,13 @@ namespace Hola.Api.Service
                 deviceToken,userId);
             var result = await Excecute(ConnectionString, sql);
             return true;
+        }
+
+        public string GetDeviceTokenByUserId(int UserId)
+        {
+            var sql = string.Format("SELECT devicetoken FROM qes.accounts WHERE user_id  ={0}", UserId);
+            var result =  FirstOrDefault<string>(ConnectionString,sql);
+            return result;
         }
 
     }

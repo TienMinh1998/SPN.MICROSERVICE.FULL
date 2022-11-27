@@ -33,19 +33,19 @@ namespace Hola.Api.Service.Quatz
                 var index = rnd.Next(result.Count);
                 var questionRadom = result[index];
                 // Lấy ra thông tin deviceToken 
-
+                var devideFirebaseToken = accountService.GetDeviceTokenByUserId(1);
                 PushNotificationRequest request = new PushNotificationRequest()
                 {
                     notification = new NotificationMessageBody()
                     {
-                        body = questionRadom.QuestionName,
-                        title = questionRadom.Answer
+                        title = questionRadom.QuestionName+ "<3",
+                        body = questionRadom.Answer
                     }
                 };
-                request.registration_ids.Add("dhz36LPnR9WWj48VAweHFb:APA91bGPqyu0F6eu4N1JMg1d9DesPfXGIINfmxJm-zauEKmGq3_XSGZR49NvBeo4vdXUFM6OxcThnDrYYe4sPmy3awx0AJVq92VqtPalqD5PnfjWlL_5C_6IlymAdTeEaLj3E06r6AeT");
+                request.registration_ids.Add(devideFirebaseToken);
                 await firebaseService.Push(request);
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
 
                 throw;
