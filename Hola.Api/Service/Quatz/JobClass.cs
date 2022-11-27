@@ -39,7 +39,7 @@ namespace Hola.Api.Service.Quatz
                     notification = new NotificationMessageBody()
                     {
                         title = questionRadom.QuestionName+ " <3",
-                        body = questionRadom.Answer
+                        body = "*******?"
                     }
                 };
                 request.registration_ids.Add(devideFirebaseToken);
