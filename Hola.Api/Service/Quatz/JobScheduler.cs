@@ -27,7 +27,7 @@ namespace Hola.Api.Service.Quatz
             quartz.AddTrigger(opts => opts
                 .ForJob(jobKey)
                 .WithIdentity(jobName + "-trigger")
-                .WithSimpleSchedule(s => s.WithIntervalInMinutes(3).RepeatForever()));
+                .WithSimpleSchedule(s => s.WithIntervalInMinutes(10).RepeatForever()));
         }
 
 
