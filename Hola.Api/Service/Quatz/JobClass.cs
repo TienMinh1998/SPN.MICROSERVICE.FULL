@@ -38,9 +38,9 @@ namespace Hola.Api.Service.Quatz
                 {
                     notification = new NotificationMessageBody()
                     {
-                        title = questionRadom.QuestionName+ " <3",
-                        body = "*******?"
-                    }
+                        title = questionRadom.QuestionName,
+                        body = questionRadom.Answer
+                    },
                 };
                 request.registration_ids.Add(devideFirebaseToken);
                 await firebaseService.Push(request);
