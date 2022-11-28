@@ -86,7 +86,6 @@ namespace Hola.Api.Controllers
 
   
         [HttpPost("UpdateDeviceToken")]
-        [Authorize]
         public async Task<JsonResponseModel> UpdateDeviceToken([FromBody] UpdateDeviceTokenRequest updateRequest)
         {
             // Get result From service
