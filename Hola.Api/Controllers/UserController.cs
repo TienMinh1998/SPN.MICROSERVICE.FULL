@@ -15,6 +15,7 @@ using System.Text;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Authorization;
 using Hola.Api.Response.Jwt;
+using Hola.Api.Response.Login;
 
 namespace Hola.Api.Controllers
 {
@@ -71,7 +72,12 @@ namespace Hola.Api.Controllers
 
                     // Tạo Token và trả cho người dùng
                     var newToken = CreateToken(user);
-                    return JsonResponseModel.Success(newToken);
+                    LoginResponse loginResponse = new LoginResponse
+                    {
+                        Token = newToken,
+                        user = user
+                    };
+                    return JsonResponseModel.Success(loginResponse);
                 }
             }
             return JsonResponseModel.Error("Sai tên đăng nhập hoặc mật khẩu", 401);
