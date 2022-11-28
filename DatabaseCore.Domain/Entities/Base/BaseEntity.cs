@@ -10,7 +10,7 @@ namespace DatabaseCore.Domain.Entities.Base
 {
     public abstract class BaseEntity
     {
-        public DateTime CreatedDate { get; set; }
+        public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
         public int IsDeleted { get; set; } = 0;
 
     }

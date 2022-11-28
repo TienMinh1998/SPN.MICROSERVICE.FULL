@@ -8,7 +8,7 @@ using DatabaseCore.Domain.Entities.Normals;
 
 namespace Hola.Api.Repositories.UserRepository
 {
-    public class UserRepository : BaseRepository<User>, IUserRepository
+    public class UserRepository : BaseRepository<Target>, IUserRepository
     {
         public UserRepository(EFContext dbContext) : base(dbContext)
         {

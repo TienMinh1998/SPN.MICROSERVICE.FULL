@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hola.Core", "Hola.Core\Hola
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hola.GoogleCloudStorage", "Hola.GoogleCloudStorage\Hola.GoogleCloudStorage.csproj", "{D96C4AE9-12EC-4849-A82E-D12CE079BDD4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseCore.Domain", "DatabaseCore.Domain\DatabaseCore.Domain.csproj", "{2CAD2823-BB68-4FC6-9D89-01F03A7E1DFE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatabaseCore.Domain", "DatabaseCore.Domain\DatabaseCore.Domain.csproj", "{2CAD2823-BB68-4FC6-9D89-01F03A7E1DFE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseCore.Infrastructure", "DatabaseCore.Infrastructure\DatabaseCore.Infrastructure.csproj", "{1DF72863-A0AD-49DF-B41C-D0AB596FE8E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatabaseCore.Infrastructure", "DatabaseCore.Infrastructure\DatabaseCore.Infrastructure.csproj", "{1DF72863-A0AD-49DF-B41C-D0AB596FE8E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "YomainBaseEntityStruct", "YomainBaseEntityStruct", "{79E25028-FFD0-4303-BB89-04E2BC7CFA91}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +44,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2CAD2823-BB68-4FC6-9D89-01F03A7E1DFE} = {79E25028-FFD0-4303-BB89-04E2BC7CFA91}
+		{1DF72863-A0AD-49DF-B41C-D0AB596FE8E8} = {79E25028-FFD0-4303-BB89-04E2BC7CFA91}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4A6CA6BE-40D7-410E-8166-15A8101BE80A}

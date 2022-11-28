@@ -3,6 +3,7 @@ using System;
 using DatabaseCore.Infrastructure.ConfigurationEFContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DatabaseCore.Infrastructure.Migrations
 {
     [DbContext(typeof(EFContext))]
-    partial class EFContextModelSnapshot : ModelSnapshot
+    [Migration("20221128005956_add_target")]
+    partial class add_target
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,7 +52,7 @@ namespace DatabaseCore.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Target", "usr");
+                    b.ToTable("Target");
                 });
 
             modelBuilder.Entity("DatabaseCore.Domain.Entities.Normals.User", b =>
@@ -63,9 +65,6 @@ namespace DatabaseCore.Infrastructure.Migrations
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("DeviceToken")
-                        .HasColumnType("text");
 
                     b.Property<string>("Email")
                         .HasMaxLength(100)

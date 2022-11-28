@@ -7,7 +7,7 @@ using DatabaseCore.Domain.Entities.Normals;
 
 namespace Hola.Api.Repositories.UserRepository
 {
-    public interface IUserRepository : IRepository<User>
+    public interface IUserRepository : IRepository<Target>
     {
      
     }
