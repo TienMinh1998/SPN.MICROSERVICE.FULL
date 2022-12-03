@@ -42,9 +42,11 @@ namespace Hola.Api.Controllers
         public async Task<JsonResponseModel> Register([FromBody] UserRegisterRequest request)
         {
             // Check available
-            var user = await userService.GetFirstOrDefaultAsync(x => (x.Username.Equals(request.UserName) || x.Email.Equals(request.Email)));
+            var user = await userService.GetFirstOrDefaultAsync(x => (x.Username.Equals(request.UserName)));
             if (user != null) return JsonResponseModel.Error("Người Dùng đã tồn tại", 500);
 
+            var user1 = await userService.GetFirstOrDefaultAsync(x => (x.Email.Equals(request.Email)));
+            if (user != null) return JsonResponseModel.Error("Email này đã có người sử dụng", 500);
             string userName = request.UserName;
             var passwordHash = BCrypt.Net.BCrypt.EnhancedHashPassword(request.Password, 11);
             string email = request.Email;
