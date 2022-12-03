@@ -30,6 +30,10 @@ namespace Hola.Api.Controllers
             var result = await categoryService.AddCategory(model);
             return JsonResponseModel.Success(result);
         }
-
+        [HttpGet("Test")]
+        public async Task<JsonResponseModel> AddQuestion()
+        {
+            return JsonResponseModel.Success("Service 2");
+        }
     }
 }

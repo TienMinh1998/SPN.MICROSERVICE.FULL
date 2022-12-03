@@ -113,7 +113,7 @@ namespace Hola.Api
                 c.SwaggerEndpoint("/swagger/BO/swagger.json", "Hola.Api For BO");
                 //c.RoutePrefix = string.Empty;
                 c.OAuthUseBasicAuthenticationWithAccessCodeGrant();
-                c.DocExpansion(DocExpansion.None);
+                //c.DocExpansion(DocExpansion.None);
                 c.DefaultModelsExpandDepth(-1);
             });
             app.UseStaticFiles();

@@ -33,14 +33,17 @@ namespace Hola.Api.Controllers
             _configuration = configuration;
         }
 
-
-        [Authorize]
+        /// <summary>
+        /// Đăng kí người dùng
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost("Register")]
         public async Task<JsonResponseModel> Register([FromBody] UserRegisterRequest request)
         {
             // Check available
             var user = await userService.GetFirstOrDefaultAsync(x => (x.Username.Equals(request.UserName) || x.Email.Equals(request.Email)));
-            if (user != null) return JsonResponseModel.Error("Người Dùng đã tồn tại", 400);
+            if (user != null) return JsonResponseModel.Error("Người Dùng đã tồn tại", 500);
 
             string userName = request.UserName;
             var passwordHash = BCrypt.Net.BCrypt.EnhancedHashPassword(request.Password, 11);
