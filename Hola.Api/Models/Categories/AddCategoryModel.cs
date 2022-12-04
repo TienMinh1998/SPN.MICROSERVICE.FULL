@@ -6,7 +6,6 @@ namespace Hola.Api.Models.Categories
     {
         public string Name { get; set; }
         public string Define { get; set; }
-        public DateTime Create_on { get; set; }
         public string Image { get; set; }
     }
 }
