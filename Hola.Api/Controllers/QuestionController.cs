@@ -58,7 +58,7 @@ namespace Hola.Api.Controllers
             return JsonResponseModel.Success(result);
         }
 
-        [HttpPost("CountQuestion")]
+        [HttpGet("CountQuestion")]
         public async Task<JsonResponseModel> CountQuestion([FromBody] DeleteQuestionRequest request)
         {
             var result = await qesQuestionService.CountQuestion();
