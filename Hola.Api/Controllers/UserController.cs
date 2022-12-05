@@ -65,7 +65,6 @@ namespace Hola.Api.Controllers
             return JsonResponseModel.Success(addUser);
         }
 
-
         [HttpPost("Login")]
         public async Task<JsonResponseModel> Login([FromBody] LoginRequest request)
         {
@@ -90,7 +89,6 @@ namespace Hola.Api.Controllers
 
         }
 
-  
         [HttpPost("UpdateDeviceToken")]
         public async Task<JsonResponseModel> UpdateDeviceToken([FromBody] UpdateDeviceTokenRequest updateRequest)
         {

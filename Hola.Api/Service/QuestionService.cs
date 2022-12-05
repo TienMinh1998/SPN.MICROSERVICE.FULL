@@ -80,5 +80,18 @@ namespace Hola.Api.Service
 
             return true;
         }
+
+        public async Task<int> CountQuestion()
+        {
+            SettingModel setting = new SettingModel()
+            {
+                Connection = _options.Value.Connection,
+                Provider = _options.Value.Provider
+            };
+            setting.Connection += "Database=" + database;
+            string sql = $"SELECT COUNT(1) FROM qes.question;";
+            var result = await ExcecuteScalarAsync(setting.Connection, sql);
+            return result;
+        }
     }
 }

@@ -141,6 +141,29 @@ namespace Hola.Core.Service
                 throw;
             }
         }
+
+        protected async Task<int> ExcecuteScalarAsync(string connection, string querySQl)
+        {
+            try
+            {
+                State = true;
+                if (string.IsNullOrEmpty(connection))
+                    throw new NullReferenceException(nameof(NpgsqlConnection));
+                if (string.IsNullOrEmpty(querySQl))
+                    throw new NullReferenceException(nameof(NpgsqlTsQuery));
+                using (var con = new NpgsqlConnection(connection))
+                {
+                    var response = await con.ExecuteScalarAsync<int>(querySQl);
+                    return response;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                State = false;
+                throw;
+            }
+        }
     }
 
 }
