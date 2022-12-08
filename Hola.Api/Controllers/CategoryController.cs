@@ -5,10 +5,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using System.Threading.Tasks;
 using Hola.Api.Models.Categories;
+using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Hola.Api.Controllers
 {
-    public class CategoryController
+    public class CategoryController : ControllerBase
     {
         private readonly IOptions<SettingModel> _config;
         private readonly CategoryService categoryService;
@@ -26,6 +28,7 @@ namespace Hola.Api.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost("AddCategory")]
+        [Authorize]
         public async Task<JsonResponseModel> AddQuestion([FromBody] AddCategoryModel model)
         {
             var result = await categoryService.AddCategory(model);
@@ -36,10 +39,12 @@ namespace Hola.Api.Controllers
         /// </summary>
         /// <param name="userid"></param>
         /// <returns></returns>
-        [HttpGet("GetCategories/{userid}")]
-        public async Task<JsonResponseModel> GetAllCategory(int userid)
+        [HttpGet("GetCategories")]
+        [Authorize]
+        public async Task<JsonResponseModel> GetAllCategory()
         {
-            var result = await _questionService.GetAllCategory(userid);
+            string userid = User.Claims.FirstOrDefault(c => c.Type == "UserId").Value;
+            var result = await _questionService.GetAllCategory(int.Parse(userid));
             return JsonResponseModel.Success(result);
         }
 
