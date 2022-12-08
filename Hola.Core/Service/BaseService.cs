@@ -26,39 +26,10 @@ namespace Hola.Core.Service
         private readonly IOptions<SettingModel> _options;
         protected BaseService(IOptions<SettingModel> options)
         {
-            _options = options;
-            if (State ==true  && string.IsNullOrEmpty(rawConnection))
-            {
-                rawConnection = _options.Value.Connection + "Database=";
-            }
-            else 
-            {
-                if (State==false)
-                {
-                    GetConnection(_options.Value.Connections);
-                }
-            }
+          
         }
 
-        private async Task GetConnection(List<string> connections)
-        {
-            foreach (var con in connections)
-            {
-                using (var l_oConnection = new NpgsqlConnection(con + "Database=commond_db"))
-                {
-                    try
-                    {
-                        l_oConnection.Open();
-                        rawConnection = con + "Database=";
-                        break;
-                    }
-                    catch (NpgsqlException)
-                    {
-                        continue;
-                    }
-                }
-            }
-        }
+    
 
         protected List<T> QueryToList<T>(string connection, string querySQl)
         {
@@ -100,7 +71,6 @@ namespace Hola.Core.Service
         {
             try
             {
-                State = true;
                 if (string.IsNullOrEmpty(connection))
                     throw new NullReferenceException(nameof(NpgsqlConnection));
                 if (string.IsNullOrEmpty(querySQl))
@@ -114,7 +84,6 @@ namespace Hola.Core.Service
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                State = false;
                 throw;
             }
         }
@@ -141,7 +110,28 @@ namespace Hola.Core.Service
                 throw;
             }
         }
-
+        protected async Task<int> ExecuteScalarAsync(string connection, string querySQl)
+        {
+            try
+            {
+                State = true;
+                if (string.IsNullOrEmpty(connection))
+                    throw new NullReferenceException(nameof(NpgsqlConnection));
+                if (string.IsNullOrEmpty(querySQl))
+                    throw new NullReferenceException(nameof(NpgsqlTsQuery));
+                using (var con = new NpgsqlConnection(connection))
+                {
+                    var response = await con.ExecuteScalarAsync<int>(querySQl);
+                    return response;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                State = false;
+                throw;
+            }
+        }
         protected async Task<int> ExcecuteScalarAsync(string connection, string querySQl)
         {
             try

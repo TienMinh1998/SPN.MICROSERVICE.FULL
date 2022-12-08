@@ -40,7 +40,7 @@ namespace Hola.Api.Service
             return result;
         }
 
-        public async Task<List<QuestionModel>> GetListQuestionByCategoryId(int categoryID,int is_Delete)
+        public async Task<List<QuestionModel>> GetListQuestionByCategoryId(int categoryID, int is_Delete)
         {
             SettingModel setting = new SettingModel()
             {
@@ -64,9 +64,9 @@ namespace Hola.Api.Service
             var sql = "insert into qes.question (category_id, questionname, answer, created_on,\"ImageSource\") " +
                       $"values ({addQuestion.Category_Id},'{addQuestion.QuestionName}','{addQuestion.Answer}',now(),'{addQuestion.ImageSource}');";
             var countQuery = $"SELECT COUNT(1) FROM qes.question WHERE category_id={addQuestion.Category_Id}";
-            var countResponse = await Excecute(setting.Connection, countQuery);
-            var updateCategoryQuery = string.Format("UPDATE qes.categories SET totalquestion = {0} WHERE id = {1};",countResponse+1, addQuestion.Category_Id);
-            await Excecute(setting.Connection, updateCategoryQuery);
+            var countResponse = await ExcecuteScalarAsync(setting.Connection, countQuery);
+            var updateCategoryQuery = string.Format("UPDATE qes.categories SET totalquestion = {0} WHERE id = {1};", countResponse + 1, addQuestion.Category_Id);
+            var responseupdate = await Excecute(setting.Connection, updateCategoryQuery);
             var result = await Excecute(setting.Connection, sql);
             return true;
         }
