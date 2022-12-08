@@ -12,11 +12,12 @@ namespace Hola.Api.Controllers
     {
         private readonly IOptions<SettingModel> _config;
         private readonly CategoryService categoryService;
-
-        public CategoryController(IOptions<SettingModel> config, CategoryService categoryService)
+        private readonly QuestionService _questionService;
+        public CategoryController(IOptions<SettingModel> config, CategoryService categoryService, QuestionService questionService)
         {
             _config = config;
             this.categoryService = categoryService;
+            _questionService = questionService;
         }
 
         /// <summary>
@@ -30,10 +31,17 @@ namespace Hola.Api.Controllers
             var result = await categoryService.AddCategory(model);
             return JsonResponseModel.Success(result);
         }
-        [HttpGet("Test")]
-        public async Task<JsonResponseModel> AddQuestion()
+        /// <summary>
+        /// Lấy danh sách danh mục theo User
+        /// </summary>
+        /// <param name="userid"></param>
+        /// <returns></returns>
+        [HttpGet("GetCategories/{userid}")]
+        public async Task<JsonResponseModel> GetAllCategory(int userid)
         {
-            return JsonResponseModel.Success("Service 2");
+            var result = await _questionService.GetAllCategory(userid);
+            return JsonResponseModel.Success(result);
         }
+
     }
 }

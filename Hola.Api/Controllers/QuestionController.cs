@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System.Threading.Tasks;
 using Hola.Api.Models.Questions;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Hola.Api.Controllers
 {
@@ -22,12 +23,7 @@ namespace Hola.Api.Controllers
         }
 
 
-        [HttpGet("GetCategories")]
-        public async Task<JsonResponseModel> GetAllCategory()
-        {
-            var result = await qesQuestionService.GetAllCategory();
-            return JsonResponseModel.Success(result);
-        }
+    
 
         [HttpGet("GetQuestion/{ID}")]
         public async Task<JsonResponseModel> GetQuestionById(int ID)
