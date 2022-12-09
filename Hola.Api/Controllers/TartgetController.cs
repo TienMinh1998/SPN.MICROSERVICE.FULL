@@ -11,9 +11,11 @@ using Hola.Api.Service.TargetServices;
 using Hola.Core.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.WebSockets;
 using System.Threading.Tasks;
 
 namespace Hola.Api.Controllers
@@ -42,11 +44,26 @@ namespace Hola.Api.Controllers
             int userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == SystemParam.CLAIM_USER).Value);
             var entity = _mapper.Map<Target>(target);
             entity.FK_UserId = userid;
+            entity.created_on = DateTime.Now;
+            entity.total_days = TotalDate(target.start_date, target.end_date);
             var response = await _targetService.AddAsync(entity);
             return JsonResponseModel.Success(response);
-
         }
 
-     
+        private int TotalDate(DateTime start_date, DateTime end_Date)
+        {
+            if (start_date.Date == end_Date.Date)  return 1;
+            if (start_date.Date < end_Date.Date)
+            {
+                TimeSpan time = end_Date - start_date;
+                return time.Days;
+            }
+            
+
+            
+
+            return 0;
+        }
+
     }
 }
