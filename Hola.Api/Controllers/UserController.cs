@@ -16,6 +16,8 @@ using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Authorization;
 using Hola.Api.Response.Jwt;
 using Hola.Api.Response.Login;
+using System.Linq;
+using Hola.Api.Common;
 
 namespace Hola.Api.Controllers
 {
@@ -74,7 +76,9 @@ namespace Hola.Api.Controllers
                 var isPasswordOk = BCrypt.Net.BCrypt.EnhancedVerify(request.Password, user.Password, BCrypt.Net.HashType.SHA384);
                 if (isPasswordOk)
                 {
-
+                    // Update Devide Token of User 
+                    user.DeviceToken = request.DevideToken;
+                    var userUpdateDevice =await userService.UpdateAsync(user); 
                     // Tạo Token và trả cho người dùng
                     var newToken = CreateToken(user);
                     LoginResponse loginResponse = new LoginResponse
@@ -97,6 +101,40 @@ namespace Hola.Api.Controllers
             {
                 var resultService = await accountService.UpdateDeviceTokenFirebaseAsync(updateRequest.DeviceToken, updateRequest.UserId);
                 return JsonResponseModel.Success(resultService);
+            }
+            catch (Exception)
+            {
+                return JsonResponseModel.SERVER_ERROR();
+            }
+        }
+
+        /// <summary>
+        /// Bật thông báo
+        /// </summary>
+        /// <param name="updateRequest"></param>
+        /// <returns></returns>
+        [HttpGet("On_Notification")]
+        [Authorize]
+        public async Task<JsonResponseModel> On_Notification(int Status)
+        {
+            // Get result From service
+            try
+            {
+                var userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == SystemParam.CLAIM_USER).Value);
+                var user = await userService.GetFirstOrDefaultAsync(x => x.Id == userid);
+                if (Status==1)
+                {
+                    // bật thông báo
+                    user.isnotification = 1;
+                    await userService.UpdateAsync(user);
+                }
+                else
+                {
+                    // Không thông báo nữa
+                    user.isnotification = 0;
+                    await userService.UpdateAsync(user);
+                }
+                return JsonResponseModel.Success(Status);
             }
             catch (Exception)
             {

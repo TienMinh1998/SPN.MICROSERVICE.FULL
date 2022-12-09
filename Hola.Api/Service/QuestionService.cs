@@ -61,8 +61,10 @@ namespace Hola.Api.Service
                 Provider = _options.Value.Provider
             };
             setting.Connection += "Database=" + database;
-            var sql = "insert into qes.question (category_id, questionname, answer, created_on,\"ImageSource\") " +
-                      $"values ({addQuestion.Category_Id},'{addQuestion.QuestionName}','{addQuestion.Answer}',now(),'{addQuestion.ImageSource}');";
+            // Add new Question
+            var sql = "insert into qes.question (category_id, questionname, answer, created_on,\"ImageSource\", fk_userid) " +
+                      $"values ({addQuestion.Category_Id},'{addQuestion.QuestionName}','{addQuestion.Answer}',now(),'{addQuestion.ImageSource}',{addQuestion.fk_userid});";
+
             var countQuery = $"SELECT COUNT(1) FROM qes.question WHERE category_id={addQuestion.Category_Id}";
             var countResponse = await ExcecuteScalarAsync(setting.Connection, countQuery);
             var updateCategoryQuery = string.Format("UPDATE qes.categories SET totalquestion = {0} WHERE id = {1};", countResponse + 1, addQuestion.Category_Id);
@@ -94,6 +96,19 @@ namespace Hola.Api.Service
             };
             setting.Connection += "Database=" + database;
             string sql = $"SELECT COUNT(1) FROM qes.question;";
+            var result = await ExcecuteScalarAsync(setting.Connection, sql);
+            return result;
+        }
+
+        public async Task<int> CountQuestionToday(int userid)
+        {
+            SettingModel setting = new SettingModel()
+            {
+                Connection = _options.Value.Connection,
+                Provider = _options.Value.Provider
+            };
+            setting.Connection += "Database=" + database;
+            string sql = $"SELECT COUNT(1) FROM qes.question where fk_userid = {userid} and created_on::Date = CURRENT_DATE";
             var result = await ExcecuteScalarAsync(setting.Connection, sql);
             return result;
         }

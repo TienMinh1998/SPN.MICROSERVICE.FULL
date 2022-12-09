@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
@@ -50,6 +50,8 @@ namespace Hola.Api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Hola.Api", Version = " v1" });
                 c.SwaggerDoc("BO", new OpenApiInfo { Title = "Hola API", Version = "Web" });
+
+
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
                     In = ParameterLocation.Header,

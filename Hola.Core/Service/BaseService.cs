@@ -87,7 +87,26 @@ namespace Hola.Core.Service
                 throw;
             }
         }
-
+        protected async  Task<T> FirstOrDefaultAsync<T>(string connection, string querySQl)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(connection))
+                    throw new NullReferenceException(nameof(NpgsqlConnection));
+                if (string.IsNullOrEmpty(querySQl))
+                    throw new NullReferenceException(nameof(NpgsqlTsQuery));
+                using (var con = new NpgsqlConnection(connection))
+                {
+                    var response = await con.QueryFirstOrDefaultAsync<T>(querySQl);
+                    return response;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
         protected async Task<int> Excecute(string connection, string querySQl)
         {
             try

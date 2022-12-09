@@ -15,5 +15,6 @@ namespace DatabaseCore.Domain.Entities.Normals
         public string Password { get; set; }
         public string DeviceToken { get; set; }
         public string Name { get; set; }
+        public int isnotification { get; set; }
     }
 }

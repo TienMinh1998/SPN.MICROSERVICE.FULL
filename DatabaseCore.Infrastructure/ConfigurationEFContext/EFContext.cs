@@ -15,13 +15,16 @@ namespace DatabaseCore.Infrastructure.ConfigurationEFContext
         {
         
         }
-        public DbSet<Target> Users { get; set; }
+        public DbSet<User> Users { get; set; }
         public DbSet<Target> Targets { get; set; }
+        public DbSet<Grammar> Grammars { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Config table in postgressSQl
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new TargetConfiguration());
+            modelBuilder.ApplyConfiguration(new GrammarConfiguration());
             base.OnModelCreating(modelBuilder);
         }
     }

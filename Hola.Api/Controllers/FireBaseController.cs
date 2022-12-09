@@ -16,8 +16,6 @@ namespace Hola.Api.Controllers
     public class FireBaseController : ControllerBase
     {
 
-
-
         [HttpPost("PushMessage")]
         public async Task<JsonResponseModel> Push([FromBody] PushNotificationRequest pushNotificationRequest)
         {

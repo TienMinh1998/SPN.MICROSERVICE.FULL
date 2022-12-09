@@ -6,6 +6,8 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="AutoMapper" Version="12.0.0" />
+        <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
         <PackageReference Include="Azure.Storage.Blobs" Version="12.10.0" />
         <PackageReference Include="Dapper" Version="2.0.123" />
         <PackageReference Include="FirebaseAdmin" Version="2.3.0" />
@@ -31,6 +33,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\DatabaseCore.Infrastructure\DatabaseCore.Infrastructure.csproj" />
+      <ProjectReference Include="..\EntitiesCommon\EntitiesCommon.csproj" />
       <ProjectReference Include="..\Hola.Core\Hola.Core.csproj" />
       <ProjectReference Include="..\Hola.GoogleCloudStorage\Hola.GoogleCloudStorage.csproj" />
     </ItemGroup>
@@ -40,6 +43,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Requests\Users\NewFolder\" />
       <Folder Include="wwwroot\" />
     </ItemGroup>
 

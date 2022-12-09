@@ -22,6 +22,31 @@ namespace DatabaseCore.Infrastructure.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("DatabaseCore.Domain.Entities.Normals.Grammar", b =>
+                {
+                    b.Property<int>("PK_grammarId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("PK_grammarId"));
+
+                    b.Property<int>("FK_UserId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("created_on")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("grammar_content")
+                        .HasColumnType("text");
+
+                    b.Property<string>("grammar_name")
+                        .HasColumnType("text");
+
+                    b.HasKey("PK_grammarId");
+
+                    b.ToTable("Grammar", "usr");
+                });
+
             modelBuilder.Entity("DatabaseCore.Domain.Entities.Normals.Target", b =>
                 {
                     b.Property<int>("Id")
@@ -87,6 +112,9 @@ namespace DatabaseCore.Infrastructure.Migrations
                     b.Property<string>("Username")
                         .HasMaxLength(50)
                         .HasColumnType("varchar");
+
+                    b.Property<int>("isnotification")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
