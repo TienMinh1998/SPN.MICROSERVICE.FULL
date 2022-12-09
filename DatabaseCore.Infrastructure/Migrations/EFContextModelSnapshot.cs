@@ -49,31 +49,34 @@ namespace DatabaseCore.Infrastructure.Migrations
 
             modelBuilder.Entity("DatabaseCore.Domain.Entities.Normals.Target", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("PK_TargetId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("PK_TargetId"));
 
-                    b.Property<string>("Content")
+                    b.Property<int>("FK_UserId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("created_on")
+                        .HasColumnType("timestamp");
+
+                    b.Property<string>("description")
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<DateTime>("end_date")
+                        .HasColumnType("timestamp");
 
-                    b.Property<int>("IsDeleted")
+                    b.Property<DateTime>("start_date")
+                        .HasColumnType("timestamp");
+
+                    b.Property<string>("target_content")
+                        .HasColumnType("text");
+
+                    b.Property<int>("total_days")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime>("StartDate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<int>("TotalDays")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
+                    b.HasKey("PK_TargetId");
 
                     b.ToTable("Target", "usr");
                 });

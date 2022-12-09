@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace DatabaseCore.Infrastructure.Migrations
 {
-    public partial class innitdata : Migration
+    public partial class initDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -35,18 +35,19 @@ namespace DatabaseCore.Infrastructure.Migrations
                 schema: "usr",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
+                    PK_TargetId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    UserId = table.Column<int>(type: "integer", nullable: false),
-                    Content = table.Column<string>(type: "text", nullable: true),
-                    StartDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    TotalDays = table.Column<int>(type: "integer", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    IsDeleted = table.Column<int>(type: "integer", nullable: false)
+                    FK_UserId = table.Column<int>(type: "integer", nullable: false),
+                    target_content = table.Column<string>(type: "text", nullable: true),
+                    description = table.Column<string>(type: "text", nullable: true),
+                    total_days = table.Column<int>(type: "integer", nullable: false),
+                    start_date = table.Column<DateTime>(type: "timestamp", nullable: false),
+                    end_date = table.Column<DateTime>(type: "timestamp", nullable: false),
+                    created_on = table.Column<DateTime>(type: "timestamp", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Target", x => x.Id);
+                    table.PrimaryKey("PK_Target", x => x.PK_TargetId);
                 });
 
             migrationBuilder.CreateTable(

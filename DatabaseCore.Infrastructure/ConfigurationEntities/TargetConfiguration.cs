@@ -14,6 +14,9 @@ namespace DatabaseCore.Infrastructure.ConfigurationEntities
         public void Configure(EntityTypeBuilder<Target> builder)
         {
             builder.ToTable("Target", schema: "usr");
+            builder.Property(x => x.created_on).HasColumnType("timestamp");
+            builder.Property(x => x.start_date).HasColumnType("timestamp");
+            builder.Property(x => x.end_date).HasColumnType("timestamp");
         }
     }
 }

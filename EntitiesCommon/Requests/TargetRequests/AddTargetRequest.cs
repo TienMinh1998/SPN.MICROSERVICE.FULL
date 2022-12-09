@@ -13,5 +13,6 @@ namespace EntitiesCommon.Requests.TargetRequests
         public int total_days { get; set; }
         public DateTime start_date { get; set; }
         public DateTime end_date { get; set; }
+        public DateTime created_on { get; set; }
     }
 }

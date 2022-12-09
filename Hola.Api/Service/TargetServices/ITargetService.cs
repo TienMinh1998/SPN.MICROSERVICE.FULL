@@ -1,15 +1,14 @@
-﻿using EntitiesCommon.EntitiesModel;
+﻿using DatabaseCore.Domain.Entities.Normals;
+using EntitiesCommon.EntitiesModel;
 using EntitiesCommon.Requests.TargetRequests;
+using Hola.Api.Service.BaseServices;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Hola.Api.Service.TargetServices
 {
-    public interface ITargetService
+    public interface ITargetService : IBaseService<Target>
     {
-        Task<List<TargetModel>> GetList(int userid);
-        Task<TargetModel> AddAsync(TargetModel target);
-
-        Task<TargetModel> GetById(int Id, int userid);
+       
     }
 }

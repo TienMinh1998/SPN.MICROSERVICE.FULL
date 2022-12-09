@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using DatabaseCore.Domain.Entities.Normals;
 using EntitiesCommon.EntitiesModel;
 using EntitiesCommon.Requests.TargetRequests;
 
@@ -8,7 +9,7 @@ namespace Hola.Api.AutoMappers
     {
         public RequestToEntityProfile()
         {
-            CreateMap<AddTargetRequest, TargetModel>();
+            CreateMap<AddTargetRequest, Target>();
         }
     }
 }

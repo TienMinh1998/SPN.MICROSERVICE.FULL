@@ -1,6 +1,7 @@
 ﻿using Hola.Api.AutoMappers;
 using Hola.Api.Repositories;
 using Hola.Api.Repositories.Grammar;
+using Hola.Api.Repositories.TargetRepo;
 using Hola.Api.Repositories.UserRepository;
 using Hola.Api.Service;
 using Hola.Api.Service.BaseServices;
@@ -38,6 +39,10 @@ namespace Hola.Api.Installers
             // Grammar
             services.AddScoped<IGrammarRepository, GrammarRepository>();
             services.AddScoped<IGrammarService, GrammarService>();
+
+            // Target
+            services.AddScoped<ITargetRepository, TargetRepository>();
+            services.AddScoped<ITargetService, TargetService>();
 
         }
     }
