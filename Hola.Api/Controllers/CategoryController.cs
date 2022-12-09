@@ -46,7 +46,7 @@ public class CategoryController : ControllerBase
     {
         string userid = User.Claims.FirstOrDefault(c => c.Type == "UserId").Value;
         var result = await _questionService.GetAllCategory(int.Parse(userid));
-        if (result!=null)
+        if (result!=null || result.Count<=0 )
         {
             return JsonResponseModel.Success(result);
         }
