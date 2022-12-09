@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.WebSockets;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace Hola.Api.Controllers
 {
@@ -49,6 +50,34 @@ namespace Hola.Api.Controllers
             var response = await _targetService.AddAsync(entity);
             return JsonResponseModel.Success(response);
         }
+
+
+       /// <summary>
+       /// Get list Target By UserID
+       /// </summary>
+       /// <param name="target"></param>
+       /// <returns></returns>
+        [HttpGet("Targets")]
+        [Authorize]
+        public async Task<JsonResponseModel> Targets()
+        {
+            try
+            {
+                int userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == SystemParam.CLAIM_USER).Value);
+                var response = await _targetService.GetAllAsync(x => x.FK_UserId == userid);
+                if (response == null || response.ToList().Count() <= 0)
+                    return JsonResponseModel.Error("Danh sách rỗng", 199);
+                return JsonResponseModel.Success(response);
+            }
+            catch (Exception ex)
+            {
+                return JsonResponseModel.SERVER_ERROR(ex.Message);
+                
+            }
+          
+        }
+
+
 
         private int TotalDate(DateTime start_date, DateTime end_Date)
         {

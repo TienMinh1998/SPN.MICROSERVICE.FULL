@@ -38,5 +38,10 @@ namespace Hola.Core.Model
         {
             return new JsonResponseModel() { Data= new List<string>(), Message = SystemParam.MSG_SERVER_ERROR, Status = SystemParam.SERVER_ERROR_CODE};
         }
+
+        public static JsonResponseModel SERVER_ERROR(string message)
+        {
+            return new JsonResponseModel() { Data = new List<string>(), Message = message, Status = SystemParam.SERVER_ERROR_CODE };
+        }
     }
 }
