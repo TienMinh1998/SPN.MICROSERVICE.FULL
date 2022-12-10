@@ -1,10 +1,12 @@
 ﻿using Hola.Api.AutoMappers;
 using Hola.Api.Repositories;
+using Hola.Api.Repositories.CoursRepo;
 using Hola.Api.Repositories.Grammar;
 using Hola.Api.Repositories.TargetRepo;
 using Hola.Api.Repositories.UserRepository;
 using Hola.Api.Service;
 using Hola.Api.Service.BaseServices;
+using Hola.Api.Service.CoursServices;
 using Hola.Api.Service.GrammarServices;
 using Hola.Api.Service.TargetServices;
 using Hola.Api.Service.UserServices;
@@ -44,6 +46,9 @@ namespace Hola.Api.Installers
             services.AddScoped<ITargetRepository, TargetRepository>();
             services.AddScoped<ITargetService, TargetService>();
 
+            // Cours
+            services.AddScoped<ICoursRepository, CoursRepository>();
+            services.AddScoped<ICoursService, CoursService>();
         }
     }
 }
