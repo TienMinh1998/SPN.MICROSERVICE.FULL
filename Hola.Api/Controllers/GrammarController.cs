@@ -41,7 +41,7 @@ namespace Hola.Api.Controllers
         [HttpGet("GetAll")]
         public async Task<JsonResponseModel> GetAll()
         {
-            var result = await _grammarService.GetAllAsync(x=>x.FK_UserId>0);
+            var result = await _grammarService.GetAllAsync();
             return JsonResponseModel.Success(result);
         }
     }

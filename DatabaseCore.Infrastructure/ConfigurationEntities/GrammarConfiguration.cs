@@ -14,6 +14,7 @@ namespace DatabaseCore.Infrastructure.ConfigurationEntities
         public void Configure(EntityTypeBuilder<Grammar> builder)
         {
             builder.ToTable("Grammar", schema: "usr");
+            builder.Property(x => x.created_on).HasColumnType("timestamp");
         }
     }
 }
