@@ -19,12 +19,15 @@ namespace DatabaseCore.Infrastructure.ConfigurationEFContext
         public DbSet<Target> Targets { get; set; }
         public DbSet<Grammar> Grammars { get; set; }
 
+        public DbSet<Cours> Cours { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Config table in postgressSQl
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new TargetConfiguration());
             modelBuilder.ApplyConfiguration(new GrammarConfiguration());
+            modelBuilder.ApplyConfiguration(new CoursConfiguration());
             base.OnModelCreating(modelBuilder);
         }
     }
