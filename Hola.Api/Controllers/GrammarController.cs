@@ -20,7 +20,7 @@ namespace Hola.Api.Controllers
             _grammarService = grammarService;
             _mapperService = mapperService;
         }
-        [HttpGet("AddGrammar")]
+        [HttpPost("AddGrammar")]
         public async Task<JsonResponseModel> AddGrammar([FromBody] AddGrammarRequest model)
         {
             try
