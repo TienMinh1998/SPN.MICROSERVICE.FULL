@@ -21,13 +21,13 @@ namespace Hola.Api.Controllers
             _mapperService = mapperService;
         }
         [HttpGet("AddGrammar")]
-        public async Task<JsonResponseModel> AddGrammar(AddGrammarRequest model)
+        public async Task<JsonResponseModel> AddGrammar([FromBody] AddGrammarRequest model)
         {
             try
             {
                 var request = _mapperService.Map<Grammar>(model);
                 request.created_on = DateTime.Now;
-                var response = _grammarService.AddAsync(request);
+                var response = await _grammarService.AddAsync(request);
                 return JsonResponseModel.Success(response);
             }
             catch (Exception ex)
