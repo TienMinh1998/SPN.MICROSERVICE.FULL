@@ -7,7 +7,7 @@
         public string QuestionName { get; set; }
         public string Answer { get; set; }
         public string ImageSource { get; set; }
-        public string  audio { get; set; }
+        public string audio { get; set; }
 
     }
 }
