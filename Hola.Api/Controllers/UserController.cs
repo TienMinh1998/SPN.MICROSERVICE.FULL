@@ -18,6 +18,7 @@ using Hola.Api.Response.Jwt;
 using Hola.Api.Response.Login;
 using System.Linq;
 using Hola.Api.Common;
+using EntitiesCommon.Requests;
 
 namespace Hola.Api.Controllers
 {
@@ -115,26 +116,26 @@ namespace Hola.Api.Controllers
         /// <returns></returns>
         [HttpGet("On_Notification")]
         [Authorize]
-        public async Task<JsonResponseModel> On_Notification(int Status)
+        public async Task<JsonResponseModel> On_Notification(ChangeNotificationRequest action)
         {
             // Get result From service
             try
             {
                 var userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == SystemParam.CLAIM_USER).Value);
                 var user = await userService.GetFirstOrDefaultAsync(x => x.Id == userid);
-                if (Status==1)
+                if (action.TurnOn==true)
                 {
-                    // bật thông báo
+                    // If action equal 'true' => on Notification 
                     user.isnotification = 1;
                     await userService.UpdateAsync(user);
                 }
                 else
                 {
-                    // Không thông báo nữa
+                    // If action equal 'false' => Off Notification
                     user.isnotification = 0;
                     await userService.UpdateAsync(user);
                 }
-                return JsonResponseModel.Success(Status);
+                return JsonResponseModel.Success(action);
             }
             catch (Exception)
             {
