@@ -66,6 +66,8 @@ namespace Hola.Api.Service
             var response =await api.Get<object>($"https://api.dictionaryapi.dev/api/v2/entries/en/{word}");
             var phienam = JsonConvert.DeserializeObject<List<ResponseDicModel>>(response.ToString());
             string phonetic = phienam.FirstOrDefault().phonetic;
+            var  audio = phienam.FirstOrDefault().phonetics.FirstOrDefault().audio;
+
             addQuestion.QuestionName += $" {phonetic}";
             SettingModel setting = new SettingModel()
             {
@@ -74,8 +76,8 @@ namespace Hola.Api.Service
             };
             setting.Connection += "Database=" + database;
             // Add new Question
-            var sql = "insert into qes.question (category_id, questionname, answer, created_on,\"ImageSource\", fk_userid, phonetic) " +
-                      $"values ({addQuestion.Category_Id},'{addQuestion.QuestionName}','{addQuestion.Answer}',now(),'{addQuestion.ImageSource}',{addQuestion.fk_userid},'{phonetic}');";
+            var sql = "insert into qes.question (category_id, questionname, answer, created_on,\"ImageSource\", fk_userid, phonetic, audio) " +
+                      $"values ({addQuestion.Category_Id},'{addQuestion.QuestionName}','{addQuestion.Answer}',now(),'{addQuestion.ImageSource}',{addQuestion.fk_userid},'{phonetic}','{audio}');";
 
             var countQuery = $"SELECT COUNT(1) FROM qes.question WHERE category_id={addQuestion.Category_Id}";
             var countResponse = await ExcecuteScalarAsync(setting.Connection, countQuery);
