@@ -12,6 +12,7 @@ namespace Hola.Api.AutoMappers
         {
             CreateMap<AddTargetRequest, Target>();
             CreateMap<AddGrammarRequest, Grammar>();
+            CreateMap<UserManualModel, UserManual>();
         }
     }
 }

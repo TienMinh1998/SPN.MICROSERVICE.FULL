@@ -3,6 +3,7 @@ using System;
 using DatabaseCore.Infrastructure.ConfigurationEFContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DatabaseCore.Infrastructure.Migrations
 {
     [DbContext(typeof(EFContext))]
-    partial class EFContextModelSnapshot : ModelSnapshot
+    [Migration("20221212020430_add_new_column_grammartable")]
+    partial class add_new_column_grammartable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,9 +57,6 @@ namespace DatabaseCore.Infrastructure.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("PK_grammarId"));
 
-                    b.Property<string>("Code")
-                        .HasColumnType("text");
-
                     b.Property<string>("Concept")
                         .HasColumnType("text");
 
@@ -83,9 +82,6 @@ namespace DatabaseCore.Infrastructure.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("PK_grammarId");
-
-                    b.HasIndex("Code")
-                        .IsUnique();
 
                     b.ToTable("Grammar", "usr");
                 });
@@ -165,31 +161,6 @@ namespace DatabaseCore.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("User", "usr");
-                });
-
-            modelBuilder.Entity("DatabaseCore.Domain.Entities.Normals.UserManual", b =>
-                {
-                    b.Property<int>("Pk_UserManual_Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Pk_UserManual_Id"));
-
-                    b.Property<string>("DetailExample")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Example")
-                        .HasColumnType("text");
-
-                    b.Property<int>("Fk_Grannar_Id")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Used")
-                        .HasColumnType("text");
-
-                    b.HasKey("Pk_UserManual_Id");
-
-                    b.ToTable("UserManual", "usr");
                 });
 #pragma warning restore 612, 618
         }

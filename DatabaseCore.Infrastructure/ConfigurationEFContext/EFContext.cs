@@ -15,11 +15,12 @@ namespace DatabaseCore.Infrastructure.ConfigurationEFContext
         {
         
         }
+        // Define table
         public DbSet<User> Users { get; set; }
         public DbSet<Target> Targets { get; set; }
         public DbSet<Grammar> Grammars { get; set; }
-
         public DbSet<Cours> Cours { get; set; }
+        public DbSet<UserManual> UserManuals { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -28,6 +29,7 @@ namespace DatabaseCore.Infrastructure.ConfigurationEFContext
             modelBuilder.ApplyConfiguration(new TargetConfiguration());
             modelBuilder.ApplyConfiguration(new GrammarConfiguration());
             modelBuilder.ApplyConfiguration(new CoursConfiguration());
+            modelBuilder.ApplyConfiguration(new UserManualConfiguration());
             base.OnModelCreating(modelBuilder);
         }
     }

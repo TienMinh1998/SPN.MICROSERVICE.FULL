@@ -16,6 +16,11 @@ namespace DatabaseCore.Domain.Entities.Normals
         public int FK_UserId { get; set; }
         public string grammar_name { get; set; }
         public string grammar_content { get; set; }
+        public string Concept { get; set; }       
         public DateTime created_on { get; set; }
+        public string KD { get; set; }    
+        public string PD { get; set; }
+        public string NV { get; set; }
+        public string Code { get; set; }
     }
 }
