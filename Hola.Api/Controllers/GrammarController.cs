@@ -38,6 +38,17 @@ namespace Hola.Api.Controllers
             return JsonResponseModel.Success(result);
         }
 
+        [HttpGet("Get_Grammar_By_Id/{code}")]
+        public async Task<JsonResponseModel> Get_Grammar_By_Id(string code)
+        {
+            var result = await _grammarService.GetFirstOrDefaultAsync(x => x.Code == code);
+            var detail = await userManualService.GetAllAsync(x => x.Fk_Grannar_Id == result.PK_grammarId);
+
+            Dictionary<string, object> dic_response = new Dictionary<string, object>();
+            dic_response.Add("overview", result);
+            dic_response.Add("usermanual", detail);
+            return JsonResponseModel.Success(dic_response);
+        }
         [HttpPost("AddGrammarUserManual")]
         public async Task<JsonResponseModel> AddGrammarUserManual([FromBody] UserManualModel model)
         {
@@ -82,16 +93,24 @@ namespace Hola.Api.Controllers
            
         }
 
-        [HttpGet("Get_Grammar_By_Id/{code}")]
-        public async Task<JsonResponseModel> Get_Grammar_By_Id(string code)
+        [HttpDelete("grammar")]
+        public async Task<JsonResponseModel> Delete(int id)
         {
-            var result = await _grammarService.GetFirstOrDefaultAsync(x=>x.Code==code);
-            var detail = await userManualService.GetAllAsync(x => x.Fk_Grannar_Id == result.PK_grammarId);
+            try
+            {
 
-            Dictionary<string,object> dic_response = new Dictionary<string, object>();
-            dic_response.Add("overview", result);
-            dic_response.Add("usermanual", detail);
-            return JsonResponseModel.Success(dic_response);
+                var grammar = await _grammarService.GetFirstOrDefaultAsync(x=>x.PK_grammarId== id);
+                await _grammarService.DeleteAsync(grammar);
+                return JsonResponseModel.Success("Xóa thành công " + grammar.grammar_name);
+            }
+            catch (Exception ex)
+            {
+
+                return JsonResponseModel.Error(ex.Message, 500);
+            }
+
         }
+
+
     }
 }
