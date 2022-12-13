@@ -10,5 +10,6 @@ namespace EntitiesCommon.Requests.GrammarRequests
     {
         public string grammar_name { get; set; }
         public string grammar_content { get; set; }
+        public string Code { get; set; }
     }
 }

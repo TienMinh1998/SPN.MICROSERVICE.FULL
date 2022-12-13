@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Azure;
 using DatabaseCore.Domain.Entities.Normals;
 using EntitiesCommon.EntitiesModel;
 using EntitiesCommon.Requests.GrammarRequests;
@@ -13,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace Hola.Api.Controllers
 {
-    [Route("grammar")]
+    [Route("v1")]
     public class GrammarController : ControllerBase
     {
 
@@ -29,15 +30,26 @@ namespace Hola.Api.Controllers
             _mapperService = mapperService;
             this.userManualService = userManualService;
         }
-        [HttpPost("AddGrammar")]
+
+
+        [HttpPut("grammar")]
         public async Task<JsonResponseModel> AddGrammar([FromBody] AddGrammarRequest model)
         {
             try
             {
-                var request = _mapperService.Map<Grammar>(model);
-                request.created_on = DateTime.Now;
-                var response = await _grammarService.AddAsync(request);
-                return JsonResponseModel.Success(response);
+                var _addValue =await _grammarService.GetFirstOrDefaultAsync(x=>x.Code== model.Code);
+                if (_addValue==null)
+                {
+                    var request = _mapperService.Map<Grammar>(model);
+                    request.created_on = DateTime.Now;
+                    var response = await _grammarService.AddAsync(request);
+                    return JsonResponseModel.Success(response);
+                }
+                else
+                {
+                    return JsonResponseModel.Error("Ngữ Pháp đã tồn tại",400);
+                }
+            
             }
             catch (Exception ex)
             {

@@ -15,7 +15,6 @@
       <PackageReference Include="Microsoft.IO.RecyclableMemoryStream" Version="2.2.0" />
       <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
       <PackageReference Include="Npgsql" Version="6.0.2" />
-      <PackageReference Include="PagedList" Version="1.17.0" />
       <PackageReference Include="RabbitMQ.Client" Version="6.2.4" />
       <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
       <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.20.0" />
