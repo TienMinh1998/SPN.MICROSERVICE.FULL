@@ -31,6 +31,29 @@ namespace Hola.Api.Controllers
             this.userManualService = userManualService;
         }
 
+        [HttpGet("listgrammar")]
+        public async Task<JsonResponseModel> GetAll()
+        {
+            var result = await _grammarService.GetAllAsync();
+            return JsonResponseModel.Success(result);
+        }
+
+        [HttpPost("AddGrammarUserManual")]
+        public async Task<JsonResponseModel> AddGrammarUserManual([FromBody] UserManualModel model)
+        {
+            try
+            {
+                var entityUserManual = _mapperService.Map<UserManual>(model);
+                var response = await userManualService.AddAsync(entityUserManual);
+                return JsonResponseModel.Success(response);
+            }
+            catch (Exception ex)
+            {
+
+                return JsonResponseModel.Error(ex.Message, 500);
+            }
+
+        }
 
         [HttpPut("grammar")]
         public async Task<JsonResponseModel> AddGrammar([FromBody] AddGrammarRequest model)
@@ -57,30 +80,6 @@ namespace Hola.Api.Controllers
                 return JsonResponseModel.Error(ex.Message, 500);
             }
            
-        }
-
-        [HttpPost("AddGrammarUserManual")]
-        public async Task<JsonResponseModel> AddGrammarUserManual([FromBody] UserManualModel model)
-        {
-            try
-            {
-                var entityUserManual = _mapperService.Map<UserManual>(model);
-                var response = await userManualService.AddAsync(entityUserManual);
-                return JsonResponseModel.Success(response);
-            }
-            catch (Exception ex)
-            {
-
-                return JsonResponseModel.Error(ex.Message, 500);
-            }
-
-        }
-
-        [HttpGet("Get_list")]
-        public async Task<JsonResponseModel> GetAll()
-        {
-            var result = await _grammarService.GetAllAsync();
-            return JsonResponseModel.Success(result);
         }
 
         [HttpGet("Get_Grammar_By_Id/{code}")]
