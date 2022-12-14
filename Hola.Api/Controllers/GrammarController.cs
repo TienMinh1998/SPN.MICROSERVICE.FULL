@@ -111,23 +111,6 @@ namespace Hola.Api.Controllers
 
         }
 
-        [HttpDelete("grammar_tesst")]
-        public async Task<JsonResponseModel> Tesst(int id)
-        {
-            try
-            {
-
-                var grammar = await _grammarService.GetFirstOrDefaultAsync(x => x.PK_grammarId == id);
-                await _grammarService.DeleteAsync(grammar);
-                return JsonResponseModel.Success("Xóa thành công " + grammar.grammar_name);
-            }
-            catch (Exception ex)
-            {
-
-                return JsonResponseModel.Error(ex.Message, 500);
-            }
-
-        }
 
     }
 }
