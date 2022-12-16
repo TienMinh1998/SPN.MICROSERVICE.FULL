@@ -21,14 +21,14 @@ namespace Hola.Api.Controllers
 {
     public class QuestionController : ControllerBase
     {
-      
+
         private readonly IOptions<SettingModel> _config;
         private readonly Service.QuestionService qesQuestionService;
         private readonly IQuestionService _qService;
         private readonly ICategoryService categoryService;
 
         public QuestionController(IOptions<SettingModel> config,
-            Service.QuestionService qesQuestionService, 
+            Service.QuestionService qesQuestionService,
             IQuestionService qService, ICategoryService categoryService)
         {
 
@@ -37,8 +37,6 @@ namespace Hola.Api.Controllers
             _qService = qService;
             this.categoryService = categoryService;
         }
-
-
 
         ///// <summary>
         ///// Get Question By CategoryID
@@ -52,7 +50,6 @@ namespace Hola.Api.Controllers
         //    return JsonResponseModel.Success(result);
         //}
 
-
         /// <summary>
         /// Test
         /// </summary>
@@ -61,7 +58,7 @@ namespace Hola.Api.Controllers
         [HttpGet("GetQuestion/{ID}")]
         public async Task<JsonResponseModel> GetQuestionById(int ID)
         {
-            var question = await _qService.GetAllAsync(x=>(x.category_id==ID)&&(x.is_delete!=1));
+            var question = await _qService.GetAllAsync(x => (x.category_id == ID) && (x.is_delete != 1));
 
             return JsonResponseModel.Success(question);
         }
@@ -74,11 +71,9 @@ namespace Hola.Api.Controllers
         [HttpGet("GetQuestionDeleted/{ID}")]
         public async Task<JsonResponseModel> GetQuestionDeletedById(int ID)
         {
-            var result = await qesQuestionService.GetListQuestionByCategoryId(ID,1);
+            var result = await qesQuestionService.GetListQuestionByCategoryId(ID, 1);
             return JsonResponseModel.Success(result);
         }
-
-
         /// <summary>
         /// Add new Question
         /// </summary>
@@ -106,10 +101,10 @@ namespace Hola.Api.Controllers
                 created_on = DateTime.Now,
                 fk_userid = model.fk_userid,
                 ImageSource = model.ImageSource,
-                questionname = model.QuestionName,
+                questionname = model.QuestionName +" "+ phonetic,
             };
             // Cập nhật lại trường đếm trong category
-            var category =await  categoryService.GetFirstOrDefaultAsync(x=>x.Id== model.Category_Id);
+            var category = await categoryService.GetFirstOrDefaultAsync(x => x.Id == model.Category_Id);
             category.totalquestion += 1;
             category.priority += 1;
 
@@ -147,10 +142,9 @@ namespace Hola.Api.Controllers
             result.Add("total", total);
             return JsonResponseModel.Success(result);
         }
-
-      public class ToDayRequest
+        public class ToDayRequest
         {
-           public DateTime today { get; set; }
+            public DateTime today { get; set; }
         }
     }
 }
