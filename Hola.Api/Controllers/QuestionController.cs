@@ -126,8 +126,10 @@ namespace Hola.Api.Controllers
         [HttpPost("DeleteQuestion")]
         public async Task<JsonResponseModel> DeleteQuestion([FromBody] DeleteQuestionRequest request)
         {
-            var result = await qesQuestionService.DeleteQuestion(request.ID);
-            return JsonResponseModel.Success(result);
+            var question = await _qService.GetFirstOrDefaultAsync(x => x.id == request.ID);
+            question.is_delete = 1;
+            await _qService.UpdateAsync(question);
+            return JsonResponseModel.Success(true);
         }
         /// <summary>
         /// Total Question and Total QuestionToday
