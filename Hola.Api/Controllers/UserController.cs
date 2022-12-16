@@ -19,6 +19,8 @@ using Hola.Api.Response.Login;
 using System.Linq;
 using Hola.Api.Common;
 using EntitiesCommon.Requests;
+using Hola.Api.Response;
+using Hola.Api.Service.V1;
 
 namespace Hola.Api.Controllers
 {
@@ -27,6 +29,7 @@ namespace Hola.Api.Controllers
         private readonly AccountService accountService;
         private readonly IUserService userService;
         private readonly IConfiguration _configuration;
+        private readonly IQuestionService _questionService;
 
         public UserController(AccountService accountService, 
             IUserService userService, IConfiguration configuration)
@@ -109,6 +112,32 @@ namespace Hola.Api.Controllers
             }
         }
 
+
+        [HttpGet("OverView")]
+        [Authorize]
+        public async Task<JsonResponseModel> Overview()
+        {
+            try
+            {
+                int userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == "UserId").Value);
+                var totalQuestion =  _questionService.Count(x=>x.fk_userid== 0); 
+                var learned = _questionService.Count(x=>(x.fk_userid== userid && x.is_delete==1));
+                var notLearnd = _questionService.Count(x => (x.fk_userid == userid && x.is_delete == 0));
+                OverViewModel model = new OverViewModel()
+                {
+                    Total = totalQuestion,
+                    TotalLearned = learned,
+                    TotalNotLearnd = notLearnd
+                };
+                return JsonResponseModel.Success(model);
+            }
+            catch (Exception)
+            {
+                return JsonResponseModel.SERVER_ERROR();
+            }
+        }
+
+
         /// <summary>
         /// Bật thông báo
         /// </summary>
@@ -142,7 +171,6 @@ namespace Hola.Api.Controllers
                 return JsonResponseModel.SERVER_ERROR();
             }
         }
-
         private string CreateToken(User user)
         {
             List<Claim> claims = new List<Claim>
