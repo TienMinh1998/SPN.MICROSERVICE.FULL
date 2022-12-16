@@ -38,7 +38,7 @@ namespace Hola.Api.Service
                 Provider = _options.Value.Provider
             };
             setting.Connection += "Database=" + database;
-            var sql = string.Format("SELECT id, name, define, created_on, \"Image\", totalquestion FROM qes.categories WHERE fk_userid={0} order by created_on DESC", userid);
+            var sql = string.Format("SELECT id, name, define, created_on, \"Image\", totalquestion FROM qes.categories WHERE fk_userid={0} order by totalquestion DESC", userid);
             var result = await QueryToListAsync<CategoryModel>(setting.Connection, sql);
 
             return result;
