@@ -111,6 +111,8 @@ namespace Hola.Api.Controllers
             // Cập nhật lại trường đếm trong category
             var category =await  categoryService.GetFirstOrDefaultAsync(x=>x.Id== model.Category_Id);
             category.totalquestion += 1;
+            category.priority += 1;
+
             await categoryService.UpdateAsync(category);
             await _qService.AddAsync(question);
             // Cập nhật lại trường đếm trong category

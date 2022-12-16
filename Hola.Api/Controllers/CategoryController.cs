@@ -49,6 +49,7 @@ public class CategoryController : ControllerBase
     {
         int userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == "UserId").Value);
         var result = await _service.GetAllAsync(x => x.fk_userid == userid);
+        result = result.OrderByDescending(x=>x.totalquestion).ThenByDescending(x=>x.created_on).ToList();    
         return JsonResponseModel.Success(result);
     }
        
