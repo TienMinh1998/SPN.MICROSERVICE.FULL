@@ -76,14 +76,22 @@ namespace Hola.Api.Service
             };
             setting.Connection += "Database=" + database;
             // Add new Question
-            var sql = "insert into qes.question (category_id, questionname, answer, created_on,\"ImageSource\", fk_userid, phonetic, audio) " +
-                      $"values ({addQuestion.Category_Id},'{addQuestion.QuestionName}','{addQuestion.Answer}',now(),'{addQuestion.ImageSource}',{addQuestion.fk_userid},'{phonetic}','{audio}');";
-
+            try
+            {
+                var sql = "insert into qes.question (category_id, questionname, answer, created_on,\"ImageSource\", fk_userid, phonetic, audio) " +
+                    $"values ({addQuestion.Category_Id},'{addQuestion.QuestionName}','{addQuestion.Answer}',now(),'{addQuestion.ImageSource}',{addQuestion.fk_userid},'{phonetic}','{audio}');";
+                var result = await Excecute(setting.Connection, sql);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            // Tăng số lượng để đếm câu hỏi
             var countQuery = $"SELECT COUNT(1) FROM qes.question WHERE category_id={addQuestion.Category_Id}";
             var countResponse = await ExcecuteScalarAsync(setting.Connection, countQuery);
             var updateCategoryQuery = string.Format("UPDATE qes.categories SET totalquestion = {0} WHERE id = {1};", countResponse + 1, addQuestion.Category_Id);
             var responseupdate = await Excecute(setting.Connection, updateCategoryQuery);
-            var result = await Excecute(setting.Connection, sql);
+        
             return true;
         }
 
