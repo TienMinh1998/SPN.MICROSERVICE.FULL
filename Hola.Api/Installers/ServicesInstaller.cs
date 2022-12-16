@@ -2,6 +2,7 @@
 using Hola.Api.Repositories;
 using Hola.Api.Repositories.CoursRepo;
 using Hola.Api.Repositories.Grammar;
+using Hola.Api.Repositories.QuestionrRepo;
 using Hola.Api.Repositories.TargetRepo;
 using Hola.Api.Repositories.UserManualRepo;
 using Hola.Api.Repositories.UserRepository;
@@ -12,6 +13,7 @@ using Hola.Api.Service.GrammarServices;
 using Hola.Api.Service.TargetServices;
 using Hola.Api.Service.UserManualServices;
 using Hola.Api.Service.UserServices;
+using Hola.Api.Service.V1;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -24,7 +26,7 @@ namespace Hola.Api.Installers
         {
 
             services.AddAutoMapperSetup();
-            services.AddTransient<QuestionService>();
+            services.AddTransient<Hola.Api.Service.QuestionService>();
             services.AddSingleton<CategoryService>();
             services.AddTransient<AccountService>();
             services.AddTransient<FirebaseService>();
@@ -55,6 +57,10 @@ namespace Hola.Api.Installers
             // UserManual
             services.AddScoped<IUserManualRepository, UserManualRepository>();
             services.AddScoped<IUserManualService, UserManualService>();
+
+            // Question
+            services.AddScoped<IQuestionRepository, QuestionRepository>();
+            services.AddScoped<IQuestionService, Hola.Api.Service.V1.QuestionService>();
         }
     }
 }

@@ -21,7 +21,7 @@ namespace DatabaseCore.Infrastructure.ConfigurationEFContext
         public DbSet<Grammar> Grammars { get; set; }
         public DbSet<Cours> Cours { get; set; }
         public DbSet<UserManual> UserManuals { get; set; }
-
+        public DbSet<Question> Questions { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Config table in postgressSQl
@@ -30,6 +30,7 @@ namespace DatabaseCore.Infrastructure.ConfigurationEFContext
             modelBuilder.ApplyConfiguration(new GrammarConfiguration());
             modelBuilder.ApplyConfiguration(new CoursConfiguration());
             modelBuilder.ApplyConfiguration(new UserManualConfiguration());
+            modelBuilder.ApplyConfiguration(new QuestionConfiguration());
             base.OnModelCreating(modelBuilder);
         }
     }

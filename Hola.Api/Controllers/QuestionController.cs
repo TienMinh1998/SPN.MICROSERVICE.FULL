@@ -10,6 +10,7 @@ using System.Linq;
 using Hola.Api.Common;
 using System;
 using System.Collections.Generic;
+using Hola.Api.Service.V1;
 
 namespace Hola.Api.Controllers
 {
@@ -17,29 +18,42 @@ namespace Hola.Api.Controllers
     {
       
         private readonly IOptions<SettingModel> _config;
-        private readonly QuestionService qesQuestionService;
-
-        public QuestionController( IOptions<SettingModel> config, QuestionService qesQuestionService)
+        private readonly Service.QuestionService qesQuestionService;
+        private readonly IQuestionService _qService;
+        public QuestionController(IOptions<SettingModel> config, Service.QuestionService qesQuestionService, IQuestionService qService)
         {
-           
+
             _config = config;
             this.qesQuestionService = qesQuestionService;
+            _qService = qService;
         }
 
 
-       
-        /// <summary>
-        /// Get Question By CategoryID
-        /// </summary>
-        /// <param name="ID"></param>
-        /// <returns></returns>
+
+        ///// <summary>
+        ///// Get Question By CategoryID
+        ///// </summary>
+        ///// <param name="ID"></param>
+        ///// <returns></returns>
+        //[HttpGet("GetQuestion/{ID}")]
+        //public async Task<JsonResponseModel> GetQuestionById(int ID)
+        //{
+        //    var result = await qesQuestionService.GetListQuestionByCategoryId(ID,0);
+        //    return JsonResponseModel.Success(result);
+        //}
+
+
+   /// <summary>
+   /// Test
+   /// </summary>
+   /// <param name="ID"></param>
+   /// <returns></returns>
         [HttpGet("GetQuestion/{ID}")]
         public async Task<JsonResponseModel> GetQuestionById(int ID)
         {
-            var result = await qesQuestionService.GetListQuestionByCategoryId(ID,0);
-            return JsonResponseModel.Success(result);
+            var question = await _qService.GetAllAsync(x=>(x.category_id==ID && x.is_delete !=1));
+            return JsonResponseModel.Success(question);
         }
-
 
         /// <summary>
         /// Get Delete Question
