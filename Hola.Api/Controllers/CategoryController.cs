@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Hola.Api.Models.Categories;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
+using Hola.Api.Service.CateporyServices;
 
 namespace Hola.Api.Controllers;
 
@@ -15,11 +16,13 @@ public class CategoryController : ControllerBase
     private readonly IOptions<SettingModel> _config;
     private readonly CategoryService categoryService;
     private readonly QuestionService _questionService;
-    public CategoryController(IOptions<SettingModel> config, CategoryService categoryService, QuestionService questionService)
+    private readonly ICategoryService _service;
+    public CategoryController(IOptions<SettingModel> config, CategoryService categoryService, QuestionService questionService, ICategoryService service = null)
     {
         _config = config;
         this.categoryService = categoryService;
         _questionService = questionService;
+        _service = service;
     }
 
 
@@ -44,17 +47,9 @@ public class CategoryController : ControllerBase
     [Authorize]
     public async Task<JsonResponseModel> GetAllCategory()
     {
-        string userid = User.Claims.FirstOrDefault(c => c.Type == "UserId").Value;
-        var result = await _questionService.GetAllCategory(int.Parse(userid));
-        if (result==null || result.Count<=0 )
-        {
-            return JsonResponseModel.Error("No Data", 199);
-        }
-        else
-        {
-            return JsonResponseModel.Success(result);
-         
-        }
+        int userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == "UserId").Value);
+        var result = await _service.GetAllAsync(x => x.fk_userid == userid);
+        return JsonResponseModel.Success(result);
     }
        
 

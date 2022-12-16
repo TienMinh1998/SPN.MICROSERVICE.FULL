@@ -22,6 +22,8 @@ namespace DatabaseCore.Infrastructure.ConfigurationEFContext
         public DbSet<Cours> Cours { get; set; }
         public DbSet<UserManual> UserManuals { get; set; }
         public DbSet<Question> Questions { get; set; }
+
+        public DbSet<Category> Categories { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Config table in postgressSQl
@@ -31,6 +33,7 @@ namespace DatabaseCore.Infrastructure.ConfigurationEFContext
             modelBuilder.ApplyConfiguration(new CoursConfiguration());
             modelBuilder.ApplyConfiguration(new UserManualConfiguration());
             modelBuilder.ApplyConfiguration(new QuestionConfiguration());
+            modelBuilder.ApplyConfiguration(new CategoryConfiguration());
             base.OnModelCreating(modelBuilder);
         }
     }

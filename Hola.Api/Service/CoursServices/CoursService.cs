@@ -4,14 +4,13 @@ using Hola.Api.Repositories.CoursRepo;
 using Hola.Api.Service.BaseServices;
 using Hola.Api.Service.GrammarServices;
 
-namespace Hola.Api.Service.CoursServices
+namespace Hola.Api.Service.CoursServices.V1;
+
+public class CoursService : BaseService<Cours>, ICoursService
 {
-    public class CoursService : BaseService<Cours>, ICoursService
+    private readonly ICoursRepository _coursRepository;
+    public CoursService(IRepository<Cours> baseReponsitory, ICoursRepository coursRepository) : base(baseReponsitory)
     {
-        private readonly ICoursRepository _coursRepository;
-        public CoursService(IRepository<Cours> baseReponsitory, ICoursRepository coursRepository) : base(baseReponsitory)
-        {
-            _coursRepository = coursRepository;
-        }
+        _coursRepository = coursRepository;
     }
 }

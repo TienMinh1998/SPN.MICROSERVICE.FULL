@@ -8,7 +8,10 @@ using Hola.Api.Repositories.UserManualRepo;
 using Hola.Api.Repositories.UserRepository;
 using Hola.Api.Service;
 using Hola.Api.Service.BaseServices;
+using Hola.Api.Service.CateporyServices;
+using Hola.Api.Service.CateporyServices.v1;
 using Hola.Api.Service.CoursServices;
+using Hola.Api.Service.CoursServices.V1;
 using Hola.Api.Service.GrammarServices;
 using Hola.Api.Service.TargetServices;
 using Hola.Api.Service.UserManualServices;
@@ -26,8 +29,8 @@ namespace Hola.Api.Installers
         {
 
             services.AddAutoMapperSetup();
-            services.AddTransient<Hola.Api.Service.QuestionService>();
-            services.AddSingleton<CategoryService>();
+            services.AddTransient<Service.QuestionService>();
+            services.AddSingleton<Service.CategoryService>();
             services.AddTransient<AccountService>();
             services.AddTransient<FirebaseService>();
 
@@ -57,6 +60,11 @@ namespace Hola.Api.Installers
             // UserManual
             services.AddScoped<IUserManualRepository, UserManualRepository>();
             services.AddScoped<IUserManualService, UserManualService>();
+
+
+            // Category
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<ICategoryService, Service.CateporyServices.v1.CategoryService >();
 
             // Question
             services.AddScoped<IQuestionRepository, QuestionRepository>();
