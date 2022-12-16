@@ -57,43 +57,17 @@ namespace Hola.Api.Service
             return result;
         }
 
-        public async Task<bool> AddQuestion(QuestionAddModel addQuestion)
-        {
+        //public async Task<bool> AddQuestion(QuestionAddModel addQuestion)
+        //{
 
-            // phiên âm của từ đó
-            APICrossHelper api = new APICrossHelper();
-            string word = addQuestion.QuestionName;
-            var response =await api.Get<object>($"https://api.dictionaryapi.dev/api/v2/entries/en/{word}");
-            var phienam = JsonConvert.DeserializeObject<List<ResponseDicModel>>(response.ToString());
-            string phonetic = phienam.FirstOrDefault().phonetic;
-            var  audio = phienam.FirstOrDefault().phonetics.FirstOrDefault().audio;
-
-            addQuestion.QuestionName += $" {phonetic}";
-            SettingModel setting = new SettingModel()
-            {
-                Connection = _options.Value.Connection,
-                Provider = _options.Value.Provider
-            };
-            setting.Connection += "Database=" + database;
-            // Add new Question
-            try
-            {
-                var sql = "insert into qes.question (category_id, questionname, answer, created_on,\"ImageSource\", fk_userid, phonetic, audio) " +
-                    $"values ({addQuestion.Category_Id},'{addQuestion.QuestionName}','{addQuestion.Answer}',now(),'{addQuestion.ImageSource}',{addQuestion.fk_userid},'{phonetic}','{audio}');";
-                var result = await Excecute(setting.Connection, sql);
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-            // Tăng số lượng để đếm câu hỏi
-            var countQuery = $"SELECT COUNT(1) FROM qes.question WHERE category_id={addQuestion.Category_Id}";
-            var countResponse = await ExcecuteScalarAsync(setting.Connection, countQuery);
-            var updateCategoryQuery = string.Format("UPDATE qes.categories SET totalquestion = {0} WHERE id = {1};", countResponse + 1, addQuestion.Category_Id);
-            var responseupdate = await Excecute(setting.Connection, updateCategoryQuery);
+        //    //// Tăng số lượng để đếm câu hỏi
+        //    //var countQuery = $"SELECT COUNT(1) FROM qes.question WHERE category_id={addQuestion.Category_Id}";
+        //    //var countResponse = await ExcecuteScalarAsync(setting.Connection, countQuery);
+        //    //var updateCategoryQuery = string.Format("UPDATE qes.categories SET totalquestion = {0} WHERE id = {1};", countResponse + 1, addQuestion.Category_Id);
+        //    //var responseupdate = await Excecute(setting.Connection, updateCategoryQuery);
         
-            return true;
-        }
+        //    //return true;
+        //}
 
         public async Task<bool> DeleteQuestion(int questionID)
         {

@@ -55,7 +55,8 @@ namespace Hola.Api.Controllers
         [HttpGet("GetQuestion/{ID}")]
         public async Task<JsonResponseModel> GetQuestionById(int ID)
         {
-            var question = await _qService.GetAllAsync(x=>(x.category_id==ID && x.is_delete !=1));
+            var question = await _qService.GetAllAsync(x=>(x.category_id==ID)&&(x.is_delete!=1));
+
             return JsonResponseModel.Success(question);
         }
 
@@ -102,7 +103,7 @@ namespace Hola.Api.Controllers
                 questionname = model.QuestionName,
             };
             // Cập nhật lại trường đếm trong category
-
+           await _qService.AddAsync(question);
 
             // Cập nhật lại trường đếm trong category
             return JsonResponseModel.Success(question);
