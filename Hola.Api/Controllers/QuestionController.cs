@@ -15,6 +15,7 @@ using EntitiesCommon.EntitiesModel;
 using Hola.Core.Helper;
 using Newtonsoft.Json;
 using DatabaseCore.Domain.Entities.Normals;
+using Hola.Api.Service.CateporyServices;
 
 namespace Hola.Api.Controllers
 {
@@ -24,12 +25,17 @@ namespace Hola.Api.Controllers
         private readonly IOptions<SettingModel> _config;
         private readonly Service.QuestionService qesQuestionService;
         private readonly IQuestionService _qService;
-        public QuestionController(IOptions<SettingModel> config, Service.QuestionService qesQuestionService, IQuestionService qService)
+        private readonly ICategoryService categoryService;
+
+        public QuestionController(IOptions<SettingModel> config,
+            Service.QuestionService qesQuestionService, 
+            IQuestionService qService, ICategoryService categoryService)
         {
 
             _config = config;
             this.qesQuestionService = qesQuestionService;
             _qService = qService;
+            this.categoryService = categoryService;
         }
 
 
@@ -47,11 +53,11 @@ namespace Hola.Api.Controllers
         //}
 
 
-   /// <summary>
-   /// Test
-   /// </summary>
-   /// <param name="ID"></param>
-   /// <returns></returns>
+        /// <summary>
+        /// Test
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
         [HttpGet("GetQuestion/{ID}")]
         public async Task<JsonResponseModel> GetQuestionById(int ID)
         {
@@ -103,8 +109,10 @@ namespace Hola.Api.Controllers
                 questionname = model.QuestionName,
             };
             // Cập nhật lại trường đếm trong category
-           await _qService.AddAsync(question);
-
+            var category =await  categoryService.GetFirstOrDefaultAsync(x=>x.Id== model.Category_Id);
+            category.totalquestion += 1;
+            await categoryService.UpdateAsync(category);
+            await _qService.AddAsync(question);
             // Cập nhật lại trường đếm trong category
             return JsonResponseModel.Success(question);
         }
