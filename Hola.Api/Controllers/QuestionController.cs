@@ -11,6 +11,10 @@ using Hola.Api.Common;
 using System;
 using System.Collections.Generic;
 using Hola.Api.Service.V1;
+using EntitiesCommon.EntitiesModel;
+using Hola.Core.Helper;
+using Newtonsoft.Json;
+using DatabaseCore.Domain.Entities.Normals;
 
 namespace Hola.Api.Controllers
 {
@@ -77,10 +81,31 @@ namespace Hola.Api.Controllers
         [Authorize]
         public async Task<JsonResponseModel> AddQuestion([FromBody] QuestionAddModel model)
         {
-            var userid = User.Claims.FirstOrDefault(c => c.Type == SystemParam.CLAIM_USER).Value;
-            model.fk_userid= int.Parse(userid);
-            var result = await qesQuestionService.AddQuestion(model);
-            return JsonResponseModel.Success(result);
+            // phiên âm của từ đó
+            APICrossHelper api = new APICrossHelper();
+            string word = model.QuestionName;
+            var response = await api.Get<object>($"https://api.dictionaryapi.dev/api/v2/entries/en/{word}");
+            var phienam = JsonConvert.DeserializeObject<List<ResponseDicModel>>(response.ToString());
+            string phonetic = phienam.FirstOrDefault().phonetic;
+            var audio = phienam.FirstOrDefault().phonetics.FirstOrDefault().audio;
+            // Thêm Câu hỏi vào Kho từ 
+            Question question = new Question()
+            {
+                is_delete = 0,
+                answer = model.Answer,
+                audio = audio,
+                category_id = model.Category_Id,
+                phonetic = phonetic,
+                created_on = DateTime.Now,
+                fk_userid = model.fk_userid,
+                ImageSource = model.ImageSource,
+                questionname = model.QuestionName,
+            };
+            // Cập nhật lại trường đếm trong category
+
+
+            // Cập nhật lại trường đếm trong category
+            return JsonResponseModel.Success(question);
         }
         /// <summary>
         /// Delete Question
