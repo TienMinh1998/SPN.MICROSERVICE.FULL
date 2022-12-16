@@ -31,12 +31,13 @@ namespace Hola.Api.Controllers
         private readonly IConfiguration _configuration;
         private readonly IQuestionService _questionService;
 
-        public UserController(AccountService accountService, 
-            IUserService userService, IConfiguration configuration)
+        public UserController(AccountService accountService,
+            IUserService userService, IConfiguration configuration, IQuestionService questionService)
         {
             this.accountService = accountService;
             this.userService = userService;
             _configuration = configuration;
+            _questionService = questionService;
         }
 
         /// <summary>
@@ -120,9 +121,9 @@ namespace Hola.Api.Controllers
             try
             {
                 int userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == "UserId").Value);
-                var totalQuestion =  _questionService.Count(x=>x.fk_userid== 0); 
-                var learned = _questionService.Count(x=>(x.fk_userid== userid && x.is_delete==1));
-                var notLearnd = _questionService.Count(x => (x.fk_userid == userid && x.is_delete == 0));
+                var totalQuestion = await _questionService.CountAsync(x=>x.fk_userid== userid); 
+                var learned =  await _questionService.CountAsync(x=>(x.fk_userid== userid && x.is_delete==1));
+                var notLearnd = await _questionService.CountAsync(x => (x.fk_userid == userid && x.is_delete == 0));
                 OverViewModel model = new OverViewModel()
                 {
                     Total = totalQuestion,
