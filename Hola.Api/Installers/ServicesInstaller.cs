@@ -71,8 +71,8 @@ namespace Hola.Api.Installers
             services.AddScoped<IQuestionService, Hola.Api.Service.V1.QuestionService>();
 
             // Notification
-            services.AddScoped<INotificationRepository, NotificationRepository>();
-            services.AddScoped<INotificationService, NotificationService>();
+            services.AddTransient<INotificationRepository, NotificationRepository>();
+            services.AddTransient<INotificationService, NotificationService>();
         }
     }
 }

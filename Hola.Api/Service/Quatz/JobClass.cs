@@ -1,5 +1,6 @@
 ﻿using Hola.Api.Models.Accounts;
 using Hola.Api.Service.UserServices;
+using Hola.Api.Service.V1;
 using Hola.Core.Venly.Base;
 using Hola.Core.Venly.WalletHandlers;
 using Microsoft.Extensions.Configuration;
@@ -19,14 +20,19 @@ namespace Hola.Api.Service.Quatz
         private readonly AccountService accountService;
         private readonly FirebaseService firebaseService;
         private readonly QuestionService qesQuestionService;
+        private readonly IQuestionService _questionService;
         private readonly IUserService _userServices;
-        public JobClass(IConfiguration configuration, AccountService accountService, FirebaseService firebaseService, QuestionService qesQuestionService, IUserService userServices)
+        public JobClass(IConfiguration configuration, AccountService accountService, 
+            FirebaseService firebaseService, QuestionService qesQuestionService, 
+            IUserService userServices, 
+            IQuestionService questionService)
         {
             _Configuration = configuration;
             this.accountService = accountService;
             this.firebaseService = firebaseService;
             this.qesQuestionService = qesQuestionService;
             _userServices = userServices;
+            _questionService = questionService;
         }
         public async Task CheckTaskService()
         {
@@ -39,22 +45,24 @@ namespace Hola.Api.Service.Quatz
                 foreach (var item in response)
                 {
                     // Category 
-                    var result = await qesQuestionService.GetListQuestionByCategoryId(item.Id, 0);
+                    //  var result = await qesQuestionService.GetListQuestionByCategoryId(item.Id, 0);
+                    var listQuestion =await _questionService.GetAllAsync(x => x.category_id == 7 && x.is_delete != 1);
+
                     Random rnd = new Random();
-                    var index = rnd.Next(result.Count);
-                    var questionRadom = result[index];
+                    var index = rnd.Next(listQuestion.Count);
+                    var questionRadom = listQuestion[index];
                     // Lấy ra thông tin deviceToken 
                     var devideFirebaseToken = item.DeviceToken;
                     PushNotificationRequest request = new PushNotificationRequest()
                     {
                         notification = new NotificationMessageBody()
                         {
-                            title = questionRadom.QuestionName,
-                            body = questionRadom.Answer
+                            title = questionRadom.questionname,
+                            body = questionRadom.answer
                         },
                     };
                     request.registration_ids.Add(devideFirebaseToken);
-                    await firebaseService.Push(request);
+                    await firebaseService.Push(request,item.Id);
                 }
 
               

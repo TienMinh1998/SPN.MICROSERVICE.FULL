@@ -24,7 +24,7 @@ namespace Hola.Api.Controllers
         [HttpPost("PushMessage")]
         public async Task<JsonResponseModel> Push([FromBody] PushNotificationRequest pushNotificationRequest)
         {
-            var result =await  _service.Push(pushNotificationRequest);
+            var result =await  _service.Push(pushNotificationRequest,1);
             return JsonResponseModel.Success(result);
         }
      

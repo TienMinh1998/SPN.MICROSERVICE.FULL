@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Hola.Api.Models;
 using Hola.Api.Service;
 using Hola.Api.Service.GrammarServices;
 using Hola.Api.Service.UserManualServices;
@@ -22,7 +23,7 @@ namespace Hola.Api.Controllers
         }
 
 
-        [HttpGet("GetNotification")]
+        [HttpGet("Notification")]
         [Authorize]
         public async Task<JsonResponseModel> GetAll()
         {
@@ -38,7 +39,33 @@ namespace Hola.Api.Controllers
                 return JsonResponseModel.SERVER_ERROR(Ex.Message);
            
             }
-           
+        }
+
+        [HttpPost("watched")]
+        [Authorize]
+        public async Task<JsonResponseModel> Watched(ReadNotificationRequest model)
+        {
+            try
+            {
+                // Lấy ra thông tin thông báo của User
+                int userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == "UserId").Value);
+                var noti = await _notiservice.GetFirstOrDefaultAsync(x=>x.FK_UserId==userid && x.IsRead==false && x.Pk_Id==model.PK_notification_Id);
+                if (noti!=null)
+                {
+                    noti.IsRead = true;
+                    var updateResponse =  await _notiservice.UpdateAsync(noti);
+                    return JsonResponseModel.Success(updateResponse);
+                }
+                else
+                {
+                    return JsonResponseModel.Success("Đọc thông báo không thành công");
+                }  
+            }
+            catch (System.Exception Ex)
+            {
+                return JsonResponseModel.SERVER_ERROR(Ex.Message);
+
+            }
         }
     }
 }

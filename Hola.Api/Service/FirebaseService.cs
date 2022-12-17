@@ -22,7 +22,7 @@ namespace Hola.Api.Service
         /// </summary>
         /// <param name="pushNotificationRequest"></param>
         /// <returns></returns>
-        public async Task<bool> Push(PushNotificationRequest pushNotificationRequest)
+        public async Task<bool> Push(PushNotificationRequest pushNotificationRequest, int userid)
         {
             string url = "https://fcm.googleapis.com/fcm/send";
             using (var client = new HttpClient())
@@ -33,12 +33,11 @@ namespace Hola.Api.Service
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     // Lưu Thông báo vào cơ sở dữ liệu
-                    var userId = int.Parse(pushNotificationRequest.registration_ids.FirstOrDefault());
                     Notification notification = new Notification()
                     {
                         Content = pushNotificationRequest.notification.body,
                         created_on = DateTime.Now,
-                        FK_UserId = userId,
+                        FK_UserId = userid,
                         IsDelete = false,
                         IsRead = false,
                         Title = pushNotificationRequest.notification.title
