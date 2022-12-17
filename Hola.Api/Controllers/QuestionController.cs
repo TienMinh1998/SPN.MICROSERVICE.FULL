@@ -59,7 +59,6 @@ namespace Hola.Api.Controllers
         public async Task<JsonResponseModel> GetQuestionById(int ID)
         {
             var question = await _qService.GetAllAsync(x => (x.category_id == ID) && (x.is_delete != 1));
-
             return JsonResponseModel.Success(question);
         }
 
@@ -71,8 +70,8 @@ namespace Hola.Api.Controllers
         [HttpGet("GetQuestionDeleted/{ID}")]
         public async Task<JsonResponseModel> GetQuestionDeletedById(int ID)
         {
-            var result = await qesQuestionService.GetListQuestionByCategoryId(ID, 1);
-            return JsonResponseModel.Success(result);
+            var question = await _qService.GetAllAsync(x => (x.category_id == ID) && (x.is_delete == 1));
+            return JsonResponseModel.Success(question);
         }
         /// <summary>
         /// Add new Question
