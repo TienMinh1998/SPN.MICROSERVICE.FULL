@@ -43,8 +43,16 @@ namespace Hola.Api.Service
                         IsRead = false,
                         Title = pushNotificationRequest.notification.title
                     };
-                    await _notificationService.AddAsync(notification);
-                    return true;
+                    try
+                    {
+                        await _notificationService.AddAsync(notification);
+                        return true;
+                    }
+                    catch (Exception Ex)
+                    {
+                        throw;
+                    }
+                   
                 }
                 return false;
             }
