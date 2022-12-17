@@ -1,5 +1,8 @@
-﻿using Hola.Api.Models.Accounts;
+﻿using DatabaseCore.Domain.Entities.Normals;
+using Hola.Api.Models.Accounts;
 using Newtonsoft.Json;
+using System;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,12 +11,17 @@ namespace Hola.Api.Service
 {
     public class FirebaseService
     {
+        private INotificationService _notificationService;
+        public FirebaseService(INotificationService notificationService)
+        {
+            _notificationService = notificationService;
+        }
 
-      /// <summary>
-      /// Push Message
-      /// </summary>
-      /// <param name="pushNotificationRequest"></param>
-      /// <returns></returns>
+        /// <summary>
+        /// Push Message
+        /// </summary>
+        /// <param name="pushNotificationRequest"></param>
+        /// <returns></returns>
         public async Task<bool> Push(PushNotificationRequest pushNotificationRequest)
         {
             string url = "https://fcm.googleapis.com/fcm/send";
@@ -24,6 +32,18 @@ namespace Hola.Api.Service
                 var response = await client.PostAsync(url, new StringContent(serializeRequest, Encoding.UTF8, "application/json"));
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
+                    // Lưu Thông báo vào cơ sở dữ liệu
+                    var userId = int.Parse(pushNotificationRequest.registration_ids.FirstOrDefault());
+                    Notification notification = new Notification()
+                    {
+                        Content = pushNotificationRequest.notification.body,
+                        created_on = DateTime.Now,
+                        FK_UserId = userId,
+                        IsDelete = false,
+                        IsRead = false,
+                        Title = pushNotificationRequest.notification.title
+                    };
+                    await _notificationService.AddAsync(notification);
                     return true;
                 }
                 return false;

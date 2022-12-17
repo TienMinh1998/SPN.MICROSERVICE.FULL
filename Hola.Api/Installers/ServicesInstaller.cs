@@ -69,6 +69,10 @@ namespace Hola.Api.Installers
             // Question
             services.AddScoped<IQuestionRepository, QuestionRepository>();
             services.AddScoped<IQuestionService, Hola.Api.Service.V1.QuestionService>();
+
+            // Notification
+            services.AddScoped<INotificationRepository, NotificationRepository>();
+            services.AddScoped<INotificationService, NotificationService>();
         }
     }
 }

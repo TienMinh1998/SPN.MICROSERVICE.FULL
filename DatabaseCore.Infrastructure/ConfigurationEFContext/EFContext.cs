@@ -22,8 +22,9 @@ namespace DatabaseCore.Infrastructure.ConfigurationEFContext
         public DbSet<Cours> Cours { get; set; }
         public DbSet<UserManual> UserManuals { get; set; }
         public DbSet<Question> Questions { get; set; }
-
         public DbSet<Category> Categories { get; set; }
+
+        public DbSet<Notification> Notifications { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Config table in postgressSQl

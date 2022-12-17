@@ -15,12 +15,16 @@ namespace Hola.Api.Controllers
 {
     public class FireBaseController : ControllerBase
     {
+        private readonly FirebaseService _service;
+        public FireBaseController(FirebaseService service = null)
+        {
+            _service = service;
+        }
 
         [HttpPost("PushMessage")]
         public async Task<JsonResponseModel> Push([FromBody] PushNotificationRequest pushNotificationRequest)
         {
-            FirebaseService firebaseService = new FirebaseService();
-            var result =await  firebaseService.Push(pushNotificationRequest);
+            var result =await  _service.Push(pushNotificationRequest);
             return JsonResponseModel.Success(result);
         }
      
