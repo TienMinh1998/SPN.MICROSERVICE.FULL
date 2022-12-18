@@ -20,6 +20,7 @@ namespace Hola.Api
             CreateHostBuilder(args).Build().Run();
         }
 
+        [Obsolete]
         public static IHostBuilder CreateHostBuilder(string[] args) =>
            Host.CreateDefaultBuilder(args)
             .ConfigureServices((hostContext, services) =>
