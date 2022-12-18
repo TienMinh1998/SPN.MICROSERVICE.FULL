@@ -92,7 +92,7 @@ namespace Hola.Api.Service
                 Provider = _options.Value.Provider
             };
             setting.Connection += "Database=" + database;
-            string sql = $"SELECT COUNT(1) FROM qes.question where fk_userid = {userid} and created_on::Date = CURRENT_DATE";
+            string sql = $"SELECT COUNT(1) FROM usr.question where fk_userid = {userid} and created_on::Date = CURRENT_DATE";
             var result = await ExcecuteScalarAsync(setting.Connection, sql);
             return result;
         }

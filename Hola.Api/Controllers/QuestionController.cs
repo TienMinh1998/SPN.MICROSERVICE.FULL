@@ -82,6 +82,8 @@ namespace Hola.Api.Controllers
         [Authorize]
         public async Task<JsonResponseModel> AddQuestion([FromBody] QuestionAddModel model)
         {
+            int userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == "UserId").Value);
+
             // phiên âm của từ đó
             APICrossHelper api = new APICrossHelper();
             string word = model.QuestionName;
@@ -106,6 +108,7 @@ namespace Hola.Api.Controllers
             var category = await categoryService.GetFirstOrDefaultAsync(x => x.Id == model.Category_Id);
             category.totalquestion += 1;
             category.priority += 1;
+
 
             await categoryService.UpdateAsync(category);
             await _qService.AddAsync(question);

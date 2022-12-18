@@ -30,14 +30,15 @@ namespace Hola.Api.Controllers
         private readonly IUserService userService;
         private readonly IConfiguration _configuration;
         private readonly IQuestionService _questionService;
-
+        private readonly Service.QuestionService daper_questionService;
         public UserController(AccountService accountService,
-            IUserService userService, IConfiguration configuration, IQuestionService questionService)
+            IUserService userService, IConfiguration configuration, IQuestionService questionService, Service.QuestionService daper_questionService)
         {
             this.accountService = accountService;
             this.userService = userService;
             _configuration = configuration;
             _questionService = questionService;
+            this.daper_questionService = daper_questionService;
         }
 
         /// <summary>
@@ -124,11 +125,14 @@ namespace Hola.Api.Controllers
                 var totalQuestion = await _questionService.CountAsync(x=>x.fk_userid== userid); 
                 var learned =  await _questionService.CountAsync(x=>(x.fk_userid== userid && x.is_delete==1));
                 var notLearnd = await _questionService.CountAsync(x => (x.fk_userid == userid && x.is_delete == 0));
+                var totaltoday =await daper_questionService.CountQuestionToday(userid);
+
                 OverViewModel model = new OverViewModel()
                 {
                     Total = totalQuestion,
                     TotalLearned = learned,
-                    TotalNotLearnd = notLearnd
+                    TotalNotLearnd = notLearnd,
+                    TotalToday = totaltoday
                 };
                 return JsonResponseModel.Success(model);
             }
