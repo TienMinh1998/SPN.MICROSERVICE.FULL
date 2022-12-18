@@ -31,7 +31,7 @@ namespace Hola.Api
                     // Use a Scoped container to create jobs. I'll touch on this later
                     q.UseMicrosoftDependencyInjectionScopedJobFactory();
                     q.AddJobAndTrigger<JobClass>(hostContext.Configuration);
-
+                    q.AddJob<EveryDayNotificationClass>(hostContext.Configuration);
                 });
 
                 // Add the Quartz.NET hosted service

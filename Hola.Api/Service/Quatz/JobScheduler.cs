@@ -27,10 +27,15 @@ namespace Hola.Api.Service.Quatz
             quartz.AddTrigger(opts => opts
                 .ForJob(jobKey)
                 .WithIdentity(jobName + "-trigger").WithCronSchedule("0 0/15 * * * ?"));
-               // .WithSimpleSchedule(s => s.WithIntervalInMinutes(3).RepeatForever()));
         }
 
-
+        /// <summary>
+        /// Task Thông báo 1 10 phút 1 lần
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="quartz"></param>
+        /// <param name="config"></param>
+        /// <exception cref="Exception"></exception>
         public static void AddJob<T>(this IServiceCollectionQuartzConfigurator quartz, IConfiguration config) where T : IJob
         {
             string jobName = typeof(T).Name;
@@ -43,8 +48,7 @@ namespace Hola.Api.Service.Quatz
             quartz.AddJob<T>(opts => opts.WithIdentity(jobKey));
             quartz.AddTrigger(opts => opts
                 .ForJob(jobKey)
-                .WithIdentity(jobName + "-trigger")
-                .WithSimpleSchedule(s => s.WithIntervalInHours(24).RepeatForever()));
+                .WithIdentity(jobName + "-trigger").WithCronSchedule("0 0/10 * * * ?"));
         }
 
     }
