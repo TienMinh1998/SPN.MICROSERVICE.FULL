@@ -3,6 +3,7 @@ using DatabaseCore.Domain.Entities.Normals;
 using EntitiesCommon.EntitiesModel;
 using EntitiesCommon.Requests.GrammarRequests;
 using EntitiesCommon.Requests.TargetRequests;
+using Hola.Api.Models;
 
 namespace Hola.Api.AutoMappers
 {
@@ -13,6 +14,8 @@ namespace Hola.Api.AutoMappers
             CreateMap<AddTargetRequest, Target>();
             CreateMap<AddGrammarRequest, Grammar>();
             CreateMap<UserManualModel, UserManual>();
+            CreateMap<CourseModel, Cours>();
+            CreateMap<AddTopicModel, Topic>();
         }
     }
 }

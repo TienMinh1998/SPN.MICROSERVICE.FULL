@@ -3,6 +3,7 @@ using System;
 using DatabaseCore.Infrastructure.ConfigurationEFContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DatabaseCore.Infrastructure.Migrations
 {
     [DbContext(typeof(EFContext))]
-    partial class EFContextModelSnapshot : ModelSnapshot
+    [Migration("20221218092209_settimeUTC")]
+    partial class settimeUTC
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -230,34 +232,6 @@ namespace DatabaseCore.Infrastructure.Migrations
                     b.HasKey("PK_TargetId");
 
                     b.ToTable("Target", "usr");
-                });
-
-            modelBuilder.Entity("DatabaseCore.Domain.Entities.Normals.Topic", b =>
-                {
-                    b.Property<int>("PK_Topic_Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("PK_Topic_Id"));
-
-                    b.Property<string>("EnglishContent")
-                        .HasColumnType("text");
-
-                    b.Property<int>("FK_Course_Id")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Image")
-                        .HasColumnType("text");
-
-                    b.Property<string>("VietNamContent")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime>("created_on")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.HasKey("PK_Topic_Id");
-
-                    b.ToTable("topic", "usr");
                 });
 
             modelBuilder.Entity("DatabaseCore.Domain.Entities.Normals.User", b =>

@@ -23,7 +23,7 @@ namespace DatabaseCore.Infrastructure.ConfigurationEFContext
         public DbSet<UserManual> UserManuals { get; set; }
         public DbSet<Question> Questions { get; set; }
         public DbSet<Category> Categories { get; set; }
-
+        public DbSet<Topic> Topics { get; set; }
         public DbSet<Notification> Notifications { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -36,6 +36,7 @@ namespace DatabaseCore.Infrastructure.ConfigurationEFContext
             modelBuilder.ApplyConfiguration(new QuestionConfiguration());
             modelBuilder.ApplyConfiguration(new CategoryConfiguration());
             modelBuilder.ApplyConfiguration(new NotificationConfiguration());
+            modelBuilder.ApplyConfiguration(new TopicConfiguration());
             base.OnModelCreating(modelBuilder);
         }
     }

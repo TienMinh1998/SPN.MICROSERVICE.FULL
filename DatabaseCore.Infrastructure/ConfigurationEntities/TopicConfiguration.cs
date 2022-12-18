@@ -1,0 +1,24 @@
+﻿using DatabaseCore.Domain.Entities.Normals;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DatabaseCore.Infrastructure.ConfigurationEntities;
+
+public class TopicConfiguration : IEntityTypeConfiguration<Topic>
+{
+    /// <summary>
+    /// Config for topicTable (Cấu hình cho bảng Topic)
+    /// </summary>
+    /// <param name="builder"></param>
+    public void Configure(EntityTypeBuilder<Topic> builder)
+    {
+        {
+            builder.ToTable("topic", schema: "usr");
+        }
+    }
+}

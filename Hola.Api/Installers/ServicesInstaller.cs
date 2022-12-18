@@ -73,6 +73,10 @@ namespace Hola.Api.Installers
             // Notification
             services.AddTransient<INotificationRepository, NotificationRepository>();
             services.AddTransient<INotificationService, NotificationService>();
+
+            // Topic
+            services.AddTransient<ITopicRepository, TopicRepository>();
+            services.AddTransient<ITopicService, TopicService>();
         }
     }
 }

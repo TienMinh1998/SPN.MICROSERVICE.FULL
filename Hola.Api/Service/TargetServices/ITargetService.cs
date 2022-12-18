@@ -5,10 +5,9 @@ using Hola.Api.Service.BaseServices;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Hola.Api.Service.TargetServices
+namespace Hola.Api.Service.TargetServices;
+
+public interface ITargetService : IBaseService<Target>
 {
-    public interface ITargetService : IBaseService<Target>
-    {
-       
-    }
+   
 }

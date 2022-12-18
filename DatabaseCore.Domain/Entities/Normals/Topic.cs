@@ -8,15 +8,18 @@ using System.Threading.Tasks;
 
 namespace DatabaseCore.Domain.Entities.Normals
 {
-    public class Cours
+    /// <summary>
+    /// các chủ đề của khóa học
+    /// </summary>
+    public class Topic
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Pk_coursId { get; set; }
-        public string Code { get; set; }        // Mã khóa học
-        public string Title { get; set; }
-        public string Target { get; set; }
-        public string Content { get; set; }
+        public int PK_Topic_Id { get; set; }
+        public int FK_Course_Id { get; set; }
+        public string Image { get; set; }
+        public string EnglishContent { get; set; }
+        public string VietNamContent { get; set; }
         public DateTime created_on { get; set; }
     }
 }
