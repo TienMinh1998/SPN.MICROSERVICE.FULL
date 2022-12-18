@@ -33,8 +33,6 @@ namespace Hola.Api.Service.Quatz
         {
             try
             {
-            
-
                 var listUser = await _userServices.GetAllAsync(x => (x.isnotification == 1 && x.IsDeleted == 0));
                 var response = listUser.ToList();
                 foreach (var item in response)
