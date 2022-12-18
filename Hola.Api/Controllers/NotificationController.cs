@@ -43,7 +43,7 @@ namespace Hola.Api.Controllers
 
         [HttpPost("watched")]
         [Authorize]
-        public async Task<JsonResponseModel> Watched(ReadNotificationRequest model)
+        public async Task<JsonResponseModel> Watched([FromBody] ReadNotificationRequest model)
         {
             try
             {
