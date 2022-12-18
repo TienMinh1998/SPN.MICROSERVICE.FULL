@@ -32,7 +32,7 @@ namespace Hola.Api.Controllers
                 // Lấy ra thông tin thông báo của User
                 int userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == "UserId").Value);
                 var result = await _notiservice.GetAllAsync(x=>x.FK_UserId==userid && x.IsRead==false);
-                var list_order_by=  result.OrderByDescending(x => x.created_on).Take(10);
+                var list_order_by=  result.OrderByDescending(x => x.created_on).Take(30);
                 return JsonResponseModel.Success(list_order_by);
             }
             catch (System.Exception Ex)
