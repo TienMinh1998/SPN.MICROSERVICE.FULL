@@ -36,7 +36,7 @@ namespace Hola.Api.Service
                     Notification notification = new Notification()
                     {
                         Content = pushNotificationRequest.notification.body,
-                        created_on = DateTime.UtcNow,
+                        created_on = DateTime.UtcNow.AddHours(7),
                         FK_UserId = userid,
                         IsDelete = false,
                         IsRead = false,

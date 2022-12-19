@@ -26,7 +26,7 @@ namespace Hola.Api.Service.Quatz
             quartz.AddJob<T>(opts => opts.WithIdentity(jobKey));
             quartz.AddTrigger(opts => opts
                 .ForJob(jobKey)
-                .WithIdentity(jobName + "-trigger").WithCronSchedule("0 0/40 * * * ?"));
+                .WithIdentity(jobName + "-trigger").WithCronSchedule(cronSchedule));
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace Hola.Api.Service.Quatz
             quartz.AddJob<T>(opts => opts.WithIdentity(jobKey));
             quartz.AddTrigger(opts => opts
                 .ForJob(jobKey)
-                .WithIdentity(jobName + "-trigger").WithCronSchedule("0 0/30 * * * ?"));
+                .WithIdentity(jobName + "-trigger").WithCronSchedule(cronSchedule));
         }
 
     }
