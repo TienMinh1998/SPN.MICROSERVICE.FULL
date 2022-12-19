@@ -8,6 +8,6 @@ namespace Hola.Api.Service.UserServices
 {
     public interface IUserService : IBaseService<User>
     {
-      
+     
     }
 }

@@ -11,25 +11,18 @@ namespace Hola.Api.Service.Quatz
 {
     public class EveryDayNotificationClass : IJob
     {
-        private readonly IConfiguration _Configuration;
-        private readonly AccountService accountService;
         private readonly FirebaseService firebaseService;
-        private readonly QuestionService qesQuestionService;
-        private readonly IQuestionService _questionService;
         private readonly IUserService _userServices;
-        public EveryDayNotificationClass(IConfiguration configuration, AccountService accountService,
-            FirebaseService firebaseService, QuestionService qesQuestionService,
-            IUserService userServices,
-            IQuestionService questionService)
+        private readonly IQuestionService _questionService;
+        public EveryDayNotificationClass(FirebaseService firebaseService,
+                                         IUserService userServices,
+                                         IQuestionService questionService)
         {
-            _Configuration = configuration;
-            this.accountService = accountService;
             this.firebaseService = firebaseService;
-            this.qesQuestionService = qesQuestionService;
             _userServices = userServices;
             _questionService = questionService;
         }
-        public async Task CheckTaskService()
+        public async Task Execute(IJobExecutionContext context)
         {
             try
             {
@@ -38,33 +31,20 @@ namespace Hola.Api.Service.Quatz
                 foreach (var item in response)
                 {
                     // Lấy ra thông tin deviceToken 
+                    string userName = item.Name;
                     var devideFirebaseToken = item.DeviceToken;
+                    var totalQuestion = _questionService.CountQuestionToday(item.Id);
                     PushNotificationRequest request = new PushNotificationRequest()
                     {
                         notification = new NotificationMessageBody()
                         {
-                            title = "Test JobEveryDay",
-                            body = "Chào ngày mới, đừng quên nhiệm vụ hôm nay nhé bạn"
+                            title = $"Hi! {userName}",
+                            body = $"Ngày nay bạn đã học được {totalQuestion} từ, cố gắng lên nhé"
                         },
                     };
                     request.registration_ids.Add(devideFirebaseToken);
                     await firebaseService.Push(request, item.Id);
                 }
-
-
-            }
-            catch (System.Exception ex)
-            {
-
-                throw;
-            }
-
-        }
-        public async Task Execute(IJobExecutionContext context)
-        {
-            try
-            {
-                await Task.WhenAll(CheckTaskService());
             }
             catch
             {
