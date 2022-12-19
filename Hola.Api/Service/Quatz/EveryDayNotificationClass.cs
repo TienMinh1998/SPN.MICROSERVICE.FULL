@@ -39,12 +39,7 @@ namespace Hola.Api.Service.Quatz
                         notification = new NotificationMessageBody()
                         {
                             title = $"Hi! {userName}",
-                            body = $"Hôm nay {totalQuestion} /10 từ"
-                        },
-                        data= new
-                        {
-                            userName = userName,
-                            word = totalQuestion
+                            body = $"Hôm nay {totalQuestion} / 10 từ"
                         }
                     };
                     request.registration_ids.Add(devideFirebaseToken);
