@@ -14,7 +14,6 @@ namespace DatabaseCore.Infrastructure.ConfigurationEntities
         public void Configure(EntityTypeBuilder<Notification> builder)
         {
             builder.ToTable("Notification", schema: "usr");
-            builder.Property(x => x.created_on).HasColumnType("timestamp");
         }
     }
 }
