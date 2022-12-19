@@ -33,14 +33,19 @@ namespace Hola.Api.Service.Quatz
                     // Lấy ra thông tin deviceToken 
                     string userName = item.Name;
                     var devideFirebaseToken = item.DeviceToken;
-                    var totalQuestion = _questionService.CountQuestionToday(item.Id);
+                    var totalQuestion =await _questionService.CountQuestionToday(item.Id);
                     PushNotificationRequest request = new PushNotificationRequest()
                     {
                         notification = new NotificationMessageBody()
                         {
                             title = $"Hi! {userName}",
-                            body = $"Ngày nay bạn đã học được {totalQuestion} từ, cố gắng lên nhé"
+                            body = $"Hôm nay {totalQuestion} /10 từ"
                         },
+                        data= new
+                        {
+                            userName = userName,
+                            word = totalQuestion
+                        }
                     };
                     request.registration_ids.Add(devideFirebaseToken);
                     await firebaseService.Push(request, item.Id);
