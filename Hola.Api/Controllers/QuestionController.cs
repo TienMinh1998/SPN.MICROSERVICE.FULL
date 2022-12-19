@@ -82,38 +82,54 @@ namespace Hola.Api.Controllers
         [Authorize]
         public async Task<JsonResponseModel> AddQuestion([FromBody] QuestionAddModel model)
         {
-            int userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == "UserId").Value);
-
-            // phiên âm của từ đó
-            APICrossHelper api = new APICrossHelper();
-            string word = model.QuestionName;
-            var response = await api.Get<object>($"https://api.dictionaryapi.dev/api/v2/entries/en/{word}");
-            var phienam = JsonConvert.DeserializeObject<List<ResponseDicModel>>(response.ToString());
-            string phonetic = phienam.FirstOrDefault().phonetic;
-            var audio = phienam.FirstOrDefault().phonetics.FirstOrDefault().audio;
-            // Thêm Câu hỏi vào Kho từ 
-            Question question = new Question()
+            try
             {
-                is_delete = 0,
-                answer = model.Answer,
-                audio = audio,
-                category_id = model.Category_Id,
-                phonetic = phonetic,
-                created_on = DateTime.Now,
-                fk_userid = model.fk_userid,
-                ImageSource = model.ImageSource,
-                questionname = model.QuestionName +" "+ phonetic,
-            };
-            // Cập nhật lại trường đếm trong category
-            var category = await categoryService.GetFirstOrDefaultAsync(x => x.Id == model.Category_Id);
-            category.totalquestion += 1;
-            category.priority += 1;
+                int userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == "UserId").Value);
+                string audio = "";
+                string phonetic = "";
+                try
+                {
+                    // phiên âm của từ đó
+                    APICrossHelper api = new APICrossHelper();
+                    string word = model.QuestionName;
+                    var response = await api.Get<object>($"https://api.dictionaryapi.dev/api/v2/entries/en/{word}");
+                    var phienam = JsonConvert.DeserializeObject<List<ResponseDicModel>>(response.ToString());
+                    phonetic = phienam.FirstOrDefault().phonetic;
+                    audio = phienam.FirstOrDefault().phonetics.FirstOrDefault().audio;
+                }
+                catch (Exception)
+                {
 
+                }
 
-            await categoryService.UpdateAsync(category);
-            await _qService.AddAsync(question);
-            // Cập nhật lại trường đếm trong category
-            return JsonResponseModel.Success(question);
+                // Thêm Câu hỏi vào Kho từ 
+                Question question = new Question()
+                {
+                    is_delete = 0,
+                    answer = model.Answer,
+                    audio = audio,
+                    category_id = model.Category_Id,
+                    phonetic = phonetic,
+                    created_on = DateTime.Now,
+                    fk_userid = model.fk_userid,
+                    ImageSource = model.ImageSource,
+                    questionname = model.QuestionName + " " + phonetic,
+                };
+                // Cập nhật lại trường đếm trong category
+                var category = await categoryService.GetFirstOrDefaultAsync(x => x.Id == model.Category_Id);
+                category.totalquestion += 1;
+                category.priority += 1;
+                await categoryService.UpdateAsync(category);
+                await _qService.AddAsync(question);
+
+                return JsonResponseModel.Success(question);
+            }
+            catch (Exception)
+            {
+                return  JsonResponseModel.Success(new Question());
+
+            }
+        
         }
         /// <summary>
         /// Delete Question
