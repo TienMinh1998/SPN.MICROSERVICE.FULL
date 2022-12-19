@@ -4,6 +4,7 @@ using EntitiesCommon.EntitiesModel;
 using EntitiesCommon.Requests.GrammarRequests;
 using EntitiesCommon.Requests.TargetRequests;
 using Hola.Api.Models;
+using Hola.Api.Requests;
 
 namespace Hola.Api.AutoMappers
 {
@@ -16,6 +17,7 @@ namespace Hola.Api.AutoMappers
             CreateMap<UserManualModel, UserManual>();
             CreateMap<CourseModel, Cours>();
             CreateMap<AddTopicModel, Topic>();
+            CreateMap<AddQuestionStandardModel, QuestionStandard>();
         }
     }
 }

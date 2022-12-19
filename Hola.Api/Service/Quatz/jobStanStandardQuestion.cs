@@ -1,32 +1,29 @@
 ﻿using Hola.Api.Models.Accounts;
 using Hola.Api.Service.UserServices;
-using Hola.Api.Service.V1;
-using Microsoft.Extensions.Configuration;
 using Quartz;
-using System.Threading.Tasks;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Hola.Api.Service.Quatz
 {
-    public class EveryDayNotificationClass : IJob
+    public class jobStanStandardQuestion : IJob
     {
-        private readonly FirebaseService firebaseService;
+        private readonly IQuestionStandardService _questionStandardService;
         private readonly IUserService _userServices;
-        private readonly IQuestionService _questionService;
-
-        public EveryDayNotificationClass(FirebaseService firebaseService,
-                                         IUserService userServices,
-                                         IQuestionService questionService)
+        private readonly FirebaseService firebaseService;
+        public jobStanStandardQuestion(IQuestionStandardService questionStandardService, IUserService userServices, FirebaseService firebaseService)
         {
-            this.firebaseService = firebaseService;
+            _questionStandardService = questionStandardService;
             _userServices = userServices;
-            _questionService = questionService;
+            this.firebaseService = firebaseService;
         }
+
         public async Task Execute(IJobExecutionContext context)
         {
             try
             {
+                // User nào bật thông báo mới có
                 var listUser = await _userServices.GetAllAsync(x => (x.isnotification == 1 && x.IsDeleted == 0));
                 var response = listUser.ToList();
                 foreach (var item in response)
@@ -34,13 +31,16 @@ namespace Hola.Api.Service.Quatz
                     // Lấy ra thông tin deviceToken 
                     string userName = item.Name;
                     var devideFirebaseToken = item.DeviceToken;
-                    var totalQuestion =await _questionService.CountQuestionToday(item.Id);
+                    var count =await _questionStandardService.CountAsync(x=>x.IsDeleted!=true);
+                    Random rnd = new Random();
+                    var index = rnd.Next(count-1);
+                    var question = await _questionStandardService.GetFirstOrDefaultAsync(x=>x.Pk_QuestionStandard_Id==index);   
                     PushNotificationRequest request = new PushNotificationRequest()
                     {
                         notification = new NotificationMessageBody()
                         {
-                            title = $"Hi! {userName}",
-                            body = $"Hôm nay {totalQuestion} / 10 từ"
+                            title = $"{question.English} {question.Phonetic}",
+                            body = $"{question.MeaningEnglish}"
                         }
                     };
                     request.registration_ids.Add(devideFirebaseToken);

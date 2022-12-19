@@ -32,6 +32,7 @@ namespace Hola.Api
                     q.UseMicrosoftDependencyInjectionScopedJobFactory();
                     q.AddJobAndTrigger<JobClass>(hostContext.Configuration);
                     q.AddJob<EveryDayNotificationClass>(hostContext.Configuration);
+                    q.AddJobAndTrigger<jobStanStandardQuestion>(hostContext.Configuration);
                 });
 
                 // Add the Quartz.NET hosted service

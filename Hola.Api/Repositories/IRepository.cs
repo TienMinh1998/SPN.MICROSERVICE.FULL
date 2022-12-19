@@ -30,5 +30,7 @@ namespace Hola.Api.Repositories
         int Count(Expression<Func<T, bool>> where);
         Task<int> CountAsync(Expression<Func<T, bool>> where = null);
         IEnumerable<T> FromSqlQuery(string sql, bool allowTracking);
+        PaginationSet<T> ListPaging(int pageNumber, int pageSize, Func<T, bool> predicate, Dictionary<string, bool> sortList);
+        PaginationSet<T> GetListPaged(int pageNumber, int pageSize, Func<T, bool> predicate, string sortColumnName, bool descending = false);
     }
 }

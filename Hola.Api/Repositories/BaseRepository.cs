@@ -6,6 +6,7 @@ using System.Linq.Expressions;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
+using static Dapper.SqlMapper;
 
 namespace Hola.Api.Repositories
 {
@@ -70,7 +71,6 @@ namespace Hola.Api.Repositories
             return entity;
         }
 
-
         public async Task<bool> AddManyAsync(IEnumerable<T> entities)
         {
             await DbContext.Set<T>().AddRangeAsync(entities);
@@ -91,7 +91,6 @@ namespace Hola.Api.Repositories
             }
 
         }
-
         public async Task DeleteAsync(T entity)
         {
             DbContext.Set<T>().Remove(entity);
@@ -136,10 +135,122 @@ namespace Hola.Api.Repositories
             dbSet.Attach(entity);
             DbContext.Entry(entity).State = EntityState.Modified;
         }
+        /// <summary>
+        /// Phân Trang
+        /// </summary>
+        /// <param name="pageNumber"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="predicate"></param>
+        /// <param name="sortList"></param>
+        /// <returns></returns>
+        public PaginationSet<T> ListPaging(int pageNumber, int pageSize, Func<T, bool> predicate, Dictionary<string, bool> sortList)
+        {
+            IQueryable<T> queryAble;
+            var skip = (pageNumber - 1) * pageSize;
+
+            if (predicate != null)
+            {
+                queryAble = dbSet.Where(predicate).AsQueryable();
+            }
+            else
+            {
+                queryAble = dbSet.AsQueryable();
+            }
+
+            foreach (var item in sortList)
+            {
+                queryAble = OrderByDynamic(queryAble, item.Key, item.Value);
+            }
+
+            var total = queryAble.Count();
+            var resultSet = queryAble.Skip(skip).Take(pageSize);
+
+            var paginationSet = new PaginationSet<T>()
+            {
+                Items = resultSet,
+                TotalCount = total
+            };
+            return paginationSet;
+        }
+
+
+        public PaginationSet<T> GetListPaged(int pageNumber, int pageSize, Func<T, bool> predicate, string sortColumnName, bool descending = false)
+        {
+            IQueryable<T> queryAble;
+            var skip = (pageNumber - 1) * pageSize;
+
+            if (predicate != null)
+            {
+                var local = dbSet.Where(predicate).AsQueryable();
+                queryAble = OrderByDynamic(local, sortColumnName, descending);
+            }
+            else
+            {
+                queryAble = OrderByDynamic(dbSet, sortColumnName, descending);
+            }
+
+            var total = queryAble.Count();
+            var resultSet = queryAble.Skip(skip).Take(pageSize);
+
+            var paginationSet = new PaginationSet<T>()
+            {
+                Items = resultSet,
+                TotalCount = total
+            };
+            return paginationSet;
+        }
 
         public Task<T> UpdateAsyncAgain(T entity)
         {
             throw new NotImplementedException();
         }
+
+
+        // Private
+      
+        private IQueryable<T> OrderByDynamic(IQueryable<T> query, string sortColumn, bool descending)
+        {
+            if (string.IsNullOrEmpty(sortColumn))
+            {
+                sortColumn = "created_on";
+            }
+
+            var parameter = Expression.Parameter(typeof(T), "p");
+
+            string command = "OrderBy";
+
+            if (descending)
+            {
+                command = "OrderByDescending";
+            }
+
+            Expression resultExpression = null;
+
+            var property = typeof(T).GetProperty(sortColumn);
+            var propertyAccess = Expression.MakeMemberAccess(parameter, property);
+            var orderByExpression = Expression.Lambda(propertyAccess, parameter);
+            resultExpression = Expression.Call(typeof(Queryable), command, new Type[] { typeof(T), property.PropertyType }, query.Expression, Expression.Quote(orderByExpression));
+
+            return query.Provider.CreateQuery<T>(resultExpression);
+        }
+
+    }
+    public class PaginationSet<T>
+    {
+        #region Properties
+
+        public int Count
+        {
+            get
+            {
+                return (Items != null) ? Items.Count() : 0;
+            }
+        }
+
+        public IEnumerable<T> Items { set; get; }
+
+        public int TotalCount { set; get; }
+
+        #endregion Properties
     }
 }

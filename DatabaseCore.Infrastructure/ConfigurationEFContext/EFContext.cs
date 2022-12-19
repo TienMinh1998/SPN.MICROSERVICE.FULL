@@ -25,6 +25,7 @@ namespace DatabaseCore.Infrastructure.ConfigurationEFContext
         public DbSet<Category> Categories { get; set; }
         public DbSet<Topic> Topics { get; set; }
         public DbSet<Notification> Notifications { get; set; }
+        public DbSet<QuestionStandard> QuestionStandards { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Config table in postgressSQl
@@ -37,6 +38,7 @@ namespace DatabaseCore.Infrastructure.ConfigurationEFContext
             modelBuilder.ApplyConfiguration(new CategoryConfiguration());
             modelBuilder.ApplyConfiguration(new NotificationConfiguration());
             modelBuilder.ApplyConfiguration(new TopicConfiguration());
+            modelBuilder.ApplyConfiguration(new QuestionConfiguration());
             base.OnModelCreating(modelBuilder);
         }
     }

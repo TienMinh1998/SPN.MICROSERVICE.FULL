@@ -61,5 +61,14 @@ namespace Hola.Api.Service.BaseServices
             return await _baseReponsitory.CountAsync(where);
         }
 
+        public PaginationSet<T> ListPaging(int pageNumber, int pageSize, Func<T, bool> predicate, Dictionary<string, bool> sortList)
+        {
+           return _baseReponsitory.ListPaging(pageNumber, pageSize, predicate, sortList);
+        }
+
+        public PaginationSet<T> GetListPaged(int pageNumber, int pageSize, Func<T, bool> predicate, string sortColumnName, bool descending = false)
+        {
+            return _baseReponsitory.GetListPaged(pageNumber, pageSize, predicate, sortColumnName, descending);
+        }
     }
 }
