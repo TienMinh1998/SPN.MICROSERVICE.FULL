@@ -5,18 +5,19 @@ using System.Linq.Expressions;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
+using Microsoft.Extensions.Configuration;
 
 namespace Hola.Api.Service.BaseServices
 {
     public class BaseService<T> : IBaseService<T> where T : class
     {
         private readonly IRepository<T> _baseReponsitory;
-
+        protected string connectionString;
         public BaseService(IRepository<T> baseReponsitory)
         {
             _baseReponsitory = baseReponsitory;
+             connectionString = "Server=194.163.190.91;Port=5432;User Id=postgres;Password=Cvbn152231392;Pooling=true;Timeout=300;CommandTimeout=300;";
         }
-
         public async Task<T> AddAsync(T entity)
         {
             return await _baseReponsitory.AddAsync(entity);

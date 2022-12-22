@@ -33,7 +33,7 @@ namespace Hola.Api.Installers
             services.AddSingleton<Service.CategoryService>();
             services.AddTransient<AccountService>();
             services.AddTransient<FirebaseService>();
-
+            services.AddScoped<DapperBaseService>();
             // Target Service
             services.AddScoped<ITargetService,TargetService>();
 
@@ -81,6 +81,8 @@ namespace Hola.Api.Installers
             // Topic
             services.AddScoped<IQuestionStandardRepository, QuestionStandardRepository>();
             services.AddTransient<IQuestionStandardService, QuestionStandardService>();
+
+         
         }
     }
 }

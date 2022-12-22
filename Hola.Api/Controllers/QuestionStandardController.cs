@@ -1,8 +1,11 @@
 ﻿using AutoMapper;
 using DatabaseCore.Domain.Entities.Normals;
+using Hola.Api.Models;
 using Hola.Api.Requests;
 using Hola.Api.Service;
+using Hola.Api.Service.BaseServices;
 using Hola.Core.Model;
+using Hola.Core.Utils;
 using Microsoft.AspNetCore.Mvc;
 using StackExchange.Redis;
 using System;
@@ -16,11 +19,14 @@ namespace Hola.Api.Controllers
     {
         private IQuestionStandardService _questionStandardService;
         private readonly IMapper _mapper;
-        public QuestionStandardController(IQuestionStandardService questionStandardService, 
-            IMapper mapper)
+        private readonly DapperBaseService _dapper;
+        public QuestionStandardController(IQuestionStandardService questionStandardService,
+            IMapper mapper,
+            DapperBaseService dapper)
         {
             _questionStandardService = questionStandardService;
             _mapper = mapper;
+            _dapper = dapper;
         }
         /// <summary>
         /// Lấy tất cả câu hỏi
@@ -66,6 +72,26 @@ namespace Hola.Api.Controllers
 
                 return JsonResponseModel.SERVER_ERROR($"{request.English} đã tồn tại rồi");
                
+            }
+            catch (Exception ex)
+            {
+                return JsonResponseModel.SERVER_ERROR(ex.Message);
+            }
+
+        }
+
+
+        [HttpPost("Get_StandQuesByTopic")]
+        public async Task<JsonResponseModel> GetAllQuestionByTopic([FromBody] GetStandQuestionRequest request)
+        {
+            try
+            {
+                string query = "SELECT  a.\"English\" \r\nFROM  (public.\"QuestionStandards\" q " +
+                    "\r\ninner join usr.\"QuestionStandardDetail\" qd on q.\"Pk_QuestionStandard_Id\"" +
+                    $" = qd.\"TopicID\" ) a\r\ninner join usr.topic tq on tq.\"PK_Topic_Id\" = a.\"TopicID\"\r\nwhere a.\"TopicID\" = {request.TargetID}";
+                var response = await _dapper.GetAllAsync<QuestionStandardModel>(query.AddPadding(request.pageNumber, request.PageSize));
+                return JsonResponseModel.Success(response);
+                
             }
             catch (Exception ex)
             {
