@@ -86,7 +86,7 @@ namespace Hola.Api.Controllers
         {
             try
             {
-                string query = "SELECT  a.\"English\" \r\nFROM  (public.\"QuestionStandards\" q " +
+                string query = "SELECT  a.\"English\", a.\"Phonetic\" , a.\"MeaningEnglish\",  a.\"MeaningVietNam\"   FROM  (public.\"QuestionStandards\" q " +
                     "\r\ninner join usr.\"QuestionStandardDetail\" qd on q.\"Pk_QuestionStandard_Id\"" +
                     $" = qd.\"TopicID\" ) a\r\ninner join usr.topic tq on tq.\"PK_Topic_Id\" = a.\"TopicID\"\r\nwhere a.\"TopicID\" = {request.TargetID}";
                 var response = await _dapper.GetAllAsync<QuestionStandardModel>(query.AddPadding(request.pageNumber, request.PageSize));
