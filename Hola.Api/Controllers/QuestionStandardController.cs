@@ -28,6 +28,35 @@ namespace Hola.Api.Controllers
             _mapper = mapper;
             _dapper = dapper;
         }
+
+        /// <summary>
+        /// Lấy về câu hỏi theo ID
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        [HttpPost("GetQuestionById/{Id}")]
+        public async Task<JsonResponseModel> GetQuestionById(int Id)
+        {
+            try
+            {
+                var response = await _questionStandardService.GetFirstOrDefaultAsync(x=>x.Pk_QuestionStandard_Id== Id);
+                if (response!=null)
+                {
+                    return JsonResponseModel.Success(response, $"Lấy về từ có Id = {Id} thành công!");
+                }
+                else
+                {
+                    return JsonResponseModel.Error("Có lỗi trong quá trình lấy câu hỏi", 400);
+                }
+            }
+            catch (Exception ex)
+            {
+                return JsonResponseModel.SERVER_ERROR(ex.Message);
+            }
+
+        }
+
+
         /// <summary>
         /// Lấy tất cả câu hỏi
         /// </summary>
