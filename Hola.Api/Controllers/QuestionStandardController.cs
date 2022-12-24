@@ -6,6 +6,7 @@ using Hola.Api.Service;
 using Hola.Api.Service.BaseServices;
 using Hola.Core.Model;
 using Hola.Core.Utils;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using StackExchange.Redis;
@@ -36,6 +37,7 @@ namespace Hola.Api.Controllers
         /// <param name="Id"></param>
         /// <returns></returns>
         [HttpGet("GetQuestionById/{Id}")]
+        [Authorize]
         public async Task<JsonResponseModel> GetQuestionById(int Id)
         {
             try
@@ -62,6 +64,7 @@ namespace Hola.Api.Controllers
         /// <param name="request"></param>
         /// <returns></returns>
         [HttpPost("AllQuestion")]
+        [Authorize]
         public async Task<JsonResponseModel> GetQuestionById([FromBody] QuestionModelStandard request)
         {
             try
@@ -94,6 +97,7 @@ namespace Hola.Api.Controllers
         /// <param name="request"></param>
         /// <returns></returns>
         [HttpPost("AddStandardQuestion")]
+        [Authorize]
         public async Task<JsonResponseModel> Add([FromBody] AddQuestionStandardModel request)
         {
             try
@@ -123,6 +127,7 @@ namespace Hola.Api.Controllers
         /// <param name="request"></param>
         /// <returns></returns>
         [HttpPost("Get_StandQuesByTopic")]
+        [Authorize]
         public async Task<JsonResponseModel> GetAllQuestionByTopic([FromBody] GetStandQuestionRequest request)
         {
             try
@@ -146,6 +151,7 @@ namespace Hola.Api.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPut("AddQuestionToTopic")]
+        [Authorize]
         public async Task<JsonResponseModel> AddQuestionToTopic ([FromBody] AddQuestionToTopic1 model)
         {
             try
@@ -167,6 +173,7 @@ namespace Hola.Api.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPut("UpdateQuestionStandard")]
+        [Authorize]
         public async Task<JsonResponseModel> Update([FromBody] UpdateQuestionStandardModel model)
         {
             try
