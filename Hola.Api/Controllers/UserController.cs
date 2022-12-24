@@ -142,7 +142,6 @@ namespace Hola.Api.Controllers
             }
         }
 
-
         /// <summary>
         /// Bật thông báo
         /// </summary>
@@ -176,6 +175,34 @@ namespace Hola.Api.Controllers
                 return JsonResponseModel.SERVER_ERROR();
             }
         }
+        /// <summary>
+        /// tạo lịch sử học tập theo ngày
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("GetHistoryCurrentDay")]
+        [Authorize]
+        public async Task<JsonResponseModel> GetHistoryCurrentDay()
+        {
+            // Get result From service
+            try
+            {
+                var userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == SystemParam.CLAIM_USER).Value);
+                var result =await accountService.CreateHistoryOneDay(userid, 10);
+                if (result==true)
+                {
+                   return JsonResponseModel.Success(new List<string>(), $"Tạo lịch sử ngày {DateTime.Now.ToString("yyyy-MM-dd")} thành công");
+                }
+                else
+                {
+                    return JsonResponseModel.Error("Tạo lịch sử không thành công", 500);
+                }
+            }
+            catch (Exception)
+            {
+                return JsonResponseModel.SERVER_ERROR();
+            }
+        }
+
         private string CreateToken(User user)
         {
             List<Claim> claims = new List<Claim>
