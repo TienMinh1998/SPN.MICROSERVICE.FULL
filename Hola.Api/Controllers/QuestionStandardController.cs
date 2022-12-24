@@ -35,7 +35,7 @@ namespace Hola.Api.Controllers
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        [HttpPost("GetQuestionById/{Id}")]
+        [HttpGet("GetQuestionById/{Id}")]
         public async Task<JsonResponseModel> GetQuestionById(int Id)
         {
             try
