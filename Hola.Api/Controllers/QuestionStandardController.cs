@@ -55,10 +55,8 @@ namespace Hola.Api.Controllers
             }
 
         }
-
-
         /// <summary>
-        /// Lấy tất cả câu hỏi
+        /// Lấy ra tất cả các từ
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
@@ -80,7 +78,7 @@ namespace Hola.Api.Controllers
         }
 
         /// <summary>
-        /// Thêm một từ tiêu chuẩn
+        /// Thêm một từ mới 
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
@@ -108,7 +106,11 @@ namespace Hola.Api.Controllers
             }
 
         }
-
+        /// <summary>
+        /// Lấy ra các từ theo chủ đề
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost("Get_StandQuesByTopic")]
         public async Task<JsonResponseModel> GetAllQuestionByTopic([FromBody] GetStandQuestionRequest request)
         {
@@ -132,8 +134,8 @@ namespace Hola.Api.Controllers
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        [HttpPost("AddQuestionToTopic")]
-        public async Task<JsonResponseModel> AddQuestionToTopic(AddQuestionToTopic1 model)
+        [HttpPut("AddQuestionToTopic")]
+        public async Task<JsonResponseModel> AddQuestionToTopic ([FromBody] AddQuestionToTopic1 model)
         {
             try
             {
