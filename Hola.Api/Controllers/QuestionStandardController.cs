@@ -80,7 +80,6 @@ namespace Hola.Api.Controllers
 
         }
 
-
         [HttpPost("Get_StandQuesByTopic")]
         public async Task<JsonResponseModel> GetAllQuestionByTopic([FromBody] GetStandQuestionRequest request)
         {
@@ -92,6 +91,26 @@ namespace Hola.Api.Controllers
                 var response = await _dapper.GetAllAsync<QuestionStandardModel>(query.AddPadding(request.pageNumber, request.PageSize));
                 return JsonResponseModel.Success(response);
                 
+            }
+            catch (Exception ex)
+            {
+                return JsonResponseModel.SERVER_ERROR(ex.Message);
+            }
+
+        }
+        /// <summary>
+        /// Thêm từ vào topic
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost("AddQuestionToTopic")]
+        public async Task<JsonResponseModel> AddQuestionToTopic(AddQuestionToTopic1 model)
+        {
+            try
+            {
+                string sql_Add = $"INSERT INTO usr.\"QuestionStandardDetail\" (\"QuestionID\", \"TopicID\") VALUES({model.QuestionID}, {model.TopicID});";
+                var response = _dapper.Execute(sql_Add);
+                return JsonResponseModel.Success("Thêm thành công");
             }
             catch (Exception ex)
             {

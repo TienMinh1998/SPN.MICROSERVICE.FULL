@@ -72,7 +72,11 @@ namespace Hola.Api.Controllers
             await userService.AddAsync(addUser);
             return JsonResponseModel.Success(addUser);
         }
-
+        /// <summary>
+        /// Đăng nhập App
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost("Login")]
         public async Task<JsonResponseModel> Login([FromBody] LoginRequest request)
         {
@@ -98,7 +102,33 @@ namespace Hola.Api.Controllers
             return JsonResponseModel.Error("Sai tên đăng nhập hoặc mật khẩu", 401);
 
         }
+        /// <summary>
+        /// Đăng nhập admin
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        [HttpPost("Login_Admin")]
+        public async Task<JsonResponseModel> LoginAdmin([FromBody] LoginRequestAdmin request)
+        {
+            var user = await userService.GetFirstOrDefaultAsync(x => x.Username.Equals(request.UserName));
+            if (user != null)
+            {
+                var isPasswordOk = BCrypt.Net.BCrypt.EnhancedVerify(request.Password, user.Password, BCrypt.Net.HashType.SHA384);
+                if (isPasswordOk)
+                {
+                   
+                    var newToken = CreateToken(user);
+                    LoginResponse loginResponse = new LoginResponse
+                    {
+                        Token = newToken,
+                        user = user
+                    };
+                    return JsonResponseModel.Success(loginResponse);
+                }
+            }
+            return JsonResponseModel.Error("Sai tên đăng nhập hoặc mật khẩu", 401);
 
+        }
         [HttpPost("UpdateDeviceToken")]
         public async Task<JsonResponseModel> UpdateDeviceToken([FromBody] UpdateDeviceTokenRequest updateRequest)
         {

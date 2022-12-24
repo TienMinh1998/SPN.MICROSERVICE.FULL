@@ -45,7 +45,6 @@ namespace Hola.Api.Service.Quatz
                             body = $"Hôm nay {totalQuestion} / 10 từ"
                         }
                     };
-                    // Tạo lịch sử ngày
                     await _accountService.CreateHistoryOneDay(item.Id, 10);
                     request.registration_ids.Add(devideFirebaseToken);
                     await firebaseService.Push(request, item.Id);
