@@ -160,5 +160,33 @@ namespace Hola.Api.Controllers
             }
 
         }
+
+        /// <summary>
+        /// Cập nhật câu hỏi
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPut("UpdateQuestionStandard")]
+        public async Task<JsonResponseModel> Update([FromBody] UpdateQuestionStandardModel model)
+        {
+            try
+            {
+
+                string count = $"SELECT COUNT(1) FROM public.\"QuestionStandards\" where \"Pk_QuestionStandard_Id\" = {model.Id}";
+                var count_Response = _dapper.QueryFirstOrDefault<int>(count);
+                if (count_Response != 1)
+                    return JsonResponseModel.Error("Câu hỏi không tồn tại, vui lòng thử lại", 400);
+                string sql_update = $"UPDATE public.\"QuestionStandards\"\r\nSET \"English\"='{model.English}', \"Phonetic\"='{model.Phonetic}', \"MeaningEnglish\"='{model.MeaningEnglish}'," +
+                    $" \"MeaningVietNam\"='{model.MeaningVietNam}', \"Note\"='{model.Note}'\r\nWHERE \"Pk_QuestionStandard_Id\"={model.Id};";
+                var response = _dapper.Execute(sql_update);
+                return JsonResponseModel.Success("Cập nhật thành công");
+            }
+            catch (Exception ex)
+            {
+                return JsonResponseModel.SERVER_ERROR(ex.Message);
+            }
+
+        }
     }
 }
+
