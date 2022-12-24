@@ -6,6 +6,7 @@ using Hola.Core.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Hola.Api.Controllers
@@ -36,6 +37,26 @@ namespace Hola.Api.Controllers
                 var response = await _topicService.GetAllAsync(x=>x.FK_Course_Id==model.CoursId);
                 return JsonResponseModel.Success(response);
 
+            }
+            catch (System.Exception ex)
+            {
+
+                return JsonResponseModel.SERVER_ERROR(ex.Message);
+            }
+
+        }
+
+        [HttpGet("GetTopicById/{ID}")]
+        public async Task<JsonResponseModel> Topic(int ID)
+        {
+            try
+            {
+                var response = await _topicService.GetFirstOrDefaultAsync(x=>x.PK_Topic_Id==ID);
+                if (response!=null)
+                {
+                    return JsonResponseModel.Success(response);
+                }
+                return JsonResponseModel.Success(new List<string>(),$"Không tìm thấy Topic có Id= '{ID}'");
             }
             catch (System.Exception ex)
             {
