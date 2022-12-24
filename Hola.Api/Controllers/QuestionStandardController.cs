@@ -7,6 +7,7 @@ using Hola.Api.Service.BaseServices;
 using Hola.Core.Model;
 using Hola.Core.Utils;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
@@ -56,7 +57,7 @@ namespace Hola.Api.Controllers
 
         }
         /// <summary>
-        /// Lấy ra tất cả các từ
+        /// Lấy ra tất cả các từ, column nhập vào tên trường muốn sắp xếp
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
@@ -65,8 +66,18 @@ namespace Hola.Api.Controllers
         {
             try
             {
+                bool condition = false;
+                if (request.IsDesc==null || request.IsDesc==false)
+                {
+                    condition = false;
+                }
+                else
+                {
+                    condition = true;
+                }
+
                 Func<QuestionStandard, bool> lastCondition = m => true;
-                var question = _questionStandardService.GetListPaged(request.PageNumber, request.PageSize, lastCondition,request.columnname);
+                var question = _questionStandardService.GetListPaged(request.PageNumber, request.PageSize, lastCondition,request.columnname,condition);
                 return JsonResponseModel.Success(question);
             }
             catch (Exception ex)
