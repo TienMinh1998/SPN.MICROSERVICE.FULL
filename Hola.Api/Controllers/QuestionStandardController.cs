@@ -81,7 +81,13 @@ namespace Hola.Api.Controllers
 
                 Func<QuestionStandard, bool> lastCondition = m => true;
                 var question = _questionStandardService.GetListPaged(request.PageNumber, request.PageSize, lastCondition,request.columnname,condition);
-                return JsonResponseModel.Success(question);
+                var response = new
+                {
+                    currentPage = request.PageNumber,
+                    pageSize = request.PageSize,
+                    list = question,
+                };
+                return JsonResponseModel.Success(response);
             }
             catch (Exception ex)
             {
