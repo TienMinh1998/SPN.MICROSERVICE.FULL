@@ -42,7 +42,7 @@ namespace Hola.Api.Controllers
         }
 
         /// <summary>
-        /// Thêm 1 khóa học mới
+        /// Thêm 1 khóa học mới 
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>

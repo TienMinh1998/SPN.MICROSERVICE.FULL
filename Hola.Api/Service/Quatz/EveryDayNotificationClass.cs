@@ -14,14 +14,16 @@ namespace Hola.Api.Service.Quatz
         private readonly FirebaseService firebaseService;
         private readonly IUserService _userServices;
         private readonly IQuestionService _questionService;
-
+        private readonly AccountService _accountService;
         public EveryDayNotificationClass(FirebaseService firebaseService,
                                          IUserService userServices,
-                                         IQuestionService questionService)
+                                         IQuestionService questionService,
+                                         AccountService accountService)
         {
             this.firebaseService = firebaseService;
             _userServices = userServices;
             _questionService = questionService;
+            _accountService = accountService;
         }
         public async Task Execute(IJobExecutionContext context)
         {
@@ -43,6 +45,7 @@ namespace Hola.Api.Service.Quatz
                             body = $"Hôm nay {totalQuestion} / 10 từ"
                         }
                     };
+                    await _accountService.CreateHistoryOneDay(item.Id, 10);
                     request.registration_ids.Add(devideFirebaseToken);
                     await firebaseService.Push(request, item.Id);
                 }

@@ -5,6 +5,12 @@
         public string English { get; set; }
         public string Phonetic { get; set; }
         public string MeaningEnglish { get; set; }
-        public string MearningVietNam { get; set; }
+        public string MeaningVietNam { get; set; }
+        public string Note { get; set; }
+    }
+
+    public class UpdateQuestionStandardModel : QuestionStandardModel
+    {
+        public int Id { get; set; }
     }
 }

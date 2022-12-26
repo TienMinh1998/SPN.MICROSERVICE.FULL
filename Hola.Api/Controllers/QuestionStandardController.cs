@@ -6,7 +6,9 @@ using Hola.Api.Service;
 using Hola.Api.Service.BaseServices;
 using Hola.Core.Model;
 using Hola.Core.Utils;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
@@ -33,27 +35,45 @@ namespace Hola.Api.Controllers
         }
 
         /// <summary>
-        /// Thêm một từ tiêu chuẩn
+        /// Lấy tất cả câu hỏi
         /// </summary>
-        /// <param name="request"></param>
+        /// <param name="Id"></param>
         /// <returns></returns>
-        [HttpPost("AddStandardQuestion")]
-        public async Task<JsonResponseModel> Add([FromBody] AddQuestionStandardModel request)
+        [HttpGet("GetQuestionById/{Id}")]
+        [Authorize]
+        public async Task<JsonResponseModel> GetQuestionById(int Id)
         {
             try
             {
-                var command = _mapper.Map<QuestionStandard>(request);
-                command.created_on = DateTime.UtcNow;
-                command.IsDeleted = false;
-                var checkquestion = await _questionStandardService.GetFirstOrDefaultAsync(x => x.English == request.English);
-                if (checkquestion == null)
+                var response = await _questionStandardService.GetFirstOrDefaultAsync(x=>x.Pk_QuestionStandard_Id== Id);
+                if (response!=null)
                 {
-                    var respoinse = await _questionStandardService.AddAsync(command);
-                    return JsonResponseModel.Success(respoinse);
+                    return JsonResponseModel.Success(response, $"Lấy về từ có Id = {Id} thành công!");
                 }
+                else
+                {
+                    return JsonResponseModel.Error("Có lỗi trong quá trình lấy câu hỏi", 400);
+                }
+            }
+            catch (Exception ex)
+            {
+                return JsonResponseModel.SERVER_ERROR(ex.Message);
+            }
 
-                return JsonResponseModel.SERVER_ERROR($"{request.English} đã tồn tại rồi");
-
+        }
+        /// <summary>
+        /// Lấy ra tất cả các từ, column nhập vào tên trường muốn sắp xếp
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        [HttpPost("AllQuestion")]
+        public async Task<JsonResponseModel> GetQuestionById([FromBody] QuestionModelStandard request)
+        {
+            try
+            {
+                Func<QuestionStandard, bool> lastCondition = m => true;
+                var question = _questionStandardService.GetListPaged(request.PageNumber, request.PageSize, lastCondition,request.columnname);
+                return JsonResponseModel.Success(question);
             }
             catch (Exception ex)
             {
@@ -63,12 +83,12 @@ namespace Hola.Api.Controllers
         }
 
         /// <summary>
-        /// Lấy tất cả câu hỏi
+        /// Thêm một từ tiêu chuẩn
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        [HttpPost("AllQuestion")]
-        public async Task<JsonResponseModel> GetQuestionById([FromBody] QuestionModelStandard request)
+        [HttpPost("AddStandardQuestion")]
+        public async Task<JsonResponseModel> Add([FromBody] AddQuestionStandardModel request)
         {
             try
             {
@@ -85,12 +105,8 @@ namespace Hola.Api.Controllers
         }
 
 
-        /// <summary>
-        /// Lấy ra tất cả các từ thuộc topic đó thoe ID của Topic
-        /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
         [HttpPost("Get_StandQuesByTopic")]
+        [Authorize]
         public async Task<JsonResponseModel> GetAllQuestionByTopic([FromBody] GetStandQuestionRequest request)
         {
             try
@@ -100,32 +116,7 @@ namespace Hola.Api.Controllers
                     $" = qd.\"QuestionID\" ) a\r\ninner join usr.topic tq on tq.\"PK_Topic_Id\" = a.\"TopicID\"\r\nwhere a.\"TopicID\" = {request.TargetID}";
                 var response = await _dapper.GetAllAsync<QuestionStandardModel>(query.AddPadding(request.pageNumber, request.PageSize));
                 return JsonResponseModel.Success(response);
-
-            }
-            catch (Exception ex)
-            {
-                return JsonResponseModel.SERVER_ERROR(ex.Message);
-            }
-
-        }
-
-        /// <summary>
-        /// Lấy ra tất cả các từ thuộc topic đó thoe ID của Topic
-        /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
-        [HttpPost("AddQuestionToTopic")]
-        public async Task<JsonResponseModel> AddQuestionToTopic([FromBody] AddQuestionToTopicRequest request)
-        {
-            try
-            {
-                // Kiểm tra xem topic có tồn tại không 
-                var toppic =await _topicService.GetFirstOrDefaultAsync(x => x.PK_Topic_Id == request.TopicID);
-                if (toppic == null) JsonResponseModel.Error("Chủ đề không tồn tại", 400);
-                // Nếu Topic tồn tại thì cho add : 
-                string querySQL = $"INSERT INTO usr.\"QuestionStandardDetail\"\r\n(\"QuestionID\", \"TopicID\")\r\nVALUES({request.QuestionID}, {request.TopicID});\r\n";
-                await _dapper.Execute(querySQL);
-                return JsonResponseModel.Success($"Thêm câu hỏi vào topic {toppic.VietNamContent} thành công");
+                
             }
             catch (Exception ex)
             {
@@ -136,3 +127,4 @@ namespace Hola.Api.Controllers
 
     }
 }
+

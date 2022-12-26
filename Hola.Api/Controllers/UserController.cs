@@ -72,7 +72,11 @@ namespace Hola.Api.Controllers
             await userService.AddAsync(addUser);
             return JsonResponseModel.Success(addUser);
         }
-
+        /// <summary>
+        /// Đăng nhập App
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost("Login")]
         public async Task<JsonResponseModel> Login([FromBody] LoginRequest request)
         {
@@ -98,7 +102,33 @@ namespace Hola.Api.Controllers
             return JsonResponseModel.Error("Sai tên đăng nhập hoặc mật khẩu", 401);
 
         }
+        /// <summary>
+        /// Đăng nhập admin
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        [HttpPost("Login_Admin")]
+        public async Task<JsonResponseModel> LoginAdmin([FromBody] LoginRequestAdmin request)
+        {
+            var user = await userService.GetFirstOrDefaultAsync(x => x.Username.Equals(request.UserName));
+            if (user != null)
+            {
+                var isPasswordOk = BCrypt.Net.BCrypt.EnhancedVerify(request.Password, user.Password, BCrypt.Net.HashType.SHA384);
+                if (isPasswordOk)
+                {
+                   
+                    var newToken = CreateToken(user);
+                    LoginResponse loginResponse = new LoginResponse
+                    {
+                        Token = newToken,
+                        user = user
+                    };
+                    return JsonResponseModel.Success(loginResponse);
+                }
+            }
+            return JsonResponseModel.Error("Sai tên đăng nhập hoặc mật khẩu", 401);
 
+        }
         [HttpPost("UpdateDeviceToken")]
         public async Task<JsonResponseModel> UpdateDeviceToken([FromBody] UpdateDeviceTokenRequest updateRequest)
         {
@@ -142,7 +172,6 @@ namespace Hola.Api.Controllers
             }
         }
 
-
         /// <summary>
         /// Bật thông báo
         /// </summary>
@@ -176,6 +205,34 @@ namespace Hola.Api.Controllers
                 return JsonResponseModel.SERVER_ERROR();
             }
         }
+        /// <summary>
+        /// tạo lịch sử học tập theo ngày
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("GetHistoryCurrentDay")]
+        [Authorize]
+        public async Task<JsonResponseModel> GetHistoryCurrentDay()
+        {
+            // Get result From service
+            try
+            {
+                var userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == SystemParam.CLAIM_USER).Value);
+                var result =await accountService.CreateHistoryOneDay(userid, 10);
+                if (result==true)
+                {
+                   return JsonResponseModel.Success(new List<string>(), $"Tạo lịch sử ngày {DateTime.Now.ToString("yyyy-MM-dd")} thành công");
+                }
+                else
+                {
+                    return JsonResponseModel.Error("Tạo lịch sử không thành công", 500);
+                }
+            }
+            catch (Exception)
+            {
+                return JsonResponseModel.SERVER_ERROR();
+            }
+        }
+
         private string CreateToken(User user)
         {
             List<Claim> claims = new List<Claim>
