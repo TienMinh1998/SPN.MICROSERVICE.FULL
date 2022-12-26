@@ -17,6 +17,7 @@ namespace DatabaseCore.Domain.Entities.Normals
         public string Title { get; set; }
         public string Target { get; set; }
         public string Content { get; set; }
+        public string CoursImage { get; set; }
         public DateTime created_on { get; set; }
     }
 }
