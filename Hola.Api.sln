@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatabaseCore.Infrastructure
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "YomainBaseEntityStruct", "YomainBaseEntityStruct", "{79E25028-FFD0-4303-BB89-04E2BC7CFA91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntitiesCommon", "EntitiesCommon\EntitiesCommon.csproj", "{D5DD1724-83FB-439D-BFFA-F30473AD157A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntitiesCommon", "EntitiesCommon\EntitiesCommon.csproj", "{D5DD1724-83FB-439D-BFFA-F30473AD157A}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{43F7C9FD-7AA9-4E83-98D3-8309E1C7217C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,10 @@ Global
 		{D5DD1724-83FB-439D-BFFA-F30473AD157A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5DD1724-83FB-439D-BFFA-F30473AD157A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5DD1724-83FB-439D-BFFA-F30473AD157A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43F7C9FD-7AA9-4E83-98D3-8309E1C7217C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43F7C9FD-7AA9-4E83-98D3-8309E1C7217C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43F7C9FD-7AA9-4E83-98D3-8309E1C7217C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43F7C9FD-7AA9-4E83-98D3-8309E1C7217C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
