@@ -12,12 +12,16 @@ namespace Hola.Api.AutoMappers
     {
         public RequestToEntityProfile()
         {
+            // Model -> Entity
             CreateMap<AddTargetRequest, Target>();
             CreateMap<AddGrammarRequest, Grammar>();
             CreateMap<UserManualModel, UserManual>();
             CreateMap<CourseModel, Cours>();
+            CreateMap<UpdateCourseModel, Cours>();
             CreateMap<AddTopicModel, Topic>();
             CreateMap<AddQuestionStandardModel, QuestionStandard>();
+
+            // Entity -> Model
         }
     }
 }

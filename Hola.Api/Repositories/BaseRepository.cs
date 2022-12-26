@@ -248,9 +248,8 @@ namespace Hola.Api.Repositories
         }
 
         public IEnumerable<T> Items { set; get; }
-
+        public int? currentPage { get; set; }
         public int TotalCount { set; get; }
-
         #endregion Properties
     }
 }

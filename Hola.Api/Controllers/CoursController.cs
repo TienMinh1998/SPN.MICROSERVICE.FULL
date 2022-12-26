@@ -3,8 +3,13 @@ using DatabaseCore.Domain.Entities.Normals;
 using Hola.Api.Models;
 using Hola.Api.Service.CoursServices;
 using Hola.Core.Model;
+using Hola.GoogleCloudStorage;
+using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Mvc;
+using StackExchange.Redis;
 using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace Hola.Api.Controllers
@@ -13,17 +18,42 @@ namespace Hola.Api.Controllers
     {
         private readonly ICoursService _coursService;
         private readonly IMapper _mapper;
-        public CoursController(ICoursService coursService, IMapper mapper)
+        public readonly IUploadFileGoogleCloudStorage _GoogleCloudStorage;
+        public CoursController(ICoursService coursService, IMapper mapper, IUploadFileGoogleCloudStorage googleCloudStorage)
         {
             this._coursService = coursService;
             _mapper = mapper;
+            _GoogleCloudStorage = googleCloudStorage;
+        }
+
+        /// <summary>
+        /// Lấy thông tin khóa học theo ID
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        [HttpGet("CoursById/{Id}")]
+        public async Task<JsonResponseModel> Get_All_Cours(int Id)
+        {
+            try
+            {
+                var response = await _coursService.GetFirstOrDefaultAsync(x => x.Pk_coursId == Id);
+                if (response == null)
+                    return JsonResponseModel.Error($"Không tìm thấy khóa học có id '{Id}'", 404);
+                return JsonResponseModel.Success(response, $"Lấy thông tin khóa học {response.Code} thành công.");
+
+            }
+            catch (System.Exception ex)
+            {
+                return JsonResponseModel.SERVER_ERROR(ex.Message);
+            }
+
         }
 
         /// <summary>
         /// Lấy ra tất cả các khóa học hiện tại đang có
         /// </summary>
         /// <returns></returns>
-        [HttpGet("Cours")]
+        [HttpGet("Course")]
         public async Task<JsonResponseModel> Get_All_Cours()
         {
             try
@@ -31,7 +61,37 @@ namespace Hola.Api.Controllers
                 var response = await _coursService.GetAllAsync();
                 return JsonResponseModel.Success(response);
 
+            }
+            catch (System.Exception ex)
+            {
 
+                return JsonResponseModel.SERVER_ERROR();
+            }
+
+        }
+
+        /// <summary>
+        /// lấy ra tất cả các khóa học có phân trang
+        /// </summary>
+        /// <param name="requestModel"></param>
+        /// <returns></returns>
+        [HttpPost("List-Course")]
+        public async Task<JsonResponseModel> GetAllPadding([FromBody] GetPadingRequest requestModel)
+        {
+            try
+            {
+
+                Func<Cours, bool> lastCondition = m => true;
+                var questions = _coursService.GetListPaged(requestModel.PageNumber, requestModel.PageSize, lastCondition, requestModel.ColumnSort,requestModel.IsDesc);
+                questions.currentPage = requestModel.PageNumber;
+                if (questions != null)
+                {
+                    return JsonResponseModel.Success(questions);
+                }
+                else
+                {
+                    return JsonResponseModel.Success(new List<string>(),"Danh sách rỗng");
+                }
             }
             catch (System.Exception ex)
             {
@@ -47,19 +107,94 @@ namespace Hola.Api.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost("Course")]
-        public async Task<JsonResponseModel> AddCourse([FromBody] CourseModel model)
+        public async Task<JsonResponseModel> AddCourse(CourseModelRequest model)
         {
             try
             {
                 var requestModel = _mapper.Map<Cours>(model);
-                requestModel.created_on = DateTime.UtcNow;
-                var response =  await _coursService.AddAsync(requestModel);
-                return JsonResponseModel.Success(response);
+                var countResult = await _coursService.CountAsync(x => x.Code == model.Code);
+                if (countResult == 0)
+                {
+                    requestModel.created_on = DateTime.UtcNow;
+                    var response = await _coursService.AddAsync(requestModel);
+
+                    // Add image : 
+                    try
+                    {
+                        var filename = model.file;
+                        var filePath = Path.GetTempFileName();
+                        using (var stream = System.IO.File.Create(filePath))
+                            await model.file.CopyToAsync(stream);
+                        var resultUrl = _GoogleCloudStorage.UploadFile(filePath, "5512421445", model.file.FileName, "credentials.json", "image", "image/jpeg");
+                        requestModel.CoursImage = resultUrl;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        return JsonResponseModel.Error("File image is Lagest",500);
+                    }
+                  
+                    return JsonResponseModel.Success(response);
+                }
+                else
+                {
+                    return JsonResponseModel.Error("Mã khóa học đã tồn tại", 400);
+                }
             }
             catch (System.Exception ex)
             {
-
                 return JsonResponseModel.SERVER_ERROR(ex.Message);
+            }
+
+        }
+
+        /// <summary>
+        /// Chỉnh xửa khóa học
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPut("Course")]
+        public async Task<JsonResponseModel> EditCourse([FromBody] UpdateCourseModel model)
+        {
+            try
+            {
+                var course = await _coursService.GetFirstOrDefaultAsync(x => x.Pk_coursId == model.Pk_coursId);
+                if (course == null)
+                    return JsonResponseModel.Error("Khóa học không tồn tại", 400);
+                var entity = _mapper.Map<Cours>(model);
+                var updateCourse =await _coursService.UpdateAsync(entity);
+                if (updateCourse != null)
+                    return JsonResponseModel.Success(updateCourse, "Cập nhật thông tin khóa học thành công");
+                return JsonResponseModel.Error("Server quá tải, vui lòng thử lại sau", 500);
+            }
+            catch (Exception ex)
+            {
+
+                return JsonResponseModel.Error(ex.Message, 500);
+            }
+
+        }
+
+        /// <summary>
+        /// Xóa 1 khóa học
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpDelete("Course/{id}")]
+        public async Task<JsonResponseModel> DeleteCourse(int id)
+        {
+            try
+            {
+                var course = await _coursService.GetFirstOrDefaultAsync(x => x.Pk_coursId == id);
+                if (course == null)
+                    return JsonResponseModel.Error($"Khóa học Id='{id}' không tồn tại", 400);
+                await _coursService.DeleteAsync(course);
+                return JsonResponseModel.Success(new List<string>(), $"Xóa thành công khóa học Id ='{id}'");
+            }
+            catch (Exception ex)
+            {
+
+                return JsonResponseModel.Error(ex.Message, 500);
             }
 
         }
