@@ -3,10 +3,12 @@ using DatabaseCore.Domain.Entities.Normals;
 using Hola.Api.Models;
 using Hola.Api.Service;
 using Hola.Core.Model;
+using Hola.GoogleCloudStorage;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace Hola.Api.Controllers
@@ -16,13 +18,16 @@ namespace Hola.Api.Controllers
         private readonly IMapper _mapper;
         private readonly ILogger<TopicController> _logger;
         private readonly ITopicService _topicService;
+        public readonly IUploadFileGoogleCloudStorage _GoogleCloudStorage;
         public TopicController(IMapper mapper,
             ILogger<TopicController> logger,
-            ITopicService topicService = null)
+            ITopicService topicService = null,
+            IUploadFileGoogleCloudStorage googleCloudStorage = null)
         {
             _mapper = mapper;
             _logger = logger;
             _topicService = topicService;
+            _GoogleCloudStorage = googleCloudStorage;
         }
 
         /// <summary>
@@ -34,7 +39,7 @@ namespace Hola.Api.Controllers
         {
             try
             {
-                var response = await _topicService.GetAllAsync(x=>x.FK_Course_Id==model.CoursId);
+                var response = await _topicService.GetAllAsync(x => x.FK_Course_Id == model.CoursId);
                 return JsonResponseModel.Success(response);
 
             }
@@ -45,18 +50,22 @@ namespace Hola.Api.Controllers
             }
 
         }
-
+        /// <summary>
+        /// Lấy ra topic theo ID
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
         [HttpGet("GetTopicById/{ID}")]
         public async Task<JsonResponseModel> Topic(int ID)
         {
             try
             {
-                var response = await _topicService.GetFirstOrDefaultAsync(x=>x.PK_Topic_Id==ID);
-                if (response!=null)
+                var response = await _topicService.GetFirstOrDefaultAsync(x => x.PK_Topic_Id == ID);
+                if (response != null)
                 {
                     return JsonResponseModel.Success(response);
                 }
-                return JsonResponseModel.Success(new List<string>(),$"Không tìm thấy Topic có Id= '{ID}'");
+                return JsonResponseModel.Success(new List<string>(), $"Không tìm thấy Topic có Id= '{ID}'");
             }
             catch (System.Exception ex)
             {
@@ -65,7 +74,11 @@ namespace Hola.Api.Controllers
             }
 
         }
-
+        /// <summary>
+        ///  Thêm mới 1 topic
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost("AddTopic")]
         public async Task<JsonResponseModel> AddTopic([FromBody] AddTopicModel model)
         {
@@ -73,7 +86,7 @@ namespace Hola.Api.Controllers
             {
                 var topicEntity = _mapper.Map<Topic>(model);
                 topicEntity.created_on = DateTime.UtcNow;
-                var response =await _topicService.AddAsync(topicEntity);
+                var response = await _topicService.AddAsync(topicEntity);
                 return JsonResponseModel.Success(response);
 
             }
@@ -83,6 +96,39 @@ namespace Hola.Api.Controllers
                 return JsonResponseModel.SERVER_ERROR(ex.Message);
             }
 
+        }
+        /// <summary>
+        /// Cập nhật chủ đề
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPut("UpdateTopic")]
+        public async Task<JsonResponseModel> Update( UpdateTopicModel model)
+        {
+            try
+            {
+                var topic = await _topicService.GetFirstOrDefaultAsync(x => x.PK_Topic_Id == model.PK_Topic_Id);
+                if (topic == null)
+                    return JsonResponseModel.Error($" Chủ đề {model.PK_Topic_Id} không tồn tại ", 400);
+
+                var filename = DateTime.Now.ToString()+model.File.FileName;
+                var filePath = Path.GetTempFileName();
+                using (var stream = System.IO.File.Create(filePath))
+                    await model.File.CopyToAsync(stream);
+                var resultUrl = _GoogleCloudStorage.UploadFile(filePath, "5512421445", filename, "credentials.json", "image", "image/jpeg");
+                var entity = _mapper.Map<Topic>(model);
+                entity.Image = resultUrl;
+                entity.created_on = topic.created_on;
+                var updateTopic = await _topicService.UpdateAsync(entity);
+                if (updateTopic != null)
+                    return JsonResponseModel.Success(updateTopic, "Cập nhật thông tin chủ đề thành công");
+                return JsonResponseModel.Error("Server quá tải, vui lòng thử lại sau", 500);
+            }
+            catch (Exception ex)
+            {
+
+                return JsonResponseModel.Error(ex.Message, 500);
+            }
         }
     }
 }

@@ -200,26 +200,26 @@ namespace Hola.Api.Controllers
             }
 
         }
-
-        [HttpPut("Test")]
-        [Authorize]
-        public async Task<JsonResponseModel> Test([FromBody] UpdateQuestionStandardModel model)
+        /// <summary>
+        /// Xóa câu hỏi
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpDelete("QuestionStandard/{id}")]
+        public async Task<JsonResponseModel> DeleteQuestion(int id)
         {
             try
             {
-
-                string count = $"SELECT COUNT(1) FROM public.\"QuestionStandards\" where \"Pk_QuestionStandard_Id\" = {model.Id}";
-                var count_Response = _dapper.QueryFirstOrDefault<int>(count);
-                if (count_Response != 1)
-                    return JsonResponseModel.Error("Câu hỏi không tồn tại, vui lòng thử lại", 400);
-                string sql_update = $"UPDATE public.\"QuestionStandards\"\r\nSET \"English\"='{model.English}', \"Phonetic\"='{model.Phonetic}', \"MeaningEnglish\"='{model.MeaningEnglish}'," +
-                    $" \"MeaningVietNam\"='{model.MeaningVietNam}', \"Note\"='{model.Note}'\r\nWHERE \"Pk_QuestionStandard_Id\"={model.Id};";
-                var response = _dapper.Execute(sql_update);
-                return JsonResponseModel.Success("Cập nhật thành công");
+                var question = await _questionStandardService.GetFirstOrDefaultAsync(x => x.Pk_QuestionStandard_Id == id);
+                if (question == null)
+                    return JsonResponseModel.Error($"Từ mới Id='{id}' không tồn tại", 400);
+                await _questionStandardService.DeleteAsync(question);
+                return JsonResponseModel.Success(new List<string>(), $"Xóa thành công từ mới Id ='{id}'");
             }
             catch (Exception ex)
             {
-                return JsonResponseModel.SERVER_ERROR(ex.Message);
+
+                return JsonResponseModel.Error(ex.Message, 500);
             }
 
         }

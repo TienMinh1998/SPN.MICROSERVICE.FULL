@@ -53,7 +53,7 @@ namespace Hola.Api.Controllers
         /// Lấy ra tất cả các khóa học hiện tại đang có
         /// </summary>
         /// <returns></returns>
-        [HttpGet("Course")]
+        [HttpGet("Coursies")]
         public async Task<JsonResponseModel> Get_All_Cours()
         {
             try
@@ -80,7 +80,6 @@ namespace Hola.Api.Controllers
         {
             try
             {
-
                 Func<Cours, bool> lastCondition = m => true;
                 var questions = _coursService.GetListPaged(requestModel.PageNumber, requestModel.PageSize, lastCondition, requestModel.ColumnSort,requestModel.IsDesc);
                 questions.currentPage = requestModel.PageNumber;
@@ -117,7 +116,6 @@ namespace Hola.Api.Controllers
                 {
                     requestModel.created_on = DateTime.UtcNow;
                     var response = await _coursService.AddAsync(requestModel);
-
                     // Add image : 
                     try
                     {
@@ -133,7 +131,6 @@ namespace Hola.Api.Controllers
                     {
                         return JsonResponseModel.Error("File image is Lagest",500);
                     }
-                  
                     return JsonResponseModel.Success(response);
                 }
                 else

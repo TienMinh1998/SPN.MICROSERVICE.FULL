@@ -20,6 +20,7 @@ namespace Hola.Api.AutoMappers
             CreateMap<UpdateCourseModel, Cours>();
             CreateMap<AddTopicModel, Topic>();
             CreateMap<AddQuestionStandardModel, QuestionStandard>();
+            CreateMap<UpdateTopicModel, Topic>();
 
             // Entity -> Model
         }
