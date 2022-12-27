@@ -106,7 +106,7 @@ namespace Hola.Api.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost("Course")]
-        public async Task<JsonResponseModel> AddCourse(CourseModelRequest model)
+        public async Task<JsonResponseModel> AddCourse([FromForm] CourseModelRequest model)
         {
             try
             {

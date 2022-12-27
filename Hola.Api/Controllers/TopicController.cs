@@ -103,7 +103,7 @@ namespace Hola.Api.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPut("UpdateTopic")]
-        public async Task<JsonResponseModel> Update( UpdateTopicModel model)
+        public async Task<JsonResponseModel> Update([FromForm] UpdateTopicModel model)
         {
             try
             {
