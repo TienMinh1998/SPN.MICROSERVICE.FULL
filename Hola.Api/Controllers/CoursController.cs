@@ -174,6 +174,7 @@ namespace Hola.Api.Controllers
 
                 var entity = _mapper.Map<Cours>(model);
                 entity.Code = course.Code;
+                entity.created_on = course.created_on;
                 entity.CoursImage = resultUrl;
                 var updateCourse =await _coursService.UpdateAsync(entity);
                 if (updateCourse != null)

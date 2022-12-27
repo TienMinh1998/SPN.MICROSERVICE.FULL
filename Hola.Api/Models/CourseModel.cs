@@ -21,15 +21,15 @@ namespace Hola.Api.Models
     public class UpdateCourseModel 
     {
      
-        public string title { get; set; }     // tiêu đề của khóa học
+        public string title { get; set; }      // Tiêu đề của khóa học
  
         public string target { get; set; }     // Mục tiêu của khóa học
     
         public string content { get; set; }    // Nội dung của khóa học
   
-        public int pk_coursId { get; set; }
+        public int pk_coursId { get; set; }    // Pk_courseId
 
-        public IFormFile file { get; set; }
+        public IFormFile file { get; set; }    // file 
     }
 
 
