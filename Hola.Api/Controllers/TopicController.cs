@@ -4,6 +4,7 @@ using Hola.Api.Models;
 using Hola.Api.Service;
 using Hola.Core.Model;
 using Hola.GoogleCloudStorage;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -13,6 +14,7 @@ using System.Threading.Tasks;
 
 namespace Hola.Api.Controllers
 {
+    [Authorize]
     public class TopicController : ControllerBase
     {
         private readonly IMapper _mapper;
