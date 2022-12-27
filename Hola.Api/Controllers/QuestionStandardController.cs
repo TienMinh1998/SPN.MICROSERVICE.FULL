@@ -70,6 +70,7 @@ namespace Hola.Api.Controllers
             try
             {
                 bool condition = false;
+ 
                 if (request.IsDesc==null || request.IsDesc==false)
                 {
                     condition = false;
@@ -81,13 +82,8 @@ namespace Hola.Api.Controllers
 
                 Func<QuestionStandard, bool> lastCondition = m => true;
                 var question = _questionStandardService.GetListPaged(request.PageNumber, request.PageSize, lastCondition,request.columnname,condition);
-                var response = new
-                {
-                    currentPage = request.PageNumber,
-                    pageSize = request.PageSize,
-                    list = question,
-                };
-                return JsonResponseModel.Success(response);
+                question.currentPage = request.PageNumber;
+                return JsonResponseModel.Success(question);
             }
             catch (Exception ex)
             {
