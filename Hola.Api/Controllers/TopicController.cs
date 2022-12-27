@@ -146,8 +146,8 @@ namespace Hola.Api.Controllers
             try
             {
                 Func<Topic, bool> lastCondition = m => true;
-                var toppics = _topicService.GetListPaged(requestModel.PageNumber, requestModel.PageSize, lastCondition, requestModel.ColumnSort, requestModel.IsDesc);
-                toppics.currentPage = requestModel.PageNumber;
+                var toppics = _topicService.GetListPaged(requestModel.pageNumber, requestModel.pageSize, lastCondition, requestModel.columnSort, requestModel.isDesc);
+                toppics.currentPage = requestModel.pageNumber;
                 if (toppics != null)
                 {
                     return JsonResponseModel.Success(toppics);

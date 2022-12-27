@@ -81,8 +81,8 @@ namespace Hola.Api.Controllers
             try
             {
                 Func<Cours, bool> lastCondition = m => true;
-                var questions = _coursService.GetListPaged(requestModel.PageNumber, requestModel.PageSize, lastCondition, requestModel.ColumnSort,requestModel.IsDesc);
-                questions.currentPage = requestModel.PageNumber;
+                var questions = _coursService.GetListPaged(requestModel.pageNumber, requestModel.pageSize, lastCondition, requestModel.columnSort,requestModel.isDesc);
+                questions.currentPage = requestModel.pageNumber;
                 if (questions != null)
                 {
                     return JsonResponseModel.Success(questions);

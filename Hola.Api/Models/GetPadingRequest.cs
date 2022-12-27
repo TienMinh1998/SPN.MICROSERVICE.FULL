@@ -2,9 +2,9 @@
 {
     public class GetPadingRequest
     {
-        public int PageNumber { get; set; }
-        public int PageSize { get; set; }
-        public string ColumnSort { get; set; }
-        public bool IsDesc { get; set; }
+        public int pageNumber { get; set; }
+        public int pageSize { get; set; }
+        public string columnSort { get; set; }
+        public bool isDesc { get; set; }
     }
 }
