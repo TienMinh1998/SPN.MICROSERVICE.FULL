@@ -115,7 +115,7 @@ namespace Hola.Api.Controllers
                 if (countResult == 0)
                 {
                     requestModel.created_on = DateTime.UtcNow;
-                    var response = await _coursService.AddAsync(requestModel);
+             
                     // Add image : 
                     try
                     {
@@ -125,13 +125,14 @@ namespace Hola.Api.Controllers
                             await model.file.CopyToAsync(stream);
                         var resultUrl = _GoogleCloudStorage.UploadFile(filePath, "5512421445", model.file.FileName, "credentials.json", "image", "image/jpeg");
                         requestModel.CoursImage = resultUrl;
-
+                        var response = await _coursService.AddAsync(requestModel);
+                        return JsonResponseModel.Success(response);
                     }
                     catch (Exception ex)
                     {
                         return JsonResponseModel.Error("File image is Lagest",500);
                     }
-                    return JsonResponseModel.Success(response);
+                 
                 }
                 else
                 {
