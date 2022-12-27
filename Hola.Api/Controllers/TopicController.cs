@@ -74,6 +74,7 @@ namespace Hola.Api.Controllers
             }
 
         }
+
         /// <summary>
         ///  Thêm mới 1 topic
         /// </summary>
@@ -132,5 +133,33 @@ namespace Hola.Api.Controllers
                 return JsonResponseModel.Error(ex.Message, 500);
             }
         }
+
+        [HttpPost("List-toppic")]
+        public async Task<JsonResponseModel> GetAllPadding([FromBody] GetPadingRequest requestModel)
+        {
+            try
+            {
+                Func<Topic, bool> lastCondition = m => true;
+                var toppics = _topicService.GetListPaged(requestModel.PageNumber, requestModel.PageSize, lastCondition, requestModel.ColumnSort, requestModel.IsDesc);
+                toppics.currentPage = requestModel.PageNumber;
+                if (toppics != null)
+                {
+                    return JsonResponseModel.Success(toppics);
+                }
+                else
+                {
+                    return JsonResponseModel.Success(new List<string>(), "Danh sách rỗng");
+                }
+            }
+            catch (System.Exception ex)
+            {
+
+                return JsonResponseModel.SERVER_ERROR();
+            }
+
+        }
+
+
+
     }
 }
