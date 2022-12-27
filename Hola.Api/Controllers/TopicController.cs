@@ -133,7 +133,11 @@ namespace Hola.Api.Controllers
                 return JsonResponseModel.Error(ex.Message, 500);
             }
         }
-
+        /// <summary>
+        /// Lấy ra danh sách topic có phân trang
+        /// </summary>
+        /// <param name="requestModel"></param>
+        /// <returns></returns>
         [HttpPost("List-toppic")]
         public async Task<JsonResponseModel> GetAllPadding([FromBody] GetPadingRequest requestModel)
         {
