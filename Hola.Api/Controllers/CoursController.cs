@@ -151,7 +151,7 @@ namespace Hola.Api.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPut("Course")]
-        public async Task<JsonResponseModel> EditCourse([FromBody] UpdateCourseModel model)
+        public async Task<JsonResponseModel> EditCourse([FromForm] UpdateCourseModel model)
         {
             try
             {
@@ -171,6 +171,7 @@ namespace Hola.Api.Controllers
                 {
                     resultUrl = course.CoursImage;
                 }
+
                 var entity = _mapper.Map<Cours>(model);
                 entity.Code = course.Code;
                 entity.CoursImage = resultUrl;
