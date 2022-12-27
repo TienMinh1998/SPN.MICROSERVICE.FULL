@@ -27,7 +27,9 @@ namespace Hola.Api.Models
     
         public string content { get; set; }    // Nội dung của khóa học
   
-        public int pk_coursId { get; set; } 
+        public int pk_coursId { get; set; }
+
+        public IFormFile file { get; set; }
     }
 
 

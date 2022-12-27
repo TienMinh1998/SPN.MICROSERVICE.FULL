@@ -155,11 +155,25 @@ namespace Hola.Api.Controllers
         {
             try
             {
+                string resultUrl = string.Empty;
                 var course = await _coursService.GetFirstOrDefaultAsync(x => x.Pk_coursId == model.pk_coursId);
                 if (course == null)
                     return JsonResponseModel.Error("Khóa học không tồn tại", 400);
+                if (model.file != null)
+                {
+                    var filename = DateTime.Now.ToString() + model.file.FileName;
+                    var filePath = Path.GetTempFileName();
+                    using (var stream = System.IO.File.Create(filePath))
+                        await model.file.CopyToAsync(stream);
+                    resultUrl = _GoogleCloudStorage.UploadFile(filePath, "5512421445", filename, "credentials.json", "image", "image/jpeg");
+                }
+                else
+                {
+                    resultUrl = course.CoursImage;
+                }
                 var entity = _mapper.Map<Cours>(model);
                 entity.Code = course.Code;
+                entity.CoursImage = resultUrl;
                 var updateCourse =await _coursService.UpdateAsync(entity);
                 if (updateCourse != null)
                     return JsonResponseModel.Success(updateCourse, "Cập nhật thông tin khóa học thành công");
