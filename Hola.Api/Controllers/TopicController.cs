@@ -112,15 +112,24 @@ namespace Hola.Api.Controllers
         {
             try
             {
+                var resultUrl = string.Empty;
                 var topic = await _topicService.GetFirstOrDefaultAsync(x => x.PK_Topic_Id == model.pK_Topic_Id);
                 if (topic == null)
                     return JsonResponseModel.Error($" Chủ đề {model.pK_Topic_Id} không tồn tại ", 400);
 
-                var filename = DateTime.Now.ToString()+model.file.FileName;
-                var filePath = Path.GetTempFileName();
-                using (var stream = System.IO.File.Create(filePath))
-                    await model.file.CopyToAsync(stream);
-                var resultUrl = _GoogleCloudStorage.UploadFile(filePath, "5512421445", filename, "credentials.json", "image", "image/jpeg");
+                if (model.file!=null)
+                {
+                    var filename = DateTime.Now.ToString() + model.file.FileName;
+                    var filePath = Path.GetTempFileName();
+                    using (var stream = System.IO.File.Create(filePath))
+                        await model.file.CopyToAsync(stream);
+                    resultUrl = _GoogleCloudStorage.UploadFile(filePath, "5512421445", filename, "credentials.json", "image", "image/jpeg");
+                }
+                else
+                {
+                    resultUrl = topic.Image;
+                }
+
                 var entity = _mapper.Map<Topic>(model);
                 entity.Image = resultUrl;
                 entity.created_on = topic.created_on;
