@@ -86,6 +86,8 @@ namespace Hola.Api.Controllers
             {
                 var topicEntity = _mapper.Map<Topic>(model);
                 topicEntity.created_on = DateTime.UtcNow;
+
+
                 var response = await _topicService.AddAsync(topicEntity);
                 return JsonResponseModel.Success(response);
 

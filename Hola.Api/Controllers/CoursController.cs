@@ -159,6 +159,7 @@ namespace Hola.Api.Controllers
                 if (course == null)
                     return JsonResponseModel.Error("Khóa học không tồn tại", 400);
                 var entity = _mapper.Map<Cours>(model);
+                entity.Code = course.Code;
                 var updateCourse =await _coursService.UpdateAsync(entity);
                 if (updateCourse != null)
                     return JsonResponseModel.Success(updateCourse, "Cập nhật thông tin khóa học thành công");
