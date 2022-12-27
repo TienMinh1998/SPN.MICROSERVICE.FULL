@@ -2,25 +2,32 @@
 using System.ComponentModel.DataAnnotations;
 using System;
 using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 
 namespace Hola.Api.Models
 {
     public class CourseModel
     {
-        public string Title { get; set; }     // tiêu đề của khóa học
-        public string Code { get; set; }       // Mã khóa học
-        public string Target { get; set; }     // Mục tiêu của khóa học
-        public string Content { get; set; }    // Nội dung của khóa học
-        public string CoursImage { get; set; } // Thêm ảnh cho khóa học
+    
+        public string title { get; set; }     // tiêu đề của khóa học
+
+        public string code { get; set; }       // Mã khóa học
+
+        public string target { get; set; }     // Mục tiêu của khóa học
+
+        public string content { get; set; }    // Nội dung của khóa học
     }
 
     public class UpdateCourseModel 
     {
-        public string Title { get; set; }     // tiêu đề của khóa học
-        public string Target { get; set; }     // Mục tiêu của khóa học
-        public string Content { get; set; }    // Nội dung của khóa học
-        public string CoursImage { get; set; } // Thêm ảnh cho khóa học
-        public int Pk_coursId { get; set; } 
+     
+        public string title { get; set; }     // tiêu đề của khóa học
+ 
+        public string target { get; set; }     // Mục tiêu của khóa học
+    
+        public string content { get; set; }    // Nội dung của khóa học
+  
+        public int pk_coursId { get; set; } 
     }
 
 

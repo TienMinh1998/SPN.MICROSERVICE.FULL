@@ -111,7 +111,7 @@ namespace Hola.Api.Controllers
             try
             {
                 var requestModel = _mapper.Map<Cours>(model);
-                var countResult = await _coursService.CountAsync(x => x.Code == model.Code);
+                var countResult = await _coursService.CountAsync(x => x.Code == model.code);
                 if (countResult == 0)
                 {
                     requestModel.created_on = DateTime.UtcNow;
@@ -155,7 +155,7 @@ namespace Hola.Api.Controllers
         {
             try
             {
-                var course = await _coursService.GetFirstOrDefaultAsync(x => x.Pk_coursId == model.Pk_coursId);
+                var course = await _coursService.GetFirstOrDefaultAsync(x => x.Pk_coursId == model.pk_coursId);
                 if (course == null)
                     return JsonResponseModel.Error("Khóa học không tồn tại", 400);
                 var entity = _mapper.Map<Cours>(model);
