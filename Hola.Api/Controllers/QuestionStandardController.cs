@@ -9,6 +9,7 @@ using Hola.Core.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.Extensions.DependencyInjection;
 using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
@@ -158,6 +159,8 @@ namespace Hola.Api.Controllers
         {
             try
             {
+                if (string.IsNullOrEmpty(model.QuestionID.ToString()) || string.IsNullOrEmpty(model.TopicID.ToString()))
+                    return JsonResponseModel.Success("Sai định dạng dữ liệu đầu vào!");
                 string sql_Add = $"INSERT INTO usr.\"QuestionStandardDetail\" (\"QuestionID\", \"TopicID\") VALUES({model.QuestionID}, {model.TopicID});";
                 var response = _dapper.Execute(sql_Add);
                 return JsonResponseModel.Success("Thêm thành công");
