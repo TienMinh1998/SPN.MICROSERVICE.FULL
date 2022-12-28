@@ -115,8 +115,6 @@ namespace Hola.Api.Controllers
                 if (countResult == 0)
                 {
                     requestModel.created_on = DateTime.UtcNow;
-             
-                    // Add image : 
                     try
                     {
                         var filename = model.file;
