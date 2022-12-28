@@ -166,6 +166,10 @@ namespace Hola.Api.Controllers
                     return JsonResponseModel.Success("Sai định dạng dữ liệu đầu vào!");
                 string sql_Add = $"INSERT INTO usr.\"QuestionStandardDetail\" (\"QuestionID\", \"TopicID\") VALUES({model.QuestionID}, {model.TopicID});";
                 var response = _dapper.Execute(sql_Add);
+                // Cập nhật lại trường đã thêm vào topic bằng true 
+                string sqlUpdate = $"UPDATE public.\"QuestionStandards\" SET \"Added\"=true WHERE \"Pk_QuestionStandard_Id\"={model.QuestionID}";
+                var responseUpdatge = _dapper.Execute(sqlUpdate);
+
                 return JsonResponseModel.Success("Thêm thành công");
             }
             catch (Exception ex)
