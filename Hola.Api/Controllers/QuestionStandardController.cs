@@ -75,7 +75,7 @@ namespace Hola.Api.Controllers
                 || x.English.Contains(request.searchKey,StringComparison.OrdinalIgnoreCase)
                 || x.MeaningVietNam.Contains(request.searchKey,StringComparison.OrdinalIgnoreCase)
                 || x.created_on.ToString("yyyy-MM-dd").Contains(request.searchKey,StringComparison.OrdinalIgnoreCase) 
-                && string.IsNullOrEmpty(request.Date)?true:x.created_on.ToString("yyyy-MM-dd").Contains(request.Date));
+                && string.IsNullOrEmpty(request.Date)?true:x.created_on.ToString("yyyy-MM-dd")==request.Date);
 
                 if (request.IsDesc==null || request.IsDesc==false)
                 {
