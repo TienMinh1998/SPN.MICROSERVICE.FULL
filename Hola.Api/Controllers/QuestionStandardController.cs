@@ -66,12 +66,16 @@ namespace Hola.Api.Controllers
         /// <returns></returns>
         [HttpPost("AllQuestion")]
         [Authorize]
-        public async Task<JsonResponseModel> GetQuestionById([FromBody] QuestionModelStandard request)
+        public async Task<JsonResponseModel> Search([FromBody] QuestionModelStandard request)
         {
             try
             {
                 bool condition = false;
- 
+                Func<QuestionStandard, bool> searchCondition = x => (string.IsNullOrEmpty(request.searchKey) || request.searchKey == "*"
+                || x.English.Contains(request.searchKey,StringComparison.OrdinalIgnoreCase)
+                || x.MeaningVietNam.Contains(request.searchKey,StringComparison.OrdinalIgnoreCase)
+                );
+
                 if (request.IsDesc==null || request.IsDesc==false)
                 {
                     condition = false;
@@ -80,9 +84,7 @@ namespace Hola.Api.Controllers
                 {
                     condition = true;
                 }
-
-                Func<QuestionStandard, bool> lastCondition = m => true;
-                var question = _questionStandardService.GetListPaged(request.PageNumber, request.PageSize, lastCondition,request.columnname,condition);
+                var question = _questionStandardService.GetListPaged(request.PageNumber, request.PageSize, searchCondition, request.columnname,condition);
                 question.currentPage = request.PageNumber;
                 return JsonResponseModel.Success(question);
             }
