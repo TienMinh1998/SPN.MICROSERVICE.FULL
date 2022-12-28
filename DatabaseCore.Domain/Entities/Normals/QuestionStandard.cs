@@ -19,6 +19,7 @@ namespace DatabaseCore.Domain.Entities.Normals
         public string MeaningVietNam { get; set; }   // Nghĩa tiếng việt
         public string Note { get; set; }             // Ghi chú
         public bool IsDeleted { get; set; }          // đã xóa hay chưa
+        public bool Added { get; set; }              // đã add vào topic hay chưa
         public DateTime created_on { get; set; }     // THời gian tạo
     }
 }
