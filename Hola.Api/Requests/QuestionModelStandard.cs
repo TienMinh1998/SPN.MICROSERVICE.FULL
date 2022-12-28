@@ -9,7 +9,7 @@ namespace Hola.Api.Requests
         public int PageNumber { get; set; }
         public int PageSize { get; set; }
         public string columnname { get; set; }
-        public DateTime? Date { get; set; }
+        public string Date { get; set; }
         public bool IsDesc { get; set; }
     }
 }
