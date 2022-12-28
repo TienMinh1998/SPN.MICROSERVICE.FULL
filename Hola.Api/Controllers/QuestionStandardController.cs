@@ -162,6 +162,7 @@ namespace Hola.Api.Controllers
         {
             try
             {
+                // Thêm câu hỏi vào topic
                 if (string.IsNullOrEmpty(model.QuestionID.ToString()) || string.IsNullOrEmpty(model.TopicID.ToString()))
                     return JsonResponseModel.Success("Sai định dạng dữ liệu đầu vào!");
                 string sql_Add = $"INSERT INTO usr.\"QuestionStandardDetail\" (\"QuestionID\", \"TopicID\") VALUES({model.QuestionID}, {model.TopicID});";
