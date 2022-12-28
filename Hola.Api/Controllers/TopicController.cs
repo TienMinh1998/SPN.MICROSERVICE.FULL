@@ -174,7 +174,28 @@ namespace Hola.Api.Controllers
 
         }
 
+        /// <summary>
+        /// Xóa 1 topic
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpDelete("topic/{id}")]
+        public async Task<JsonResponseModel> DeleteCourse(int id)
+        {
+            try
+            {
+                var topic = await _topicService.GetFirstOrDefaultAsync(x => x.PK_Topic_Id == id);
+                if (topic == null)
+                    return JsonResponseModel.Error($"Chủ đề Id='{id}' không tồn tại", 400);
+                await _topicService.DeleteAsync(topic);
+                return JsonResponseModel.Success(new List<string>(), $"Xóa thành công chủ đề Id ='{id}'");
+            }
+            catch (Exception ex)
+            {
+                return JsonResponseModel.Error(ex.Message, 500);
+            }
 
+        }
 
     }
 }
