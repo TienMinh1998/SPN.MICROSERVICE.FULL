@@ -154,7 +154,7 @@ namespace Hola.Api.Controllers
         {
             try
             {
-                Func<Topic, bool> lastCondition = m => m.PK_Topic_Id == requestModel.topicId;
+                Func<Topic, bool> lastCondition = m => m.FK_Course_Id == requestModel.courseId;
                 var toppics = _topicService.GetListPaged(requestModel.pageNumber, requestModel.pageSize, lastCondition, requestModel.columnSort, requestModel.isDesc);
                 toppics.currentPage = requestModel.pageNumber;
                 if (toppics != null)
