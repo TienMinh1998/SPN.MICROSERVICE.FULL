@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Hola.Api.Controllers
@@ -227,6 +228,27 @@ namespace Hola.Api.Controllers
             {
 
                 return JsonResponseModel.Error(ex.Message, 500);
+            }
+
+        }
+
+
+        [HttpGet("History")]
+        [Authorize]
+        public async Task<JsonResponseModel> GetHistory()
+        {
+            try
+            {
+                int userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == "UserId").Value);
+                string query = "SELECT id, fk_userid, count_word, percent_day, note, created_on " +
+                    $"FROM history.userhistory where fk_userid ={userid} order by created_on desc ";
+                var response = await _dapper.GetAllAsync<HistoryModel>(query);
+                return JsonResponseModel.Success(response);
+
+            }
+            catch (Exception ex)
+            {
+                return JsonResponseModel.SERVER_ERROR(ex.Message);
             }
 
         }

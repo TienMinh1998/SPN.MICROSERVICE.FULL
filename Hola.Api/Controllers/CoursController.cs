@@ -128,7 +128,7 @@ namespace Hola.Api.Controllers
                     }
                     catch (Exception ex)
                     {
-                        return JsonResponseModel.Error("File image is Lagest",500);
+                        return JsonResponseModel.Error( $"File image is Lagest {ex.Message}",500);
                     }
                  
                 }
