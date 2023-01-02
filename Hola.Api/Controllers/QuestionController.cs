@@ -16,6 +16,7 @@ using Hola.Core.Helper;
 using Newtonsoft.Json;
 using DatabaseCore.Domain.Entities.Normals;
 using Hola.Api.Service.CateporyServices;
+using Hola.Api.Models.Dic;
 
 namespace Hola.Api.Controllers
 {
@@ -89,17 +90,25 @@ namespace Hola.Api.Controllers
                 string phonetic = "";
                 try
                 {
-                    // phiên âm của từ đó
+                    // Get infomation from oxfordDictionary
                     APICrossHelper api = new APICrossHelper();
                     string word = model.QuestionName;
-                    var response = await api.Get<object>($"https://api.dictionaryapi.dev/api/v2/entries/en/{word}");
-                    var phienam = JsonConvert.DeserializeObject<List<ResponseDicModel>>(response.ToString());
-                    phonetic = phienam.FirstOrDefault().phonetic;
-                    audio = phienam.FirstOrDefault().phonetics.FirstOrDefault().audio;
+                    var response1 = await api.GetFromDictionary<ResultFromOxford>(word);
+                    var audioFile = response1.Results.FirstOrDefault()
+                        .lexicalEntries.FirstOrDefault()
+                        .entries.FirstOrDefault()
+                        .pronunciations
+                        .FirstOrDefault().audioFile;
+                    var phoneticSpelling = response1.Results.FirstOrDefault()
+                        .lexicalEntries.FirstOrDefault()
+                        .entries.FirstOrDefault()
+                        .pronunciations
+                        .FirstOrDefault().phoneticSpelling;
+                    phonetic =$"[{phoneticSpelling}]";
+                    audio = audioFile;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-
                 }
 
                 // Thêm Câu hỏi vào Kho từ 

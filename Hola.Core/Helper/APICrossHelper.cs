@@ -85,5 +85,21 @@ namespace Hola.Core.Helper
             var Result = Newtonsoft.Json.JsonConvert.DeserializeObject<T>(json);
             return Result;
         }
+
+        public async Task<T> GetFromDictionary<T>(string word)
+        {
+            string links = $"https://od-api.oxforddictionaries.com/api/v2/entries/en-gb/{word}?strictMatch=false";
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Add("Accept", "application/json");
+            client.DefaultRequestHeaders.Add("app_id", "c4621f80");
+            client.DefaultRequestHeaders.Add("app_key", "1d035422e5c1de0548a9fa30f38d7135");
+            
+            var request1 = new HttpRequestMessage(HttpMethod.Get, links);
+            HttpResponseMessage response = await client.SendAsync(request1);
+            HttpContent content = response.Content;
+            var json = await content.ReadAsStringAsync();
+            var Result = Newtonsoft.Json.JsonConvert.DeserializeObject<T>(json);
+            return Result;
+        }
     }
 }
