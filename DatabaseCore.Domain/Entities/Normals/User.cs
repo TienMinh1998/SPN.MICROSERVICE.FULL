@@ -16,5 +16,6 @@ namespace DatabaseCore.Domain.Entities.Normals
         public string DeviceToken { get; set; }
         public string Name { get; set; }
         public int isnotification { get; set; }
+        public string Avartar { get; set; }
     }
 }
