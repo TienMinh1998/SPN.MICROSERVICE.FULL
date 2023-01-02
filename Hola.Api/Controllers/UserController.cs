@@ -240,7 +240,7 @@ namespace Hola.Api.Controllers
             }
         }
 
-        [HttpPost("UploadImage")]
+        [HttpPost("UploadAvartar")]
         public async Task<JsonResponseModel> UploadAvartar(IFormFile? inputFiles)
         {
             var userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == SystemParam.CLAIM_USER).Value);
