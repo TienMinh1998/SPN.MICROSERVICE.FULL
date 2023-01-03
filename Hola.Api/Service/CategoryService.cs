@@ -21,7 +21,7 @@ namespace Hola.Api.Service
 
         public async Task<bool> AddCategory(AddCategoryModel addCategory)
         {
-            var sql = string.Format("INSERT INTO qes.categories(name, define, created_on, \"Image\",fk_userid) VALUES ( '{0}', '{1}', now(), '{2}',{3});",
+            var sql = string.Format("INSERT INTO usr.categories(name, define, created_on, \"Image\",fk_userid) VALUES ( '{0}', '{1}', now(), '{2}',{3});",
                 addCategory.Name,addCategory.Define,addCategory.Image,addCategory.fk_userid);
             var result = await Excecute(ConnectionString, sql);
             return true;
