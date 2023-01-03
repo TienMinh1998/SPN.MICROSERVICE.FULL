@@ -23,6 +23,6 @@ namespace DatabaseCore.Domain.Entities.Normals
         public DateTime created_on { get; set; }
         public int is_delete { get; set; }
         public string definition { get; set; }
-
+        public string Type { get; set; }
     }
 }

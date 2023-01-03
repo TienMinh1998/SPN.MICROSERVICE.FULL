@@ -108,6 +108,7 @@ namespace Hola.Api.Controllers
                     string audio = "";
                     string phonetic = "";
                     string desfinition = "";
+                    string type = "";
                     try
                     {
                         // Get infomation from oxfordDictionary
@@ -128,10 +129,11 @@ namespace Hola.Api.Controllers
                         // get definition
                         var def = response1.Results.FirstOrDefault()
                             .lexicalEntries.FirstOrDefault().entries.FirstOrDefault().senses.FirstOrDefault().definitions.FirstOrDefault();
-
-                        phonetic = $"[{phoneticSpelling}]";
-                        audio = audioFile;
-                        desfinition = def;
+                        // Get type Of word
+                             type = response1.Results.FirstOrDefault().lexicalEntries.FirstOrDefault().lexicalCategory.text;
+                            phonetic = $"[{phoneticSpelling}]";
+                            audio = audioFile;
+                            desfinition = def;
                     }
                     catch (Exception ex)
                     {
@@ -149,9 +151,11 @@ namespace Hola.Api.Controllers
                         fk_userid = model.fk_userid,
                         ImageSource = model.ImageSource,
                         questionname = model.QuestionName + " " + phonetic,
-                        definition = desfinition
+                        definition = desfinition,
+                        Type = type
+                       
                     };
-                    // Cập nhật lại trường đếm trong category
+                    // the moist important task is Update catagory database
                     var category = await categoryService.GetFirstOrDefaultAsync(x => x.Id == model.Category_Id);
                     category.totalquestion += 1;
                     category.priority += 1;

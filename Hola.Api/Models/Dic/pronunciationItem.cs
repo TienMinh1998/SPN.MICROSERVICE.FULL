@@ -24,7 +24,7 @@ namespace Hola.Api.Models.Dic
     public class lexicalEntrieItem
     {
         public List<entrieItem> entries { get; set; }
-       
+       public LexicalCategory lexicalCategory { get; set; }
     }
 
     public class entrieItem
@@ -36,6 +36,11 @@ namespace Hola.Api.Models.Dic
     public class SensesItem
     {
         public List<string> definitions { get; set; }
+    }
+
+    public class LexicalCategory
+    {
+        public string text { get; set; }
     }
 }
 
