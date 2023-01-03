@@ -60,6 +60,7 @@ namespace Hola.Api.Controllers
         public async Task<JsonResponseModel> GetQuestionById(int ID)
         {
             var question = await _questionService.GetAllAsync(x => (x.category_id == ID) && (x.is_delete != 1));
+            var responseList = question.OrderByDescending(x => x.created_on).ToList();  
             return JsonResponseModel.Success(question);
         }
 
