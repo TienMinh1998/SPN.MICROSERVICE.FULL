@@ -85,8 +85,6 @@ namespace Hola.Api.Controllers
         {
             try
             {
-
-
                 int userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == "UserId").Value);
                 // Check question is available 
                 var question_available = await _questionService.GetFirstOrDefaultAsync(x=>x.fk_userid== userid && x.questionname==model.QuestionName);
