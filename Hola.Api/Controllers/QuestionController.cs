@@ -84,7 +84,7 @@ namespace Hola.Api.Controllers
         [HttpPost("v2/GetQuestionDeleted")]
         public async Task<JsonResponseModel> GetLisLearnQuestion([FromBody] PaddingQuestionRequest model)
         {
-            Func<Question, bool> condition = x => true;
+            Func<Question, bool> condition = x => (x.is_delete==1 && x.category_id==model.Category_Id);
             var question = _questionService.GetListPaged(model.PageNumber, model.PageSize, condition, model.SortColumn,model.IsDesc);
             return JsonResponseModel.Success(question);
         }
