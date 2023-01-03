@@ -107,6 +107,7 @@ namespace Hola.Api.Controllers
                 {
                     string audio = "";
                     string phonetic = "";
+                    string desfinition = "";
                     try
                     {
                         // Get infomation from oxfordDictionary
@@ -118,13 +119,19 @@ namespace Hola.Api.Controllers
                             .entries.FirstOrDefault()
                             .pronunciations
                             .FirstOrDefault().audioFile;
+                        // Get phoneticSpelling
                         var phoneticSpelling = response1.Results.FirstOrDefault()
                             .lexicalEntries.FirstOrDefault()
                             .entries.FirstOrDefault()
                             .pronunciations
                             .FirstOrDefault().phoneticSpelling;
+                        // get definition
+                        var def = response1.Results.FirstOrDefault()
+                            .lexicalEntries.FirstOrDefault().entries.FirstOrDefault().senses.FirstOrDefault().definitions.FirstOrDefault();
+
                         phonetic = $"[{phoneticSpelling}]";
                         audio = audioFile;
+                        desfinition = def;
                     }
                     catch (Exception ex)
                     {
@@ -142,6 +149,7 @@ namespace Hola.Api.Controllers
                         fk_userid = model.fk_userid,
                         ImageSource = model.ImageSource,
                         questionname = model.QuestionName + " " + phonetic,
+                        definition = desfinition
                     };
                     // Cập nhật lại trường đếm trong category
                     var category = await categoryService.GetFirstOrDefaultAsync(x => x.Id == model.Category_Id);
