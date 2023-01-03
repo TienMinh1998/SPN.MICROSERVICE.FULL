@@ -257,7 +257,7 @@ namespace Hola.Api.Controllers
                 }
                 var resultUrl = _GoogleCloudStorage.UploadFile(filePath, "5512421445", inputFiles.FileName, "credentials.json", "image", "image/jpeg");
                 user.Avartar = resultUrl;
-                userService.UpdateAsync(user);
+                await userService.UpdateAsync(user);
                 return JsonResponseModel.Success(resultUrl);
             }
             return JsonResponseModel.SERVER_ERROR("Cập nhật ảnh đại diện thất bại");
