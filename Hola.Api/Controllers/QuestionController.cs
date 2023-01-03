@@ -25,7 +25,7 @@ namespace Hola.Api.Controllers
 
         private readonly IOptions<SettingModel> _config;
         private readonly Service.QuestionService qesQuestionService;
-        private readonly IQuestionService _qService;
+        private readonly IQuestionService _questionService;
         private readonly ICategoryService categoryService;
 
         public QuestionController(IOptions<SettingModel> config,
@@ -35,7 +35,7 @@ namespace Hola.Api.Controllers
 
             _config = config;
             this.qesQuestionService = qesQuestionService;
-            _qService = qService;
+            _questionService = qService;
             this.categoryService = categoryService;
         }
 
@@ -59,7 +59,7 @@ namespace Hola.Api.Controllers
         [HttpGet("GetQuestion/{ID}")]
         public async Task<JsonResponseModel> GetQuestionById(int ID)
         {
-            var question = await _qService.GetAllAsync(x => (x.category_id == ID) && (x.is_delete != 1));
+            var question = await _questionService.GetAllAsync(x => (x.category_id == ID) && (x.is_delete != 1));
             return JsonResponseModel.Success(question);
         }
 
@@ -71,7 +71,7 @@ namespace Hola.Api.Controllers
         [HttpGet("GetQuestionDeleted/{ID}")]
         public async Task<JsonResponseModel> GetQuestionDeletedById(int ID)
         {
-            var question = await _qService.GetAllAsync(x => (x.category_id == ID) && (x.is_delete == 1));
+            var question = await _questionService.GetAllAsync(x => (x.category_id == ID) && (x.is_delete == 1));
             return JsonResponseModel.Success(question);
         }
         /// <summary>
@@ -85,53 +85,64 @@ namespace Hola.Api.Controllers
         {
             try
             {
+
+
                 int userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == "UserId").Value);
-                string audio = "";
-                string phonetic = "";
-                try
+                // Check question is available 
+                var question_available = await _questionService.GetFirstOrDefaultAsync(x=>x.fk_userid== userid && x.questionname==model.QuestionName);
+                if (question_available==null)
                 {
-                    // Get infomation from oxfordDictionary
-                    APICrossHelper api = new APICrossHelper();
-                    string word = model.QuestionName;
-                    var response1 = await api.GetFromDictionary<ResultFromOxford>(word);
-                    var audioFile = response1.Results.FirstOrDefault()
-                        .lexicalEntries.FirstOrDefault()
-                        .entries.FirstOrDefault()
-                        .pronunciations
-                        .FirstOrDefault().audioFile;
-                    var phoneticSpelling = response1.Results.FirstOrDefault()
-                        .lexicalEntries.FirstOrDefault()
-                        .entries.FirstOrDefault()
-                        .pronunciations
-                        .FirstOrDefault().phoneticSpelling;
-                    phonetic =$"[{phoneticSpelling}]";
-                    audio = audioFile;
-                }
-                catch (Exception ex)
-                {
-                }
+                    string audio = "";
+                    string phonetic = "";
+                    try
+                    {
+                        // Get infomation from oxfordDictionary
+                        APICrossHelper api = new APICrossHelper();
+                        string word = model.QuestionName;
+                        var response1 = await api.GetFromDictionary<ResultFromOxford>(word);
+                        var audioFile = response1.Results.FirstOrDefault()
+                            .lexicalEntries.FirstOrDefault()
+                            .entries.FirstOrDefault()
+                            .pronunciations
+                            .FirstOrDefault().audioFile;
+                        var phoneticSpelling = response1.Results.FirstOrDefault()
+                            .lexicalEntries.FirstOrDefault()
+                            .entries.FirstOrDefault()
+                            .pronunciations
+                            .FirstOrDefault().phoneticSpelling;
+                        phonetic = $"[{phoneticSpelling}]";
+                        audio = audioFile;
+                    }
+                    catch (Exception ex)
+                    {
+                    }
 
-                // Thêm Câu hỏi vào Kho từ 
-                Question question = new Question()
-                {
-                    is_delete = 0,
-                    answer = model.Answer,
-                    audio = audio,
-                    category_id = model.Category_Id,
-                    phonetic = phonetic,
-                    created_on = DateTime.Now,
-                    fk_userid = model.fk_userid,
-                    ImageSource = model.ImageSource,
-                    questionname = model.QuestionName + " " + phonetic,
-                };
-                // Cập nhật lại trường đếm trong category
-                var category = await categoryService.GetFirstOrDefaultAsync(x => x.Id == model.Category_Id);
-                category.totalquestion += 1;
-                category.priority += 1;
-                await categoryService.UpdateAsync(category);
-                await _qService.AddAsync(question);
+                    // Thêm Câu hỏi vào Kho từ 
+                    Question question = new Question()
+                    {
+                        is_delete = 0,
+                        answer = model.Answer,
+                        audio = audio,
+                        category_id = model.Category_Id,
+                        phonetic = phonetic,
+                        created_on = DateTime.Now,
+                        fk_userid = model.fk_userid,
+                        ImageSource = model.ImageSource,
+                        questionname = model.QuestionName + " " + phonetic,
+                    };
+                    // Cập nhật lại trường đếm trong category
+                    var category = await categoryService.GetFirstOrDefaultAsync(x => x.Id == model.Category_Id);
+                    category.totalquestion += 1;
+                    category.priority += 1;
+                    await categoryService.UpdateAsync(category);
+                    await _questionService.AddAsync(question);
 
-                return JsonResponseModel.Success(question);
+                    return JsonResponseModel.Success(question);
+                }
+                else
+                {
+                    return JsonResponseModel.Error("Question is Exsit",400);
+                }
             }
             catch (Exception)
             {
@@ -148,9 +159,9 @@ namespace Hola.Api.Controllers
         [HttpPost("DeleteQuestion")]
         public async Task<JsonResponseModel> DeleteQuestion([FromBody] DeleteQuestionRequest request)
         {
-            var question = await _qService.GetFirstOrDefaultAsync(x => x.id == request.ID);
+            var question = await _questionService.GetFirstOrDefaultAsync(x => x.id == request.ID);
             question.is_delete = 1;
-            await _qService.UpdateAsync(question);
+            await _questionService.UpdateAsync(question);
             return JsonResponseModel.Success(true);
         }
         /// <summary>
