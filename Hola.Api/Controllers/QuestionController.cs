@@ -17,6 +17,7 @@ using Newtonsoft.Json;
 using DatabaseCore.Domain.Entities.Normals;
 using Hola.Api.Service.CateporyServices;
 using Hola.Api.Models.Dic;
+using Hola.Api.Requests;
 
 namespace Hola.Api.Controllers
 {
@@ -76,8 +77,21 @@ namespace Hola.Api.Controllers
             return JsonResponseModel.Success(question);
         }
         /// <summary>
-        /// Add new Question
+        /// Lấy danh sách câu hỏi đã học, có phân trang
         /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost("v2/GetQuestionDeleted")]
+        public async Task<JsonResponseModel> GetLisLearnQuestion([FromBody] PaddingQuestionRequest model)
+        {
+            Func<Question, bool> condition = x => true;
+            var question = _questionService.GetListPaged(model.PageNumber, model.PageSize, condition, model.SortColumn,model.IsDesc);
+            return JsonResponseModel.Success(question);
+        }
+
+        /// <summary>
+        /// Add new Question
+        /// </summary> 
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost("AddQuestion")]

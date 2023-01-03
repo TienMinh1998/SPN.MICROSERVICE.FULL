@@ -195,7 +195,8 @@ namespace Hola.Api.Repositories
             var paginationSet = new PaginationSet<T>()
             {
                 Items = resultSet,
-                TotalCount = total
+                TotalCount = total,
+                currentPage = pageNumber
             };
             return paginationSet;
         }
