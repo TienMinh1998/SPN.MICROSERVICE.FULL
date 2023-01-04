@@ -64,7 +64,16 @@ namespace Hola.Api.Controllers
             var responseList = question.OrderByDescending(x => x.created_on).ToList();  
             return JsonResponseModel.Success(question);
         }
-
+        [HttpGet("GetQuestion")]
+        [Authorize]
+        public async Task<JsonResponseModel> GetQuestion()
+        {
+            var str_userid = User.Claims.FirstOrDefault(c => c.Type == SystemParam.CLAIM_USER).Value;
+            int userid = int.Parse(str_userid);
+            var question = await _questionService.GetAllAsync(x =>x.is_delete != 1 && x.fk_userid==userid);
+            var responseList = question.OrderByDescending(x => x.created_on).ToList();
+            return JsonResponseModel.Success(question);
+        }
         /// <summary>
         /// Get Delete Question
         /// </summary>
