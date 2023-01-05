@@ -33,6 +33,7 @@ namespace Hola.Api
                     q.AddJobAndTrigger<JobClass>(hostContext.Configuration);
                     q.AddJob<EveryDayNotificationClass>(hostContext.Configuration);
                     q.AddJobAndTrigger<HistoryEveryDayJob>(hostContext.Configuration);
+                    q.AddJobAndTrigger<jobStanStandardQuestion>(hostContext.Configuration);
                 });
 
                 // Add the Quartz.NET hosted service

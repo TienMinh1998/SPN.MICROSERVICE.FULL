@@ -44,20 +44,18 @@ namespace Hola.Api.Service.Quatz
                 var response = listUser.ToList();
                 foreach (var item in response)
                 {
-                    // Category 
-                    //  var result = await qesQuestionService.GetListQuestionByCategoryId(item.Id, 0);
-                    var listQuestion =await _questionService.GetAllAsync(x => x.category_id == 7 && x.is_delete != 1);
-
+                    // get list word to day for UserId for all categories
+                    var listQuestion =await _questionService.GetAllAsync(x => x.is_delete != 1 && x.fk_userid==item.Id);
                     Random rnd = new Random();
                     var index = rnd.Next(listQuestion.Count);
                     var questionRadom = listQuestion[index];
-                    // Lấy ra thông tin deviceToken 
+                    // Get devidetoken 
                     var devideFirebaseToken = item.DeviceToken;
                     PushNotificationRequest request = new PushNotificationRequest()
                     {
                         notification = new NotificationMessageBody()
                         {
-                            title = questionRadom.questionname,
+                            title = questionRadom.questionname + $" phonetic : {questionRadom.phonetic}",
                             body = questionRadom.answer
                         },
                     };

@@ -33,7 +33,7 @@ namespace Hola.Api.Service.Quatz
                 var response = listUser.ToList();
                 foreach (var item in response)
                 {
-                    // Lấy ra thông tin deviceToken 
+                    // Get devide token infomation
                     string userName = item.Name;
                     var devideFirebaseToken = item.DeviceToken;
                     var totalQuestion =await _questionService.CountQuestionToday(item.Id);
@@ -42,7 +42,7 @@ namespace Hola.Api.Service.Quatz
                         notification = new NotificationMessageBody()
                         {
                             title = $"Hi! {userName}",
-                            body = $"Hôm nay {totalQuestion} / 10 từ"
+                            body = $"Target today :  {totalQuestion} / 10 word"
                         }
                     };
                     await _accountService.CreateHistoryOneDay(item.Id, 10);

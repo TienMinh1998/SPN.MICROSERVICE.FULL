@@ -24,7 +24,7 @@ namespace Hola.Api.Service.Quatz
             try
             {
                 // User nào bật thông báo mới có
-                var listUser = await _userServices.GetAllAsync(x => (x.isnotification == 1 && x.IsDeleted == 0));
+                var listUser = await _userServices.GetAllAsync(x => (x.isnotification == 1 && x.IsDeleted !=1));
                 var response = listUser.ToList();
                 foreach (var item in response)
                 {
@@ -40,7 +40,7 @@ namespace Hola.Api.Service.Quatz
                         notification = new NotificationMessageBody()
                         {
                             title = $"{question.English} {question.Phonetic}",
-                            body = $"{question.MeaningEnglish}"
+                            body = $"{question.MeaningVietNam}"
                         }
                     };
                     request.registration_ids.Add(devideFirebaseToken);
