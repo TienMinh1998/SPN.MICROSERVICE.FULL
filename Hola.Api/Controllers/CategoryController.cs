@@ -52,6 +52,5 @@ public class CategoryController : ControllerBase
         result = result.OrderByDescending(x=>x.totalquestion).ThenByDescending(x=>x.created_on).ToList();    
         return JsonResponseModel.Success(result);
     }
-       
-
+      
 }

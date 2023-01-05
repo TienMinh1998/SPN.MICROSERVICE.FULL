@@ -28,7 +28,7 @@ namespace Hola.Api.Service.BaseServices
                     return conn.QueryFirst<T>(query, parameters);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //Handle the exception
                 return default; //Or however you want to handle the return
