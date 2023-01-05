@@ -63,9 +63,18 @@ namespace Hola.Api.Controllers
         [HttpGet("GetQuestion/{ID}")]
         public async Task<JsonResponseModel> GetQuestionById(int ID)
         {
-            var question = await _questionService.GetAllAsync(x => (x.category_id == ID) && (x.is_delete != 1));
-            var responseList = question.OrderByDescending(x => x.created_on).ToList();  
-            return JsonResponseModel.Success(question);
+            try
+            {
+                string query = string.Format("SELECT * FROM usr.question where is_delete !=1 and category_id ={0} order by created_on desc",ID);
+                var list_question = _dapper.GetAllAsync<Question>(query);
+                return JsonResponseModel.Success(list_question);
+            }
+            catch (Exception ex)
+            {
+                return JsonResponseModel.SERVER_ERROR(ex.Message);
+            }
+             
+           
         }
         [HttpGet("GetQuestion")]
         [Authorize]
