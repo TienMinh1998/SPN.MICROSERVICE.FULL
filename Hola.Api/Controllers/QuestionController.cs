@@ -1,7 +1,7 @@
-﻿using Hola.Api.Service;
+﻿
+#region Package
 using Hola.Core.Model;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System.Threading.Tasks;
 using Hola.Api.Models.Questions;
@@ -11,20 +11,20 @@ using Hola.Api.Common;
 using System;
 using System.Collections.Generic;
 using Hola.Api.Service.V1;
-using EntitiesCommon.EntitiesModel;
 using Hola.Core.Helper;
-using Newtonsoft.Json;
 using DatabaseCore.Domain.Entities.Normals;
 using Hola.Api.Service.CateporyServices;
 using Hola.Api.Models.Dic;
 using Hola.Api.Requests;
 using Hola.Api.Service.BaseServices;
+#endregion
+
 
 namespace Hola.Api.Controllers
 {
     public class QuestionController : ControllerBase
     {
-
+        #region Properties and Construtor
         private readonly IOptions<SettingModel> _config;
         private readonly Service.QuestionService qesQuestionService;
         private readonly IQuestionService _questionService;
@@ -42,87 +42,9 @@ namespace Hola.Api.Controllers
             this.categoryService = categoryService;
             _dapper = dapper;
         }
+        #endregion
 
-        ///// <summary>
-        ///// Get Question By CategoryID
-        ///// </summary>
-        ///// <param name="ID"></param>
-        ///// <returns></returns>
-        //[HttpGet("GetQuestion/{ID}")]
-        //public async Task<JsonResponseModel> GetQuestionById(int ID)
-        //{
-        //    var result = await qesQuestionService.GetListQuestionByCategoryId(ID,0);
-        //    return JsonResponseModel.Success(result);
-        //}
-
-        /// <summary>
-        /// get question By category ID
-        /// </summary>
-        /// <param name="ID"></param>
-        /// <returns></returns>
-        [HttpGet("GetQuestion/{ID}")]
-        public async Task<JsonResponseModel> GetQuestionById(int ID)
-        {
-            try
-            {
-                string query = string.Format("SELECT * FROM usr.question where is_delete !=1 and category_id ={0} order by created_on desc",ID);
-                var list_question =await _dapper.GetAllAsync<Question>(query);
-                return JsonResponseModel.Success(list_question);
-            }
-            catch (Exception ex)
-            {
-                return JsonResponseModel.SERVER_ERROR(ex.Message);
-            }
-        }
-        [HttpGet("GetQuestion")]
-        [Authorize]
-        public async Task<JsonResponseModel> GetQuestion()
-        {
-            try
-            {
-                var str_userid = User.Claims.FirstOrDefault(c => c.Type == SystemParam.CLAIM_USER).Value;
-                int userid = int.Parse(str_userid);
-                string query = string.Format("SELECT * FROM usr.question where is_delete !=1 and category_id in" +
-                    " (SELECT \"Id\" FROM usr.categories) and fk_userid ={0} order by created_on desc", userid);
-
-                var response =await _dapper.GetAllAsync<Question>(query);
-                return JsonResponseModel.Success(response);
-            }
-            catch (Exception ex)
-            {
-                return JsonResponseModel.SERVER_ERROR(ex.Message);
-            }
-           
-        }
-        /// <summary>
-        /// Get Delete Question
-        /// </summary>
-        /// <param name="ID"></param>
-        /// <returns></returns>
-        [HttpGet("GetQuestionDeleted/{ID}")]
-        public async Task<JsonResponseModel> GetQuestionDeletedById(int ID)
-        {
-            var question = await _questionService.GetAllAsync(x => (x.category_id == ID) && (x.is_delete == 1));
-            return JsonResponseModel.Success(question);
-        }
-        /// <summary>
-        /// Lấy danh sách câu hỏi đã học, có phân trang
-        /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
-        [HttpPost("v2/GetQuestionDeleted")]
-        public async Task<JsonResponseModel> GetLisLearnQuestion([FromBody] PaddingQuestionRequest model)
-        {
-            Func<Question, bool> condition = x => (x.is_delete==1 && x.category_id==model.Category_Id);
-            var question = _questionService.GetListPaged(model.PageNumber, model.PageSize, condition, model.SortColumn,model.IsDesc);
-            return JsonResponseModel.Success(question);
-        }
-
-        /// <summary>
-        /// Add new Question
-        /// </summary> 
-        /// <param name="model"></param>
-        /// <returns></returns>
+        #region Add
         [HttpPost("AddQuestion")]
         [Authorize]
         public async Task<JsonResponseModel> AddQuestion([FromBody] QuestionAddModel model)
@@ -131,8 +53,8 @@ namespace Hola.Api.Controllers
             {
                 int userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == "UserId").Value);
                 // Check question is available 
-                var question_available = await _questionService.GetFirstOrDefaultAsync(x=>x.fk_userid== userid && x.questionname==model.QuestionName);
-                if (question_available==null)
+                var question_available = await _questionService.GetFirstOrDefaultAsync(x => x.fk_userid == userid && x.questionname == model.QuestionName);
+                if (question_available == null)
                 {
                     string audio = "";
                     string phonetic = "";
@@ -159,16 +81,16 @@ namespace Hola.Api.Controllers
                         var def = response1.Results.FirstOrDefault()
                             .lexicalEntries.FirstOrDefault().entries.FirstOrDefault().senses.FirstOrDefault().definitions.FirstOrDefault();
                         // Get type Of word
-                             type = response1.Results.FirstOrDefault().lexicalEntries.FirstOrDefault().lexicalCategory.text;
-                            phonetic = $"[{phoneticSpelling}]";
-                            audio = audioFile;
-                            desfinition = def;
+                        type = response1.Results.FirstOrDefault().lexicalEntries.FirstOrDefault().lexicalCategory.text;
+                        phonetic = $"[{phoneticSpelling}]";
+                        audio = audioFile;
+                        desfinition = def;
                     }
                     catch (Exception ex)
                     {
                     }
 
-                    // Thêm Câu hỏi vào Kho từ 
+                    // Add question to repository
                     Question question = new Question()
                     {
                         is_delete = 0,
@@ -195,15 +117,79 @@ namespace Hola.Api.Controllers
                 }
                 else
                 {
-                    return JsonResponseModel.Error("Question is Exsit",400);
+                    return JsonResponseModel.Error("Question is Exsit", 400);
                 }
             }
             catch (Exception)
             {
-                return  JsonResponseModel.Success(new Question());
+                return JsonResponseModel.Success(new Question());
 
             }
-        
+        }
+        #endregion
+
+        #region Get and query
+        /// <summary>
+        /// get question By category ID
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
+        [HttpGet("GetQuestion/{ID}")]
+        public async Task<JsonResponseModel> GetQuestionById(int ID)
+        {
+            try
+            {
+                string query = string.Format("SELECT * FROM usr.question where is_delete !=1 and category_id ={0} order by created_on desc", ID);
+                var list_question = await _dapper.GetAllAsync<Question>(query);
+                return JsonResponseModel.Success(list_question);
+            }
+            catch (Exception ex)
+            {
+                return JsonResponseModel.SERVER_ERROR(ex.Message);
+            }
+        }
+        [HttpGet("GetQuestion")]
+        [Authorize]
+        public async Task<JsonResponseModel> GetQuestion()
+        {
+            try
+            {
+                var str_userid = User.Claims.FirstOrDefault(c => c.Type == SystemParam.CLAIM_USER).Value;
+                int userid = int.Parse(str_userid);
+                string query = string.Format("SELECT * FROM usr.question where is_delete !=1 and category_id in" +
+                    " (SELECT \"Id\" FROM usr.categories) and fk_userid ={0} order by created_on desc", userid);
+
+                var response = await _dapper.GetAllAsync<Question>(query);
+                return JsonResponseModel.Success(response);
+            }
+            catch (Exception ex)
+            {
+                return JsonResponseModel.SERVER_ERROR(ex.Message);
+            }
+
+        }
+        /// <summary>
+        /// Get Delete Question
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
+        [HttpGet("GetQuestionDeleted/{ID}")]
+        public async Task<JsonResponseModel> GetQuestionDeletedById(int ID)
+        {
+            var question = await _questionService.GetAllAsync(x => (x.category_id == ID) && (x.is_delete == 1));
+            return JsonResponseModel.Success(question);
+        }
+        /// <summary>
+        /// Lấy danh sách câu hỏi đã học, có phân trang
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost("v2/GetQuestionDeleted")]
+        public async Task<JsonResponseModel> GetLisLearnQuestion([FromBody] PaddingQuestionRequest model)
+        {
+            Func<Question, bool> condition = x => (x.is_delete == 1 && x.category_id == model.Category_Id);
+            var question = _questionService.GetListPaged(model.PageNumber, model.PageSize, condition, model.SortColumn, model.IsDesc);
+            return JsonResponseModel.Success(question);
         }
         /// <summary>
         /// Delete Question
@@ -218,6 +204,9 @@ namespace Hola.Api.Controllers
             await _questionService.UpdateAsync(question);
             return JsonResponseModel.Success(true);
         }
+        #endregion
+
+        #region Extension
         /// <summary>
         /// Total Question and Total QuestionToday
         /// </summary>
@@ -238,5 +227,7 @@ namespace Hola.Api.Controllers
         {
             public DateTime today { get; set; }
         }
+        #endregion
+
     }
 }
