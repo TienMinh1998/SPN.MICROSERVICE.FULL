@@ -18,6 +18,7 @@ using DatabaseCore.Domain.Entities.Normals;
 using Hola.Api.Service.CateporyServices;
 using Hola.Api.Models.Dic;
 using Hola.Api.Requests;
+using Hola.Api.Service.BaseServices;
 
 namespace Hola.Api.Controllers
 {
@@ -28,16 +29,18 @@ namespace Hola.Api.Controllers
         private readonly Service.QuestionService qesQuestionService;
         private readonly IQuestionService _questionService;
         private readonly ICategoryService categoryService;
+        private readonly DapperBaseService _dapper;
 
         public QuestionController(IOptions<SettingModel> config,
             Service.QuestionService qesQuestionService,
-            IQuestionService qService, ICategoryService categoryService)
+            IQuestionService qService, ICategoryService categoryService, DapperBaseService dapper)
         {
 
             _config = config;
             this.qesQuestionService = qesQuestionService;
             _questionService = qService;
             this.categoryService = categoryService;
+            _dapper = dapper;
         }
 
         ///// <summary>
@@ -70,9 +73,13 @@ namespace Hola.Api.Controllers
         {
             var str_userid = User.Claims.FirstOrDefault(c => c.Type == SystemParam.CLAIM_USER).Value;
             int userid = int.Parse(str_userid);
-            var question = await _questionService.GetAllAsync(x =>x.is_delete != 1 && x.fk_userid==userid);
-            var responseList = question.OrderByDescending(x => x.created_on).ToList();
-            return JsonResponseModel.Success(question);
+            string query = string.Format("SELECT * FROM usr.question where is_delete !=1 and category_id in" +
+                " (SELECT \"Id\" FROM usr.categories) and fk_userid ={0} order by created_on desc", userid);
+
+            var response = _dapper.GetAllAsync<Question>(query);
+            //var question = await _questionService.GetAllAsync(x =>x.is_delete != 1 && x.fk_userid==userid);
+            //var responseList = question.OrderByDescending(x => x.created_on).ToList();
+            return JsonResponseModel.Success(response);
         }
         /// <summary>
         /// Get Delete Question
