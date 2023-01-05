@@ -101,7 +101,7 @@ namespace Hola.Api.Controllers
                         created_on = DateTime.Now,
                         fk_userid = model.fk_userid,
                         ImageSource = model.ImageSource,
-                        questionname = model.QuestionName + " " + phonetic,
+                        questionname = model.QuestionName,
                         definition = desfinition,
                         Type = type
                     };
