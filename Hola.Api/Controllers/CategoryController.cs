@@ -35,7 +35,8 @@ public class CategoryController : ControllerBase
     [Authorize]
     public async Task<JsonResponseModel> AddQuestion([FromBody] AddCategoryModel model)
     {
-        var result = await categoryService.AddCategory(model);
+        int userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == "UserId").Value);
+        var result = await categoryService.AddCategory(model,userid);
         return JsonResponseModel.Success(result);
     }
     /// <summary>
