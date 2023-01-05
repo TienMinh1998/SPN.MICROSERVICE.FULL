@@ -73,8 +73,6 @@ namespace Hola.Api.Controllers
             {
                 return JsonResponseModel.SERVER_ERROR(ex.Message);
             }
-             
-           
         }
         [HttpGet("GetQuestion")]
         [Authorize]
