@@ -56,7 +56,7 @@ namespace Hola.Api.Controllers
         //}
 
         /// <summary>
-        /// Test
+        /// get question By category ID
         /// </summary>
         /// <param name="ID"></param>
         /// <returns></returns>
@@ -181,8 +181,8 @@ namespace Hola.Api.Controllers
                         ImageSource = model.ImageSource,
                         questionname = model.QuestionName + " " + phonetic,
                         definition = desfinition,
-                        Type = type
-                       
+                        Type = type,
+                        Phonetic = phonetic,
                     };
                     // the moist important task is Update catagory database
                     var category = await categoryService.GetFirstOrDefaultAsync(x => x.Id == model.Category_Id);
