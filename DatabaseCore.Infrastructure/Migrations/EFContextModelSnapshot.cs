@@ -172,9 +172,6 @@ namespace DatabaseCore.Infrastructure.Migrations
                     b.Property<string>("ImageSource")
                         .HasColumnType("text");
 
-                    b.Property<string>("Phonetic")
-                        .HasColumnType("text");
-
                     b.Property<string>("Type")
                         .HasColumnType("text");
 
@@ -244,7 +241,7 @@ namespace DatabaseCore.Infrastructure.Migrations
 
                     b.HasKey("Pk_QuestionStandard_Id");
 
-                    b.ToTable("QuestionStandards");
+                    b.ToTable("QuestionStandards", (string)null);
                 });
 
             modelBuilder.Entity("DatabaseCore.Domain.Entities.Normals.QuestionStandardDetail", b =>

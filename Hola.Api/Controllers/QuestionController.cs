@@ -103,8 +103,7 @@ namespace Hola.Api.Controllers
                         ImageSource = model.ImageSource,
                         questionname = model.QuestionName + " " + phonetic,
                         definition = desfinition,
-                        Type = type,
-                        Phonetic = phonetic
+                        Type = type
                     };
                     // the moist important task is Update catagory database
                     var category = await categoryService.GetFirstOrDefaultAsync(x => x.Id == model.Category_Id);
