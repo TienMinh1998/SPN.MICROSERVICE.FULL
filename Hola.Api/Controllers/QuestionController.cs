@@ -66,7 +66,7 @@ namespace Hola.Api.Controllers
             try
             {
                 string query = string.Format("SELECT * FROM usr.question where is_delete !=1 and category_id ={0} order by created_on desc",ID);
-                var list_question = _dapper.GetAllAsync<Question>(query);
+                var list_question =await _dapper.GetAllAsync<Question>(query);
                 return JsonResponseModel.Success(list_question);
             }
             catch (Exception ex)
