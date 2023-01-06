@@ -133,35 +133,35 @@ namespace Hola.Api.Controllers
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
+        //[HttpPost("Get_StandQuesByTopic")]
+        //[Authorize]
+        //public async Task<JsonResponseModel> GetAllQuestionByTopic([FromBody] GetStandQuestionRequest request)
+        //{
+        //    try
+        //    {
+        //        string query = "SELECT a.\"Pk_QuestionStandard_Id\",  a.\"English\", a.\"Phonetic\" , a.\"MeaningEnglish\",  a.\"MeaningVietNam\"   FROM  (public.\"QuestionStandards\" q " +
+        //            "\r\ninner join usr.\"QuestionStandardDetail\" qd on q.\"Pk_QuestionStandard_Id\"" +
+        //            $" = qd.\"QuestionID\" ) a\r\ninner join usr.topic tq on tq.\"PK_Topic_Id\" = a.\"TopicID\"\r\nwhere a.\"TopicID\" = {request.TargetID}";
+
+        //        var response = await _dapper.GetAllAsync<QuestionStandardModel>(query.AddPadding(request.pageNumber, request.PageSize));
+        //        return JsonResponseModel.Success(response);
+                
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return JsonResponseModel.SERVER_ERROR(ex.Message);
+        //    }
+
+        //}
+
         [HttpPost("Get_StandQuesByTopic")]
         [Authorize]
         public async Task<JsonResponseModel> GetAllQuestionByTopic([FromBody] GetStandQuestionRequest request)
         {
             try
             {
-                string query = "SELECT a.\"Pk_QuestionStandard_Id\",  a.\"English\", a.\"Phonetic\" , a.\"MeaningEnglish\",  a.\"MeaningVietNam\"   FROM  (public.\"QuestionStandards\" q " +
-                    "\r\ninner join usr.\"QuestionStandardDetail\" qd on q.\"Pk_QuestionStandard_Id\"" +
-                    $" = qd.\"QuestionID\" ) a\r\ninner join usr.topic tq on tq.\"PK_Topic_Id\" = a.\"TopicID\"\r\nwhere a.\"TopicID\" = {request.TargetID}";
-
-                var response = await _dapper.GetAllAsync<QuestionStandardModel>(query.AddPadding(request.pageNumber, request.PageSize));
-                return JsonResponseModel.Success(response);
-                
-            }
-            catch (Exception ex)
-            {
-                return JsonResponseModel.SERVER_ERROR(ex.Message);
-            }
-
-        }
-
-        [HttpPost("Get_StandQuesByTopic/app")]
-        [Authorize]
-        public async Task<JsonResponseModel> GetAllQuestionByTopic_app([FromBody] GetStandQuestionRequest request)
-        {
-            try
-            {
                 string query = "SELECT a.\"Pk_QuestionStandard_Id\",  a.\"English\", a.\"Phonetic\" , a.\"MeaningEnglish\"," +
-                    "  a.\"MeaningVietNam\", \r\ncase WHEN usq.\"StandardQuestion\" > 0 then 1 else 0 END as \"Tick\"\r\nFROM  " +
+                    "  a.\"MeaningVietNam\", \r\ncase WHEN usq.\"StandardQuestion\" > 0 then true else false END as \"Tick\"\r\nFROM  " +
                     "((public.\"QuestionStandards\" q \r\ninner join usr.\"QuestionStandardDetail\" qd on q.\"Pk_QuestionStandard_Id\" " +
                     "= qd.\"QuestionID\" ) a inner join usr.topic tq on tq.\"PK_Topic_Id\" = a.\"TopicID\") \r\nleft join usr.\"UserStandardQuestion\" " +
                     $"usq on a.\"Pk_QuestionStandard_Id\"  = usq.\"StandardQuestion\" \r\nwhere a.\"TopicID\" = {request.TargetID}";
