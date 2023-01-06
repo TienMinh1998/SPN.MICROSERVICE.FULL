@@ -7,6 +7,7 @@
         public string MeaningEnglish { get; set; }
         public string MeaningVietNam { get; set; }
         public string Note { get; set; }
+        public int Pk_QuestionStandard_Id { get; set; }
     }
 
     public class UpdateQuestionStandardModel : QuestionStandardModel
