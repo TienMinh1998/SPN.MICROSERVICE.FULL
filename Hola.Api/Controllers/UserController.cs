@@ -184,9 +184,9 @@ namespace Hola.Api.Controllers
         /// </summary>
         /// <param name="updateRequest"></param>
         /// <returns></returns>
-        [HttpGet("On_Notification")]
+        [HttpPost("On_Notification")]
         [Authorize]
-        public async Task<JsonResponseModel> On_Notification(ChangeNotificationRequest action)
+        public async Task<JsonResponseModel> On_Notification([FromBody] ChangeNotificationRequest action)
         {
             // Get result From service
             try
