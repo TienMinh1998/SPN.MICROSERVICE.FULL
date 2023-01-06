@@ -252,6 +252,24 @@ namespace Hola.Api.Controllers
             }
 
         }
+
+        [HttpPost("Tick")]
+        [Authorize]
+        public async Task<JsonResponseModel> TickQuestion(TickQuestionRequest request)
+        {
+            try
+            {
+                int userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == "UserId").Value);
+                string sql = $"INSERT INTO usr.\"UserStandardQuestion\" (\"StandardQuestion\", \"UserId\") VALUES({request.QuestionStandardId}, {userid});";
+                await _dapper.Execute(sql);
+                return JsonResponseModel.Success("Update thành công");
+            }
+            catch (Exception)
+            {
+                return JsonResponseModel.Error("Thêm thất bại. Từ đã tồn tại", 400);
+                
+            }
+        }
     }
 }
 

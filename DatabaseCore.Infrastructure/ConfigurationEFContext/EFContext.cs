@@ -27,6 +27,9 @@ namespace DatabaseCore.Infrastructure.ConfigurationEFContext
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<QuestionStandard> QuestionStandards { get; set; }
         public DbSet<QuestionStandardDetail> questionStandardDetails { get; set; }
+
+        public DbSet<UserStandardQuestion> UserStandardQuestions { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Config table in postgressSQl
@@ -41,6 +44,7 @@ namespace DatabaseCore.Infrastructure.ConfigurationEFContext
             modelBuilder.ApplyConfiguration(new TopicConfiguration());
             modelBuilder.ApplyConfiguration(new QuestionConfiguration());
             modelBuilder.ApplyConfiguration(new QuestionStandardDetailConfiguration());
+            modelBuilder.ApplyConfiguration(new UserStandardQuestionConfiguration());
             base.OnModelCreating(modelBuilder);
         }
     }
