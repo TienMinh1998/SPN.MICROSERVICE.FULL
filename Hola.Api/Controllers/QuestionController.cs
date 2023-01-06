@@ -186,7 +186,8 @@ namespace Hola.Api.Controllers
         [HttpPost("v2/GetQuestionDeleted")]
         public async Task<JsonResponseModel> GetLisLearnQuestion([FromBody] PaddingQuestionRequest model)
         {
-            Func<Question, bool> condition = x => (x.is_delete == 1 && x.category_id == model.Category_Id);
+            // Lấy ra danh sách đã học trong ngày hôm này
+            Func<Question, bool> condition = x => (x.is_delete == 1 && x.category_id == model.Category_Id && x.created_on.Date==DateTime.Now.Date);
             var question = _questionService.GetListPaged(model.PageNumber, model.PageSize, condition, model.SortColumn, model.IsDesc);
             return JsonResponseModel.Success(question);
         }
@@ -204,6 +205,30 @@ namespace Hola.Api.Controllers
             return JsonResponseModel.Success(true);
         }
         #endregion
+        /// <summary>
+        /// Lấy tất cả các câu hỏi của người dùng, có phân trang
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost("GetListLearnedByUser")]
+        [Authorize]
+        public async Task<JsonResponseModel> GetListOfLeared([FromBody] WordPadingRequest model)
+        {
+            try
+            {
+                int userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == "UserId").Value);
+                Func<Question, bool> condition = x => (x.is_delete == 1 && x.fk_userid == userid)
+                && (x.questionname.Contains(model.SearchKey));
+                
+                var question = _questionService.GetListPaged(model.PageNumber, model.PageSize, condition, model.SortColumn, model.IsDesc);
+                return JsonResponseModel.Success(question);
+            }
+            catch (Exception ex)
+            {
+                return JsonResponseModel.SERVER_ERROR(ex.Message);
+            }
+            
+        }
 
         #region Extension
         /// <summary>
