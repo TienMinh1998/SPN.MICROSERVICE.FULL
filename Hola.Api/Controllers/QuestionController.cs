@@ -187,12 +187,13 @@ namespace Hola.Api.Controllers
         public async Task<JsonResponseModel> GetLisLearnQuestion([FromBody] PaddingQuestionRequest model)
         {
             // Lấy ra danh sách đã học trong ngày hôm này
-            Func<Question, bool> condition = x => (x.is_delete == 1 && x.category_id == model.Category_Id && x.created_on.Date==DateTime.UtcNow.Date);
+            var a = DateTime.Now.Day;
+            Func<Question, bool> condition = x => (x.is_delete == 1 && x.category_id == model.Category_Id && x.created_on.Day==DateTime.UtcNow.Day);
             var question = _questionService.GetListPaged(model.PageNumber, model.PageSize, condition, model.SortColumn, model.IsDesc);
             return JsonResponseModel.Success(question);
         }
         /// <summary>
-        /// Delete Question
+        /// Cập nhật thành đã học
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
@@ -201,6 +202,7 @@ namespace Hola.Api.Controllers
         {
             var question = await _questionService.GetFirstOrDefaultAsync(x => x.id == request.ID);
             question.is_delete = 1;
+            question.created_on= DateTime.Now;
             await _questionService.UpdateAsync(question);
             return JsonResponseModel.Success(true);
         }
