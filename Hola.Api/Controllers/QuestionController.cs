@@ -106,12 +106,10 @@ namespace Hola.Api.Controllers
                         Type = type
                     };
                     // the moist important task is Update catagory database
-                    var category = await categoryService.GetFirstOrDefaultAsync(x => x.Id == model.Category_Id);
-                    category.totalquestion += 1;
-                    category.priority += 1;
-                    await categoryService.UpdateAsync(category);
+                    string sqlquery = "update usr.categories \r\nset totalquestion = (select count(1) from usr.question " +
+                        $"where  category_id = 7 and fk_userid ={userid})\r\nwhere \"Id\" = {model.Category_Id} and fk_userid ={userid}\r\n";
+                    await _dapper.Execute(sqlquery);
                     await _questionService.AddAsync(question);
-
                     return JsonResponseModel.Success(question);
                 }
                 else
