@@ -105,11 +105,10 @@ namespace Hola.Api.Controllers
                         definition = desfinition,
                         Type = type
                     };
-                    // the moist important task is Update catagory database
+                    await _questionService.AddAsync(question);
                     string sqlquery = "update usr.categories \r\nset totalquestion = (select count(1) from usr.question " +
                         $"where  category_id = 7 and fk_userid ={userid})\r\nwhere \"Id\" = {model.Category_Id} and fk_userid ={userid}\r\n";
                     await _dapper.Execute(sqlquery);
-                    await _questionService.AddAsync(question);
                     return JsonResponseModel.Success(question);
                 }
                 else
