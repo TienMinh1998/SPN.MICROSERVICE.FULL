@@ -55,7 +55,7 @@ namespace Hola.Api.Service.Quatz
                     {
                         notification = new NotificationMessageBody()
                         {
-                            title = questionRadom.questionname + $" phonetic : {questionRadom.phonetic}",
+                            title = questionRadom.questionname + $" {questionRadom.phonetic}",
                             body = questionRadom.answer
                         },
                     };
