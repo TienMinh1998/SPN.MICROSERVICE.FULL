@@ -53,7 +53,7 @@ namespace Hola.Api.Controllers
             {
                 int userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == "UserId").Value);
                 // Check question is available 
-                var question_available = await _questionService.GetFirstOrDefaultAsync(x => x.fk_userid == userid && x.questionname == model.QuestionName);
+                var question_available = await _questionService.GetFirstOrDefaultAsync(x => x.fk_userid == userid && x.questionname.ToLower() == model.QuestionName.ToLower());
                 if (question_available == null)
                 {
                     string audio = "";
