@@ -107,7 +107,7 @@ namespace Hola.Api.Controllers
                     };
                     await _questionService.AddAsync(question);
                     string sqlquery = "update usr.categories \r\nset totalquestion = (select count(1) from usr.question " +
-                        $"where  category_id = 7 and fk_userid ={userid})\r\nwhere \"Id\" = {model.Category_Id} and fk_userid ={userid}\r\n";
+                        $"where  category_id = {model.Category_Id} and fk_userid ={userid})\r\nwhere \"Id\" = {model.Category_Id} and fk_userid ={userid}\r\n";
                     await _dapper.Execute(sqlquery);
                     return JsonResponseModel.Success(question);
                 }
