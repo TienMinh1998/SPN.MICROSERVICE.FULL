@@ -1,4 +1,5 @@
 ﻿using Hola.Api.Models.Accounts;
+using Hola.Api.Service.BaseServices;
 using Hola.Api.Service.UserServices;
 using Quartz;
 using System;
@@ -12,11 +13,14 @@ namespace Hola.Api.Service.Quatz
         private readonly IQuestionStandardService _questionStandardService;
         private readonly IUserService _userServices;
         private readonly FirebaseService firebaseService;
-        public jobStanStandardQuestion(IQuestionStandardService questionStandardService, IUserService userServices, FirebaseService firebaseService)
+        private readonly DapperBaseService _dapper;
+
+        public jobStanStandardQuestion(IQuestionStandardService questionStandardService, IUserService userServices, FirebaseService firebaseService, DapperBaseService dapper)
         {
             _questionStandardService = questionStandardService;
             _userServices = userServices;
             this.firebaseService = firebaseService;
+            _dapper = dapper;
         }
 
         public async Task Execute(IJobExecutionContext context)
@@ -31,15 +35,21 @@ namespace Hola.Api.Service.Quatz
                     // Lấy ra thông tin deviceToken 
                     string userName = item.Name;
                     var devideFirebaseToken = item.DeviceToken;
-                    var count =await _questionStandardService.CountAsync(x=>x.IsDeleted!=true);
+
+                    string querySQl = "SELECT \"Pk_QuestionStandard_Id\" FROM public.\"QuestionStandards\";\r\n";
+                    var ElistID = await _dapper.GetAllAsync<int>(querySQl);
+                    var list = ElistID.ToList();
+
                     Random rnd = new Random();
-                    var index = rnd.Next(count-1);
-                    var question = await _questionStandardService.GetFirstOrDefaultAsync(x=>x.Pk_QuestionStandard_Id==index);   
+                    var index = rnd.Next(ElistID.Count()-1);
+                    var Id = list[index];
+                  
+                    var question = await _questionStandardService.GetFirstOrDefaultAsync(x=>x.Pk_QuestionStandard_Id==Id);   
                     PushNotificationRequest request = new PushNotificationRequest()
                     {
                         notification = new NotificationMessageBody()
                         {
-                            title = $"{question.English} {question.Phonetic}",
+                            title = $" '{question.English}' ?",
                             body = $"{question.MeaningVietNam}"
                         }
                     };
