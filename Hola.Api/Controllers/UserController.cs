@@ -291,10 +291,5 @@ namespace Hola.Api.Controllers
             var jwt = new JwtSecurityTokenHandler().WriteToken(token);
             return jwt;
         }
-
     }
-
-
-   
-
 }
