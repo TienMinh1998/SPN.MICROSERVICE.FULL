@@ -25,6 +25,7 @@ using Microsoft.AspNetCore.Http;
 using System.IO;
 using Hola.GoogleCloudStorage;
 using Sentry;
+using Hola.Api.Service.BaseServices;
 
 namespace Hola.Api.Controllers
 {
@@ -36,10 +37,12 @@ namespace Hola.Api.Controllers
         private readonly IQuestionService _questionService;
         private readonly Service.QuestionService daper_questionService;
         public readonly IUploadFileGoogleCloudStorage _GoogleCloudStorage;
+        private readonly DapperBaseService _dapper;
+
         public UserController(AccountService accountService,
-            IUserService userService, IConfiguration configuration, 
+            IUserService userService, IConfiguration configuration,
             IQuestionService questionService, Service.QuestionService daper_questionService,
-            IUploadFileGoogleCloudStorage googleCloudStorage = null)
+            IUploadFileGoogleCloudStorage googleCloudStorage = null, DapperBaseService dapper = null)
         {
             this.accountService = accountService;
             this.userService = userService;
@@ -47,6 +50,7 @@ namespace Hola.Api.Controllers
             _questionService = questionService;
             this.daper_questionService = daper_questionService;
             _GoogleCloudStorage = googleCloudStorage;
+            _dapper = dapper;
         }
 
         /// <summary>
@@ -79,6 +83,7 @@ namespace Hola.Api.Controllers
             var add_user = await userService.AddAsync(addUser);
             // PHân quyền luôn cho User là một người dùng thông thường
             string queryaddUserRole = $"select * from usr.create_user_role({add_user.Id}, {USERROLE.NORMAR_USER})";
+            await _dapper.Execute(queryaddUserRole);
             // Todo
             return JsonResponseModel.Success(addUser);
         }
@@ -268,7 +273,7 @@ namespace Hola.Api.Controllers
             return JsonResponseModel.SERVER_ERROR("Cập nhật ảnh đại diện thất bại");
         }
 
-        private string CreateToken(User user)
+        private string CreateToken(DatabaseCore.Domain.Entities.Normals.User user)
         {
             List<Claim> claims = new List<Claim>
             {
