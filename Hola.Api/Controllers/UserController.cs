@@ -24,6 +24,7 @@ using Hola.Api.Service.V1;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using Hola.GoogleCloudStorage;
+using Sentry;
 
 namespace Hola.Api.Controllers
 {
@@ -66,7 +67,7 @@ namespace Hola.Api.Controllers
             string userName = request.UserName;
             var passwordHash = BCrypt.Net.BCrypt.EnhancedHashPassword(request.Password, 11);
             string email = request.Email;
-            User addUser = new User
+            DatabaseCore.Domain.Entities.Normals.User addUser = new DatabaseCore.Domain.Entities.Normals.User
             {
                 PhoneNumber = request.Phone,
                 Username = request.UserName,
@@ -75,9 +76,9 @@ namespace Hola.Api.Controllers
                 Password = passwordHash
                
             };
-           var add_user = await userService.AddAsync(addUser);
+            var add_user = await userService.AddAsync(addUser);
             // PHân quyền luôn cho User là một người dùng thông thường
-             
+            string queryaddUserRole = $"select * from usr.create_user_role({add_user.Id}, {USERROLE.NORMAR_USER})";
             // Todo
             return JsonResponseModel.Success(addUser);
         }

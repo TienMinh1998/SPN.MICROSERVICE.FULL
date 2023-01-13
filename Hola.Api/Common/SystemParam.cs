@@ -4,4 +4,10 @@
     {
         public const string CLAIM_USER = "UserId";  
     }
+
+    public enum USERROLE : int
+    {
+        NORMAR_USER = 0,
+        ADMIN
+    }
 }
