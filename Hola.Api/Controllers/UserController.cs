@@ -68,7 +68,6 @@ namespace Hola.Api.Controllers
             string email = request.Email;
             User addUser = new User
             {
-                
                 PhoneNumber = request.Phone,
                 Username = request.UserName,
                 Email = email,
@@ -76,7 +75,10 @@ namespace Hola.Api.Controllers
                 Password = passwordHash
                
             };
-            await userService.AddAsync(addUser);
+           var add_user = await userService.AddAsync(addUser);
+            // PHân quyền luôn cho User là một người dùng thông thường
+             
+            // Todo
             return JsonResponseModel.Success(addUser);
         }
         /// <summary>
@@ -93,6 +95,8 @@ namespace Hola.Api.Controllers
                 var isPasswordOk = BCrypt.Net.BCrypt.EnhancedVerify(request.Password, user.Password, BCrypt.Net.HashType.SHA384);
                 if (isPasswordOk)
                 {
+                    // Kiểm tra quền và phần quyền 
+
                     // Update Devide Token of User 
                     user.DeviceToken = request.DevideToken;
                     var userUpdateDevice =await userService.UpdateAsync(user); 
