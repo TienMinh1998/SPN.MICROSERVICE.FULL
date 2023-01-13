@@ -29,6 +29,8 @@ namespace DatabaseCore.Infrastructure.ConfigurationEFContext
         public DbSet<QuestionStandardDetail> questionStandardDetails { get; set; }
 
         public DbSet<UserStandardQuestion> UserStandardQuestions { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<UserRole> UserRoles { get; set; }  
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -45,6 +47,8 @@ namespace DatabaseCore.Infrastructure.ConfigurationEFContext
             modelBuilder.ApplyConfiguration(new QuestionConfiguration());
             modelBuilder.ApplyConfiguration(new QuestionStandardDetailConfiguration());
             modelBuilder.ApplyConfiguration(new UserStandardQuestionConfiguration());
+            modelBuilder.ApplyConfiguration(new RoleConfiguration());
+            modelBuilder.ApplyConfiguration(new UserRoleConfiguration());
             base.OnModelCreating(modelBuilder);
         }
     }
