@@ -82,7 +82,7 @@ namespace Hola.Api.Controllers
             };
             var add_user = await userService.AddAsync(addUser);
             // PHân quyền luôn cho User là một người dùng thông thường
-            string queryaddUserRole = $"select * from usr.create_user_role({add_user.Id}, {USERROLE.NORMAR_USER})";
+            string queryaddUserRole = $"select * from usr.create_user_role({add_user.Id}, {(int)USERROLE.NORMAR_USER})";
             await _dapper.Execute(queryaddUserRole);
             // Todo
             return JsonResponseModel.Success(addUser);
