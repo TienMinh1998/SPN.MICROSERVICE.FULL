@@ -36,15 +36,10 @@ namespace Hola.Api.Service.Quatz
                     string userName = item.Name;
                     var devideFirebaseToken = item.DeviceToken;
 
-                    string querySQl = "SELECT \"Pk_QuestionStandard_Id\" FROM public.\"QuestionStandards\";\r\n";
-                    var ElistID = await _dapper.GetAllAsync<int>(querySQl);
-                    var list = ElistID.ToList();
-
-                    Random rnd = new Random();
-                    var index = rnd.Next(ElistID.Count()-1);
-                    var Id = list[index];
+                    string queryGetID = "SELECT usr.random_between(1,(select count(1)::integer from public.\"QuestionStandards\"));";
+                    var valueID = _dapper.QueryFirst<int>(queryGetID);
                   
-                    var question = await _questionStandardService.GetFirstOrDefaultAsync(x=>x.Pk_QuestionStandard_Id==Id);   
+                    var question = await _questionStandardService.GetFirstOrDefaultAsync(x=>x.Pk_QuestionStandard_Id==valueID);   
                     PushNotificationRequest request = new PushNotificationRequest()
                     {
                         notification = new NotificationMessageBody()

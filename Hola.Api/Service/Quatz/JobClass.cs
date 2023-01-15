@@ -55,8 +55,8 @@ namespace Hola.Api.Service.Quatz
                     {
                         notification = new NotificationMessageBody()
                         {
-                            title = questionRadom.questionname + $" {questionRadom.phonetic}",
-                            body = questionRadom.answer
+                            title = questionRadom.questionname,
+                            body = $"{item.Username} bạn đã thuộc từ này chưa?, viết xuống nhé"
                         },
                     };
                     request.registration_ids.Add(devideFirebaseToken);
