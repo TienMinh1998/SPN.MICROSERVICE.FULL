@@ -165,7 +165,7 @@ namespace Hola.Api.Controllers
                     " a.\"MeaningVietNam\", \r\ncase WHEN usq.\"StandardQuestion\" > 0 then true else false END as \"Tick\"\r\nFROM " +
                     " ((public.\"QuestionStandards\" q \r\ninner join usr.\"QuestionStandardDetail\" qd on q.\"Pk_QuestionStandard_Id\" " +
                     "= qd.\"QuestionID\" ) a inner join usr.topic tq on tq.\"PK_Topic_Id\" = a.\"TopicID\") \r\nleft join usr.\"UserStandardQuestion\" " +
-                    $"usq on (a.\"Pk_QuestionStandard_Id\"  = usq.\"StandardQuestion\" and usq.\"UserId\" ={userid})\r\nwhere a.\"TopicID\" = {request.TargetID} ";
+                    $"usq on (a.\"Pk_QuestionStandard_Id\"  = usq.\"StandardQuestion\" and usq.\"UserId\" ={userid}) where a.\"TopicID\" = {request.TargetID} order by a.\"created_on\" asc";
 
                 var response = await _dapper.GetAllAsync<QuestionStandardModel>(query.AddPadding(request.pageNumber, request.PageSize));
                 return JsonResponseModel.Success(response);
