@@ -39,7 +39,6 @@ namespace Hola.Api.Service.Quatz
             try
             {
                 // Get ListUser Noti 
-
                 var listUser =await _userServices.GetAllAsync(x=>(x.isnotification==1 && x.IsDeleted==0));
                 var response = listUser.ToList();
                 foreach (var item in response)
@@ -56,14 +55,12 @@ namespace Hola.Api.Service.Quatz
                         notification = new NotificationMessageBody()
                         {
                             title = questionRadom.questionname,
-                            body = $"{item.Username} bạn đã thuộc từ này chưa?, viết xuống nhé"
+                            body = $"'{item.Name}' bạn đã thuộc từ này chưa? \n viết xuống nhé"
                         },
                     };
                     request.registration_ids.Add(devideFirebaseToken);
                     await firebaseService.Push(request,item.Id);
                 }
-
-              
             }
             catch (System.Exception ex)
             {
