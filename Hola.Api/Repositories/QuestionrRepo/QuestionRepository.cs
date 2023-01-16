@@ -17,7 +17,7 @@ namespace Hola.Api.Repositories.QuestionrRepo
             return await Task.Run(() =>
              {
                  var model = (from qe in DbContext.Questions
-                              where qe.fk_userid == userid && qe.created_on.Day == System.DateTime.Now.Day
+                              where qe.fk_userid == userid && qe.created_on.AddDays(7).Day == System.DateTime.Now.Day
                               select qe.fk_userid).Count();
                  return model;
              });
