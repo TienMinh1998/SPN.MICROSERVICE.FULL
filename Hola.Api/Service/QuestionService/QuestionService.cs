@@ -10,20 +10,26 @@ namespace Hola.Api.Service.V1;
 public class QuestionService : BaseService<Question>, IQuestionService
 {
     private readonly IQuestionRepository _repository;
+    private readonly DapperBaseService _dapper;
+
     public QuestionService(IRepository<Question> baseReponsitory,
-        IQuestionRepository repository) : base(baseReponsitory)
+        IQuestionRepository repository,
+        DapperBaseService dapper) : base(baseReponsitory)
     {
         _repository = repository;
+        _dapper = dapper;
     }
-    public Task<int> CountQuestionToday(int UserID)
+    public async Task<int> CountQuestionToday(int UserID)
     {
         try
         {
-            return _repository.CountQuestionLearnedToday(UserID);
+            string query = $"SELECT count(1) FROM usr.question where fk_userid = {UserID} and created_on::TIMESTAMP::DATE = CURRENT_DATE::TIMESTAMP::DATE;";
+            var response =  _dapper.QueryFirstOrDefault<int>(query);
+            return response;
         }
         catch (System.Exception)
         {
-            return Task.FromResult(0);
+            return await Task.FromResult(0);
         }
        
     }
