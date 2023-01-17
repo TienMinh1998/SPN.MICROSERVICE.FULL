@@ -1,4 +1,5 @@
-﻿using Hola.Api.Models.Accounts;
+﻿using DatabaseCore.Domain.Entities.Normals;
+using Hola.Api.Models.Accounts;
 using Hola.Api.Service.BaseServices;
 using Hola.Api.Service.UserServices;
 using Quartz;
@@ -37,9 +38,11 @@ namespace Hola.Api.Service.Quatz
                     var devideFirebaseToken = item.DeviceToken;
 
                     string queryGetID = "SELECT usr.random_between(1,(select count(1)::integer from public.\"QuestionStandards\"));";
-                    var valueID = _dapper.QueryFirst<int>(queryGetID);
-                  
-                    var question = await _questionStandardService.GetFirstOrDefaultAsync(x=>x.Pk_QuestionStandard_Id==valueID);   
+
+                    string queryRandomQuestion = "select * from public.\"QuestionStandards\" where \"Pk_QuestionStandard_Id\" " +
+                        "=(SELECT usr.random_between(1,(select count(1)::integer from public.\"QuestionStandards\")))";
+
+                    var question = _dapper.QueryFirst<QuestionStandard>(queryRandomQuestion);
                     PushNotificationRequest request = new PushNotificationRequest()
                     {
                         notification = new NotificationMessageBody()
