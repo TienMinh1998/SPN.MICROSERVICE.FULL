@@ -88,7 +88,7 @@ namespace Hola.Core.Helper
 
         public async Task<T> GetFromDictionary<T>(string word)
         {
-            string links = $"https://od-api.oxforddictionaries.com/api/v2/entries/en-gb/{word}?strictMatch=false";
+            string links = $"https://od-api.oxforddictionaries.com/api/v2/entries/en-us/{word}?strictMatch=false";
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Add("Accept", "application/json");
             client.DefaultRequestHeaders.Add("app_id", "c4621f80");
