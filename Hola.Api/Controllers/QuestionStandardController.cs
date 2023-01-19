@@ -314,7 +314,7 @@ namespace Hola.Api.Controllers
                 if (topicId == 0) return null;
                 string query = "SELECT a.\"Pk_QuestionStandard_Id\",  a.\"English\", a.\"Phonetic\" , a.\"MeaningEnglish\",  a.\"MeaningVietNam\"   FROM  (public.\"QuestionStandards\" q " +
                    "\r\ninner join usr.\"QuestionStandardDetail\" qd on q.\"Pk_QuestionStandard_Id\"" +
-                   $" = qd.\"QuestionID\" ) a\r\ninner join usr.topic tq on tq.\"PK_Topic_Id\" = a.\"TopicID\"\r\nwhere a.\"TopicID\" = {topicId}";
+                   $" = qd.\"QuestionID\" ) a\r\ninner join usr.topic tq on tq.\"PK_Topic_Id\" = a.\"TopicID\"\r\nwhere a.\"TopicID\" = {topicId}  order by a.\"Pk_QuestionStandard_Id\"";
 
                 var response = await _dapper.GetAllAsync<QuestionStandardModel>(query.AddPadding(1, 30));
 
