@@ -4,6 +4,7 @@ using Hola.Api.Models;
 using Hola.Api.Requests;
 using Hola.Api.Service;
 using Hola.Api.Service.BaseServices;
+using Hola.Api.Service.ExcelServices;
 using Hola.Core.Model;
 using Hola.Core.Utils;
 using Microsoft.AspNetCore.Authorization;
@@ -13,8 +14,10 @@ using Microsoft.Extensions.DependencyInjection;
 using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using static Hola.Api.Service.ExcelServices.ExcelService;
 
 namespace Hola.Api.Controllers
 {
@@ -294,6 +297,48 @@ namespace Hola.Api.Controllers
             {
                 return JsonResponseModel.Error("Thêm thất bại. Từ đã tồn tại", 400);
                 
+            }
+        }
+
+
+
+        [HttpPost("ExportWordForTopic")]
+        [ApiVersion("3")]
+        public async Task<IActionResult> ExportExcel([FromBody] ExcelModelRequest request)
+        {
+            try
+            {
+                var queryGetId = "SELECT \"PK_Topic_Id\" FROM usr.topic where lower(Trim(\"EnglishContent\"))=lower(Trim('water shortage'));";
+                var topicId = _dapper.QueryFirstOrDefault<int>(queryGetId);
+
+                if (topicId == 0) return null;
+                string query = "SELECT a.\"Pk_QuestionStandard_Id\",  a.\"English\", a.\"Phonetic\" , a.\"MeaningEnglish\",  a.\"MeaningVietNam\"   FROM  (public.\"QuestionStandards\" q " +
+                   "\r\ninner join usr.\"QuestionStandardDetail\" qd on q.\"Pk_QuestionStandard_Id\"" +
+                   $" = qd.\"QuestionID\" ) a\r\ninner join usr.topic tq on tq.\"PK_Topic_Id\" = a.\"TopicID\"\r\nwhere a.\"TopicID\" = {topicId}";
+
+                var response = await _dapper.GetAllAsync<QuestionStandardModel>(query.AddPadding(1, 30));
+
+                string filename = "template.xlsx";
+                string fileURL = Path.Combine(Directory.GetCurrentDirectory(), $"ExcelTemplate/{filename}");
+
+                ExcelService excelService = new ExcelService();
+                ExcelSetting option = new ExcelSetting();
+                option.Title = request.Title;
+                option.StartRow = 3;
+                option.SheetName = "Report";
+                option.CountRowMerge = 0;
+                option.URlFile = fileURL;
+
+                ExcelService extension = new ExcelService();
+                await extension.ExportFile(response.ToList(), option);
+                var file =  await Task.FromResult(File(System.IO.File.ReadAllBytes(fileURL), "application/octet-stream", filename));
+                file.FileDownloadName=  $"{request.Title}.xlsx";
+                return file;
+            }
+
+            catch (Exception ex)
+            {
+                return default(ActionResult);
             }
         }
     }
