@@ -11,9 +11,9 @@ namespace Hola.Api.Service.ExcelServices
     public class ExcelService
     {
         private string fontfamily = "Times New Roman";
-        private string _title;      // Tiêu đề
-        private int _totalColumn;   // Tổng số cột
-       private string _columnEnd;  // Cột cuối dùng
+        private string _title;        // Tiêu đề
+        private int _totalColumn;     // Tổng số cột
+       private string _columnEnd;     // Cột cuối dùng
         private int _startContentIndex; 
         private int _rowEndIndex;
         private List<string> heardername = new List<string>()
@@ -46,7 +46,7 @@ namespace Hola.Api.Service.ExcelServices
             // Set Start Rows content
            
 
-            SettingTitle(ws, "BÁO CÁO TỪ VỰNG CỦA CHỦ ĐIỂM TOPIC ĐÃ CHỌN",2);
+            SettingTitle(ws,  " III. BÁO CÁO TỪ VỰNG CỦA CHỦ ĐIỂM TOPIC ĐÃ CHỌN",settingOptions.StartRow-1);
             SettingContent(people,ws,settingOptions.StartRow);
             SetColorForColumn(ws,"Từ Vựng", "#C6E0B4");
             SettingFootter(1,"Tổng số từ của topic:"+ people.Count().ToString(),"#EDEDED");
@@ -108,7 +108,6 @@ namespace Hola.Api.Service.ExcelServices
             
          
         }
-     
         private void SetColorForColumn(ExcelWorksheet ws,string columnName,string color)
         {
             var index = heardername.FindIndex(x=>x.Equals(columnName,StringComparison.OrdinalIgnoreCase))+1;
@@ -186,11 +185,9 @@ namespace Hola.Api.Service.ExcelServices
             var m = GetMergeString(rowIndex);
             ws.Cells[m].Merge = true;
 
-            ws.Column(1).Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-            ws.Row(rowIndex).Style.Font.Size = 18;
-            ws.Row(rowIndex).Style.Font.Color.SetColor(Color.Blue);
-
-
+            ws.Column(1).Style.HorizontalAlignment = ExcelHorizontalAlignment.Left;
+            ws.Row(rowIndex).Style.Font.Size = 16;
+            ws.Row(rowIndex).Style.Font.Color.SetColor(Color.Black);
         }
         public void Setborder(string address)
         {

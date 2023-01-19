@@ -325,7 +325,7 @@ namespace Hola.Api.Controllers
                 ExcelService excelService = new ExcelService();
                 ExcelSetting option = new ExcelSetting();
                 option.Title = request.Title;
-                option.StartRow = 3;
+                option.StartRow = 8;
                 option.SheetName = "Report";
                 option.CountRowMerge = 0;
                 option.URlFile = fileURL;
