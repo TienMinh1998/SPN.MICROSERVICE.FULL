@@ -1,4 +1,6 @@
-﻿namespace Hola.Api.Requests
+﻿using Microsoft.AspNetCore.Http;
+
+namespace Hola.Api.Requests
 {
     public class ExcelModelRequest
     {

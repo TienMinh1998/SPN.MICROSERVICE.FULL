@@ -8,6 +8,7 @@ using Hola.Api.Service.ExcelServices;
 using Hola.Core.Model;
 using Hola.Core.Utils;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,7 +17,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using static Dapper.SqlMapper;
 using static Hola.Api.Service.ExcelServices.ExcelService;
 
 namespace Hola.Api.Controllers
@@ -319,24 +322,42 @@ namespace Hola.Api.Controllers
 
                 var response = await _dapper.GetAllAsync<QuestionStandardModel>(query.AddPadding(1, 30));
 
-                string filename = "template.xlsx";
+                string filename = DateTime.Now.ToString("ssddMMyyyy")+"template.xlsx";
                 string fileURL = Path.Combine(Directory.GetCurrentDirectory(), $"ExcelTemplate/{filename}");
+                string filePath = Path.Combine(Directory.GetCurrentDirectory(), $"ExcelTemplate/rose.jpg");
 
-                ExcelService excelService = new ExcelService();
                 ExcelSetting option = new ExcelSetting();
                 option.Title = request.Title;
-                option.StartRow = 8;
+                option.StartRow = 18;
                 option.SheetName = "Report";
                 option.CountRowMerge = 0;
                 option.URlFile = fileURL;
 
-                ExcelService extension = new ExcelService();
-                await extension.ExportFile(response.ToList(), option);
+                // setting image url
+                    option.ExcelImage.RowIndex= 7;
+                    option.ExcelImage.ColumnIndex = 5;
+                    option.ExcelImage.ImageUrl= filePath;
+                // setting header 
+                   option.Hearders = new List<string>()
+                        {
+                            "Từ vựng",
+                            "Phiên âm",
+                            "Tiếng Anh",
+                            "Tiếng việt",
+                            "Ghi chú",
+                            "ID",
+                            "Trạng thái"
+                        };
+                   option.WidthHearders = new List<int> {12,15,12,20,12,5,12};
+                   
+                ExcelService extension = new ExcelService(option);
+                await extension.ExportFile(response.ToList());
                 var file =  await Task.FromResult(File(System.IO.File.ReadAllBytes(fileURL), "application/octet-stream", filename));
+                FileInfo fileRemove = new FileInfo(fileURL);
+                fileRemove.Delete();
                 file.FileDownloadName=  $"{request.Title}.xlsx";
                 return file;
             }
-
             catch (Exception ex)
             {
                 return default(ActionResult);
