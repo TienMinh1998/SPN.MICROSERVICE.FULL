@@ -7,5 +7,6 @@
         public string define  { get; set; }
         public string Image { get; set; }
         public int TotalQuestion { get; set; }
+       
     }
 }

@@ -5,6 +5,9 @@ using Hola.Api.Requests;
 using Hola.Api.Service;
 using Hola.Api.Service.BaseServices;
 using Hola.Api.Service.ExcelServices;
+using Hola.Api.Service.ExcelServices.DataConfig;
+using Hola.Api.Service.ExcelServices.Enum;
+using Hola.Api.Service.ExcelServices.TestModels;
 using Hola.Core.Model;
 using Hola.Core.Utils;
 using Microsoft.AspNetCore.Authorization;
@@ -12,6 +15,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.DependencyInjection;
+using Quartz.Util;
 using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
@@ -50,8 +54,8 @@ namespace Hola.Api.Controllers
         {
             try
             {
-                var response = await _questionStandardService.GetFirstOrDefaultAsync(x=>x.Pk_QuestionStandard_Id== Id);
-                if (response!=null)
+                var response = await _questionStandardService.GetFirstOrDefaultAsync(x => x.Pk_QuestionStandard_Id == Id);
+                if (response != null)
                 {
                     return JsonResponseModel.Success(response, $"Lấy về từ có Id = {Id} thành công!");
                 }
@@ -81,10 +85,10 @@ namespace Hola.Api.Controllers
                 Func<QuestionStandard, bool> searchCondition = x =>
                 ((string.IsNullOrEmpty(request.searchKey) || request.searchKey == "*"
                 || x.English.Contains(request.searchKey, StringComparison.OrdinalIgnoreCase)
-                || x.MeaningVietNam.Contains(request.searchKey, StringComparison.OrdinalIgnoreCase)) && 
-                  string.IsNullOrEmpty(request.Date)?true:x.created_on.ToString("yyyy-MM-dd")==request.Date);
+                || x.MeaningVietNam.Contains(request.searchKey, StringComparison.OrdinalIgnoreCase)) &&
+                  string.IsNullOrEmpty(request.Date) ? true : x.created_on.ToString("yyyy-MM-dd") == request.Date);
 
-                if (request.IsDesc==null || request.IsDesc==false)
+                if (request.IsDesc == null || request.IsDesc == false)
                 {
                     condition = false;
                 }
@@ -92,7 +96,7 @@ namespace Hola.Api.Controllers
                 {
                     condition = true;
                 }
-                var question = _questionStandardService.GetListPaged(request.PageNumber, request.PageSize, searchCondition, request.columnname,condition);
+                var question = _questionStandardService.GetListPaged(request.PageNumber, request.PageSize, searchCondition, request.columnname, condition);
                 question.currentPage = request.PageNumber;
                 return JsonResponseModel.Success(question);
             }
@@ -101,7 +105,7 @@ namespace Hola.Api.Controllers
 
                 return JsonResponseModel.SERVER_ERROR(ex.Message);
             }
-           
+
         }
 
         /// <summary>
@@ -118,7 +122,7 @@ namespace Hola.Api.Controllers
                 var command = _mapper.Map<QuestionStandard>(request);
                 command.created_on = DateTime.UtcNow;
                 command.IsDeleted = false;
-                var checkquestion = await _questionStandardService.GetFirstOrDefaultAsync(x=>x.English== request.English);
+                var checkquestion = await _questionStandardService.GetFirstOrDefaultAsync(x => x.English == request.English);
                 if (checkquestion == null)
                 {
                     var respoinse = await _questionStandardService.AddAsync(command);
@@ -126,7 +130,7 @@ namespace Hola.Api.Controllers
                 }
 
                 return JsonResponseModel.SERVER_ERROR($"{request.English} đã tồn tại rồi");
-               
+
             }
             catch (Exception ex)
             {
@@ -191,7 +195,7 @@ namespace Hola.Api.Controllers
         /// <returns></returns>
         [HttpPut("AddQuestionToTopic")]
         [Authorize]
-        public async Task<JsonResponseModel> AddQuestionToTopic ([FromBody] AddQuestionToTopic1 model)
+        public async Task<JsonResponseModel> AddQuestionToTopic([FromBody] AddQuestionToTopic1 model)
         {
             try
             {
@@ -258,7 +262,6 @@ namespace Hola.Api.Controllers
             }
             catch (Exception ex)
             {
-
                 return JsonResponseModel.Error(ex.Message, 500);
             }
 
@@ -299,7 +302,7 @@ namespace Hola.Api.Controllers
             catch (Exception)
             {
                 return JsonResponseModel.Error("Thêm thất bại. Từ đã tồn tại", 400);
-                
+
             }
         }
 
@@ -321,41 +324,402 @@ namespace Hola.Api.Controllers
                    $" = qd.\"QuestionID\" ) a\r\ninner join usr.topic tq on tq.\"PK_Topic_Id\" = a.\"TopicID\"\r\nwhere a.\"TopicID\" = {topicId}  order by a.\"Pk_QuestionStandard_Id\"";
 
                 var response = await _dapper.GetAllAsync<QuestionStandardModel>(query.AddPadding(1, 30));
+                // Report 2 : 
+                string query2 = "SELECT \"Id\", fk_userid, \"name\", define, \"Image\", totalquestion, priority, created_on FROM usr.categories;";
+                var response2 = await _dapper.GetAllAsync<CategoryModel>(query2);
 
-                string filename = DateTime.Now.ToString("ssddMMyyyy")+"template.xlsx";
-                string fileURL = Path.Combine(Directory.GetCurrentDirectory(), $"ExcelTemplate/{filename}");
-                string filePath = Path.Combine(Directory.GetCurrentDirectory(), $"ExcelTemplate/rose.jpg");
 
-                ExcelSetting option = new ExcelSetting();
-                option.Title = request.Title;
-                option.StartRow = 18;
-                option.SheetName = "Report";
-                option.CountRowMerge = 0;
-                option.URlFile = fileURL;
-
-                // setting image url
-                    option.ExcelImage.RowIndex= 7;
-                    option.ExcelImage.ColumnIndex = 5;
-                    option.ExcelImage.ImageUrl= filePath;
-                // setting header 
-                   option.Hearders = new List<string>()
+                ReportConfiguration option = new ReportConfiguration();
+                option.ExHeader = new List<HeaderOfPager>()
+                    {
+                        new HeaderOfPager()
                         {
-                            "Từ vựng",
-                            "Phiên âm",
-                            "Tiếng Anh",
-                            "Tiếng việt",
-                            "Ghi chú",
-                            "ID",
-                            "Trạng thái"
-                        };
-                   option.WidthHearders = new List<int> {12,15,12,20,12,5,12};
-                   
+                            StartRow = 1,
+                            StartColumn = 1,
+                            Size = 10,
+                            Align = "center",
+                            ColumnSpan = 3,
+                            TopContent = "SỞ GIAO THÔNG VẬN TẢI THÁI BÌNH",
+                            BottomContent = "Trung tâm Bình Anh",
+                            FontFamily = "Times New Roman",
+                            FontWeigh = "",
+                            Visible = true
+                        },
+                        new HeaderOfPager()
+                        {
+                            StartRow = 1,
+                            StartColumn = 4,
+                            ColumnSpan = 4,
+                            Size = 10,
+                            Align = "center",
+                            TopContent = "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+                            BottomContent = "Độc lập - Tự do - Hạnh Phúc",
+                            FontFamily = "Times New Roman",
+                            FontWeigh = "",
+                            Visible = true
+                        },
+                    };
+                option.Body = new Body()
+                {
+                 Datagriviews = new List<ExcelDatagriview>()
+                  {
+                     new ExcelDatagriview
+                     {
+                         Type = DATAGRIVIEW_TYPE.TEXT,
+                         MarginTop = 1,
+                         Content = "BÁO CÁO QUÁ TRÌNH ĐÀO TẠO THỰC HÀNH LÁI XE CỦA HỌC VIÊN",
+                         SubContent = "(Ngày báo cáo: 11/01/2023)",
+                         Size= 16,
+                         SizeSub = 10,
+                         FontWeigh = "B",
+                         Align= "center",
+                         FontFamily = "Times new roman",
+                         StartColumnOfContent = 1,
+                         Images = new List<ImageProperties>
+                         {
+                               new ImageProperties
+                                {
+                                    Name = "image1",
+                                    ColumnIndex= 6,
+                                    RowIndex= 11,
+                                    Height = 100,
+                                    Width= 100,
+                                    ImageUrl ="https://1.vikiplatform.com/pr/15639pr/3611116f24.jpg?x=b&s=460x268&e=t&f=t&cb=1"
+                                },
+                               new ImageProperties
+                                {
+                                    Name = "image2",
+                                    ColumnIndex= 6,
+                                    RowIndex= 18,
+                                    Height = 100,
+                                    Width= 100,
+                                    ImageUrl ="https://lh3.googleusercontent.com/TJavz_7TNPwqc2oa1HQDKcfKkXF38it5W9ph_aMHuXwt9gKRtZQiwdKG8YD_hgO9x70_v1k1yMtihuRi4It0tN2vLvpHJy9_VQ=w960-rj-nu-e365"
+                                }
+                         },
+                         InfomationText = new List<string>()
+                         {
+                             "1. HỌ VÀ TÊN : NGUYỄN VIẾT MINH TIẾN",
+                             "2. MÃ HỌC VIÊN : 123456789",
+                             "3. NGÀY SINH : 05.02.1999",
+                             "4. HẠNG ĐÀO TẠO : B2",
+                             "5. CƠ SỞ ĐÀO TẠO : TRUNG TÂM GIÁO DỤC NGHỀ NGHIỆP VÀ SÁT HẠCH LÁI XE HÀ NỘI"
+                         },
+                         MergeColumnTitle = 7,
+                      },
+                     new ExcelDatagriview
+                     {
+                         Type = DATAGRIVIEW_TYPE.TABLE,
+                         MarginTop = 2,
+                         Content = "I, BÁO CÁO THỰC SỐ LƯỢNG HỌC VIÊN HOÀN THÀNH NỘI DUNG HỌC THỰC HÀNH LÁI XE TRÊN ĐƯỜNG GIAO THÔNG CÔNG CỘNG CỦA CƠ SỞ ĐÀO TẠO",
+                         SubContent = "Từ ngày :12/09/2022 đến ngày : 29/12/2022",
+                         Size= 16,
+                         SizeSub = 10,
+                         FontWeigh = "B",
+                         Align= "center",
+                         FontFamily = "Times new roman",
+                         StartColumnOfContent = 1,
+                         Data = response.ToList(),
+                         Headers = new List<HeaderOfTable>
+                         {
+                             new HeaderOfTable { 
+                                 ColumnName ="English",
+                                 DisplayName = "Từ vựng",
+                                 Width = 12,
+                                 Location = 2,
+                                 TextAlign = "center"
+                             },
+                             new HeaderOfTable { ColumnName = "Phonetic", DisplayName = "Phiên âm",Width = 12, Location = 1},
+                             new HeaderOfTable { ColumnName = "MeaningEnglish", DisplayName = "Tiếng Anh",Width = 12, Location = 3},
+                             new HeaderOfTable { ColumnName = "MeaningVietNam", DisplayName = "Tiếng Việt",Width = 12, Location = 4},
+                             new HeaderOfTable { ColumnName = "Note", DisplayName = "Ghi chú",Width = 12, Location = 5},
+                             new HeaderOfTable { ColumnName = "Pk_QuestionStandard_Id", DisplayName = "ID",Width = 12, Location = 6},
+                             new HeaderOfTable { ColumnName = "Tick", DisplayName = "Trạng Thái",Width = 12, Location = 7},
+                         },
+                         Footers = new List<FootterConfig>
+                         {
+                             new FootterConfig
+                             {
+                                 Content = "Tổng Cộng",
+                                 MergeRow = 1,
+                                 StartColumn = 1
+                             },
+                              new FootterConfig
+                             {
+                                 Content = "1,200,000 VNĐ",
+                                 MergeRow = 5,
+                                 StartColumn = 2
+                             },
+                               new FootterConfig
+                             {
+                                 Content = "",
+                                 MergeRow = 1,
+                                 StartColumn = 7
+                             },
+                         }
+                     },
+                     new ExcelDatagriview    
+                     {
+                         Type = DATAGRIVIEW_TYPE.TABLE,
+                         MarginTop= 2,
+                         Content = "II. BÁO CÁO KẾT QUẢ ĐÀO TẠO THỰC HÀNH LÁI XE TRÊN ĐƯỜNG GIAO THÔNG THEO DANH SÁCH THÍ SINH DỰ SÁT HẠCH",
+                         SubContent = "(Mã báo cáo 2 : BC2 66015_66_66015K22B2001)",
+                         Size= 16,
+                         SizeSub =10,
+                         BacgroundColor = "#ffffff",
+                         TextHeaderColor = "#White",
+                         FontWeigh = "B",
+                         Align= "center",
+                         FontFamily = "Times new roman",
+                         StartColumnOfContent = 1,
+                         Data = response2.ToList(),
+                         Headers = new List<HeaderOfTable>
+                         {
+                             new HeaderOfTable
+                             {
+                                 ColumnName ="Id",
+                                 DisplayName = "Từ vựng",
+                                 Width = 10,
+                                 Location = 1,
+                                 ColumnSpan = 2
+                             },
+                              new HeaderOfTable
+                             {
+                                 ColumnName = "EmtyColumn",
+                                 DisplayName = "Phiên âm",
+                                 Width =25 ,
+                                 Location = 2
+                             },
+                             new HeaderOfTable
+                             {
+                                 ColumnName = "Name",
+                                 DisplayName = "Phiên âm",
+                                 Width =25 ,
+                                 Location = 3
+                             },
+                             new HeaderOfTable
+                             {
+                                 ColumnName = "define",
+                                 DisplayName = "Tiếng Anh",
+                                 Width = 30,
+                                 Location = 4,
+                                 ColumnSpan = 2
+                             },
+                             new HeaderOfTable
+                             {
+                                 ColumnName = "emptyDefine",
+                                 DisplayName = "Tiếng Việt",
+                                 Width = 20,
+                                 Location = 5
+                             },
+                             new HeaderOfTable
+                             {
+                                 ColumnName = "Image",
+                                 DisplayName = "Tiếng Việt",
+                                 Width = 20,
+                                 Location = 6
+                             },
+                             new HeaderOfTable
+                             {
+                                 ColumnName = "TotalQuestion",
+                                 DisplayName = "Ghi chú",
+                                 Width = 20,
+                                 Location = 7
+                             },
+                         },
+                         Footers = new List<FootterConfig>
+                         {
+                             new FootterConfig
+                             {
+                                 Content = "NGUYỄN VIẾT MINH TIẾN",
+                                 MergeRow = 1,
+                                 StartColumn = 1
+                             },
+                             new FootterConfig
+                             {
+                                 Content = "1,200,000 VNĐ",
+                                 MergeRow = 4,
+                                 StartColumn = 2
+                             },
+                             new FootterConfig
+                             {
+                                 Content = "Đạt",
+                                 MergeRow = 2,
+                                 StartColumn = 6
+                             },
+                         }
+                     }
+                  }
+                };
+          
+
                 ExcelService extension = new ExcelService(option);
-                await extension.ExportFile(response.ToList());
-                var file =  await Task.FromResult(File(System.IO.File.ReadAllBytes(fileURL), "application/octet-stream", filename));
-                FileInfo fileRemove = new FileInfo(fileURL);
+
+                var fileUrl=   await extension.ExportExcel<QuestionStandardModel,CategoryModel,CategoryModel>();
+                var filename = Path.GetFileName(fileUrl);
+                var file = await Task.FromResult(File(System.IO.File.ReadAllBytes(fileUrl), "application/octet-stream", filename));
+                file.FileDownloadName = $"{DateTime.Now.ToString()}.xlsx";
+                FileInfo fileRemove = new FileInfo(fileUrl);
                 fileRemove.Delete();
-                file.FileDownloadName=  $"{request.Title}.xlsx";
+                return file;
+            }
+            catch (Exception ex)
+            {
+                return default(ActionResult);
+            }
+        }
+
+        /// <summary>
+        /// Quá trình đào tạo thực hành lái xe của học viên
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        [HttpPost("Bao_cao_1")]
+        [ApiVersion("3")]
+        public async Task<IActionResult> ExportExcel1([FromBody] ReportConfiguration request)
+        {
+            try
+            {
+                var response = new List<Student>();
+                for (int i = 0; i < 40; i++)
+                {
+                    response.Add(new Student
+                    {
+                       LoginTime = "Test",
+                       LogoutTime= "Test",
+                       Session = "Test",
+                       STT = i,
+                       Time = "Test",
+                       url = "https://pbs.twimg.com/media/BfrLniWCAAEHuD5.jpg"
+                    });
+                }
+
+                ReportConfiguration option = new ReportConfiguration();
+                // left header 
+                var leftHeader = (new HeaderBuilder()).SetStartRow(1)
+                    .SetStartColumn(1)
+                    .SetSize(10)
+                    .SetAlign("center")
+                    .SetColumnSpan(3)
+                    .SetTopContent("SỞ GIAO THÔNG VẬN TẢI THÁI BÌNH")
+                    .SetBottomContent("Trung tâm Bình Anh")
+                    .SetDecorate().build;
+
+                // right header 
+                var rightHeader = (new HeaderBuilder())
+                    .SetStartRow(1)
+                    .SetStartColumn(5)
+                    .SetSize(10)
+                    .SetAlign("center")
+                    .SetColumnSpan(5)
+                    .SetTopContent("CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM")
+                    .SetBottomContent("Độc lập - Tự do - Hạnh phúc")
+                    .SetDecorate().build;
+
+                // dataContent
+                var topContent = (new ExcelDatagriviewBuilder())
+                .SetTitle("BÁO CÁO QUÁ TRÌNH ĐÀO TẠO THỰC HÀNH LÁI XE CỦA HỌC VIÊN", 8)
+                .SetType(DATAGRIVIEW_TYPE.TEXT)
+                .SetDecorate()
+                .SetSubTitle("(Ngày báo cáo: 11/01/2023)")
+                .SetMarginTop(2)
+                .SetImage(new List<ImageProperties>
+                         {
+                                new ImageProperties
+                                {
+                                    Name = "image1",
+                                    ColumnIndex= 6,
+                                    RowIndex= 7,
+                                    Height = 115,
+                                    Width= 120,
+                                    ImageUrl ="https://1.vikiplatform.com/pr/15639pr/3611116f24.jpg?x=b&s=460x268&e=t&f=t&cb=1",
+                                    MarginLeft= 20,
+                                    MarginTop= 5,
+                                }
+                         })
+                .SetInfomation(new List<string>()
+                         {
+                             "1. HỌ VÀ TÊN : NGUYỄN VIẾT MINH TIẾN",
+                             "2. MÃ HỌC VIÊN : 123456789",
+                             "3. NGÀY SINH : 05.02.1999",
+                             "4. HẠNG ĐÀO TẠO : B2",
+                             "5. CƠ SỞ ĐÀO TẠO : TRUNG TÂM GIÁO DỤC NGHỀ NGHIỆP VÀ SÁT HẠCH LÁI XE HÀ NỘI"
+                         }).Build;
+                var bodyContent = (new ExcelDatagriviewBuilder())
+               .SetTitle("BÁO CÁO QUÁ TRÌNH ĐÀO TẠO THỰC HÀNH LÁI XE CỦA HỌC VIÊN 1", 9)
+               .SetType(DATAGRIVIEW_TYPE.TABLE)
+               .SetDecorate()
+               .SetSubTitle("(Ngày báo cáo: 11/01/2023)")
+               .SetMarginTop(2)
+               .SetCollection(response.ToList())
+               .SetHeaderConfiguration(new List<HeaderOfTable>
+                         {
+                             new HeaderOfTable {
+                                 ColumnName = "English",
+                                 DisplayName = "Từ vựng",
+                                 Width = 12,
+                                 Location = 1,
+                                 TextAlign = "center"
+                             },
+                             new HeaderOfTable { ColumnName = "STT", DisplayName = "Phiên âm", Width = 12, Location = 1,ColumnSpan = 2 },
+                             new HeaderOfTable {  ColumnName = "EmptyColumn", DisplayName = "Phiên âm", Location = 2 },
+                             new HeaderOfTable { ColumnName = "Session", DisplayName = "Tiếng Anh", Width = 12, Location = 3 },
+                             new HeaderOfTable { ColumnName = "LoginTime", DisplayName = "Tiếng Việt", Width = 12, Location = 4 },
+                             new HeaderOfTable { ColumnName = "LogoutTime", DisplayName = "Ghi chú", Width = 12, Location = 5 },
+                             new HeaderOfTable { ColumnName = "Time", DisplayName = "ID", Width = 12, Location = 6 },
+                             new HeaderOfTable { ColumnName = "url", DisplayName = "Trạng Thái", Width = 12, Location = 7,ColumnSpan= 2},
+                              new HeaderOfTable { ColumnName = "url", DisplayName = "Trạng Thái", Width = 12, Location = 7 }
+                         })
+               .SetFooter(new List<FootterConfig>
+               {
+                   new FootterConfig
+                   {
+                       Content = "Tổng Cộng",
+                       MarginTop= 0,
+                       MergeRow = 1,
+                       StartColumn =1,
+                   },
+                   new FootterConfig
+                   {
+                       Content = "1230",
+                       MarginTop= 0,
+                       MergeRow = 5,
+                       StartColumn = 2,
+                   },
+                     new FootterConfig
+                   {
+                       Content = "Đạt tiêu chuẩn",
+                       MarginTop= 0,
+                       StartColumn = 7,
+                       MergeRow = 2,
+                 
+                   },
+               }).Build;
+
+                option.ExHeader.Add(leftHeader);
+                option.ExHeader.Add(rightHeader);
+                option.Body.Datagriviews.Add(topContent);
+                option.Body.Datagriviews.Add(bodyContent);
+                TextPlus text = new TextPlus()
+                {
+                    Align = "right",
+                    Col = 1,
+                    Row = 5,
+                    ColSpan = 8,
+                    Content = "Hà nội, ngày 27 tháng 1 năm 2023",
+                    FontFamily = "Times new roman",
+                    FontWeigh = "I",
+                    Size = 10
+                };
+                option.Texts.Add(text);
+
+                ExcelService extension = new ExcelService(option);
+                var fileUrl =  await extension.ExportExcel<Student, CategoryModel, CategoryModel>();
+
+                var filename = Path.GetFileName(fileUrl);
+                var file = await Task.FromResult(File(System.IO.File.ReadAllBytes(fileUrl), "application/octet-stream", filename));
+                file.FileDownloadName = $"{DateTime.Now.ToString()}.xlsx";
+                FileInfo fileRemove = new FileInfo(fileUrl);
+                fileRemove.Delete();
                 return file;
             }
             catch (Exception ex)
