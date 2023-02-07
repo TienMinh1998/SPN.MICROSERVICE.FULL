@@ -23,7 +23,7 @@ namespace Hola.Api.Controllers
 
         private readonly IMapper _mapperService;
 
-        public GrammarController(IGrammarService grammarService, IMapper mapperService, 
+        public GrammarController(IGrammarService grammarService, IMapper mapperService,
             IUserManualService userManualService)
         {
             _grammarService = grammarService;
@@ -71,8 +71,8 @@ namespace Hola.Api.Controllers
         {
             try
             {
-                var _addValue =await _grammarService.GetFirstOrDefaultAsync(x=>x.Code== model.Code);
-                if (_addValue==null)
+                var _addValue = await _grammarService.GetFirstOrDefaultAsync(x => x.Code == model.Code);
+                if (_addValue == null)
                 {
                     var request = _mapperService.Map<Grammar>(model);
                     request.created_on = DateTime.Now;
@@ -81,16 +81,16 @@ namespace Hola.Api.Controllers
                 }
                 else
                 {
-                    return JsonResponseModel.Error("Ngữ Pháp đã tồn tại",400);
+                    return JsonResponseModel.Error("Ngữ Pháp đã tồn tại", 400);
                 }
-            
+
             }
             catch (Exception ex)
             {
 
                 return JsonResponseModel.Error(ex.Message, 500);
             }
-           
+
         }
 
         [HttpDelete("grammar")]
@@ -99,7 +99,7 @@ namespace Hola.Api.Controllers
             try
             {
 
-                var grammar = await _grammarService.GetFirstOrDefaultAsync(x=>x.PK_grammarId== id);
+                var grammar = await _grammarService.GetFirstOrDefaultAsync(x => x.PK_grammarId == id);
                 await _grammarService.DeleteAsync(grammar);
                 return JsonResponseModel.Success("Xóa thành công " + grammar.grammar_name);
             }

@@ -41,8 +41,9 @@ namespace Hola.Api.Service.ExcelServices
                 string filename = DateTime.Now.ToString("ssddMMyyyy") + "blank.xlsx";
                 string fileURL = Path.Combine(Directory.GetCurrentDirectory(), $"ExcelTemplate/{filename}").Trim();
                 FileInfo file = new FileInfo(fileURL);
-                ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
                 if (file.Exists) file.Delete();
+                ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
                 var package = new ExcelPackage(file);
                 ws = package.Workbook.Worksheets.Add("Report");
 
@@ -114,7 +115,7 @@ namespace Hola.Api.Service.ExcelServices
                         // Xử lý ảnh
                         if (item.Images.Count > 0)
                         {
-                            item.Images.ForEach(x => ImportImage(x.ImageUrl, x.RowIndex, x.ColumnIndex, x.Width, x.Height, x.Name,x.MarginLeft,x.MarginTop));
+                            item.Images.ForEach(x => ImportImage(x.ImageUrl, x.RowIndex, x.ColumnIndex, x.Width, x.Height, x.Name, x.MarginLeft, x.MarginTop));
                         }
                         UpdateLastRow();
                     }
@@ -125,11 +126,11 @@ namespace Hola.Api.Service.ExcelServices
                 #region Add Text Flus
 
                 int textPlusCount = _setting.Texts.Count;
-                if (textPlusCount>0)
+                if (textPlusCount > 0)
                 {
                     foreach (var text in _setting.Texts)
-                    InsertContent
-                    (text.Row, text.Col, text.ColSpan, text.Content, text.FontWeigh, text.Align, text.Size, text.FontFamily);
+                        InsertContent
+                        (text.Row, text.Col, text.ColSpan, text.Content, text.FontWeigh, text.Align, text.Size, text.FontFamily);
                 }
 
                 #endregion
@@ -235,7 +236,6 @@ namespace Hola.Api.Service.ExcelServices
                 }
 
                 _rowEndIndex = startRow + colection.Count;
-
                 #region Xử lý binding cột dữ liệu
 
                 foreach (var item in colection)
@@ -266,7 +266,7 @@ namespace Hola.Api.Service.ExcelServices
                     listData.Add(dicCols);
                 }
 
-              // Merge column, SetAlign
+                // Merge column, SetAlign
                 foreach (var column in Columns)
                 {
                     // Align
@@ -284,8 +284,8 @@ namespace Hola.Api.Service.ExcelServices
                     {
                         MergeColumn(rowIndexStart, column.Location, column.ColumnSpan);
                     }
-                        
-                }    
+
+                }
                 #endregion
 
                 #region Đổ dữ liệu đã Binding vào Excel, thiết lập border
@@ -348,7 +348,7 @@ namespace Hola.Api.Service.ExcelServices
             }
         }
 
-        public void ImportImage(string url, int row, int col, int width, int height, string name,int marginLeft, int marginTop)
+        public void ImportImage(string url, int row, int col, int width, int height, string name, int marginLeft, int marginTop)
         {
             byte[] imageBytes = GetImageFromUrl(url);
             var memoryStream = new MemoryStream(imageBytes);

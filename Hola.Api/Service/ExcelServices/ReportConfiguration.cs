@@ -13,8 +13,8 @@ namespace Hola.Api.Service.ExcelServices
 
         public ReportConfiguration()
         {
-            Body= new Body();
-            ExHeader = new List<HeaderOfPager>();  
+            Body = new Body();
+            ExHeader = new List<HeaderOfPager>();
             Texts = new List<TextPlus>();
         }
     }

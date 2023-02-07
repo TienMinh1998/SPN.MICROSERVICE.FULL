@@ -361,7 +361,7 @@ namespace Hola.Api.Controllers
                     };
                 option.Body = new Body()
                 {
-                 Datagriviews = new List<ExcelDatagriview>()
+                    Datagriviews = new List<ExcelDatagriview>()
                   {
                      new ExcelDatagriview
                      {
@@ -421,7 +421,7 @@ namespace Hola.Api.Controllers
                          Data = response.ToList(),
                          Headers = new List<HeaderOfTable>
                          {
-                             new HeaderOfTable { 
+                             new HeaderOfTable {
                                  ColumnName ="English",
                                  DisplayName = "Từ vựng",
                                  Width = 12,
@@ -457,7 +457,7 @@ namespace Hola.Api.Controllers
                              },
                          }
                      },
-                     new ExcelDatagriview    
+                     new ExcelDatagriview
                      {
                          Type = DATAGRIVIEW_TYPE.TABLE,
                          MarginTop= 2,
@@ -550,11 +550,11 @@ namespace Hola.Api.Controllers
                      }
                   }
                 };
-          
+
 
                 ExcelService extension = new ExcelService(option);
 
-                var fileUrl=   await extension.ExportExcel<QuestionStandardModel,CategoryModel,CategoryModel>();
+                var fileUrl = await extension.ExportExcel<QuestionStandardModel, CategoryModel, CategoryModel>();
                 var filename = Path.GetFileName(fileUrl);
                 var file = await Task.FromResult(File(System.IO.File.ReadAllBytes(fileUrl), "application/octet-stream", filename));
                 file.FileDownloadName = $"{DateTime.Now.ToString()}.xlsx";
@@ -584,12 +584,12 @@ namespace Hola.Api.Controllers
                 {
                     response.Add(new Student
                     {
-                       LoginTime = "Test",
-                       LogoutTime= "Test",
-                       Session = "Test",
-                       STT = i,
-                       Time = "Test",
-                       url = "https://pbs.twimg.com/media/BfrLniWCAAEHuD5.jpg"
+                        LoginTime = "Test",
+                        LogoutTime = "Test",
+                        Session = "Test",
+                        STT = i,
+                        Time = "Test",
+                        url = "https://pbs.twimg.com/media/BfrLniWCAAEHuD5.jpg"
                     });
                 }
 
@@ -691,7 +691,7 @@ namespace Hola.Api.Controllers
                        MarginTop= 0,
                        StartColumn = 7,
                        MergeRow = 2,
-                 
+
                    },
                }).Build;
 
@@ -713,7 +713,7 @@ namespace Hola.Api.Controllers
                 option.Texts.Add(text);
 
                 ExcelService extension = new ExcelService(option);
-                var fileUrl =  await extension.ExportExcel<Student, CategoryModel, CategoryModel>();
+                var fileUrl = await extension.ExportExcel<Student, CategoryModel, CategoryModel>();
 
                 var filename = Path.GetFileName(fileUrl);
                 var file = await Task.FromResult(File(System.IO.File.ReadAllBytes(fileUrl), "application/octet-stream", filename));
