@@ -21,9 +21,6 @@ namespace Hola.Api.Controllers
         private readonly INotificationService _notiservice;
         private readonly IMapper _mapperService;
         private readonly DapperBaseService _dapper;
-
-
-
         public NotificationController(INotificationService notiservice,
             IMapper mapperService,
             DapperBaseService dapper = null)

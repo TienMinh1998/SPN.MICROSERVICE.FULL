@@ -31,7 +31,7 @@ namespace Hola.Api.Controllers
             _mapper = mapper;
         }
 
-      
+
 
         /// <summary>
         /// Add new a target
@@ -52,11 +52,11 @@ namespace Hola.Api.Controllers
         }
 
 
-       /// <summary>
-       /// Get list Target By UserID
-       /// </summary>
-       /// <param name="target"></param>
-       /// <returns></returns>
+        /// <summary>
+        /// Get list Target By UserID
+        /// </summary>
+        /// <param name="target"></param>
+        /// <returns></returns>
         [HttpGet("Targets")]
         [Authorize]
         public async Task<JsonResponseModel> Targets()
@@ -72,24 +72,24 @@ namespace Hola.Api.Controllers
             catch (Exception ex)
             {
                 return JsonResponseModel.SERVER_ERROR(ex.Message);
-                
+
             }
-          
+
         }
 
 
 
         private int TotalDate(DateTime start_date, DateTime end_Date)
         {
-            if (start_date.Date == end_Date.Date)  return 1;
+            if (start_date.Date == end_Date.Date) return 1;
             if (start_date.Date < end_Date.Date)
             {
                 TimeSpan time = end_Date - start_date;
                 return time.Days;
             }
-            
 
-            
+
+
 
             return 0;
         }

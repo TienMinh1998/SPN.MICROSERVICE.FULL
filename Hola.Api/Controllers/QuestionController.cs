@@ -185,7 +185,7 @@ namespace Hola.Api.Controllers
         {
             // Lấy ra danh sách đã học trong ngày hôm này
             var a = DateTime.Now.Day;
-            Func<Question, bool> condition = x => (x.is_delete == 1 && x.category_id == model.Category_Id && x.created_on.Day==DateTime.UtcNow.Day);
+            Func<Question, bool> condition = x => (x.is_delete == 1 && x.category_id == model.Category_Id && x.created_on.Day == DateTime.UtcNow.Day);
             var question = _questionService.GetListPaged(model.PageNumber, model.PageSize, condition, model.SortColumn, model.IsDesc);
             return JsonResponseModel.Success(question);
         }
@@ -199,7 +199,7 @@ namespace Hola.Api.Controllers
         {
             var question = await _questionService.GetFirstOrDefaultAsync(x => x.id == request.ID);
             question.is_delete = 1;
-            question.created_on= DateTime.Now;
+            question.created_on = DateTime.Now;
             await _questionService.UpdateAsync(question);
             return JsonResponseModel.Success(true);
         }
@@ -218,7 +218,7 @@ namespace Hola.Api.Controllers
                 int userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == "UserId").Value);
                 Func<Question, bool> condition = x => (x.is_delete == 1 && x.fk_userid == userid)
                 && (x.questionname.Contains(model.SearchKey));
-                
+
                 var question = _questionService.GetListPaged(model.PageNumber, model.PageSize, condition, model.SortColumn, model.IsDesc);
                 return JsonResponseModel.Success(question);
             }
@@ -226,7 +226,7 @@ namespace Hola.Api.Controllers
             {
                 return JsonResponseModel.SERVER_ERROR(ex.Message);
             }
-            
+
         }
 
         #region Extension

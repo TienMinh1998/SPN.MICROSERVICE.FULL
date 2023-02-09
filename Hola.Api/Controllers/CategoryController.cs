@@ -36,7 +36,7 @@ public class CategoryController : ControllerBase
     public async Task<JsonResponseModel> AddQuestion([FromBody] AddCategoryModel model)
     {
         int userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == "UserId").Value);
-        var result = await categoryService.AddCategory(model,userid);
+        var result = await categoryService.AddCategory(model, userid);
         return JsonResponseModel.Success(result);
     }
     /// <summary>
@@ -50,8 +50,8 @@ public class CategoryController : ControllerBase
     {
         int userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == "UserId").Value);
         var result = await _service.GetAllAsync(x => x.fk_userid == userid);
-        result = result.OrderByDescending(x=>x.totalquestion).ThenByDescending(x=>x.created_on).ToList();    
+        result = result.OrderByDescending(x => x.totalquestion).ThenByDescending(x => x.created_on).ToList();
         return JsonResponseModel.Success(result);
     }
-      
+
 }

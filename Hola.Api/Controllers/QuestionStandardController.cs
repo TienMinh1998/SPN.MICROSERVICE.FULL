@@ -324,6 +324,8 @@ namespace Hola.Api.Controllers
                    $" = qd.\"QuestionID\" ) a\r\ninner join usr.topic tq on tq.\"PK_Topic_Id\" = a.\"TopicID\"\r\nwhere a.\"TopicID\" = {topicId}  order by a.\"Pk_QuestionStandard_Id\"";
 
                 var response = await _dapper.GetAllAsync<QuestionStandardModel>(query.AddPadding(1, 30));
+
+
                 // Report 2 : 
                 string query2 = "SELECT \"Id\", fk_userid, \"name\", define, \"Image\", totalquestion, priority, created_on FROM usr.categories;";
                 var response2 = await _dapper.GetAllAsync<CategoryModel>(query2);
@@ -667,7 +669,7 @@ namespace Hola.Api.Controllers
                              new HeaderOfTable { ColumnName = "LogoutTime", DisplayName = "Ghi chú", Width = 12, Location = 5 },
                              new HeaderOfTable { ColumnName = "Time", DisplayName = "ID", Width = 12, Location = 6 },
                              new HeaderOfTable { ColumnName = "url", DisplayName = "Trạng Thái", Width = 12, Location = 7,ColumnSpan= 2},
-                              new HeaderOfTable { ColumnName = "url", DisplayName = "Trạng Thái", Width = 12, Location = 7 }
+                             new HeaderOfTable { ColumnName = "url", DisplayName = "Trạng Thái", Width = 12, Location = 7 }
                          })
                .SetFooter(new List<FootterConfig>
                {
