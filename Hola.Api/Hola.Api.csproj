@@ -52,8 +52,7 @@
 
     <ItemGroup>
       <Folder Include="Requests\Users\NewFolder\" />
-      <Folder Include="Service\IText7\" />
-      <Folder Include="Service\PDFService\Interfaces\" />
+      <Folder Include="Service\BAConvertXml\" />
       <Folder Include="wwwroot\" />
     </ItemGroup>
 

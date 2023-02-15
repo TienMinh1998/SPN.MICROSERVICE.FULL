@@ -18,7 +18,7 @@
     public class HeaderBuilder
     {
         private HeaderOfPager header = new HeaderOfPager();
-        
+
         public HeaderOfPager build => header;
         public HeaderBuilder SetTopContent(string content)
         {
@@ -37,10 +37,10 @@
         }
         public HeaderBuilder SetAlign(string align)
         {
-            header.Align = align;   
+            header.Align = align;
             return this;
         }
-        public HeaderBuilder SetStartRow(int row) 
+        public HeaderBuilder SetStartRow(int row)
         {
             header.StartRow = row;
             return this;

@@ -29,15 +29,13 @@ namespace Hola.Api.Service.Quatz
             try
             {
                 // User nào bật thông báo mới có
-                var listUser = await _userServices.GetAllAsync(x => (x.isnotification == 1 && x.IsDeleted !=1));
+                var listUser = await _userServices.GetAllAsync(x => (x.isnotification == 1 && x.IsDeleted != 1));
                 var response = listUser.ToList();
                 foreach (var item in response)
                 {
                     // Lấy ra thông tin deviceToken 
                     string userName = item.Name;
                     var devideFirebaseToken = item.DeviceToken;
-
-                    string queryGetID = "SELECT usr.random_between(1,(select count(1)::integer from public.\"QuestionStandards\"));";
 
                     string queryRandomQuestion = "select * from public.\"QuestionStandards\" where \"Pk_QuestionStandard_Id\" " +
                         "=(SELECT usr.random_between(1,(select count(1)::integer from public.\"QuestionStandards\")))";
@@ -48,7 +46,7 @@ namespace Hola.Api.Service.Quatz
                         notification = new NotificationMessageBody()
                         {
                             title = $" '{question.English}' ?",
-                            body = $"{question.MeaningVietNam}"
+                            body = $"{question.MeaningEnglish}"
                         }
                     };
                     request.registration_ids.Add(devideFirebaseToken);

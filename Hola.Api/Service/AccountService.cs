@@ -30,7 +30,7 @@ namespace Hola.Api.Service
         public async Task<bool> UpdateDeviceTokenFirebaseAsync(string deviceToken, int userId)
         {
             string sql = string.Format("UPDATE qes.accounts SET devicetoken = '{0}' WHERE user_id = {1}",
-                deviceToken,userId);
+                deviceToken, userId);
             var result = await Excecute(ConnectionString, sql);
             return true;
         }
@@ -38,7 +38,7 @@ namespace Hola.Api.Service
         public string GetDeviceTokenByUserId(int UserId)
         {
             var sql = string.Format("SELECT devicetoken FROM qes.accounts WHERE user_id  ={0}", UserId);
-            var result =  FirstOrDefault<string>(ConnectionString,sql);
+            var result = FirstOrDefault<string>(ConnectionString, sql);
             return result;
         }
         /// <summary>
@@ -53,7 +53,7 @@ namespace Hola.Api.Service
             {
                 string sql_count = $"SELECT COUNT(1) FROM usr.question where fk_userid = {userid} and created_on::Date = CURRENT_DATE";
                 var result_count = await ExcecuteScalarAsync(ConnectionString, sql_count);
-                double percent_of_day = (double.Parse(result_count.ToString())/ count_target) * 100;
+                double percent_of_day = (double.Parse(result_count.ToString()) / count_target) * 100;
                 string note = string.Empty;
                 if (percent_of_day < 100)
                 {
@@ -66,7 +66,7 @@ namespace Hola.Api.Service
 
                 string sql_count_update = $"SELECT COUNT(1) FROM history.userhistory where fk_userid = {userid} and created_on::Date = CURRENT_DATE";
                 var result_count_update = await ExcecuteScalarAsync(ConnectionString, sql_count_update);
-                if (result_count_update!=1)
+                if (result_count_update != 1)
                 {
                     string sql_inserst = $"INSERT INTO history.userhistory (fk_userid, count_word, percent_day, note, created_on)" +
                      $" VALUES({userid}, {result_count}, {percent_of_day}, '{note}', '{DateTime.Now.ToString("yyyy-MM-dd")}');";

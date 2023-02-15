@@ -22,9 +22,9 @@ namespace Hola.Api.Service.Quatz
         private readonly QuestionService qesQuestionService;
         private readonly IQuestionService _questionService;
         private readonly IUserService _userServices;
-        public JobClass(IConfiguration configuration, AccountService accountService, 
-            FirebaseService firebaseService, QuestionService qesQuestionService, 
-            IUserService userServices, 
+        public JobClass(IConfiguration configuration, AccountService accountService,
+            FirebaseService firebaseService, QuestionService qesQuestionService,
+            IUserService userServices,
             IQuestionService questionService)
         {
             _Configuration = configuration;
@@ -39,12 +39,12 @@ namespace Hola.Api.Service.Quatz
             try
             {
                 // Get ListUser Noti 
-                var listUser =await _userServices.GetAllAsync(x=>(x.isnotification==1 && x.IsDeleted==0));
+                var listUser = await _userServices.GetAllAsync(x => (x.isnotification == 1 && x.IsDeleted == 0));
                 var response = listUser.ToList();
                 foreach (var item in response)
                 {
                     // get list word to day for UserId for all categories
-                    var listQuestion =await _questionService.GetAllAsync(x => x.is_delete != 1 && x.fk_userid==item.Id);
+                    var listQuestion = await _questionService.GetAllAsync(x => x.is_delete != 1 && x.fk_userid == item.Id);
                     Random rnd = new Random();
                     var index = rnd.Next(listQuestion.Count);
                     var questionRadom = listQuestion[index];
@@ -59,7 +59,7 @@ namespace Hola.Api.Service.Quatz
                         },
                     };
                     request.registration_ids.Add(devideFirebaseToken);
-                    await firebaseService.Push(request,item.Id);
+                    await firebaseService.Push(request, item.Id);
                 }
             }
             catch (System.Exception ex)

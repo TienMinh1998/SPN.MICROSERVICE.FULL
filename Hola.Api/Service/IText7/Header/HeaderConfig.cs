@@ -1,4 +1,6 @@
-﻿namespace Hola.Api.Service.PDFService
+﻿using iText.Layout.Properties;
+
+namespace Hola.Api.Service.IText7
 {
     public class HeaderConfig
     {
@@ -6,6 +8,6 @@
         public string DisplayColumnName { get; set; }
         public float Width { get; set; }
         public int ordinalNumber { get; set; }
-        public int Align { get; set; }
+        public TextAlignment TextAlignment { get; set; }
     }
 }
