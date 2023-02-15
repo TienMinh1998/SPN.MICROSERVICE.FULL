@@ -45,7 +45,7 @@ namespace Hola.Api.Service.Quatz
                     {
                         notification = new NotificationMessageBody()
                         {
-                            title = $" '{question.English}' ?",
+                            title = $"{question.English}",
                             body = $"{question.MeaningEnglish}"
                         }
                     };
