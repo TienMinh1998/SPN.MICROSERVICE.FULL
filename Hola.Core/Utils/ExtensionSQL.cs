@@ -111,7 +111,7 @@ namespace Hola.Core.Utils
 
                 throw ex;
             }
-           
+
         }
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace Hola.Core.Utils
             }
             catch (Exception)
             {
-               
+
                 return sqlcommand;
             }
 

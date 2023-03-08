@@ -29,6 +29,10 @@ using Microsoft.AspNetCore.Http;
 using OfficeOpenXml;
 using Hola.Api.Service.BAImportExcel;
 using Hola.Core.Model;
+using System.Xml;
+using System.Drawing;
+using System.Runtime.InteropServices;
+using System.Globalization;
 
 namespace Hola.Api.Controllers
 {
@@ -190,12 +194,100 @@ namespace Hola.Api.Controllers
 
             return JsonResponseModel.Success(response);
         }
-
-        public class Person
+        [HttpPost("ImportXml")]
+        public async Task<JsonResponseModel> ImportXml(IFormFile file)
         {
-            public string Name { get; set; }
-            public DateTime CreateDate { get; set; }
-            public int Age { get; set; }
+            var tempFilePath = Path.GetTempFileName();
+            using (var stream = new FileStream(tempFilePath, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+            var value = ReadData<Student1>(tempFilePath, new List<string>
+            {
+                "id","name","age"
+            });
+            return JsonResponseModel.Success(value);
         }
+        private List<T> ReadData<T>(string filePath, List<string> headerNames)
+        {
+            Type objectType = typeof(T);
+            var properties = objectType.GetProperties().ToList();
+            List<T> listAnyThing = new List<T>();
+
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load(filePath);
+            XmlNodeList studentNodes = xmlDoc.GetElementsByTagName(objectType.Name.ToLower());
+            foreach (XmlNode studentNode in studentNodes)
+            {
+                List<MapDataConfig> values = new List<MapDataConfig>();
+                foreach (var node in headerNames)
+                {
+                    object _value = studentNode[node].InnerText;
+                    values.Add((new MapDataConfig()).SetColumnName(node).SetValue((_value != null) ? _value.ToString() : string.Empty));
+                }
+                var item = CreateNewIntanceByProperties<T>(values, properties);
+                listAnyThing.Add(item);
+            }
+            return listAnyThing;
+        }
+        private T CreateNewIntanceByProperties<T>(List<MapDataConfig> data, List<PropertyInfo> properties)
+        {
+            try
+            {
+                var obj = (T)Activator.CreateInstance(typeof(T));
+                int i = 0;
+                foreach (var item in properties)
+                {
+                    string columnName = item.Name;
+                    var cellValue = data.Where(x => x.ColumnName.ToLower() == columnName.ToLower()).FirstOrDefault();
+                    if (cellValue != null)
+                    {
+                        if (string.IsNullOrEmpty(cellValue.Value))
+                        {
+                            i++;
+                            continue;
+                        }
+
+                        if (item.PropertyType.IsGenericType && item.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>))
+                        {
+                            Type underlyingType = Nullable.GetUnderlyingType(item.PropertyType);
+                            if (underlyingType == typeof(DateTime))
+                            {
+                                var dateTimeValue = cellValue.Value.ConvertStringToDateTime();
+                                item.SetValue(obj, Convert.ChangeType(dateTimeValue, underlyingType));
+                            }
+                            else
+                            {
+
+                                object underlyingValue = Convert.ChangeType(cellValue.Value, underlyingType);
+                                object convertedValue = Activator.CreateInstance(item.PropertyType, underlyingValue);
+                                item.SetValue(obj, Convert.ChangeType(convertedValue, underlyingType));
+                            }
+                        }
+                        else
+                        {
+                            if (item.PropertyType == typeof(DateTime))
+                            {
+                                var dateTimeValue = cellValue.Value.ConvertStringToDateTime();
+                                item.SetValue(obj, Convert.ChangeType(dateTimeValue, item.PropertyType));
+                            }
+                            else
+                            {
+                                item.SetValue(obj, Convert.ChangeType(cellValue.Value, item.PropertyType));
+                            }
+                        }
+                        i++;
+                    }
+                }
+                return obj;
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+
+        }
+
     }
 }

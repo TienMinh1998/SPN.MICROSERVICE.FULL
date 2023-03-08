@@ -9,7 +9,6 @@ namespace Hola.Api.AutoMappers
             return new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile(new RequestToEntityProfile());
-              
             });
         }
     }

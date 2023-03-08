@@ -1,6 +1,6 @@
 ﻿namespace Hola.Api.Service.ExcelServices.TestModels
 {
-    public class Student : IStudent
+    public class Student
     {
         public int STT { get; set; }
         public string Session { get; set; }
@@ -12,14 +12,13 @@
     }
 
 
-    public class Student1 : IStudent
+    public class Student1
     {
-        public int STT { get; set; }
-        public string Session { get; set; }
-    }
-
-    public interface IStudent
-    {
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public int Age { get; set; }
 
     }
+
 }

@@ -36,7 +36,7 @@ namespace Hola.Api.Service.Quatz
                     // Get devide token infomation
                     string userName = item.Name;
                     var devideFirebaseToken = item.DeviceToken;
-                    var totalQuestion =await _questionService.CountQuestionToday(item.Id);
+                    var totalQuestion = await _questionService.CountQuestionToday(item.Id);
                     PushNotificationRequest request = new PushNotificationRequest()
                     {
                         notification = new NotificationMessageBody()

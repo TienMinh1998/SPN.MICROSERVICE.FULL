@@ -57,8 +57,6 @@ namespace Hola.Api.Service.IText7
                 }
                 CreateNewFootter();
                 CloseDocument();
-
-
                 byte[] pdfBytes = stream.ToArray();
                 return pdfBytes;
             }

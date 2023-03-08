@@ -57,7 +57,6 @@ namespace Hola.Api.Service.BAImportExcel
                 List<MapDataConfig> values = new List<MapDataConfig>();
                 for (int i = 0; i < headerNames.Count; i++)
                 {
-
                     try
                     {
                         object? value = worksheet.Cells[row, i + 1].Value;
