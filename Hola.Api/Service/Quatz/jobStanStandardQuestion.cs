@@ -38,7 +38,7 @@ namespace Hola.Api.Service.Quatz
                     var devideFirebaseToken = item.DeviceToken;
 
                     string queryRandomQuestion = "select * from public.\"QuestionStandards\" where \"Pk_QuestionStandard_Id\" " +
-                        "=(SELECT usr.random_between(1,(select count(1)::integer from public.\"QuestionStandards\")))";
+                        "=(SELECT usr.random_between(1,(select count(1)::integer from public.\"QuestionStandards\")))  and \"IsDeleted\" = false ;";
 
                     var question = _dapper.QueryFirst<QuestionStandard>(queryRandomQuestion);
                     PushNotificationRequest request = new PushNotificationRequest()
@@ -46,7 +46,7 @@ namespace Hola.Api.Service.Quatz
                         notification = new NotificationMessageBody()
                         {
                             title = $"{question.English}",
-                            body = $"{question.MeaningEnglish}"
+                            body = $"{question.Phonetic}"
                         }
                     };
                     request.registration_ids.Add(devideFirebaseToken);

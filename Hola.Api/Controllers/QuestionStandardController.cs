@@ -257,7 +257,8 @@ namespace Hola.Api.Controllers
                 var question = await _questionStandardService.GetFirstOrDefaultAsync(x => x.Pk_QuestionStandard_Id == id);
                 if (question == null)
                     return JsonResponseModel.Error($"Từ mới Id='{id}' không tồn tại", 400);
-                await _questionStandardService.DeleteAsync(question);
+                question.IsDeleted = true;
+                await _questionStandardService.UpdateAsync(question);
                 return JsonResponseModel.Success(new List<string>(), $"Xóa thành công từ mới Id ='{id}'");
             }
             catch (Exception ex)
