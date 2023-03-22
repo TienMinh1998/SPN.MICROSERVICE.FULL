@@ -82,11 +82,9 @@ namespace Hola.Api.Controllers
             try
             {
                 bool condition = false;
-                Func<QuestionStandard, bool> searchCondition = x =>
-                ((string.IsNullOrEmpty(request.searchKey) || request.searchKey == "*"
-                || x.English.Contains(request.searchKey, StringComparison.OrdinalIgnoreCase)
-                || x.MeaningVietNam.Contains(request.searchKey, StringComparison.OrdinalIgnoreCase)) &&
-                  string.IsNullOrEmpty(request.Date) ? true : x.created_on.ToString("yyyy-MM-dd") == request.Date);
+                Func<QuestionStandard, bool> searchCondition = x => (!string.IsNullOrEmpty(request.searchKey)) ? x.English == request.searchKey : true;
+                                                                   
+                ;
 
                 if (request.IsDesc == null || request.IsDesc == false)
                 {
