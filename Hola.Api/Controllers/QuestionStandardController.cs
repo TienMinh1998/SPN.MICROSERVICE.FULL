@@ -10,6 +10,7 @@ using Hola.Api.Service.ExcelServices.Enum;
 using Hola.Api.Service.ExcelServices.TestModels;
 using Hola.Core.Model;
 using Hola.Core.Utils;
+using iText.IO.Util;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -82,8 +83,8 @@ namespace Hola.Api.Controllers
             try
             {
                 bool condition = false;
-                Func<QuestionStandard, bool> searchCondition = x => (!string.IsNullOrEmpty(request.searchKey)) ? x.English == request.searchKey : true;
-                                                                   
+                Func<QuestionStandard, bool> searchCondition = x => (!string.IsNullOrEmpty(request.searchKey)) ? x.English.Contains(request.searchKey) : true;
+
                 ;
 
                 if (request.IsDesc == null || request.IsDesc == false)
