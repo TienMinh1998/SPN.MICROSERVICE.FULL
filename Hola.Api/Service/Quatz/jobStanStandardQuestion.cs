@@ -37,8 +37,7 @@ namespace Hola.Api.Service.Quatz
                     string userName = item.Name;
                     var devideFirebaseToken = item.DeviceToken;
 
-                    string queryRandomQuestion = "select * from public.\"QuestionStandards\" where \"Pk_QuestionStandard_Id\" " +
-                        "=(SELECT usr.random_between(1,(select count(1)::integer from public.\"QuestionStandards\")))  and \"IsDeleted\" = false ;";
+                    string queryRandomQuestion = "SELECT * FROM (SELECT * FROM \"QuestionStandards\" qs ORDER BY created_on DESC LIMIT 10) sub ORDER BY random() LIMIT 1;";
 
                     var question = _dapper.QueryFirst<QuestionStandard>(queryRandomQuestion);
                     PushNotificationRequest request = new PushNotificationRequest()
