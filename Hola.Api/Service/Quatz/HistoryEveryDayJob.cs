@@ -12,7 +12,7 @@ namespace Hola.Api.Service.Quatz
         private readonly IUserService _userServices;
         private readonly AccountService _accountService;
 
-        public HistoryEveryDayJob(AccountService accountService, 
+        public HistoryEveryDayJob(AccountService accountService,
             IUserService userServices)
         {
             _accountService = accountService;
