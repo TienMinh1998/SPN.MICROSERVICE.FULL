@@ -45,26 +45,32 @@ namespace Hola.Api.Service.Quatz
                 {
                     // get list word to day for UserId for all categories
                     var listQuestion = await _questionService.GetAllAsync(x => x.is_delete != 1 && x.fk_userid == item.Id);
-                    Random rnd = new Random();
-                    var index = rnd.Next(listQuestion.Count);
-                    var questionRadom = listQuestion[index];
-                    // Get devidetoken 
-                    var devideFirebaseToken = item.DeviceToken;
-                    PushNotificationRequest request = new PushNotificationRequest()
+                    if (listQuestion == null || listQuestion.Count == 0)
                     {
-                        notification = new NotificationMessageBody()
+                        continue;
+                    }
+                    else
+                    {
+                        Random rnd = new Random();
+                        var index = rnd.Next(listQuestion.Count);
+                        var questionRadom = listQuestion[index];
+                        // Get devidetoken 
+                        var devideFirebaseToken = item.DeviceToken;
+                        PushNotificationRequest request = new PushNotificationRequest()
                         {
-                            title = questionRadom.questionname,
-                            body = $"'{item.Name}' bạn đã thuộc từ này chưa? \n viết xuống nhé"
-                        },
-                    };
-                    request.registration_ids.Add(devideFirebaseToken);
-                    await firebaseService.Push(request, item.Id);
+                            notification = new NotificationMessageBody()
+                            {
+                                title = questionRadom.questionname,
+                                body = $"today: {questionRadom.phonetic}"
+                            },
+                        };
+                        request.registration_ids.Add(devideFirebaseToken);
+                        await firebaseService.Push(request, item.Id);
+                    }
                 }
             }
             catch (System.Exception ex)
             {
-
                 throw;
             }
 
