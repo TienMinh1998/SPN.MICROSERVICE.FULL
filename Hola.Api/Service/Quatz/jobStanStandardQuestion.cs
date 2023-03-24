@@ -45,7 +45,7 @@ namespace Hola.Api.Service.Quatz
                         notification = new NotificationMessageBody()
                         {
                             title = $"{question.English}",
-                            body = $"{question.Phonetic}"
+                            body = $"{question.Note}"
                         }
                     };
                     request.registration_ids.Add(devideFirebaseToken);
