@@ -69,7 +69,7 @@ namespace Hola.Api.Controllers
                         APICrossHelper api = new APICrossHelper();
                         string word = model.QuestionName;
                         var rImage = await api.IllustrationImage<RootObject>(word);
-                        imageURL = rImage.hits.FirstOrDefault(x => string.IsNullOrEmpty(x.webformatURL)).webformatURL;
+                        imageURL = rImage.hits.FirstOrDefault(x => !string.IsNullOrEmpty(x.webformatURL)).webformatURL;
                         var response1 = await api.GetFromDictionary<ResultFromOxford>(word, "en-us");
                         var pronunciation = response1.Results.FirstOrDefault()
                             .lexicalEntries.FirstOrDefault()
