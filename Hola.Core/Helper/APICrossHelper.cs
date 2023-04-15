@@ -3,6 +3,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Hola.Core.Common;
 using Hola.Core.Model;
+using Venly.Model;
 
 namespace Hola.Core.Helper
 {
@@ -101,5 +102,19 @@ namespace Hola.Core.Helper
             var Result = Newtonsoft.Json.JsonConvert.DeserializeObject<T>(json);
             return Result;
         }
+
+
+        public async Task<T> IllustrationImage<T>(string word)  // location đại diện cho ANh anh hay là anh mỹ
+        {
+            string links = $"https://pixabay.com/api/?key=35427783-15cc811e662e38ffd55809a44&q={word}&image_type=illustration";
+            HttpClient client = new HttpClient();
+            var request1 = new HttpRequestMessage(HttpMethod.Get, links);
+            HttpResponseMessage response = await client.SendAsync(request1);
+            HttpContent content = response.Content;
+            var json = await content.ReadAsStringAsync();
+            var Result = Newtonsoft.Json.JsonConvert.DeserializeObject<T>(json);
+            return Result;
+        }
+
     }
 }

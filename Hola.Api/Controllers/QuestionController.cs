@@ -61,11 +61,15 @@ namespace Hola.Api.Controllers
                     string phonetic = "";
                     string desfinition = "";
                     string type = "";
+
+                    string imageURL = "";
                     try
                     {
                         // Get infomation from oxfordDictionary
                         APICrossHelper api = new APICrossHelper();
                         string word = model.QuestionName;
+                        var rImage = await api.IllustrationImage<RootObject>(word);
+                        imageURL = rImage.hits.FirstOrDefault(x => string.IsNullOrEmpty(x.webformatURL)).webformatURL;
                         var response1 = await api.GetFromDictionary<ResultFromOxford>(word, "en-us");
                         var pronunciation = response1.Results.FirstOrDefault()
                             .lexicalEntries.FirstOrDefault()
@@ -112,7 +116,7 @@ namespace Hola.Api.Controllers
                         phonetic = phonetic,
                         created_on = DateTime.Now,
                         fk_userid = model.fk_userid,
-                        ImageSource = model.ImageSource,
+                        ImageSource = imageURL,
                         questionname = model.QuestionName,
                         definition = desfinition,
                         Type = type
