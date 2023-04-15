@@ -65,7 +65,7 @@ namespace Hola.Api.Controllers
                         // Get infomation from oxfordDictionary
                         APICrossHelper api = new APICrossHelper();
                         string word = model.QuestionName;
-                        var response1 = await api.GetFromDictionary<ResultFromOxford>(word);
+                        var response1 = await api.GetFromDictionary<ResultFromOxford>(word, "en-us");
                         var audioFile = response1.Results.FirstOrDefault()
                             .lexicalEntries.FirstOrDefault()
                             .entries.FirstOrDefault()
