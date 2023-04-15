@@ -4,10 +4,10 @@ namespace Hola.Api.Models.Dic
 {
     public class pronunciationItem
     {
-        public Dialect[] Dialects { get; set; }
-        public string PhoneticNotation { get; set; }
-        public string PhoneticSpelling { get; set; }
-        public string AudioFile { get; set; }
+        public Dialect[] dialects { get; set; }
+        public string phoneticNotation { get; set; }
+        public string phoneticSpelling { get; set; }
+        public string audioFile { get; set; }
     }
 
     public class Dialect
