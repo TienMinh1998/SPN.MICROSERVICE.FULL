@@ -36,11 +36,19 @@ namespace Hola.Api.Models.Dic
     public class SensesItem
     {
         public List<string> definitions { get; set; }
+        public List<synonymsItem> synonyms { get; set; }
     }
 
     public class LexicalCategory
     {
         public string text { get; set; }
     }
+
+    public class synonymsItem
+    {
+        public string text { get; set; }
+        public string language { get; set; }
+    }
+
 }
 

@@ -17,6 +17,7 @@ using Hola.Api.Service.CateporyServices;
 using Hola.Api.Models.Dic;
 using Hola.Api.Requests;
 using Hola.Api.Service.BaseServices;
+using System.Drawing;
 #endregion
 
 
@@ -66,11 +67,22 @@ namespace Hola.Api.Controllers
                         APICrossHelper api = new APICrossHelper();
                         string word = model.QuestionName;
                         var response1 = await api.GetFromDictionary<ResultFromOxford>(word, "en-us");
-                        var audioFile = response1.Results.FirstOrDefault()
+                        var pronunciation = response1.Results.FirstOrDefault()
                             .lexicalEntries.FirstOrDefault()
                             .entries.FirstOrDefault()
-                            .pronunciations
-                            .FirstOrDefault().audioFile;
+                            .pronunciations;
+
+                        string audioFile = string.Empty;
+                        foreach (var item in pronunciation)
+                        {
+                            if (item.audioFile != null)
+                            {
+                                audioFile = item.audioFile;
+                            }
+
+                        }
+
+
                         // Get phoneticSpelling
                         var phoneticSpelling = response1.Results.FirstOrDefault()
                             .lexicalEntries.FirstOrDefault()
