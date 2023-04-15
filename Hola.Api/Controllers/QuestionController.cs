@@ -70,13 +70,13 @@ namespace Hola.Api.Controllers
                             .lexicalEntries.FirstOrDefault()
                             .entries.FirstOrDefault()
                             .pronunciations
-                            .FirstOrDefault().audioFile;
+                            .FirstOrDefault().AudioFile;
                         // Get phoneticSpelling
                         var phoneticSpelling = response1.Results.FirstOrDefault()
                             .lexicalEntries.FirstOrDefault()
                             .entries.FirstOrDefault()
                             .pronunciations
-                            .FirstOrDefault().phoneticSpelling;
+                            .FirstOrDefault().PhoneticSpelling;
                         // get definition
                         var def = response1.Results.FirstOrDefault()
                             .lexicalEntries.FirstOrDefault().entries.FirstOrDefault().senses.FirstOrDefault().definitions.FirstOrDefault();

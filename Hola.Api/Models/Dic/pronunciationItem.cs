@@ -4,8 +4,15 @@ namespace Hola.Api.Models.Dic
 {
     public class pronunciationItem
     {
-        public string audioFile { get; set; }
-        public string phoneticSpelling { get; set; }
+        public Dialect[] Dialects { get; set; }
+        public string PhoneticNotation { get; set; }
+        public string PhoneticSpelling { get; set; }
+        public string AudioFile { get; set; }
+    }
+
+    public class Dialect
+    {
+        public string[] Dialects { get; set; }
     }
 
     public class ResultFromOxford
