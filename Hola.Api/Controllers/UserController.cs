@@ -61,6 +61,7 @@ namespace Hola.Api.Controllers
         [HttpPost("Register")]
         public async Task<JsonResponseModel> Register([FromBody] UserRegisterRequest request)
         {
+            if (request.Code == null) return JsonResponseModel.Error("Bạn không có mã code để đăng kí. Vui lòng liên hệ 0968872539.", 500);
             // Check available
             var user = await userService.GetFirstOrDefaultAsync(x => (x.Username.Equals(request.UserName)));
             if (user != null) return JsonResponseModel.Error("Người Dùng đã tồn tại! vui lòng thử 1 UserName Khác.", 500);
@@ -78,7 +79,7 @@ namespace Hola.Api.Controllers
                 Email = email,
                 Name = request.Name,
                 Password = passwordHash
-               
+
             };
             var add_user = await userService.AddAsync(addUser);
             // PHân quyền luôn cho User là một người dùng thông thường
@@ -96,7 +97,7 @@ namespace Hola.Api.Controllers
         public async Task<JsonResponseModel> Login([FromBody] LoginRequest request)
         {
             var user = await userService.GetFirstOrDefaultAsync(x => x.Username.Equals(request.UserName));
-            if (user!=null)
+            if (user != null)
             {
                 var isPasswordOk = BCrypt.Net.BCrypt.EnhancedVerify(request.Password, user.Password, BCrypt.Net.HashType.SHA384);
                 if (isPasswordOk)
@@ -105,7 +106,7 @@ namespace Hola.Api.Controllers
 
                     // Update Devide Token of User 
                     user.DeviceToken = request.DevideToken;
-                    var userUpdateDevice =await userService.UpdateAsync(user); 
+                    var userUpdateDevice = await userService.UpdateAsync(user);
                     // Tạo Token và trả cho người dùng
                     var newToken = CreateToken(user);
                     LoginResponse loginResponse = new LoginResponse
@@ -133,7 +134,7 @@ namespace Hola.Api.Controllers
                 var isPasswordOk = BCrypt.Net.BCrypt.EnhancedVerify(request.Password, user.Password, BCrypt.Net.HashType.SHA384);
                 if (isPasswordOk)
                 {
-                   
+
                     var newToken = CreateToken(user);
                     LoginResponse loginResponse = new LoginResponse
                     {
@@ -169,10 +170,10 @@ namespace Hola.Api.Controllers
             try
             {
                 int userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == "UserId").Value);
-                var totalQuestion = await _questionService.CountAsync(x=>x.fk_userid== userid); 
-                var learned =  await _questionService.CountAsync(x=>(x.fk_userid== userid && x.is_delete==1));
+                var totalQuestion = await _questionService.CountAsync(x => x.fk_userid == userid);
+                var learned = await _questionService.CountAsync(x => (x.fk_userid == userid && x.is_delete == 1));
                 var notLearnd = await _questionService.CountAsync(x => (x.fk_userid == userid && x.is_delete == 0));
-                var totaltoday =await daper_questionService.CountQuestionToday(userid);
+                var totaltoday = await daper_questionService.CountQuestionToday(userid);
 
                 OverViewModel model = new OverViewModel()
                 {
@@ -203,7 +204,7 @@ namespace Hola.Api.Controllers
             {
                 var userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == SystemParam.CLAIM_USER).Value);
                 var user = await userService.GetFirstOrDefaultAsync(x => x.Id == userid);
-                if (action.TurnOn==true)
+                if (action.TurnOn == true)
                 {
                     // If action equal 'true' => on Notification 
                     user.isnotification = 1;
@@ -234,10 +235,10 @@ namespace Hola.Api.Controllers
             try
             {
                 var userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == SystemParam.CLAIM_USER).Value);
-                var result =await accountService.CreateHistoryOneDay(userid, 10);
-                if (result==true)
+                var result = await accountService.CreateHistoryOneDay(userid, 10);
+                if (result == true)
                 {
-                   return JsonResponseModel.Success(new List<string>(), $"Tạo lịch sử ngày {DateTime.Now.ToString("yyyy-MM-dd")} thành công");
+                    return JsonResponseModel.Success(new List<string>(), $"Tạo lịch sử ngày {DateTime.Now.ToString("yyyy-MM-dd")} thành công");
                 }
                 else
                 {
@@ -254,8 +255,8 @@ namespace Hola.Api.Controllers
         public async Task<JsonResponseModel> UploadAvartar(IFormFile? inputFiles)
         {
             var userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == SystemParam.CLAIM_USER).Value);
-            var user = await userService.GetFirstOrDefaultAsync(x=>x.Id== userid);
-            if (user!=null)
+            var user = await userService.GetFirstOrDefaultAsync(x => x.Id == userid);
+            if (user != null)
             {
                 var filename = inputFiles;
                 var filePath = Path.GetTempFileName();
