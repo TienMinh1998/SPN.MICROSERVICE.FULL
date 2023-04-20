@@ -59,7 +59,7 @@ namespace Hola.Api.Controllers
             string camType = cambridgeDicResponse?.Type;
             string camDefinition = cambridgeDicResponse?.Definition;
             string camExample = cambridgeDicResponse?.Example;
-            var oxfordWordSame = api.GetSameType(word);
+            var oxfordWordSame = await api.GetSameType(word);
 
             try
             {
