@@ -18,6 +18,7 @@ using Hola.Api.Models.Dic;
 using Hola.Api.Requests;
 using Hola.Api.Service.BaseServices;
 using System.Drawing;
+using Hola.Core.Utils;
 #endregion
 
 
@@ -112,11 +113,29 @@ namespace Hola.Api.Controllers
                     {
                     }
 
+                    string typeNote = "";
+                    if (type.Trim().ToLower() == "adverb")
+                    {
+                        typeNote = "adv";
+                    }
+                    else if (type.Trim().ToLower() == "adjective")
+                    {
+                        typeNote = "adj";
+                    }
+                    else if (type.Trim().ToLower() == "noun")
+                    {
+                        typeNote = "n";
+                    }
+                    else if (type.Trim().ToLower() == "verb")
+                    {
+                        typeNote = "v";
+                    }
+
                     // Add question to repository
                     Question question = new Question()
                     {
                         is_delete = 0,
-                        answer = model.Answer,
+                        answer = $"({typeNote}) {model.Answer.ProcessString()}",
                         audio = audio,
                         category_id = model.Category_Id,
                         phonetic = phonetic,
@@ -124,7 +143,7 @@ namespace Hola.Api.Controllers
                         fk_userid = model.fk_userid,
                         ImageSource = imageURL,
                         questionname = model.QuestionName,
-                        definition = desfinition + synonymsNote,
+                        definition = $"DEFINE : {desfinition}, MORE {synonymsNote}",
                         Type = type
                     };
                     await _questionService.AddAsync(question);
@@ -273,6 +292,8 @@ namespace Hola.Api.Controllers
             public DateTime today { get; set; }
         }
         #endregion
+
+
 
     }
 }
