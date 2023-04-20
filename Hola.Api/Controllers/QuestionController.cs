@@ -61,7 +61,8 @@ namespace Hola.Api.Controllers
                     string phonetic = "";
                     string desfinition = "";
                     string type = "";
-
+                    List<string> sysnynoms = new List<string>();  // Từ đồng nghĩa
+                    string synonymsNote = string.Empty;
                     string imageURL = "";
                     try
                     {
@@ -84,6 +85,11 @@ namespace Hola.Api.Controllers
                                 audioFile = item.audioFile;
                             }
 
+                        }
+                        var list = response1.Results.FirstOrDefault().lexicalEntries.FirstOrDefault().entries.FirstOrDefault().senses.FirstOrDefault().synonyms.Select(x => x.text).ToList();
+                        if (list != null && list.Count > 0)
+                        {
+                            synonymsNote = "synonyms: {" + string.Join(",", list) + "}";
                         }
 
 
@@ -118,7 +124,7 @@ namespace Hola.Api.Controllers
                         fk_userid = model.fk_userid,
                         ImageSource = imageURL,
                         questionname = model.QuestionName,
-                        definition = desfinition,
+                        definition = desfinition + synonymsNote,
                         Type = type
                     };
                     await _questionService.AddAsync(question);

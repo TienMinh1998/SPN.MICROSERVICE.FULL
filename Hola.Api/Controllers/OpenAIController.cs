@@ -1,22 +1,10 @@
 ﻿using System;
 using System.IO;
-using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using iTextSharp.text;
-using iTextSharp.text.pdf;
-using System.Web;
 using Microsoft.AspNetCore.Mvc;
-using System.Text;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Hola.Api.Service;
 using System.Collections.Generic;
 using System.Linq;
 using Hola.Api.Service.ExcelServices.TestModels;
-using Newtonsoft.Json;
-
 using System.Reflection;
-using static iTextSharp.text.pdf.AcroFields;
 using Hola.Api.Models;
 using Hola.Core.Utils;
 using Hola.Api.Service.BaseServices;
@@ -24,15 +12,10 @@ using System.Threading.Tasks;
 using Hola.Api.Service.IText7;
 using iText.Layout.Properties;
 using Hola.Api.Service.IText7.Body;
-using Hola.Api.Authorize;
 using Microsoft.AspNetCore.Http;
-using OfficeOpenXml;
 using Hola.Api.Service.BAImportExcel;
 using Hola.Core.Model;
 using System.Xml;
-using System.Drawing;
-using System.Runtime.InteropServices;
-using System.Globalization;
 
 namespace Hola.Api.Controllers
 {

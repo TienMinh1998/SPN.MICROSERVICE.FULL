@@ -24,12 +24,12 @@ namespace Hola.Api.Models.Dic
     public class lexicalEntrieItem
     {
         public List<entrieItem> entries { get; set; }
-       public LexicalCategory lexicalCategory { get; set; }
+        public LexicalCategory lexicalCategory { get; set; }
     }
 
     public class entrieItem
     {
-       public List<pronunciationItem> pronunciations { get; set; }
+        public List<pronunciationItem> pronunciations { get; set; }
         public List<SensesItem> senses { get; set; }
     }
 
