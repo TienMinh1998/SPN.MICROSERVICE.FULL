@@ -51,82 +51,50 @@ namespace Hola.Api.Controllers
         [Authorize]
         public async Task<JsonResponseModel> AddQuestion([FromBody] QuestionAddModel model)
         {
+            string word = model.QuestionName;
+            APICrossHelper api = new APICrossHelper();
+            var cambridgeDicResponse = await api.GetWord(word);
+            string camAudio = cambridgeDicResponse?.Mp3;
+            string camPhonetic = cambridgeDicResponse?.Phonetic;
+            string camType = cambridgeDicResponse?.Type;
+            string camDefinition = cambridgeDicResponse?.Definition;
+            string camExample = cambridgeDicResponse?.Example;
+
             try
             {
+
                 int userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == "UserId").Value);
                 // Check question is available 
                 var question_available = await _questionService.GetFirstOrDefaultAsync(x => x.fk_userid == userid && x.questionname.ToLower() == model.QuestionName.ToLower());
                 if (question_available == null)
                 {
-                    string audio = "";
-                    string phonetic = "";
-                    string desfinition = "";
-                    string type = "";
+
                     List<string> sysnynoms = new List<string>();  // Từ đồng nghĩa
-                    string synonymsNote = string.Empty;
                     string imageURL = "";
                     try
                     {
                         // Get infomation from oxfordDictionary
-                        APICrossHelper api = new APICrossHelper();
-                        string word = model.QuestionName;
                         var rImage = await api.IllustrationImage<RootObject>(word);
                         imageURL = rImage.hits.FirstOrDefault(x => !string.IsNullOrEmpty(x.webformatURL)).webformatURL;
-                        var response1 = await api.GetFromDictionary<ResultFromOxford>(word, "en-us");
-                        var pronunciation = response1.Results.FirstOrDefault()
-                            .lexicalEntries.FirstOrDefault()
-                            .entries.FirstOrDefault()
-                            .pronunciations;
-
-                        string audioFile = string.Empty;
-                        foreach (var item in pronunciation)
-                        {
-                            if (item.audioFile != null)
-                            {
-                                audioFile = item.audioFile;
-                            }
-
-                        }
-                        var list = response1.Results.FirstOrDefault().lexicalEntries.FirstOrDefault().entries.FirstOrDefault().senses.FirstOrDefault().synonyms.Select(x => x.text).ToList();
-                        if (list != null && list.Count > 0)
-                        {
-                            synonymsNote = "synonyms: {" + string.Join(",", list) + "}";
-                        }
-
-
-                        // Get phoneticSpelling
-                        var phoneticSpelling = response1.Results.FirstOrDefault()
-                            .lexicalEntries.FirstOrDefault()
-                            .entries.FirstOrDefault()
-                            .pronunciations
-                            .FirstOrDefault().phoneticSpelling;
-                        // get definition
-                        var def = response1.Results.FirstOrDefault()
-                            .lexicalEntries.FirstOrDefault().entries.FirstOrDefault().senses.FirstOrDefault().definitions.FirstOrDefault();
-                        // Get type Of word
-                        type = response1.Results.FirstOrDefault().lexicalEntries.FirstOrDefault().lexicalCategory.text;
-                        phonetic = $"[{phoneticSpelling}]";
-                        audio = audioFile;
-                        desfinition = def;
                     }
                     catch (Exception ex)
                     {
                     }
 
                     string typeNote = "";
-                    if (type.Trim().ToLower() == "adverb")
+                    if (camType.Trim().ToLower() == "adverb")
                     {
                         typeNote = "adv";
                     }
-                    else if (type.Trim().ToLower() == "adjective")
+                    else if (camType.Trim().ToLower() == "adjective")
                     {
                         typeNote = "adj";
                     }
-                    else if (type.Trim().ToLower() == "noun")
+                    else if (camType.Trim().ToLower() == "noun")
                     {
                         typeNote = "n";
                     }
-                    else if (type.Trim().ToLower() == "verb")
+                    else if (camType.Trim().ToLower() == "verb")
                     {
                         typeNote = "v";
                     }
@@ -136,15 +104,15 @@ namespace Hola.Api.Controllers
                     {
                         is_delete = 0,
                         answer = $"({typeNote}) {model.Answer.ProcessString()}",
-                        audio = audio,
+                        audio = camAudio,
                         category_id = model.Category_Id,
-                        phonetic = phonetic,
+                        phonetic = $"/{camPhonetic}/",
                         created_on = DateTime.Now,
                         fk_userid = model.fk_userid,
                         ImageSource = imageURL,
                         questionname = model.QuestionName,
-                        definition = $"DEFINE : {desfinition}, MORE {synonymsNote}",
-                        Type = type
+                        definition = $"DEFINE : {camDefinition}, EXAMPLE {camExample}",
+                        Type = camType
                     };
                     await _questionService.AddAsync(question);
                     string sqlquery = "update usr.categories \r\nset totalquestion = (select count(1) from usr.question " +
