@@ -59,6 +59,7 @@ namespace Hola.Api.Controllers
             string camType = cambridgeDicResponse?.Type;
             string camDefinition = cambridgeDicResponse?.Definition;
             string camExample = cambridgeDicResponse?.Example;
+            var oxfordWordSame = api.GetSameType(word);
 
             try
             {
@@ -111,7 +112,7 @@ namespace Hola.Api.Controllers
                         fk_userid = model.fk_userid,
                         ImageSource = imageURL,
                         questionname = model.QuestionName,
-                        definition = $"DEFINE : {camDefinition}, EXAMPLE {camExample}",
+                        definition = $"DEFINE : {camDefinition}, Origin :  {string.Join("-", oxfordWordSame)}",
                         Type = camType
                     };
                     await _questionService.AddAsync(question);

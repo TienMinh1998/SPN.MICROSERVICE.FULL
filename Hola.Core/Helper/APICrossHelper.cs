@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Hola.Core.Common;
 using Hola.Core.Model;
 using HtmlAgilityPack;
+using Microsoft.AspNetCore.Mvc.Filters;
 using Venly.Model;
 
 namespace Hola.Core.Helper
@@ -150,5 +152,45 @@ namespace Hola.Core.Helper
             return Task.FromResult(response);
         }
 
+
+        public Task<List<string>> GetSameType(string word)
+        {
+            List<string> response = new List<string>();
+            try
+            {
+                // Tạo đối tượng HtmlWeb để tải nội dung của trang web
+                HtmlWeb web = new HtmlWeb();
+                HtmlDocument doc = web.Load($"https://www.oxfordlearnersdictionaries.com/definition/english/{word}?q={word}");
+
+                // Lấy tiêu đề của trang web
+                string title = doc.DocumentNode.SelectSingleNode("//title").InnerText;
+                Console.WriteLine("Title: " + title);
+
+
+                Console.WriteLine("Xpath : ");
+
+                var s1 = doc.DocumentNode.SelectSingleNode("/html/body/div[1]/div[3]/div[2]/div[2]/div/div[3]/div[1]/dl/dd[1]/ul/li[1]/a");
+                var s2 = doc.DocumentNode.SelectSingleNode("/html/body/div[1]/div[3]/div[2]/div[2]/div/div[3]/div[1]/dl/dd[1]/ul/li[2]/a");
+                var s3 = doc.DocumentNode.SelectSingleNode("/html/body/div[1]/div[3]/div[2]/div[2]/div/div[3]/div[1]/dl/dd[1]/ul/li[3]/a");
+                if (s1 != null)
+                {
+                    response.Add(s1.InnerText);
+                }
+                if (s2 != null)
+                {
+                    response.Add(s2.InnerText);
+                }
+                if (s3 != null)
+                {
+                    response.Add(s3.InnerText);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return Task.FromResult(response);
+        }
     }
 }
