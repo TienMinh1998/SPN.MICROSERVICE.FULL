@@ -53,7 +53,14 @@ namespace Hola.Api.Controllers
         {
             string word = model.QuestionName;
             APICrossHelper api = new APICrossHelper();
-            var cambridgeDicResponse = await api.GetWord(word);
+            // Chạy bất đồng bộ để lấy về của nghĩa tiếng việt
+            Task<CambridgeDictionaryModel> cambridgeDicTask = api.GetWord(word);
+            Task<CambridgeDictionaryVietNamModel> vietnamMeaningTask = api.GetVietNamMeaning(word);
+            await Task.WhenAll(cambridgeDicTask, vietnamMeaningTask);
+            var cambridgeDicResponse = cambridgeDicTask.Result;
+            var vietnamMeaning = vietnamMeaningTask.Result;
+
+
             string camAudio = cambridgeDicResponse?.Mp3;
             string camPhonetic = cambridgeDicResponse?.Phonetic;
             string camType = cambridgeDicResponse?.Type;
@@ -104,14 +111,14 @@ namespace Hola.Api.Controllers
                     Question question = new Question()
                     {
                         is_delete = 0,
-                        answer = $"({typeNote}) {model.Answer.ProcessString()}",   // Xử lý chuỗi string
+                        answer = $"({typeNote}) {vietnamMeaning?.Meaning.ProcessString()}",   // Xử lý chuỗi string
                         audio = camAudio,
                         category_id = model.Category_Id,
                         phonetic = $"/{camPhonetic}/",
                         created_on = DateTime.Now,
                         fk_userid = model.fk_userid,
                         ImageSource = imageURL,
-                        questionname = model.QuestionName.ProcessString(),  // Xử lý chuỗi string
+                        questionname = model.QuestionName,  // Xử lý chuỗi string
                         definition = $"DEFINE : {camDefinition}",
                         Type = camType,
                         Synonym = string.Join(",", oxfordWordSame),

@@ -153,6 +153,27 @@ namespace Hola.Core.Helper
         }
 
 
+        public Task<CambridgeDictionaryVietNamModel> GetVietNamMeaning(string word)
+        {
+            CambridgeDictionaryVietNamModel response = new CambridgeDictionaryVietNamModel();
+            try
+            {
+                // Tạo đối tượng HtmlWeb để tải nội dung của trang web
+                HtmlWeb web = new HtmlWeb();
+                HtmlDocument doc = web.Load($"https://dictionary.cambridge.org/dictionary/english-vietnamese/{word}");
+                var meaning = doc.DocumentNode.SelectSingleNode("/html/body/div[2]/div/div[1]/div[2]/article/div[2]/div[1]/span/div/div[4]/div/div[1]/div[2]/div/div[3]/span");
+                response.Meaning = meaning?.InnerText;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            return Task.FromResult(response);
+        }
+
         public Task<List<string>> GetSameType(string word)
         {
             List<string> response = new List<string>();
