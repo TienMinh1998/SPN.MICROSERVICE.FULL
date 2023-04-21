@@ -24,6 +24,7 @@ namespace DatabaseCore.Domain.Entities.Normals
         public int is_delete { get; set; }
         public string definition { get; set; }
         public string Type { get; set; }
-        public string Synonym { get; set; }
+        public string Synonym { get; set; }   // từ đồng nghĩa
+        public string Note { get; set; }      // Ghi chú
     }
 }
