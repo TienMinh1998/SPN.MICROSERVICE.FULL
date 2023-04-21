@@ -104,14 +104,14 @@ namespace Hola.Api.Controllers
                     Question question = new Question()
                     {
                         is_delete = 0,
-                        answer = $"({typeNote}) {model.Answer.ProcessString()}",
+                        answer = $"({typeNote}) {model.Answer.ProcessString()}",   // Xử lý chuỗi string
                         audio = camAudio,
                         category_id = model.Category_Id,
                         phonetic = $"/{camPhonetic}/",
                         created_on = DateTime.Now,
                         fk_userid = model.fk_userid,
                         ImageSource = imageURL,
-                        questionname = model.QuestionName,
+                        questionname = model.QuestionName.ProcessString(),  // Xử lý chuỗi string
                         definition = $"DEFINE : {camDefinition}",
                         Type = camType,
                         Synonym = string.Join(",", oxfordWordSame),
