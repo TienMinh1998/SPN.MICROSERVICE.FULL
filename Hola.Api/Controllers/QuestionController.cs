@@ -112,12 +112,14 @@ namespace Hola.Api.Controllers
                         fk_userid = model.fk_userid,
                         ImageSource = imageURL,
                         questionname = model.QuestionName,
-                        definition = $"DEFINE : {camDefinition}, Origin :  {string.Join("-", oxfordWordSame)}",
-                        Type = camType
+                        definition = $"DEFINE : {camDefinition}",
+                        Type = camType,
+                        Synonym = string.Join(",", oxfordWordSame),
                     };
                     await _questionService.AddAsync(question);
                     string sqlquery = "update usr.categories \r\nset totalquestion = (select count(1) from usr.question " +
                         $"where  category_id = {model.Category_Id} and fk_userid ={userid})\r\nwhere \"Id\" = {model.Category_Id} and fk_userid ={userid}\r\n";
+
                     await _dapper.Execute(sqlquery);
                     return JsonResponseModel.Success(question);
                 }
