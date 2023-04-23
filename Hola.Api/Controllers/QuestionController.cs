@@ -145,6 +145,7 @@ namespace Hola.Api.Controllers
                 }
                 else
                 {
+                    // không cần update iamge nữa vì nó có rồi!
                     question_available.is_delete = 0;
                     question_available.answer = $"({typeNote}) {vietnamMeaning?.Meaning.ProcessString()}";   // Xử lý chuỗi string
                     question_available.audio = camAudio;
@@ -152,7 +153,6 @@ namespace Hola.Api.Controllers
                     question_available.phonetic = $"/{camPhonetic}/";
                     question_available.created_on = DateTime.Now;
                     question_available.fk_userid = model.fk_userid;
-                    question_available.ImageSource = image;
                     question_available.questionname = model.QuestionName;  // Xử lý chuỗi string
                     question_available.definition = $"DEFINE : {camDefinition}";
                     question_available.Type = camType;
