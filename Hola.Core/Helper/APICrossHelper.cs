@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,6 +8,7 @@ using Hola.Core.Common;
 using Hola.Core.Model;
 using HtmlAgilityPack;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.Extensions.Hosting;
 using Venly.Model;
 
 namespace Hola.Core.Helper
@@ -212,6 +214,46 @@ namespace Hola.Core.Helper
                 throw;
             }
             return Task.FromResult(response);
+        }
+
+
+        public async Task<string> UploadFileFromUrlAsync(string rootPath, string fileUrl, string folder)
+        {
+            try
+            {
+                using (var httpClient = new HttpClient())
+                {
+                    var httpResponse = await httpClient.GetAsync(fileUrl);
+
+                    if (!httpResponse.IsSuccessStatusCode)
+                    {
+                        throw new Exception("Failed to download file from URL.");
+                    }
+
+                    var fileName = Path.GetFileName(fileUrl);
+                    var pathToSave = Path.Combine(rootPath, folder);
+
+                    if (!Directory.Exists(pathToSave))
+                    {
+                        Directory.CreateDirectory(pathToSave);
+                    }
+
+                    var fullPath = Path.Combine(pathToSave, fileName);
+
+                    using (var stream = new FileStream(fullPath, FileMode.Create))
+                    {
+                        await httpResponse.Content.CopyToAsync(stream);
+                    }
+
+                    var url = Path.Combine(Directory.GetCurrentDirectory(), $"image/{fileName}");
+
+                    return await Task.FromResult(url);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

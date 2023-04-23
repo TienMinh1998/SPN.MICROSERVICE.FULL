@@ -19,6 +19,9 @@ using Hola.Api.Requests;
 using Hola.Api.Service.BaseServices;
 using System.Drawing;
 using Hola.Core.Utils;
+using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Hosting;
+using Quartz.Impl.Triggers;
 #endregion
 
 
@@ -32,10 +35,11 @@ namespace Hola.Api.Controllers
         private readonly IQuestionService _questionService;
         private readonly ICategoryService categoryService;
         private readonly DapperBaseService _dapper;
+        private readonly IWebHostEnvironment _hostEnvironment;
 
         public QuestionController(IOptions<SettingModel> config,
             Service.QuestionService qesQuestionService,
-            IQuestionService qService, ICategoryService categoryService, DapperBaseService dapper)
+            IQuestionService qService, ICategoryService categoryService, DapperBaseService dapper, IWebHostEnvironment hostEnvironment)
         {
 
             _config = config;
@@ -43,6 +47,7 @@ namespace Hola.Api.Controllers
             _questionService = qService;
             this.categoryService = categoryService;
             _dapper = dapper;
+            _hostEnvironment = hostEnvironment;
         }
         #endregion
 
@@ -51,11 +56,14 @@ namespace Hola.Api.Controllers
         [Authorize]
         public async Task<JsonResponseModel> AddQuestion([FromBody] QuestionAddModel model)
         {
+            var rootPath = _hostEnvironment.WebRootPath != null ? _hostEnvironment.WebRootPath : _hostEnvironment.ContentRootPath;
             string word = model.QuestionName;
             APICrossHelper api = new APICrossHelper();
             // Chạy bất đồng bộ để lấy về của nghĩa tiếng việt
             Task<CambridgeDictionaryModel> cambridgeDicTask = api.GetWord(word);
             Task<CambridgeDictionaryVietNamModel> vietnamMeaningTask = api.GetVietNamMeaning(word);
+
+
             await Task.WhenAll(cambridgeDicTask, vietnamMeaningTask);
             var cambridgeDicResponse = cambridgeDicTask.Result;
             var vietnamMeaning = vietnamMeaningTask.Result;
@@ -79,11 +87,13 @@ namespace Hola.Api.Controllers
 
                     List<string> sysnynoms = new List<string>();  // Từ đồng nghĩa
                     string imageURL = "";
+                    string image = "";
                     try
                     {
                         // Get infomation from oxfordDictionary
                         var rImage = await api.IllustrationImage<RootObject>(word);
                         imageURL = rImage.hits.FirstOrDefault(x => !string.IsNullOrEmpty(x.webformatURL)).webformatURL;
+                        image = await api.UploadFileFromUrlAsync(rootPath, imageURL, "image");
                     }
                     catch (Exception ex)
                     {
@@ -117,7 +127,7 @@ namespace Hola.Api.Controllers
                         phonetic = $"/{camPhonetic}/",
                         created_on = DateTime.Now,
                         fk_userid = model.fk_userid,
-                        ImageSource = imageURL,
+                        ImageSource = image,
                         questionname = model.QuestionName,  // Xử lý chuỗi string
                         definition = $"DEFINE : {camDefinition}",
                         Type = camType,

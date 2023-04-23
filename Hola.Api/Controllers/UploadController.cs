@@ -46,10 +46,10 @@ namespace Hola.Api.Controllers
             return JsonResponseModel.Success(resultUrl);
         }
         [HttpPost("upload-image")]
-        public async Task<IActionResult> UploadImage(IFormFile file)
+        public async Task<JsonResponseModel> UploadImage(IFormFile file)
         {
             var response = await UploadFileAsync(file, "image");
-            return Ok(response);
+            return JsonResponseModel.Success(response);
         }
 
 
