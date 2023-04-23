@@ -1,8 +1,12 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Collections.Generic;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Hola.Core.Common;
 using Hola.Core.Model;
+using HtmlAgilityPack;
+using Microsoft.AspNetCore.Mvc.Filters;
 using Venly.Model;
 
 namespace Hola.Core.Helper
@@ -116,5 +120,98 @@ namespace Hola.Core.Helper
             return Result;
         }
 
+        public Task<CambridgeDictionaryModel> GetWord(string word)
+        {
+            CambridgeDictionaryModel response = new CambridgeDictionaryModel();
+            try
+            {
+                // Tạo đối tượng HtmlWeb để tải nội dung của trang web
+                HtmlWeb web = new HtmlWeb();
+                HtmlDocument doc = web.Load($"https://dictionary.cambridge.org/dictionary/english/{word}");
+                var audio = doc.DocumentNode.SelectSingleNode("/html/body/div[2]/div/div[1]/div[2]/article/div[2]/div[1]/div[2]/div/div[3]/div/div/div/div[2]/span[1]/span[2]/audio/source[1]");
+                var phonetic = doc.DocumentNode.SelectSingleNode("/html/body/div[2]/div/div[1]/div[2]/article/div[2]/div[1]/div[2]/div/div[3]/div/div/div/div[2]/span[2]/span[3]/span");
+                var x_Type = doc.DocumentNode.SelectSingleNode("/html/body/div[2]/div/div[1]/div[2]/article/div[2]/div[1]/div[2]/div/div[3]/div/div/div/div[2]/div[2]/span[1]");
+                var x_definition = doc.DocumentNode.SelectSingleNode("/html/body/div[2]/div/div[1]/div[2]/article/div[2]/div[1]/div[2]/div/div[3]/div/div/div/div[3]/div/div[2]/div/div[2]/div");
+                var x_example = doc.DocumentNode.SelectSingleNode("/html/body/div[2]/div/div[1]/div[2]/article/div[2]/div[1]/div[2]/div/div[3]/div/div/div[1]/div[3]/div[1]/div[2]/div[1]/div[3]");
+
+
+                response.Type = x_Type?.InnerText;
+                response.Phonetic = phonetic?.InnerText;
+                var mp3url = audio?.Attributes["src"].Value;
+                response.Definition = x_definition?.InnerText;
+                response.Mp3 = $"https://dictionary.cambridge.org/{mp3url}";
+                response.Example = x_example?.InnerText;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            return Task.FromResult(response);
+        }
+
+
+        public Task<CambridgeDictionaryVietNamModel> GetVietNamMeaning(string word)
+        {
+            CambridgeDictionaryVietNamModel response = new CambridgeDictionaryVietNamModel();
+            try
+            {
+                // Tạo đối tượng HtmlWeb để tải nội dung của trang web
+                HtmlWeb web = new HtmlWeb();
+                HtmlDocument doc = web.Load($"https://dictionary.cambridge.org/dictionary/english-vietnamese/{word}");
+                var meaning = doc.DocumentNode.SelectSingleNode("/html/body/div[2]/div/div[1]/div[2]/article/div[2]/div[1]/span/div/div[4]/div/div[1]/div[2]/div/div[3]/span");
+                response.Meaning = meaning?.InnerText;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            return Task.FromResult(response);
+        }
+
+        public Task<List<string>> GetSameType(string word)
+        {
+            List<string> response = new List<string>();
+            try
+            {
+                // Tạo đối tượng HtmlWeb để tải nội dung của trang web
+                HtmlWeb web = new HtmlWeb();
+                HtmlDocument doc = web.Load($"https://www.oxfordlearnersdictionaries.com/definition/english/{word}?q={word}");
+
+                // Lấy tiêu đề của trang web
+                string title = doc.DocumentNode.SelectSingleNode("//title").InnerText;
+                Console.WriteLine("Title: " + title);
+
+
+                Console.WriteLine("Xpath : ");
+
+                var s1 = doc.DocumentNode.SelectSingleNode("/html/body/div[1]/div[3]/div[2]/div[2]/div/div[3]/div[1]/dl/dd[1]/ul/li[1]/a");
+                var s2 = doc.DocumentNode.SelectSingleNode("/html/body/div[1]/div[3]/div[2]/div[2]/div/div[3]/div[1]/dl/dd[1]/ul/li[2]/a");
+                var s3 = doc.DocumentNode.SelectSingleNode("/html/body/div[1]/div[3]/div[2]/div[2]/div/div[3]/div[1]/dl/dd[1]/ul/li[3]/a");
+                if (s1 != null)
+                {
+                    response.Add(s1.InnerText);
+                }
+                if (s2 != null)
+                {
+                    response.Add(s2.InnerText);
+                }
+                if (s3 != null)
+                {
+                    response.Add(s3.InnerText);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return Task.FromResult(response);
+        }
     }
 }

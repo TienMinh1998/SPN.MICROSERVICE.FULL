@@ -18,6 +18,7 @@ using Hola.Api.Models.Dic;
 using Hola.Api.Requests;
 using Hola.Api.Service.BaseServices;
 using System.Drawing;
+using Hola.Core.Utils;
 #endregion
 
 
@@ -50,80 +51,83 @@ namespace Hola.Api.Controllers
         [Authorize]
         public async Task<JsonResponseModel> AddQuestion([FromBody] QuestionAddModel model)
         {
+            string word = model.QuestionName;
+            APICrossHelper api = new APICrossHelper();
+            // Chạy bất đồng bộ để lấy về của nghĩa tiếng việt
+            Task<CambridgeDictionaryModel> cambridgeDicTask = api.GetWord(word);
+            Task<CambridgeDictionaryVietNamModel> vietnamMeaningTask = api.GetVietNamMeaning(word);
+            await Task.WhenAll(cambridgeDicTask, vietnamMeaningTask);
+            var cambridgeDicResponse = cambridgeDicTask.Result;
+            var vietnamMeaning = vietnamMeaningTask.Result;
+
+
+            string camAudio = cambridgeDicResponse?.Mp3;
+            string camPhonetic = cambridgeDicResponse?.Phonetic;
+            string camType = cambridgeDicResponse?.Type;
+            string camDefinition = cambridgeDicResponse?.Definition;
+            string camExample = cambridgeDicResponse?.Example;
+            var oxfordWordSame = await api.GetSameType(word);
+
             try
             {
+
                 int userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == "UserId").Value);
                 // Check question is available 
                 var question_available = await _questionService.GetFirstOrDefaultAsync(x => x.fk_userid == userid && x.questionname.ToLower() == model.QuestionName.ToLower());
                 if (question_available == null)
                 {
-                    string audio = "";
-                    string phonetic = "";
-                    string desfinition = "";
-                    string type = "";
 
+                    List<string> sysnynoms = new List<string>();  // Từ đồng nghĩa
                     string imageURL = "";
                     try
                     {
                         // Get infomation from oxfordDictionary
-                        APICrossHelper api = new APICrossHelper();
-                        string word = model.QuestionName;
                         var rImage = await api.IllustrationImage<RootObject>(word);
                         imageURL = rImage.hits.FirstOrDefault(x => !string.IsNullOrEmpty(x.webformatURL)).webformatURL;
-                        var response1 = await api.GetFromDictionary<ResultFromOxford>(word, "en-us");
-                        var pronunciation = response1.Results.FirstOrDefault()
-                            .lexicalEntries.FirstOrDefault()
-                            .entries.FirstOrDefault()
-                            .pronunciations;
-
-                        string audioFile = string.Empty;
-                        foreach (var item in pronunciation)
-                        {
-                            if (item.audioFile != null)
-                            {
-                                audioFile = item.audioFile;
-                            }
-
-                        }
-
-
-                        // Get phoneticSpelling
-                        var phoneticSpelling = response1.Results.FirstOrDefault()
-                            .lexicalEntries.FirstOrDefault()
-                            .entries.FirstOrDefault()
-                            .pronunciations
-                            .FirstOrDefault().phoneticSpelling;
-                        // get definition
-                        var def = response1.Results.FirstOrDefault()
-                            .lexicalEntries.FirstOrDefault().entries.FirstOrDefault().senses.FirstOrDefault().definitions.FirstOrDefault();
-                        // Get type Of word
-                        type = response1.Results.FirstOrDefault().lexicalEntries.FirstOrDefault().lexicalCategory.text;
-                        phonetic = $"[{phoneticSpelling}]";
-                        audio = audioFile;
-                        desfinition = def;
                     }
                     catch (Exception ex)
                     {
+                    }
+
+                    string typeNote = "";
+                    if (camType.Trim().ToLower() == "adverb")
+                    {
+                        typeNote = "adv";
+                    }
+                    else if (camType.Trim().ToLower() == "adjective")
+                    {
+                        typeNote = "adj";
+                    }
+                    else if (camType.Trim().ToLower() == "noun")
+                    {
+                        typeNote = "n";
+                    }
+                    else if (camType.Trim().ToLower() == "verb")
+                    {
+                        typeNote = "v";
                     }
 
                     // Add question to repository
                     Question question = new Question()
                     {
                         is_delete = 0,
-                        answer = model.Answer,
-                        audio = audio,
+                        answer = $"({typeNote}) {vietnamMeaning?.Meaning.ProcessString()}",   // Xử lý chuỗi string
+                        audio = camAudio,
                         category_id = model.Category_Id,
-                        phonetic = phonetic,
+                        phonetic = $"/{camPhonetic}/",
                         created_on = DateTime.Now,
                         fk_userid = model.fk_userid,
                         ImageSource = imageURL,
-                        questionname = model.QuestionName,
-                        definition = desfinition,
-                        Type = type
+                        questionname = model.QuestionName,  // Xử lý chuỗi string
+                        definition = $"DEFINE : {camDefinition}",
+                        Type = camType,
+                        Synonym = string.Join(",", oxfordWordSame),
+                        Note = model.Answer // ghi chú của người dùng
                     };
                     await _questionService.AddAsync(question);
                     string sqlquery = "update usr.categories \r\nset totalquestion = (select count(1) from usr.question " +
                         $"where  category_id = {model.Category_Id} and fk_userid ={userid})\r\nwhere \"Id\" = {model.Category_Id} and fk_userid ={userid}\r\n";
+
                     await _dapper.Execute(sqlquery);
                     return JsonResponseModel.Success(question);
                 }
@@ -267,6 +271,8 @@ namespace Hola.Api.Controllers
             public DateTime today { get; set; }
         }
         #endregion
+
+
 
     }
 }
