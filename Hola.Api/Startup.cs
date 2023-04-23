@@ -43,6 +43,7 @@ namespace Hola.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.InstallerServicesInAssembly(Configuration);
             services.AddDbContext<EFContext>(options =>
                    options.UseNpgsql(Configuration.GetConnectionString("HolaCoreConnectionString")));
@@ -107,6 +108,7 @@ namespace Hola.Api
             {
                 app.UseHsts();
             }
+            app.UseStaticFiles();
             app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseSwagger();
             app.UseSwaggerUI(c =>
@@ -118,7 +120,7 @@ namespace Hola.Api
                 //c.DocExpansion(DocExpansion.None);
                 c.DefaultModelsExpandDepth(-1);
             });
-            app.UseStaticFiles();
+
             //app.UseHttpsRedirection();
 
             app.UseRouting();
