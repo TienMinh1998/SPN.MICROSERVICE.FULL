@@ -91,11 +91,11 @@ namespace Hola.Api.Controllers
                     try
                     {
                         // Get infomation from oxfordDictionary
-                        if (model.ImageSource == null) // Nếu không truyền ảnh lên thì trả về 1 ảnh ví dụ.
+                        if (string.IsNullOrEmpty(model.ImageSource)) // Nếu không truyền ảnh lên thì trả về 1 ảnh ví dụ.
                         {
                             var rImage = await api.IllustrationImage<RootObject>(word);
                             imageURL = rImage.hits.FirstOrDefault(x => !string.IsNullOrEmpty(x.webformatURL)).webformatURL;
-                            image = await api.DownloadFileAsync(rootPath, imageURL, "image");
+                            image = await api.DownloadFileAsync(imageURL, "image", rootPath);
                         }
                     }
                     catch (Exception ex)

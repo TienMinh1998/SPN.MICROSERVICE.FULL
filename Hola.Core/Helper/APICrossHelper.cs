@@ -258,17 +258,21 @@ namespace Hola.Core.Helper
                 response.EnsureSuccessStatusCode();
                 var fileStream = await response.Content.ReadAsStreamAsync();
                 var fileName = Path.GetFileName(fileUrl);
+                string name = DateTime.UtcNow.ToString("ssddMMyyyy") + fileName;
+
                 var pathToSave = Path.Combine(rootPath, folder);
                 if (!Directory.Exists(pathToSave))
                 {
                     Directory.CreateDirectory(pathToSave);
                 }
-                var fullPath = Path.Combine(pathToSave, fileName);
+                var fullPath = Path.Combine(pathToSave, name);
                 using (var stream = new FileStream(fullPath, FileMode.Create))
                 {
                     await fileStream.CopyToAsync(stream);
                 }
-                return fullPath;
+                var url = $"http://viettienhung.com/images/{fileName}";
+
+                return url;
             }
             catch (Exception ex)
             {
