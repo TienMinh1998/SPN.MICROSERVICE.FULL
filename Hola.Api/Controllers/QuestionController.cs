@@ -164,7 +164,7 @@ namespace Hola.Api.Controllers
             }
             catch (Exception)
             {
-                return JsonResponseModel.Success(new Question());
+                return JsonResponseModel.Error("Đây không phải từ tiếng anh, vui lòng kiểm tra lại", 400);
 
             }
         }
