@@ -10,6 +10,7 @@ using HtmlAgilityPack;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Hosting;
 using Venly.Model;
+using static System.Net.WebRequestMethods;
 
 namespace Hola.Core.Helper
 {
@@ -244,9 +245,7 @@ namespace Hola.Core.Helper
                     {
                         await httpResponse.Content.CopyToAsync(stream);
                     }
-
-                    var url = Path.Combine(Directory.GetCurrentDirectory(), $"image/{fileName}");
-
+                    var url = $"http://viettienhung.com/images/{fileName}";
                     return await Task.FromResult(url);
                 }
             }
