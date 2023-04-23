@@ -91,9 +91,12 @@ namespace Hola.Api.Controllers
                     try
                     {
                         // Get infomation from oxfordDictionary
-                        var rImage = await api.IllustrationImage<RootObject>(word);
-                        imageURL = rImage.hits.FirstOrDefault(x => !string.IsNullOrEmpty(x.webformatURL)).webformatURL;
-                        image = await api.UploadFileFromUrlAsync(rootPath, imageURL, "image");
+                        if (model.ImageSource == null) // Nếu không truyền ảnh lên thì trả về 1 ảnh ví dụ.
+                        {
+                            var rImage = await api.IllustrationImage<RootObject>(word);
+                            imageURL = rImage.hits.FirstOrDefault(x => !string.IsNullOrEmpty(x.webformatURL)).webformatURL;
+                            image = await api.UploadFileFromUrlAsync(rootPath, imageURL, "image");
+                        }
                     }
                     catch (Exception ex)
                     {
