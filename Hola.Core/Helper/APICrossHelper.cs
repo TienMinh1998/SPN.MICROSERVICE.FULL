@@ -270,7 +270,7 @@ namespace Hola.Core.Helper
                 {
                     await fileStream.CopyToAsync(stream);
                 }
-                var url = $"http://viettienhung.com/images/{fileName}";
+                var url = $"http://viettienhung.com/images/{name}";
 
                 return url;
             }
