@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Hola.Core.Common;
 using Hola.Core.Model;
 using HtmlAgilityPack;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Hosting;
 using Venly.Model;
@@ -217,37 +218,57 @@ namespace Hola.Core.Helper
             return Task.FromResult(response);
         }
 
-
-        public async Task<string> UploadFileFromUrlAsync(string rootPath, string fileUrl, string folder)
+        public async Task<string> UploadFileAsync(IFormFile file, string folder, string rootPAth)
         {
             try
             {
-                using (var httpClient = new HttpClient())
+                if (file.Length > 0)
                 {
-                    var httpResponse = await httpClient.GetAsync(fileUrl);
-
-                    if (!httpResponse.IsSuccessStatusCode)
-                    {
-                        throw new Exception("Failed to download file from URL.");
-                    }
-
-                    var fileName = Path.GetFileName(fileUrl);
-                    var pathToSave = Path.Combine(rootPath, folder);
-
-                    if (!Directory.Exists(pathToSave))
-                    {
-                        Directory.CreateDirectory(pathToSave);
-                    }
-
-                    var fullPath = Path.Combine(pathToSave, fileName);
-
+                    var pathToSave = Path.Combine(rootPAth, folder);
+                    Console.WriteLine(pathToSave);
+                    if (!Directory.Exists(pathToSave)) Directory.CreateDirectory(pathToSave);
+                    string name = DateTime.UtcNow.ToString("ssddMMyyyy") + file.FileName;
+                    var url = Path.Combine(Directory.GetCurrentDirectory(), $"image/{name}");
+                    var fullPath = Path.Combine(pathToSave, name);
                     using (var stream = new FileStream(fullPath, FileMode.Create))
                     {
-                        await httpResponse.Content.CopyToAsync(stream);
+                        file.CopyTo(stream);
                     }
-                    var url = $"http://viettienhung.com/images/{fileName}";
                     return await Task.FromResult(url);
                 }
+                else
+                {
+                    return null;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        public async Task<string> DownloadFileAsync(string fileUrl, string folder, string rootPath)
+        {
+            try
+            {
+                var httpClient = new HttpClient();
+                var response = await httpClient.GetAsync(fileUrl);
+                response.EnsureSuccessStatusCode();
+                var fileStream = await response.Content.ReadAsStreamAsync();
+                var fileName = Path.GetFileName(fileUrl);
+                var pathToSave = Path.Combine(rootPath, folder);
+                if (!Directory.Exists(pathToSave))
+                {
+                    Directory.CreateDirectory(pathToSave);
+                }
+                var fullPath = Path.Combine(pathToSave, fileName);
+                using (var stream = new FileStream(fullPath, FileMode.Create))
+                {
+                    await fileStream.CopyToAsync(stream);
+                }
+                return fullPath;
             }
             catch (Exception ex)
             {

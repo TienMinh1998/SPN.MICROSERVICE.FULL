@@ -59,14 +59,15 @@ namespace Hola.Api.Controllers
             try
             {
                 var httpRequest = HttpContext.Request;
+
+
+
                 if (file.Length > 0)
                 {
                     var rootPath = _hostEnvironment.WebRootPath != null ? _hostEnvironment.WebRootPath : _hostEnvironment.ContentRootPath;
                     var pathToSave = Path.Combine(rootPath, folder);
                     Console.WriteLine(pathToSave);
                     if (!Directory.Exists(pathToSave)) Directory.CreateDirectory(pathToSave);
-
-
                     string name = DateTime.UtcNow.ToString("ssddMMyyyy") + file.FileName;
                     var url = Path.Combine(Directory.GetCurrentDirectory(), $"image/{name}");
                     var fullPath = Path.Combine(pathToSave, name);

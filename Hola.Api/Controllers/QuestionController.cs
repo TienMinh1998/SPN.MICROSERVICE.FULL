@@ -95,7 +95,7 @@ namespace Hola.Api.Controllers
                         {
                             var rImage = await api.IllustrationImage<RootObject>(word);
                             imageURL = rImage.hits.FirstOrDefault(x => !string.IsNullOrEmpty(x.webformatURL)).webformatURL;
-                            image = await api.UploadFileFromUrlAsync(rootPath, imageURL, "image");
+                            image = await api.DownloadFileAsync(rootPath, imageURL, "image");
                         }
                     }
                     catch (Exception ex)
