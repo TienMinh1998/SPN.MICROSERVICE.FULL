@@ -22,6 +22,7 @@ using Hola.Core.Utils;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Hosting;
 using Quartz.Impl.Triggers;
+using iText.StyledXmlParser.Jsoup.Nodes;
 #endregion
 
 
@@ -82,45 +83,43 @@ namespace Hola.Api.Controllers
                 int userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == "UserId").Value);
                 // Check question is available 
                 var question_available = await _questionService.GetFirstOrDefaultAsync(x => x.fk_userid == userid && x.questionname.ToLower() == model.QuestionName.ToLower());
+                List<string> sysnynoms = new List<string>();  // Từ đồng nghĩa
+                string imageURL = "";
+                string image = "";
+                try
+                {
+                    // Get infomation from oxfordDictionary
+                    if (string.IsNullOrEmpty(model.ImageSource)) // Nếu không truyền ảnh lên thì trả về 1 ảnh ví dụ.
+                    {
+                        var rImage = await api.IllustrationImage<RootObject>(word);
+                        imageURL = rImage.hits.FirstOrDefault(x => !string.IsNullOrEmpty(x.webformatURL)).webformatURL;
+                        image = await api.DownloadFileAsync(imageURL, "image", rootPath);
+                    }
+                }
+                catch (Exception ex)
+                {
+                }
+
+                string typeNote = "";
+                if (camType.Trim().ToLower() == "adverb")
+                {
+                    typeNote = "adv";
+                }
+                else if (camType.Trim().ToLower() == "adjective")
+                {
+                    typeNote = "adj";
+                }
+                else if (camType.Trim().ToLower() == "noun")
+                {
+                    typeNote = "n";
+                }
+                else if (camType.Trim().ToLower() == "verb")
+                {
+                    typeNote = "v";
+                }
+
                 if (question_available == null)
                 {
-
-                    List<string> sysnynoms = new List<string>();  // Từ đồng nghĩa
-                    string imageURL = "";
-                    string image = "";
-                    try
-                    {
-                        // Get infomation from oxfordDictionary
-                        if (string.IsNullOrEmpty(model.ImageSource)) // Nếu không truyền ảnh lên thì trả về 1 ảnh ví dụ.
-                        {
-                            var rImage = await api.IllustrationImage<RootObject>(word);
-                            imageURL = rImage.hits.FirstOrDefault(x => !string.IsNullOrEmpty(x.webformatURL)).webformatURL;
-                            image = await api.DownloadFileAsync(imageURL, "image", rootPath);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                    }
-
-                    string typeNote = "";
-                    if (camType.Trim().ToLower() == "adverb")
-                    {
-                        typeNote = "adv";
-                    }
-                    else if (camType.Trim().ToLower() == "adjective")
-                    {
-                        typeNote = "adj";
-                    }
-                    else if (camType.Trim().ToLower() == "noun")
-                    {
-                        typeNote = "n";
-                    }
-                    else if (camType.Trim().ToLower() == "verb")
-                    {
-                        typeNote = "v";
-                    }
-
-                    // Add question to repository
                     Question question = new Question()
                     {
                         is_delete = 0,
@@ -146,7 +145,21 @@ namespace Hola.Api.Controllers
                 }
                 else
                 {
-                    return JsonResponseModel.Error("Question is Exsit", 400);
+                    question_available.is_delete = 0;
+                    question_available.answer = $"({typeNote}) {vietnamMeaning?.Meaning.ProcessString()}";   // Xử lý chuỗi string
+                    question_available.audio = camAudio;
+                    question_available.category_id = model.Category_Id;
+                    question_available.phonetic = $"/{camPhonetic}/";
+                    question_available.created_on = DateTime.Now;
+                    question_available.fk_userid = model.fk_userid;
+                    question_available.ImageSource = image;
+                    question_available.questionname = model.QuestionName;  // Xử lý chuỗi string
+                    question_available.definition = $"DEFINE : {camDefinition}";
+                    question_available.Type = camType;
+                    question_available.Synonym = string.Join(",", oxfordWordSame);
+                    question_available.Note = model.Answer; // ghi chú của người dùng
+                    await _questionService.UpdateAsync(question_available);
+                    return JsonResponseModel.Success("Cập nhật thành công!");
                 }
             }
             catch (Exception)
