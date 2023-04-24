@@ -132,7 +132,7 @@ namespace Hola.Core.Helper
                 // Tạo đối tượng HtmlWeb để tải nội dung của trang web
                 HtmlWeb web = new HtmlWeb();
                 HtmlDocument doc = web.Load($"https://dictionary.cambridge.org/dictionary/english/{word}");
-                var audio = doc.DocumentNode.SelectSingleNode("/html/body/div[2]/div/div[1]/div[2]/article/div[2]/div[1]/div[2]/div/div[3]/div/div/div/div[2]/span[1]/span[2]/audio/source[1]");
+                var audio = doc.DocumentNode.SelectSingleNode("/html/body/div[2]/div/div[1]/div[2]/article/div[2]/div[1]/div[2]/div/div[3]/div/div/div[1]/div[2]/span[2]/span[2]/audio/source[1]");
                 var phonetic = doc.DocumentNode.SelectSingleNode("/html/body/div[2]/div/div[1]/div[2]/article/div[2]/div[1]/div[2]/div/div[3]/div/div/div/div[2]/span[2]/span[3]/span");
                 var x_Type = doc.DocumentNode.SelectSingleNode("/html/body/div[2]/div/div[1]/div[2]/article/div[2]/div[1]/div[2]/div/div[3]/div/div/div/div[2]/div[2]/span[1]");
                 var x_definition = doc.DocumentNode.SelectSingleNode("/html/body/div[2]/div/div[1]/div[2]/article/div[2]/div[1]/div[2]/div/div[3]/div/div/div/div[3]/div/div[2]/div/div[2]/div");
