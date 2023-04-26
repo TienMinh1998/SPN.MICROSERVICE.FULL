@@ -127,7 +127,7 @@ namespace Hola.Api.Controllers
                         audio = camAudio,
                         category_id = model.Category_Id,
                         phonetic = $"/{camPhonetic}/",
-                        created_on = DateTime.Now,
+                        created_on = DateTime.Now.AddHours(7),
                         fk_userid = model.fk_userid,
                         ImageSource = image,
                         questionname = model.QuestionName,  // Xử lý chuỗi string
