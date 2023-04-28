@@ -157,7 +157,7 @@ namespace Hola.Api.Controllers
                     question_available.definition = $"DEFINE : {camDefinition}";
                     question_available.Type = camType;
                     question_available.Synonym = string.Join(",", oxfordWordSame);
-                    question_available.Note = model.Answer; // ghi chú của người dùng
+                    question_available.Note = model.Note;                  // ghi chú của người dùng
                     await _questionService.UpdateAsync(question_available);
                     return JsonResponseModel.Success("Cập nhật thành công!");
                 }
