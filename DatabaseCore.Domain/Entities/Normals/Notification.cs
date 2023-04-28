@@ -15,9 +15,9 @@ namespace DatabaseCore.Domain.Entities.Normals
         public int Pk_Id { get; set; }
         public int FK_UserId { get; set; }
         public string Title { get; set; }
-        public string  Content { get; set; }
-        public bool IsRead { get; set; }          
+        public string Content { get; set; }
+        public bool IsRead { get; set; }
         public bool IsDelete { get; set; }
-        public DateTime created_on { get; set; } 
+        public DateTime created_on { get; set; }
     }
 }

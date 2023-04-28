@@ -13,7 +13,7 @@ namespace DatabaseCore.Infrastructure.ConfigurationEFContext
     {
         public EFContext(DbContextOptions<EFContext> options) : base(options)
         {
-        
+
         }
         // Define table
         public DbSet<User> Users { get; set; }
@@ -30,7 +30,7 @@ namespace DatabaseCore.Infrastructure.ConfigurationEFContext
 
         public DbSet<UserStandardQuestion> UserStandardQuestions { get; set; }
         public DbSet<Role> Roles { get; set; }
-        public DbSet<UserRole> UserRoles { get; set; }  
+        public DbSet<UserRole> UserRoles { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
