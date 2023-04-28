@@ -134,7 +134,7 @@ namespace Hola.Api.Controllers
                         definition = $"DEFINE : {camDefinition}",
                         Type = camType,
                         Synonym = string.Join(",", oxfordWordSame),
-                        Note = model.Answer // ghi chú của người dùng
+                        Note = model.Note                // ghi chú của người dùng nhập thêm
                     };
                     await _questionService.AddAsync(question);
                     string sqlquery = "update usr.categories \r\nset totalquestion = (select count(1) from usr.question " +
