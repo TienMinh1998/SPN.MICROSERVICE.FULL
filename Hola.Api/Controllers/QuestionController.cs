@@ -58,12 +58,12 @@ namespace Hola.Api.Controllers
         [Authorize]
         public async Task<JsonResponseModel> AddQuestion([FromBody] QuestionAddModel model)
         {
-
+            // Phân quyền cho người dùng
             int userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == "UserId").Value);
             string sql = "SELECT COUNT(*) FROM usr.\"User\" u \r\nINNER JOIN usr.\"UserRole\" ur ON u.\"Id\"  = ur.\"FK_UserID\"" +
                 "  \r\nINNER JOIN usr.rolepermission  rp ON ur.\"FK_RoleID\"  = rp.\"FK_RoleID\" " +
                 " \r\nINNER JOIN usr.\"permission\" p  ON rp.\"FK_PermissionID\"  " +
-                "= p.\"Id\" \r\nWHERE u.\"Id\" =1 and p.\"PermissionKey\"  = 'AddQuestion' and u.\"IsDeleted\" =0;";
+                $"= p.\"Id\" \r\nWHERE u.\"Id\" ={userid} and p.\"PermissionKey\"  = 'AddQuestion' and u.\"IsDeleted\" =0;";
             var hasPermission = _dapper.QueryFirstOrDefault<int>(sql);
             if (hasPermission == 0)
             {
