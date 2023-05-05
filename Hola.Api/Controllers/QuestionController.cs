@@ -101,6 +101,7 @@ namespace Hola.Api.Controllers
                 }
 
                 string typeNote = "";
+                typeNote = camType.Trim();
                 if (camType.Trim().ToLower() == "adverb")
                 {
                     typeNote = "adv";
@@ -131,7 +132,7 @@ namespace Hola.Api.Controllers
                         fk_userid = model.fk_userid,
                         ImageSource = image,
                         questionname = model.QuestionName,  // Xử lý chuỗi string
-                        definition = $"DEFINE : {camDefinition}",
+                        definition = $"{camDefinition}",
                         Type = camType,
                         Synonym = string.Join(",", oxfordWordSame),
                         Note = model.Note                // ghi chú của người dùng nhập thêm
