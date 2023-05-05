@@ -171,7 +171,10 @@ namespace Hola.Core.Helper
                 foreach (HtmlNode node in nodes)
                 {
                     string text = node?.InnerText;
-                    response.Meaning.Add(text);
+                    if (!response.Meaning.Contains(text))
+                    {
+                        response.Meaning.Add(text);
+                    }
                     // sử dụng biến text ở đây để xử lý dữ liệu
                 }
                 //  var meaning = doc.DocumentNode.SelectSingleNode("/html/body/div[2]/div/div[1]/div[2]/article/div[2]/div[1]/span/div/div[4]/div/div[1]/div[2]/div/div[3]/span");

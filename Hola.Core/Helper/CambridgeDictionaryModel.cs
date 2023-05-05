@@ -13,7 +13,7 @@ namespace Hola.Core.Helper
 
     public class CambridgeDictionaryVietNamModel
     {
-        public List<string> Meaning { get; set; }
+        public List<string> Meaning { get; set; } = new List<string>();
     }
 
 
