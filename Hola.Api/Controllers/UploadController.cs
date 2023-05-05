@@ -52,16 +52,17 @@ namespace Hola.Api.Controllers
             return JsonResponseModel.Success(response);
         }
 
-
-
+        [HttpPost("upload/audio")]
+        public async Task<JsonResponseModel> UploadAudio(IFormFile file)
+        {
+            var response = await UploadFileAsync(file, "image");
+            return JsonResponseModel.Success(response);
+        }
         private async Task<string> UploadFileAsync(IFormFile file, string folder)
         {
             try
             {
                 var httpRequest = HttpContext.Request;
-
-
-
                 if (file.Length > 0)
                 {
                     var rootPath = _hostEnvironment.WebRootPath != null ? _hostEnvironment.WebRootPath : _hostEnvironment.ContentRootPath;
@@ -81,7 +82,6 @@ namespace Hola.Api.Controllers
                 {
                     return null;
                 }
-
             }
             catch (Exception ex)
             {

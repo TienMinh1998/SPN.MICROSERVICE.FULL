@@ -194,9 +194,9 @@ namespace Hola.Core.Helper
 
                 Console.WriteLine("Xpath : ");
 
-                var s1 = doc.DocumentNode.SelectSingleNode("/html/body/div[1]/div[3]/div[2]/div[2]/div/div[3]/div[1]/dl/dd[1]/ul/li[1]/a");
-                var s2 = doc.DocumentNode.SelectSingleNode("/html/body/div[1]/div[3]/div[2]/div[2]/div/div[3]/div[1]/dl/dd[1]/ul/li[2]/a");
-                var s3 = doc.DocumentNode.SelectSingleNode("/html/body/div[1]/div[3]/div[2]/div[2]/div/div[3]/div[1]/dl/dd[1]/ul/li[3]/a");
+                var s1 = doc.DocumentNode.SelectSingleNode("/html/body/div[1]/div[3]/div[2]/div[2]/div/div[3]/div[2]/ul/li[1]");
+                var s2 = doc.DocumentNode.SelectSingleNode("/html/body/div[1]/div[3]/div[2]/div[2]/div/div[3]/div[2]/ul/li[2]");
+                var s3 = doc.DocumentNode.SelectSingleNode("/html/body/div[1]/div[3]/div[2]/div[2]/div/div[3]/div[2]/ul/li[3]");
                 if (s1 != null)
                 {
                     response.Add(s1.InnerText);
