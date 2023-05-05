@@ -147,7 +147,7 @@ namespace Hola.Api.Controllers
                 {
                     // không cần update image nữa vì nó có rồi!
                     question_available.is_delete = 0;
-                    question_available.answer = $"({typeNote}) {vietnamMeaning?.Meaning.ProcessString()}";   // Xử lý chuỗi string
+                    question_available.answer = $"({typeNote}) {string.Join(",", vietnamMeaning)}";   // Xử lý chuỗi string
                     question_available.audio = camAudio;
                     question_available.category_id = model.Category_Id;
                     question_available.phonetic = $"/{camPhonetic}/";
