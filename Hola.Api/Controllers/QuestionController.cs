@@ -123,7 +123,7 @@ namespace Hola.Api.Controllers
                     Question question = new Question()
                     {
                         is_delete = 0,
-                        answer = $"({typeNote}) {vietnamMeaning?.Meaning.ProcessString()}",   // Xử lý chuỗi string
+                        answer = $"({typeNote}) {string.Join(",", vietnamMeaning)}",   // Xử lý chuỗi string
                         audio = camAudio,
                         category_id = model.Category_Id,
                         phonetic = $"/{camPhonetic}/",
@@ -145,7 +145,7 @@ namespace Hola.Api.Controllers
                 }
                 else
                 {
-                    // không cần update iamge nữa vì nó có rồi!
+                    // không cần update image nữa vì nó có rồi!
                     question_available.is_delete = 0;
                     question_available.answer = $"({typeNote}) {vietnamMeaning?.Meaning.ProcessString()}";   // Xử lý chuỗi string
                     question_available.audio = camAudio;
@@ -154,10 +154,11 @@ namespace Hola.Api.Controllers
                     question_available.created_on = DateTime.Now;
                     question_available.fk_userid = model.fk_userid;
                     question_available.questionname = model.QuestionName;  // Xử lý chuỗi string
-                    question_available.definition = $"DEFINE : {camDefinition}";
+                    question_available.definition = $"Nghĩa : {camDefinition}";
                     question_available.Type = camType;
                     question_available.Synonym = string.Join(",", oxfordWordSame);
                     question_available.Note = model.Note;                  // ghi chú của người dùng
+                    question_available.Synonym = string.Join(",", oxfordWordSame);
                     await _questionService.UpdateAsync(question_available);
                     return JsonResponseModel.Success("Cập nhật thành công!");
                 }

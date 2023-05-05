@@ -1,4 +1,6 @@
-﻿namespace Hola.Core.Helper
+﻿using System.Collections.Generic;
+
+namespace Hola.Core.Helper
 {
     public class CambridgeDictionaryModel
     {
@@ -11,7 +13,7 @@
 
     public class CambridgeDictionaryVietNamModel
     {
-        public string Meaning { get; set; }
+        public List<string> Meaning { get; set; }
     }
 
 

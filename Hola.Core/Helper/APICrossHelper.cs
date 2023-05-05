@@ -163,11 +163,18 @@ namespace Hola.Core.Helper
             try
             {
                 // Tạo đối tượng HtmlWeb để tải nội dung của trang web
+                var meaning = string.Empty;
                 HtmlWeb web = new HtmlWeb();
                 HtmlDocument doc = web.Load($"https://dictionary.cambridge.org/dictionary/english-vietnamese/{word}");
-                var meaning = doc.DocumentNode.SelectSingleNode("/html/body/div[2]/div/div[1]/div[2]/article/div[2]/div[1]/span/div/div[4]/div/div[1]/div[2]/div/div[3]/span");
-                response.Meaning = meaning?.InnerText;
-
+                string xpath = "//span[@class='trans dtrans' and @lang='vi']";
+                HtmlNodeCollection nodes = doc.DocumentNode.SelectNodes(xpath);
+                foreach (HtmlNode node in nodes)
+                {
+                    string text = node?.InnerText;
+                    response.Meaning.Add(text);
+                    // sử dụng biến text ở đây để xử lý dữ liệu
+                }
+                //  var meaning = doc.DocumentNode.SelectSingleNode("/html/body/div[2]/div/div[1]/div[2]/article/div[2]/div[1]/span/div/div[4]/div/div[1]/div[2]/div/div[3]/span");
             }
             catch (Exception)
             {
