@@ -9,12 +9,11 @@ using System.Threading.Tasks;
 
 namespace DatabaseCore.Infrastructure.ConfigurationEntities
 {
-    public class QuestionConfiguration : IEntityTypeConfiguration<Question>
+    public class PermissionConfiguration : IEntityTypeConfiguration<Permission>
     {
-        public void Configure(EntityTypeBuilder<Question> builder)
+        public void Configure(EntityTypeBuilder<Permission> builder)
         {
-            builder.ToTable("question", schema: "usr");
-            builder.Property(x => x.created_on).HasColumnType("timestamp"); // không thấy timezone
+            builder.ToTable("permission", schema: "usr");
         }
     }
 }

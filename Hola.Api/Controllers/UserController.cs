@@ -61,7 +61,6 @@ namespace Hola.Api.Controllers
         [HttpPost("Register")]
         public async Task<JsonResponseModel> Register([FromBody] UserRegisterRequest request)
         {
-            if (request.Code == null) return JsonResponseModel.Error("Bạn không có mã code để đăng kí. Vui lòng liên hệ 0968872539.", 500);
             // Check available
             var user = await userService.GetFirstOrDefaultAsync(x => (x.Username.Equals(request.UserName)));
             if (user != null) return JsonResponseModel.Error("Người Dùng đã tồn tại! vui lòng thử 1 UserName Khác.", 500);

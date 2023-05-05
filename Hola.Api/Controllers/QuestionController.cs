@@ -23,6 +23,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Hosting;
 using Quartz.Impl.Triggers;
 using iText.StyledXmlParser.Jsoup.Nodes;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 #endregion
 
 
@@ -57,6 +58,18 @@ namespace Hola.Api.Controllers
         [Authorize]
         public async Task<JsonResponseModel> AddQuestion([FromBody] QuestionAddModel model)
         {
+
+            int userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == "UserId").Value);
+            string sql = "SELECT COUNT(*) FROM usr.\"User\" u \r\nINNER JOIN usr.\"UserRole\" ur ON u.\"Id\"  = ur.\"FK_UserID\"" +
+                "  \r\nINNER JOIN usr.rolepermission  rp ON ur.\"FK_RoleID\"  = rp.\"FK_RoleID\" " +
+                " \r\nINNER JOIN usr.\"permission\" p  ON rp.\"FK_PermissionID\"  " +
+                "= p.\"Id\" \r\nWHERE u.\"Id\" =1 and p.\"PermissionKey\"  = 'AddQuestion' and u.\"IsDeleted\" =0;";
+            var hasPermission = _dapper.QueryFirstOrDefault<int>(sql);
+            if (hasPermission == 0)
+            {
+                return JsonResponseModel.Error("Bạn chưa có quyền sử dụng chức năng này", 400);
+            }
+
             var rootPath = _hostEnvironment.WebRootPath != null ? _hostEnvironment.WebRootPath : _hostEnvironment.ContentRootPath;
             string word = model.QuestionName;
             APICrossHelper api = new APICrossHelper();
@@ -79,9 +92,6 @@ namespace Hola.Api.Controllers
 
             try
             {
-
-                int userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == "UserId").Value);
-                // Check question is available 
                 var question_available = await _questionService.GetFirstOrDefaultAsync(x => x.fk_userid == userid && x.questionname.ToLower() == model.QuestionName.ToLower());
                 List<string> sysnynoms = new List<string>();  // Từ đồng nghĩa
                 string imageURL = "";

@@ -9,9 +9,9 @@ using DatabaseCore.Domain.Entities.Base;
 
 namespace DatabaseCore.Domain.Entities.Normals
 {
-    public class UserRole : BaseEntity<int>
+    public class RolePermission : BaseEntity<int>
     {
+        public int FK_PermissionID { get; set; }
         public int FK_RoleID { get; set; }
-        public int FK_UserID { get; set; }
     }
 }

@@ -17,5 +17,6 @@ namespace DatabaseCore.Domain.Entities.Normals
         public string Name { get; set; }
         public int isnotification { get; set; }
         public string Avartar { get; set; }
+        public int Status { get; set; }             // kiểm tra xem đã được kích hoạt chưa
     }
 }

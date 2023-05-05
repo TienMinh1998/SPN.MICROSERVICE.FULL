@@ -14,7 +14,7 @@ namespace DatabaseCore.Infrastructure.ConfigurationEntities
         public void Configure(EntityTypeBuilder<UserManual> builder)
         {
             builder.ToTable("UserManual", schema: "usr");
-  
+
         }
     }
 }

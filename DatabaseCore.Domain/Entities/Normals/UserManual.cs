@@ -12,7 +12,7 @@ namespace DatabaseCore.Domain.Entities.Normals
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Pk_UserManual_Id { get; set; }  
+        public int Pk_UserManual_Id { get; set; }
         public int Fk_Grannar_Id { get; set; }
         public string Used { get; set; }          // Cách sử dụng
         public string Example { get; set; }        // Example :  Ví dụ cho cách sử dụng

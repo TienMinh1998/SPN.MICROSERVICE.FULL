@@ -3,6 +3,7 @@ using System;
 using DatabaseCore.Infrastructure.ConfigurationEFContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DatabaseCore.Infrastructure.Migrations
 {
     [DbContext(typeof(EFContext))]
-    partial class EFContextModelSnapshot : ModelSnapshot
+    [Migration("20230505092925_alter_table_user")]
+    partial class alter_table_user
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -161,31 +164,6 @@ namespace DatabaseCore.Infrastructure.Migrations
                     b.ToTable("Notification", "usr");
                 });
 
-            modelBuilder.Entity("DatabaseCore.Domain.Entities.Normals.Permission", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<int>("IsDeleted")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("PermissionKey")
-                        .HasColumnType("text");
-
-                    b.Property<string>("PermissionName")
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("permission", "usr");
-                });
-
             modelBuilder.Entity("DatabaseCore.Domain.Entities.Normals.Question", b =>
                 {
                     b.Property<int>("id")
@@ -300,40 +278,12 @@ namespace DatabaseCore.Infrastructure.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("boolean");
-
                     b.Property<string>("RoleName")
                         .HasColumnType("text");
 
                     b.HasKey("PK_RoleID");
 
                     b.ToTable("Role", "usr");
-                });
-
-            modelBuilder.Entity("DatabaseCore.Domain.Entities.Normals.RolePermission", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<int>("FK_PermissionID")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("FK_RoleID")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("IsDeleted")
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("rolepermission", "usr");
                 });
 
             modelBuilder.Entity("DatabaseCore.Domain.Entities.Normals.Target", b =>
@@ -480,16 +430,10 @@ namespace DatabaseCore.Infrastructure.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp with time zone");
-
                     b.Property<int>("FK_RoleID")
                         .HasColumnType("integer");
 
                     b.Property<int>("FK_UserID")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("IsDeleted")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
