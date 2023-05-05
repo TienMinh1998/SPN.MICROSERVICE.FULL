@@ -118,6 +118,10 @@ namespace Hola.Api.Controllers
                 {
                     typeNote = "v";
                 }
+                if (string.IsNullOrEmpty(model.Note))
+                {
+                    model.Note = "from dictionary.cambridge.org";
+                }
 
                 if (question_available == null)
                 {
