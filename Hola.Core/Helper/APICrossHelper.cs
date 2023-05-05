@@ -199,15 +199,15 @@ namespace Hola.Core.Helper
                 var s3 = doc.DocumentNode.SelectSingleNode("/html/body/div[1]/div[3]/div[2]/div[2]/div/div[3]/div[2]/ul/li[3]");
                 if (s1 != null)
                 {
-                    response.Add(s1.InnerText);
+                    response.Add(s1.InnerText.Trim());
                 }
                 if (s2 != null)
                 {
-                    response.Add(s2.InnerText);
+                    response.Add(s2.InnerText.Trim());
                 }
                 if (s3 != null)
                 {
-                    response.Add(s3.InnerText);
+                    response.Add(s3.InnerText.Trim());
                 }
             }
             catch (Exception)
