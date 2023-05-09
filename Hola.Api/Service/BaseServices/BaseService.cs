@@ -16,7 +16,7 @@ namespace Hola.Api.Service.BaseServices
         public BaseService(IRepository<T> baseReponsitory)
         {
             _baseReponsitory = baseReponsitory;
-             connectionString = "Server=194.163.190.91;Port=5432;User Id=postgres;Password=Cvbn152231392;Pooling=true;Timeout=300;CommandTimeout=300;";
+            connectionString = "Server=194.163.190.91;Port=5432;User Id=postgres;Password=Cvbn152231392;Pooling=true;Timeout=300;CommandTimeout=300;";
         }
         public async Task<T> AddAsync(T entity)
         {
@@ -64,7 +64,7 @@ namespace Hola.Api.Service.BaseServices
 
         public PaginationSet<T> ListPaging(int pageNumber, int pageSize, Func<T, bool> predicate, Dictionary<string, bool> sortList)
         {
-           return _baseReponsitory.ListPaging(pageNumber, pageSize, predicate, sortList);
+            return _baseReponsitory.ListPaging(pageNumber, pageSize, predicate, sortList);
         }
 
         public PaginationSet<T> GetListPaged(int pageNumber, int pageSize, Func<T, bool> predicate, string sortColumnName, bool descending = false)

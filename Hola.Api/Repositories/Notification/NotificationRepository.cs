@@ -9,6 +9,6 @@ public class NotificationRepository : BaseRepository<Notification>, INotificatio
 {
     public NotificationRepository(EFContext DbContext) : base(DbContext)
     {
-        
+
     }
 }

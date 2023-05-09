@@ -5,15 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DatabaseCore.Domain.Entities.Normals
+namespace DatabaseCore.Domain.Entities.Normals;
+
+public class Reading : BaseEntity<int>
 {
-    public class Reading : BaseEntity<int>
-    {
-        public string Title { get; set; }
-        public string Definetion { get; set; }
-        public string Image { get; set; }
-        public string Content { get; set; }
-        public string Translate { get; set; }
-        public string Status { get; set; }
-    }
+    public string Title { get; set; }
+    public string Definetion { get; set; }
+    public string Image { get; set; }
+    public string Content { get; set; }
+    public string Translate { get; set; }
+    public string Status { get; set; }
 }

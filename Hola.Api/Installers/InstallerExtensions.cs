@@ -13,7 +13,7 @@ namespace Hola.Api.Installers
             // Get all installer
             var installer = typeof(Startup).Assembly.ExportedTypes.Where(x => typeof(IInstaller).IsAssignableFrom(x) && !x.IsInterface
             && !x.IsAbstract).Select(Activator.CreateInstance).Cast<IInstaller>().ToList();
-            installer.ForEach(installer => installer.InstallServices(services,configuration));
+            installer.ForEach(installer => installer.InstallServices(services, configuration));
         }
     }
 }

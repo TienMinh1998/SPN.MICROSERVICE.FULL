@@ -35,7 +35,7 @@ namespace Hola.Api.Installers
             services.AddTransient<FirebaseService>();
             services.AddScoped<DapperBaseService>();
             // Target Service
-            services.AddScoped<ITargetService,TargetService>();
+            services.AddScoped<ITargetService, TargetService>();
 
             // add baseService and BaseRepository
             services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
@@ -64,7 +64,7 @@ namespace Hola.Api.Installers
 
             // Category
             services.AddScoped<ICategoryRepository, CategoryRepository>();
-            services.AddScoped<ICategoryService, Service.CateporyServices.v1.CategoryService >();
+            services.AddScoped<ICategoryService, Service.CateporyServices.v1.CategoryService>();
 
             // Question
             services.AddScoped<IQuestionRepository, QuestionRepository>();
@@ -78,11 +78,14 @@ namespace Hola.Api.Installers
             services.AddTransient<ITopicRepository, TopicRepository>();
             services.AddTransient<ITopicService, TopicService>();
 
-            // Topic
+            // QuestionStandard
             services.AddScoped<IQuestionStandardRepository, QuestionStandardRepository>();
             services.AddTransient<IQuestionStandardService, QuestionStandardService>();
 
-         
+            // Reading
+            services.AddTransient<IReadingRepository, ReadingRepository>();
+            services.AddTransient<IReadingService, ReadingService>();
+
         }
     }
 }
