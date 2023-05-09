@@ -19,16 +19,24 @@ using System.Linq.Expressions;
 
 namespace Hola.Api.Controllers
 {
+    [Route("reading")]
+    [ApiController]
     public class ReadingController : ControllerBase
     {
         private readonly IReadingService _readingService;
-
-        public ReadingController(IReadingService readingService)
+        private readonly IUploadFileService _uploadService;
+        public ReadingController(IReadingService readingService, IUploadFileService uploadService)
         {
             _readingService = readingService;
+            _uploadService = uploadService;
         }
 
         // SEARCH
+        /// <summary>
+        /// Tìm kiếm bài luận
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost("search")]
         [Authorize]
         public async Task<JsonResponseModel> Search([FromBody] SearchReadingRequest model)
@@ -61,6 +69,143 @@ namespace Hola.Api.Controllers
 
                 var list = _readingService.GetListPaged(model.PageIndex, model.PageSize, condition, "CreatedDate", false);
                 return JsonResponseModel.Success(list);
+            }
+            catch (Exception ex)
+            {
+                return JsonResponseModel.SERVER_ERROR(ex.Message);
+            }
+        }
+
+        // DETAIL
+        /// <summary>
+        /// Lấy chi tiết của bài luận
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("{id}")]
+        [Authorize]
+        public async Task<JsonResponseModel> Detail(int id)
+        {
+            try
+            {
+                var model = await _readingService.GetFirstOrDefaultAsync(x => x.Id == id);
+                if (model == null)
+                {
+                    return JsonResponseModel.Success(null);
+                }
+                else
+                {
+                    return JsonResponseModel.Success(model);
+                }
+            }
+            catch (Exception ex)
+            {
+                return JsonResponseModel.SERVER_ERROR(ex.Message);
+            }
+        }
+
+        // ADD 
+        /// <summary>
+        /// Thêm mới bài luận
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost("add")]
+        [Authorize]
+        public async Task<JsonResponseModel> Add([FromForm] AddReadingRequest model)
+        {
+            try
+            {
+                // Add Image
+                string url = await _uploadService.UploadImage(model.file, HttpContext);
+
+                var _object = await _readingService.GetFirstOrDefaultAsync(x => x.Title == model.Title && x.IsDeleted == 0);
+                if (_object != null)
+                {
+                    return JsonResponseModel.Error("Đã tồn tại", 400);
+                }
+
+                Reading easay = new Reading
+                {
+                    Content = model.Content,
+                    CreatedDate = DateTime.UtcNow,
+                    Definetion = model.Definetion,
+                    Image = url,
+                    IsDeleted = 0,
+                    Status = "new",
+                    Title = model.Title,
+                    Translate = model.Translate
+                };
+                // add to data base
+                var response = await _readingService.AddAsync(easay);
+                return JsonResponseModel.Success(response);
+            }
+            catch (Exception ex)
+            {
+                return JsonResponseModel.SERVER_ERROR(ex.Message);
+            }
+        }
+
+
+        // UPDATE
+        /// <summary>
+        /// Cập nhật bài luận
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPut("update")]
+        [Authorize]
+        public async Task<JsonResponseModel> update([FromBody] UpdateReadingRequest model)
+        {
+            try
+            {
+                var entity = await _readingService.GetFirstOrDefaultAsync(x => x.Id == model.Id && (x.IsDeleted == 0 || x.IsDeleted != 1));
+                if (entity != null)
+                {
+                    if (entity.Status != "OK")
+                    {
+                        entity.Title = model.Title;
+                        entity.Content = model.Content;
+                        entity.Definetion = model.Definetion;
+                        entity.Translate = model.Translate;
+                        entity.Status = model.Status;
+                    }
+                    var response = await _readingService.UpdateAsync(entity);
+                    return JsonResponseModel.Success(response);
+                }
+                else
+                {
+                    return JsonResponseModel.Error($"Không tìm thấy bản ghi '{model.Id}'", 400);
+                }
+            }
+            catch (Exception ex)
+            {
+                return JsonResponseModel.SERVER_ERROR(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// xóa bài luận
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpDelete("{id}")]
+        [Authorize]
+        public async Task<JsonResponseModel> Delete(int id)
+        {
+            try
+            {
+                var entity = await _readingService.GetFirstOrDefaultAsync(x => x.Id == id && (x.IsDeleted == 0 || x.IsDeleted != 1));
+                if (entity != null)
+                {
+                    entity.IsDeleted = 1;
+                    var response = await _readingService.UpdateAsync(entity);
+                    return JsonResponseModel.Success(response);
+                }
+                else
+                {
+                    return JsonResponseModel.Error($"Không tìm thấy bản ghi có 'id ={id}'", 400);
+                }
             }
             catch (Exception ex)
             {

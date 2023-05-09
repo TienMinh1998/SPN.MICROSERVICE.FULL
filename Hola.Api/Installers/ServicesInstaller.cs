@@ -86,6 +86,8 @@ namespace Hola.Api.Installers
             services.AddTransient<IReadingRepository, ReadingRepository>();
             services.AddTransient<IReadingService, ReadingService>();
 
+            // UPload Service 
+            services.AddTransient<IUploadFileService, UploadService>();
         }
     }
 }

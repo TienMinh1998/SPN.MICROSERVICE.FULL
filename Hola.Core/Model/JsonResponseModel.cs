@@ -21,22 +21,22 @@ namespace Hola.Core.Model
         {
             return new JsonResponseModel() { Data = null, Message = "SUCCESS", Status = 200 };
         }
-        public static JsonResponseModel Success(object data,string _message)
+        public static JsonResponseModel Success(object data, string _message)
         {
             return new JsonResponseModel() { Data = data, Message = _message, Status = 200 };
         }
         public static JsonResponseModel Error(string _message, int _code)
         {
-            return new JsonResponseModel() { Data = null, Message = _message , Status = _code };
+            return new JsonResponseModel() { Data = null, Message = _message, Status = _code };
         }
-        public static JsonResponseModel Error(object data, int _code,string _message)
+        public static JsonResponseModel Error(object data, int _code, string _message)
         {
             return new JsonResponseModel() { Data = data, Message = _message, Status = _code };
         }
 
         public static JsonResponseModel SERVER_ERROR()
         {
-            return new JsonResponseModel() { Data= new List<string>(), Message = SystemParam.MSG_SERVER_ERROR, Status = SystemParam.SERVER_ERROR_CODE};
+            return new JsonResponseModel() { Data = new List<string>(), Message = SystemParam.MSG_SERVER_ERROR, Status = SystemParam.SERVER_ERROR_CODE };
         }
 
         public static JsonResponseModel SERVER_ERROR(string message)
