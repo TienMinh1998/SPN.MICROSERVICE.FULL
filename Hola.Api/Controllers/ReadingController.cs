@@ -29,7 +29,7 @@ namespace Hola.Api.Controllers
         }
 
         // SEARCH
-        [HttpPost("Search")]
+        [HttpPost("search")]
         [Authorize]
         public async Task<JsonResponseModel> Search([FromBody] SearchReadingRequest model)
         {
@@ -37,9 +37,28 @@ namespace Hola.Api.Controllers
             {
                 var search = model.Search;
                 string title = search.GetValueByKey<string>("title");
+                bool checkHasTime = false;
 
+                DateTime? startDate = search.GetValueByKey<DateTime?>("startDate");
+                DateTime? endDate = search.GetValueByKey<DateTime?>("endDate");
+
+
+                DateTime ed = DateTime.Parse("2022-01-01");
+                DateTime st = DateTime.Parse("3000-01-01");
+
+                if (startDate.HasValue && endDate.HasValue)
+                {
+                    // tức là có thời gian
+                    checkHasTime = true;
+                    st = startDate.Value.Date;
+                    ed = endDate.Value.Date.AddDays(1).AddMilliseconds(-1);
+                }
+                // Điều kiện tìm kiếm
                 Func<Reading, bool> condition = x => x.IsDeleted == 0
-                && (string.IsNullOrEmpty(title) ? true : x.Title.Contains(title));
+                && (string.IsNullOrEmpty(title) ? true : x.Title.Contains(title))
+                && (checkHasTime ? (x.CreatedDate >= st && x.CreatedDate <= ed) : true);
+
+
                 var list = _readingService.GetListPaged(model.PageIndex, model.PageSize, condition, "CreatedDate", false);
                 return JsonResponseModel.Success(list);
             }
