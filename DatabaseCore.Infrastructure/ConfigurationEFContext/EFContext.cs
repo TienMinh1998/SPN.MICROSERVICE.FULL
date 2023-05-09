@@ -32,6 +32,9 @@ namespace DatabaseCore.Infrastructure.ConfigurationEFContext
         public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<Permission> Permissions { get; set; }
         public DbSet<RolePermission> RolePermissions { get; set; }
+        // bảng reading
+        public DbSet<Reading> Readings { get; set; }
+        public DbSet<ReadingQuestion> ReadingsQuestions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -52,6 +55,8 @@ namespace DatabaseCore.Infrastructure.ConfigurationEFContext
             modelBuilder.ApplyConfiguration(new UserRoleConfiguration());
             modelBuilder.ApplyConfiguration(new PermissionConfiguration());
             modelBuilder.ApplyConfiguration(new RolePermissionConfiguration());
+            modelBuilder.ApplyConfiguration(new ReadingConfiguration());
+            modelBuilder.ApplyConfiguration(new ReadingQuestionConfiguration());
             base.OnModelCreating(modelBuilder);
         }
     }
