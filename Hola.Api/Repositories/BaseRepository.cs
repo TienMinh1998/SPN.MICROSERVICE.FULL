@@ -179,11 +179,6 @@ namespace Hola.Api.Repositories
             IQueryable<T> queryAble;
             var skip = (pageNumber - 1) * pageSize;
 
-            if (string.IsNullOrEmpty(sortColumnName))
-            {
-                sortColumnName = "CreatedDate";
-            }
-
             if (predicate != null)
             {
                 var local = dbSet.Where(predicate).AsQueryable();
