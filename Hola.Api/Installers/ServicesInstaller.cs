@@ -88,6 +88,9 @@ namespace Hola.Api.Installers
 
             // UPload Service 
             services.AddTransient<IUploadFileService, UploadService>();
+
+            services.AddTransient<IPhraseRepository, PhraseRepository>();
+            services.AddTransient<IPhraseService, PhraseService>();
         }
     }
 }

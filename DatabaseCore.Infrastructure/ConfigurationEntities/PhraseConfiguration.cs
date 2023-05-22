@@ -9,14 +9,11 @@ using System.Threading.Tasks;
 
 namespace DatabaseCore.Infrastructure.ConfigurationEntities
 {
-    public class GrammarConfiguration : IEntityTypeConfiguration<Grammar>
+    public class PhraseConfiguration : IEntityTypeConfiguration<Phrase>
     {
-        public void Configure(EntityTypeBuilder<Grammar> builder)
+        public void Configure(EntityTypeBuilder<Phrase> builder)
         {
-            builder.ToTable("Grammar", schema: "usr");
-            builder.Property(x => x.created_on).HasColumnType("timestamp");
-            builder.HasIndex(x => x.Code).IsUnique(true);
-
+            builder.ToTable("phrase", schema: "usr");
         }
     }
 }

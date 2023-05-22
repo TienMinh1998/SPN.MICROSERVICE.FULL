@@ -60,6 +60,10 @@ namespace Hola.Api.Service.BAImportExcel
                     try
                     {
                         object? value = worksheet.Cells[row, i + 1].Value;
+                        if (value == null)
+                        {
+                            return listAnyThing;
+                        }
                         values.Add(new MapDataConfig
                         {
                             ColumnName = headerNames[i],

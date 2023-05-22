@@ -13,8 +13,8 @@ namespace DatabaseCore.Infrastructure.ConfigurationEntities
     {
         public void Configure(EntityTypeBuilder<UserStandardQuestion> builder)
         {
-          builder.ToTable("UserStandardQuestion", schema: "usr");
-          builder.HasKey(x => new { x.StandardQuestion, x.UserId }).HasName("PrimaryKey_QuestionStandardAndUser");
+            builder.ToTable("UserStandardQuestion", schema: "usr");
+            builder.HasKey(x => new { x.StandardQuestion, x.UserId }).HasName("PrimaryKey_QuestionStandardAndUser");
         }
     }
 }
