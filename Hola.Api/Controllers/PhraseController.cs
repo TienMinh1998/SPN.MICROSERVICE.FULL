@@ -148,7 +148,7 @@ namespace Hola.Api.Controllers
             }
         }
 
-        [HttpPut("Edit")]
+        [HttpPut("edit")]
         public async Task<JsonResponseModel> Edit([FromBody] UpdatePhraseRequest model)
         {
             try
@@ -171,7 +171,6 @@ namespace Hola.Api.Controllers
                 return JsonResponseModel.SERVER_ERROR(ex.Message);
             }
         }
-
 
         [HttpPost("lists")]
         [Authorize]
