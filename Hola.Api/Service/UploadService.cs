@@ -66,7 +66,8 @@ namespace Hola.Api.Service
                     {
                         file.CopyTo(stream);
                     }
-                    return await Task.FromResult(url);
+                    string httpsUrl = $"https://viettienhung.com/images/{name}";
+                    return await Task.FromResult(httpsUrl);
                 }
                 else
                 {
