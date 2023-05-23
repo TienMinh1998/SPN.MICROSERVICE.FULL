@@ -30,7 +30,11 @@ namespace Hola.Api.Controllers
             _readingService = readingService;
         }
 
-
+        /// <summary>
+        /// Thêm mới từ 1 file excel
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost("import/excel")]
         public async Task<JsonResponseModel> Import([FromForm] ImportExcelPhraseRequest request)
         {
@@ -83,6 +87,11 @@ namespace Hola.Api.Controllers
             }
         }
 
+        /// <summary>
+        /// Lấy ra chi tiết của phrase
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -95,7 +104,7 @@ namespace Hola.Api.Controllers
                 }
                 else
                 {
-                    return StatusCode(404);
+                    return StatusCode(200, null);
                 }
             }
             catch (Exception ex)
@@ -147,7 +156,11 @@ namespace Hola.Api.Controllers
                 throw;
             }
         }
-
+        /// <summary>
+        /// Sửa 1 phrase trong reading
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPut("edit")]
         public async Task<JsonResponseModel> Edit([FromBody] UpdatePhraseRequest model)
         {
@@ -172,6 +185,11 @@ namespace Hola.Api.Controllers
             }
         }
 
+        /// <summary>
+        /// Lấy ra danh sách có phân trang, search key: readingId 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost("lists")]
         [Authorize]
         public async Task<JsonResponseModel> Search([FromBody] SearchReadingRequest model)
@@ -190,6 +208,11 @@ namespace Hola.Api.Controllers
             }
         }
 
+        /// <summary>
+        /// Xóa 1 phrase trong reading
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<JsonResponseModel> Delete(int id)
         {
