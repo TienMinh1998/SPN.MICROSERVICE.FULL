@@ -67,7 +67,7 @@ namespace Hola.Api.Controllers
                 && (checkHasTime ? (x.CreatedDate >= st && x.CreatedDate <= ed) : true);
 
 
-                var list = _readingService.GetListPaged(model.PageIndex, model.PageSize, condition, "CreatedDate", false);
+                var list = _readingService.GetListPaged(model.PageIndex, model.PageSize, condition, "CreatedDate", true);
                 return JsonResponseModel.Success(list);
             }
             catch (Exception ex)
