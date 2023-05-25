@@ -199,10 +199,10 @@ namespace Hola.Api.Controllers
                 var search = model.Search;
                 int readingId = search.GetValueByKey<int>("readingId");
                 Func<Phrase, bool> condition = x => x.IsDeleted == 0 && x.fk_readingId == readingId;
-                var list = _phraseService.GetListPaged(model.PageIndex, model.PageSize, condition, "CreatedDate", false);
+                var list = _phraseService.GetListPaged(model.PageIndex, model.PageSize, condition, "CreatedDate", true);
                 return JsonResponseModel.Success(list);
             }
-            catch (Exception ex)
+            catch (Exception ex)    
             {
                 return JsonResponseModel.SERVER_ERROR(ex.Message);
             }
