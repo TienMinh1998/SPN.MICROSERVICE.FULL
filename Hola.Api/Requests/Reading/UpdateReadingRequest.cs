@@ -8,5 +8,7 @@
         public string Content { get; set; }
         public string Translate { get; set; }
         public string Status { get; set; }
+        public string TaskName { get; set; }
+        public int Band { get; set; }
     }
 }

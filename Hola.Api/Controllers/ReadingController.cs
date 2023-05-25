@@ -134,7 +134,9 @@ namespace Hola.Api.Controllers
                     IsDeleted = 0,
                     Status = "new",
                     Title = model.Title,
-                    Translate = model.Translate
+                    Translate = model.Translate,
+                    Band = model.Band,
+                    TaskName = model.TaskName,
                 };
                 // add to data base
                 var response = await _readingService.AddAsync(easay);
@@ -169,6 +171,8 @@ namespace Hola.Api.Controllers
                         entity.Definetion = model.Definetion;
                         entity.Translate = model.Translate;
                         entity.Status = model.Status;
+                        entity.Band = model.Band;
+                        entity.TaskName = model.TaskName;
                     }
                     var response = await _readingService.UpdateAsync(entity);
                     return JsonResponseModel.Success(response);
