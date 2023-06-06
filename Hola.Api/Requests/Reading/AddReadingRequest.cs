@@ -11,5 +11,6 @@ namespace Hola.Api.Requests.Reading
         public string Translate { get; set; }
         public string TaskName { get; set; }
         public int Band { get; set; }
+        public int Type { get; set; }
     }
 }

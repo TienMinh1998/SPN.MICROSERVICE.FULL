@@ -50,11 +50,11 @@ namespace Hola.Api.Controllers
             {
                 var search = model.Search;
                 string title = search.GetValueByKey<string>("title");
+                int? type = search.GetValueByKey<int?>("type");
                 bool checkHasTime = false;
 
                 DateTime? startDate = search.GetValueByKey<DateTime?>("startDate");
                 DateTime? endDate = search.GetValueByKey<DateTime?>("endDate");
-
 
                 DateTime ed = DateTime.Parse("2022-01-01");
                 DateTime st = DateTime.Parse("3000-01-01");
@@ -69,7 +69,9 @@ namespace Hola.Api.Controllers
                 // Điều kiện tìm kiếm
                 Func<Reading, bool> condition = x => x.IsDeleted == 0
                 && (string.IsNullOrEmpty(title) ? true : x.Title.Contains(title))
-                && (checkHasTime ? (x.CreatedDate >= st && x.CreatedDate <= ed) : true);
+                && (checkHasTime ? (x.CreatedDate >= st && x.CreatedDate <= ed) : true)
+                && (type.HasValue ? x.Type.Equals(type.Value) : true);
+
                 var list = _readingService.GetListPaged(model.PageIndex, model.PageSize, condition, "CreatedDate", true);
                 foreach (var item in list.Items)
                 {
@@ -146,6 +148,7 @@ namespace Hola.Api.Controllers
                     Translate = model.Translate,
                     Band = model.Band,
                     TaskName = model.TaskName,
+                    Type = model.Type,
                 };
                 // add to data base
                 var response = await _readingService.AddAsync(easay);
@@ -182,6 +185,7 @@ namespace Hola.Api.Controllers
                         entity.Status = model.Status;
                         entity.Band = model.Band;
                         entity.TaskName = model.TaskName;
+                        entity.Type = model.Type;
                     }
                     var response = await _readingService.UpdateAsync(entity);
                     return JsonResponseModel.Success(response);
