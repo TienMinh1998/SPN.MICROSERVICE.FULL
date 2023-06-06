@@ -4,6 +4,7 @@ using EntitiesCommon.EntitiesModel;
 using EntitiesCommon.Requests.GrammarRequests;
 using EntitiesCommon.Requests.TargetRequests;
 using Hola.Api.Models;
+using Hola.Api.Models.Readings;
 using Hola.Api.Requests;
 
 namespace Hola.Api.AutoMappers
@@ -22,6 +23,10 @@ namespace Hola.Api.AutoMappers
             CreateMap<AddQuestionStandardModel, QuestionStandard>();
             CreateMap<UpdateTopicModel, Topic>();
 
+
+            // Reading model 
+            CreateMap<Reading, ReadingModel>();
+            CreateMap<ReadingModel, Reading>();
             // Entity -> Model
         }
     }

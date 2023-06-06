@@ -16,6 +16,9 @@ using Hola.Api.Requests.Reading;
 using Hola.Core.DapperExtension;
 using OfficeOpenXml.FormulaParsing.ExpressionGraph;
 using System.Linq.Expressions;
+using AutoMapper;
+using Hola.Api.Repositories;
+using Hola.Api.Models.Readings;
 
 namespace Hola.Api.Controllers
 {
@@ -25,10 +28,12 @@ namespace Hola.Api.Controllers
     {
         private readonly IReadingService _readingService;
         private readonly IUploadFileService _uploadService;
-        public ReadingController(IReadingService readingService, IUploadFileService uploadService)
+        private readonly IMapper _mapper;
+        public ReadingController(IReadingService readingService, IUploadFileService uploadService, IMapper mapper)
         {
             _readingService = readingService;
             _uploadService = uploadService;
+            _mapper = mapper;
         }
 
         // SEARCH
@@ -65,10 +70,10 @@ namespace Hola.Api.Controllers
                 Func<Reading, bool> condition = x => x.IsDeleted == 0
                 && (string.IsNullOrEmpty(title) ? true : x.Title.Contains(title))
                 && (checkHasTime ? (x.CreatedDate >= st && x.CreatedDate <= ed) : true);
-
-
                 var list = _readingService.GetListPaged(model.PageIndex, model.PageSize, condition, "CreatedDate", true);
-                return JsonResponseModel.Success(list);
+                PaginationSet<ReadingModel> result = _mapper.Map<PaginationSet<ReadingModel>>(list);
+                return JsonResponseModel.Success(result);
+
             }
             catch (Exception ex)
             {
