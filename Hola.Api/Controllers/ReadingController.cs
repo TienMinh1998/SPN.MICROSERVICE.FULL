@@ -71,8 +71,12 @@ namespace Hola.Api.Controllers
                 && (string.IsNullOrEmpty(title) ? true : x.Title.Contains(title))
                 && (checkHasTime ? (x.CreatedDate >= st && x.CreatedDate <= ed) : true);
                 var list = _readingService.GetListPaged(model.PageIndex, model.PageSize, condition, "CreatedDate", true);
-                PaginationSet<ReadingModel> result = _mapper.Map<PaginationSet<ReadingModel>>(list);
-                return JsonResponseModel.Success(result);
+                foreach (var item in list.Items)
+                {
+                    item.Content = "";
+                    item.Translate = "";
+                }
+                return JsonResponseModel.Success(list);
 
             }
             catch (Exception ex)
