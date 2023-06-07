@@ -50,7 +50,7 @@ namespace Hola.Api.Controllers
             {
                 var search = model.Search;
                 string title = search.GetValueByKey<string>("title");
-                int? type = model.Type;
+                int? type = search.GetValueByKey<int?>("type");
                 bool checkHasTime = false;
 
                 DateTime? startDate = search.GetValueByKey<DateTime?>("startDate");
