@@ -8,14 +8,17 @@ using Hola.Api.Service.ExcelServices;
 using Hola.Api.Service.ExcelServices.DataConfig;
 using Hola.Api.Service.ExcelServices.Enum;
 using Hola.Api.Service.ExcelServices.TestModels;
+using Hola.Core.Helper;
 using Hola.Core.Model;
 using Hola.Core.Utils;
 using iText.IO.Util;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Quartz.Util;
 using StackExchange.Redis;
 using System;
@@ -35,13 +38,16 @@ namespace Hola.Api.Controllers
         private IQuestionStandardService _questionStandardService;
         private readonly IMapper _mapper;
         private readonly DapperBaseService _dapper;
+        private readonly IWebHostEnvironment _hostEnvironment;
         public QuestionStandardController(IQuestionStandardService questionStandardService,
             IMapper mapper,
-            DapperBaseService dapper)
+            DapperBaseService dapper,
+            IWebHostEnvironment hostEnvironment)
         {
             _questionStandardService = questionStandardService;
             _mapper = mapper;
             _dapper = dapper;
+            _hostEnvironment = hostEnvironment;
         }
 
         /// <summary>
@@ -118,9 +124,27 @@ namespace Hola.Api.Controllers
         {
             try
             {
+                //  Lấy ra audio của từ đó
+                string camAudio = string.Empty;
+                try
+                {
+                    var rootPath = _hostEnvironment.WebRootPath != null ? _hostEnvironment.WebRootPath : _hostEnvironment.ContentRootPath;
+                    string word = request.English;
+                    APICrossHelper api = new APICrossHelper();
+                    // Chạy bất đồng bộ để lấy về của nghĩa tiếng việt
+                    Task<CambridgeDictionaryModel> cambridgeDicTask = api.GetWord(word);
+                    await Task.WhenAll(cambridgeDicTask);
+                    var cambridgeDicResponse = cambridgeDicTask.Result;
+                    camAudio = cambridgeDicResponse?.Mp3;
+                }
+                catch (Exception)
+                {
+                }
+
                 var command = _mapper.Map<QuestionStandard>(request);
                 command.created_on = DateTime.UtcNow;
                 command.IsDeleted = false;
+                command.Audio = camAudio;
                 var checkquestion = await _questionStandardService.GetFirstOrDefaultAsync(x => x.English == request.English);
                 if (checkquestion == null)
                 {

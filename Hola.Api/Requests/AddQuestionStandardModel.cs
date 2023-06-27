@@ -9,5 +9,6 @@ namespace Hola.Api.Requests
         public string MeaningEnglish { get; set; }   // Nghĩa tiếng anh
         public string MeaningVietNam { get; set; }   // Nghĩa tiếng việt
         public string Note { get; set; }             // Ghi chú
+        public string Audio { get; set; }            // Âm thanh của từ đó
     }
 }
