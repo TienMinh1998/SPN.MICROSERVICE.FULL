@@ -127,7 +127,7 @@ namespace Hola.Api.Controllers
                 //  Lấy ra audio của từ đó, nếu không lấy được audio thì mặc định để trống;
                 // Nếu từ đó có dấu cách thì thôi không lấy audio nữa 
                 string camAudio = string.Empty;
-                bool isBasicWord = request.Audio.Trim().Contains(" ");
+                bool isBasicWord = request.English.Trim().Contains(" ");
 
                 if (!isBasicWord)
                 {
