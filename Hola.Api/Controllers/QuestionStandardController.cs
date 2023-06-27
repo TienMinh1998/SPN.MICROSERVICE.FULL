@@ -124,21 +124,27 @@ namespace Hola.Api.Controllers
         {
             try
             {
-                //  Lấy ra audio của từ đó
+                //  Lấy ra audio của từ đó, nếu không lấy được audio thì mặc định để trống;
+                // Nếu từ đó có dấu cách thì thôi không lấy audio nữa 
                 string camAudio = string.Empty;
-                try
+                bool isBasicWord = request.Audio.Trim().Contains(" ");
+
+                if (!isBasicWord)
                 {
-                    var rootPath = _hostEnvironment.WebRootPath != null ? _hostEnvironment.WebRootPath : _hostEnvironment.ContentRootPath;
-                    string word = request.English;
-                    APICrossHelper api = new APICrossHelper();
-                    // Chạy bất đồng bộ để lấy về của nghĩa tiếng việt
-                    Task<CambridgeDictionaryModel> cambridgeDicTask = api.GetWord(word);
-                    await Task.WhenAll(cambridgeDicTask);
-                    var cambridgeDicResponse = cambridgeDicTask.Result;
-                    camAudio = cambridgeDicResponse?.Mp3;
-                }
-                catch (Exception)
-                {
+                    try
+                    {
+                        var rootPath = _hostEnvironment.WebRootPath != null ? _hostEnvironment.WebRootPath : _hostEnvironment.ContentRootPath;
+                        string word = request.English;
+                        APICrossHelper api = new APICrossHelper();
+                        // Chạy bất đồng bộ để lấy về của nghĩa tiếng việt
+                        Task<CambridgeDictionaryModel> cambridgeDicTask = api.GetWord(word);
+                        await Task.WhenAll(cambridgeDicTask);
+                        var cambridgeDicResponse = cambridgeDicTask.Result;
+                        camAudio = cambridgeDicResponse?.Mp3;
+                    }
+                    catch (Exception)
+                    {
+                    }
                 }
 
                 var command = _mapper.Map<QuestionStandard>(request);
