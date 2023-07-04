@@ -759,6 +759,34 @@ namespace Hola.Api.Controllers
                 return default(ActionResult);
             }
         }
+
+        // Thông kê
+        [HttpPost("overview")]
+        public async Task<JsonResponseModel> GetOverview([FromBody] OverviewRequest request)
+        {
+            try
+            {
+                var startDate = request.StartTime?.ToString("yyyy/MM/dd");
+                var endDate = request.EndTime?.ToString("yyyy/MM/dd");
+                string query = string.Empty;
+                if (request.StartTime.HasValue && request.EndTime.HasValue)
+                {
+                    query = $"SELECT \"Id\", \"FK_UserId\", \"TotalWords\", \"TotalPosts\", created_on\r\nFROM usr.report where created_on <= '{startDate}' and created_on >= '{endDate}'";
+                }
+                else
+                {
+                    query = "SELECT \"Id\", \"FK_UserId\", \"TotalWords\", \"TotalPosts\", created_on\r\nFROM usr.report limit 5";
+                }
+                var response = await _dapper.GetAllAsync<Report>(query);
+                return JsonResponseModel.Success(response, "Thành công");
+            }
+            catch (Exception)
+            {
+                return JsonResponseModel.Error("Thêm thất bại. Từ đã tồn tại", 400);
+
+            }
+        }
+
     }
 }
 

@@ -36,6 +36,9 @@ namespace DatabaseCore.Infrastructure.ConfigurationEFContext
         public DbSet<Reading> Readings { get; set; }
         public DbSet<ReadingQuestion> ReadingsQuestions { get; set; }
         public DbSet<Phrase> Phrases { get; set; }
+
+        public DbSet<Report> Reports { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Config table in postgressSQl
@@ -58,6 +61,7 @@ namespace DatabaseCore.Infrastructure.ConfigurationEFContext
             modelBuilder.ApplyConfiguration(new ReadingConfiguration());
             modelBuilder.ApplyConfiguration(new ReadingQuestionConfiguration());
             modelBuilder.ApplyConfiguration(new PhraseConfiguration());
+            modelBuilder.ApplyConfiguration(new ReportConfiguration());
             base.OnModelCreating(modelBuilder);
         }
     }
