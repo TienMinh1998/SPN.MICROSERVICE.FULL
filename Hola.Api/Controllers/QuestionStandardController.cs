@@ -775,7 +775,7 @@ namespace Hola.Api.Controllers
                 }
                 else
                 {
-                    query = "SELECT \"Id\", \"FK_UserId\", \"TotalWords\", \"TotalPosts\", created_on\r\nFROM usr.report limit 5";
+                    query = "SELECT \"Id\", \"FK_UserId\", \"TotalWords\", \"TotalPosts\", created_on\r\nFROM usr.report ORDER by  created_on  desc limit 10";
                 }
                 var response = await _dapper.GetAllAsync<Report>(query);
                 return JsonResponseModel.Success(response, "Thành công");
