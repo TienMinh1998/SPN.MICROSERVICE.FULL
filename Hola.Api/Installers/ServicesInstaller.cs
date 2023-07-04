@@ -91,6 +91,9 @@ namespace Hola.Api.Installers
 
             services.AddTransient<IPhraseRepository, PhraseRepository>();
             services.AddTransient<IPhraseService, PhraseService>();
+            // Report 
+            services.AddTransient<IReportRepository, ReportRepository>();
+            services.AddTransient<IReportService, ReportService>();
         }
     }
 }
