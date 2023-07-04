@@ -46,8 +46,6 @@ namespace Hola.Api.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost("search")]
-        [Auth]
-        [Permission(Permissions = new PermissionKeyNames[] { PermissionKeyNames.ReadingView })]
         public async Task<JsonResponseModel> Search([FromBody] SearchReadingRequest model)
         {
             try
