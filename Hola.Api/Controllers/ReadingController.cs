@@ -19,6 +19,9 @@ using System.Linq.Expressions;
 using AutoMapper;
 using Hola.Api.Repositories;
 using Hola.Api.Models.Readings;
+using Hola.Api.Common;
+using OpenAI_API.Models;
+using Hola.Api.Attributes;
 
 namespace Hola.Api.Controllers
 {
@@ -43,7 +46,8 @@ namespace Hola.Api.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost("search")]
-        [Authorize]
+        [Auth]
+        [Permission(Permissions = new PermissionKeyNames[] { PermissionKeyNames.ReadingView })]
         public async Task<JsonResponseModel> Search([FromBody] SearchReadingRequest model)
         {
             try
@@ -94,7 +98,6 @@ namespace Hola.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        [Authorize]
         public async Task<JsonResponseModel> Detail(int id)
         {
             try
@@ -207,7 +210,8 @@ namespace Hola.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        [Authorize]
+        [Auth]
+        [Permission(Permissions = new PermissionKeyNames[] { PermissionKeyNames.ReadingDelete })]
         public async Task<JsonResponseModel> Delete(int id)
         {
             try

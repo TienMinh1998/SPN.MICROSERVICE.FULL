@@ -64,6 +64,8 @@ namespace Hola.Api.Controllers
                 "  \r\nINNER JOIN usr.rolepermission  rp ON ur.\"FK_RoleID\"  = rp.\"FK_RoleID\" " +
                 " \r\nINNER JOIN usr.\"permission\" p  ON rp.\"FK_PermissionID\"  " +
                 $"= p.\"Id\" \r\nWHERE u.\"Id\" ={userid} and p.\"PermissionKey\"  = 'AddQuestion' and u.\"IsDeleted\" =0;";
+
+
             var hasPermission = _dapper.QueryFirstOrDefault<int>(sql);
             if (hasPermission == 0)
             {

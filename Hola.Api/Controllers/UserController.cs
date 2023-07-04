@@ -26,6 +26,7 @@ using System.IO;
 using Hola.GoogleCloudStorage;
 using Sentry;
 using Hola.Api.Service.BaseServices;
+using Hola.Api.Authorize;
 
 namespace Hola.Api.Controllers
 {
@@ -133,8 +134,13 @@ namespace Hola.Api.Controllers
                 var isPasswordOk = BCrypt.Net.BCrypt.EnhancedVerify(request.Password, user.Password, BCrypt.Net.HashType.SHA384);
                 if (isPasswordOk)
                 {
-
-                    var newToken = CreateToken(user);
+                    // Tạo Quền cho người dùng 
+                    var userID = user.Id;
+                    string sql = "SELECT p.\"Id\"  FROM usr.\"User\" u \r\nINNER JOIN usr.\"UserRole\" ur ON u.\"Id\" = ur.\"FK_UserID\" " +
+                        "INNER JOIN usr.rolepermission rp ON ur.\"FK_RoleID\" = rp.\"FK_RoleID\" " +
+                        $"INNER JOIN usr.\"permission\" p ON rp.\"FK_PermissionID\" = p.\"Id\" WHERE u.\"Id\" = {userID} ";
+                    var permistion = (await _dapper.GetAllAsync<string>(sql)).ToArray();
+                    var newToken = CreateToken(user, permistion);
                     LoginResponse loginResponse = new LoginResponse
                     {
                         Token = newToken,
@@ -273,13 +279,22 @@ namespace Hola.Api.Controllers
             return JsonResponseModel.SERVER_ERROR("Cập nhật ảnh đại diện thất bại");
         }
 
-        private string CreateToken(DatabaseCore.Domain.Entities.Normals.User user)
+        private string CreateToken(DatabaseCore.Domain.Entities.Normals.User user, string[] permission = null)
         {
             List<Claim> claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name,user.Username),
                 new Claim("UserId", user.Id.ToString())
             };
+
+            if (permission != null && permission.Length > 0)
+            {
+                foreach (var item in permission)
+                {
+                    claims.Add(new Claim(JwtClaimsTypes.Role, item));
+                }
+            }
+
             var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(
                 _configuration.GetSection("JWT:Secret").Value));
             var cred = new SigningCredentials(key, SecurityAlgorithms.HmacSha384Signature);
