@@ -27,6 +27,7 @@ namespace Hola.Api.Controllers
 {
     [Route("reading")]
     [ApiController]
+    [Auth]
     public class ReadingController : ControllerBase
     {
         private readonly IReadingService _readingService;
@@ -46,10 +47,13 @@ namespace Hola.Api.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost("search")]
+        [Permission(Permissions = new PermissionKeyNames[] { PermissionKeyNames.ReadingView })]
         public async Task<JsonResponseModel> Search([FromBody] SearchReadingRequest model)
         {
             try
             {
+                // Lấy ra userId của người đăng nhập
+                int userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == "UserId").Value);
                 var search = model.Search;
                 string title = search.GetValueByKey<string>("title");
                 int? type = search.GetValueByKey<int?>("type");
@@ -69,7 +73,7 @@ namespace Hola.Api.Controllers
                     ed = endDate.Value.Date.AddDays(1).AddMilliseconds(-1);
                 }
                 // Điều kiện tìm kiếm
-                Func<Reading, bool> condition = x => x.IsDeleted == 0
+                Func<Reading, bool> condition = x => x.IsDeleted == 0 && x.UserId == userid
                 && (string.IsNullOrEmpty(title) ? true : x.Title.Contains(title))
                 && (checkHasTime ? (x.CreatedDate >= st && x.CreatedDate <= ed) : true)
                 && (type.HasValue ? x.Type.Equals(type.Value) : true);
@@ -96,6 +100,7 @@ namespace Hola.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
+        [Permission(Permissions = new PermissionKeyNames[] { PermissionKeyNames.ReadingView })]
         public async Task<JsonResponseModel> Detail(int id)
         {
             try
@@ -123,13 +128,13 @@ namespace Hola.Api.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost("add")]
-        [Authorize]
         public async Task<JsonResponseModel> Add([FromForm] AddReadingRequest model)
         {
             try
             {
                 // Add Image
                 string url = await _uploadService.UploadImage(model.file, HttpContext);
+                int userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == "UserId").Value);
 
                 var _object = await _readingService.GetFirstOrDefaultAsync(x => x.Title == model.Title && x.IsDeleted == 0);
                 if (_object != null)
@@ -150,6 +155,7 @@ namespace Hola.Api.Controllers
                     Band = model.Band,
                     TaskName = model.TaskName,
                     Type = model.Type,
+                    UserId = userid,
                 };
                 // add to data base
                 var response = await _readingService.AddAsync(easay);
@@ -169,7 +175,6 @@ namespace Hola.Api.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPut("update")]
-        [Authorize]
         public async Task<JsonResponseModel> update([FromBody] UpdateReadingRequest model)
         {
             try
@@ -208,7 +213,6 @@ namespace Hola.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        [Auth]
         [Permission(Permissions = new PermissionKeyNames[] { PermissionKeyNames.ReadingDelete })]
         public async Task<JsonResponseModel> Delete(int id)
         {

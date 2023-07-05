@@ -9,6 +9,7 @@ namespace DatabaseCore.Domain.Entities.Normals;
 
 public class Reading : BaseEntity<int>
 {
+    public int UserId { get; set; }
     public string Title { get; set; }
     public string Definetion { get; set; }
     public string Image { get; set; }
