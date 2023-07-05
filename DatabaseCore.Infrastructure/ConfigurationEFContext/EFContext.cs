@@ -36,8 +36,8 @@ namespace DatabaseCore.Infrastructure.ConfigurationEFContext
         public DbSet<Reading> Readings { get; set; }
         public DbSet<ReadingQuestion> ReadingsQuestions { get; set; }
         public DbSet<Phrase> Phrases { get; set; }
-
         public DbSet<Report> Reports { get; set; }
+        public DbSet<News> News { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -62,6 +62,7 @@ namespace DatabaseCore.Infrastructure.ConfigurationEFContext
             modelBuilder.ApplyConfiguration(new ReadingQuestionConfiguration());
             modelBuilder.ApplyConfiguration(new PhraseConfiguration());
             modelBuilder.ApplyConfiguration(new ReportConfiguration());
+            modelBuilder.ApplyConfiguration(new NewsConfiguration());
             base.OnModelCreating(modelBuilder);
         }
     }

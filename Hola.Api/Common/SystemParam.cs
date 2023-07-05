@@ -21,5 +21,8 @@
         ReadingDelete = 3,
         ReadingEdit = 4,
         ReadingAdd = 5,
+
+        // News
+        NewsAdding = 6
     }
 }
