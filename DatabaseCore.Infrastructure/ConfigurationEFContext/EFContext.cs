@@ -38,7 +38,7 @@ namespace DatabaseCore.Infrastructure.ConfigurationEFContext
         public DbSet<Phrase> Phrases { get; set; }
         public DbSet<Report> Reports { get; set; }
         public DbSet<News> News { get; set; }
-
+        public DbSet<Product> Products { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Config table in postgressSQl
@@ -63,6 +63,7 @@ namespace DatabaseCore.Infrastructure.ConfigurationEFContext
             modelBuilder.ApplyConfiguration(new PhraseConfiguration());
             modelBuilder.ApplyConfiguration(new ReportConfiguration());
             modelBuilder.ApplyConfiguration(new NewsConfiguration());
+            modelBuilder.ApplyConfiguration(new ProductConfiguration());
             base.OnModelCreating(modelBuilder);
         }
     }

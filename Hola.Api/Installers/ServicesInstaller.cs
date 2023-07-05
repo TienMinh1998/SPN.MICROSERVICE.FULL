@@ -97,6 +97,9 @@ namespace Hola.Api.Installers
             // News 
             services.AddTransient<INewsRepository, NewsRepository>();
             services.AddTransient<INewsService, NewsService>();
+            // Product 
+            services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<IProductService, ProductService>();
         }
     }
 }
