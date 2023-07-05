@@ -128,6 +128,7 @@ namespace Hola.Api.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost("add")]
+        [Permission(Permissions = new PermissionKeyNames[] { PermissionKeyNames.ReadingAdd })]
         public async Task<JsonResponseModel> Add([FromForm] AddReadingRequest model)
         {
             try
@@ -175,6 +176,7 @@ namespace Hola.Api.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPut("update")]
+        [Permission(Permissions = new PermissionKeyNames[] { PermissionKeyNames.ReadingEdit })]
         public async Task<JsonResponseModel> update([FromBody] UpdateReadingRequest model)
         {
             try

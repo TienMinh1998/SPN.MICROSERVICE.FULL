@@ -14,8 +14,12 @@
     public enum PermissionKeyNames
     {
         AddVocabulary = 1,
+
+
         // Reading
         ReadingView = 2,
-        ReadingDelete = 3
+        ReadingDelete = 3,
+        ReadingEdit = 4,
+        ReadingAdd = 5,
     }
 }
