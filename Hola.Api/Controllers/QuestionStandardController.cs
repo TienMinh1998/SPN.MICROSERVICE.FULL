@@ -39,15 +39,18 @@ namespace Hola.Api.Controllers
         private readonly IMapper _mapper;
         private readonly DapperBaseService _dapper;
         private readonly IWebHostEnvironment _hostEnvironment;
+        private readonly ReportService _reportService;
         public QuestionStandardController(IQuestionStandardService questionStandardService,
             IMapper mapper,
             DapperBaseService dapper,
-            IWebHostEnvironment hostEnvironment)
+            IWebHostEnvironment hostEnvironment,
+            ReportService reportService)
         {
             _questionStandardService = questionStandardService;
             _mapper = mapper;
             _dapper = dapper;
             _hostEnvironment = hostEnvironment;
+            _reportService = reportService;
         }
 
         /// <summary>
@@ -153,14 +156,15 @@ namespace Hola.Api.Controllers
                 command.IsDeleted = false;
                 command.Audio = camAudio;
                 command.UserId = userid;
-                var checkquestion = await _questionStandardService.GetFirstOrDefaultAsync(x => x.English == request.English);
-                if (checkquestion == null)
-                {
-                    var respoinse = await _questionStandardService.AddAsync(command);
-                    return JsonResponseModel.Success(respoinse);
-                }
 
-                return JsonResponseModel.SERVER_ERROR($"{request.English} đã tồn tại rồi");
+                var checkquestion = await _questionStandardService.GetFirstOrDefaultAsync(x => x.English == request.English && x.UserId == userid);
+                if (checkquestion != null)
+                {
+                    return JsonResponseModel.SERVER_ERROR($"{request.English} đã tồn tại rồi");
+                }
+                var respoinse = await _questionStandardService.AddAsync(command);
+                return JsonResponseModel.Success(respoinse);
+
 
             }
             catch (Exception ex)
@@ -779,6 +783,7 @@ namespace Hola.Api.Controllers
                 }
                 else
                 {
+                    // var listResult = await _reportService.GetAllAsync(x => x.FK_UserId == userid);
                     query = $"SELECT \"Id\", \"FK_UserId\", \"TotalWords\", \"TotalPosts\", created_on FROM usr.report where \"FK_UserId\"={userid} ORDER by  created_on  Asc limit 30";
                 }
                 var response = await _dapper.GetAllAsync<Report>(query);
