@@ -41,34 +41,42 @@ namespace Hola.Api.Service.Quatz
 
             // Thống kê tổng số từ hôm nay
             var dateTimeNow = DateTime.UtcNow.ToString("yyyy/MM/dd");
-            string query = $"\r\nSELECT\r\n (SELECT COUNT(1) FROM \"public\".\"QuestionStandards\" WHERE created_on >= '{dateTimeNow}') AS TotalWord,\r\n    (SELECT COUNT(1) FROM \"usr\".\"Reading\" r WHERE \"CreatedDate\" >= '{dateTimeNow}') AS TotalPost;";
-            var count = _dapper.QueryFirstOrDefault<OverviewResult>(query);
+            string query = $"select \r\nu.\"Id\" as \"UserId\",\r\n u.\"Username\" ,\r\n (SELECT COUNT(1) FROM \"public\".\"QuestionStandards\"" +
+                $" WHERE created_on >= '{dateTimeNow}' and \"UserId\" = u.\"Id\")  AS TotalWord,\r\n  (SELECT COUNT(1) FROM \"usr\".\"Reading\" r " +
+                $"WHERE \"CreatedDate\" >= '{dateTimeNow}' and  \"UserId\" = u.\"Id\")  AS TotalPost \r\n  from  \"usr\".\"User\" u";
 
-            var today = DateTime.UtcNow.Date;
-
-            if (count != null)
+            var listReport = await _dapper.GetAllAsync<OverviewResult>(query);
+            if (listReport == null || listReport.Count() == 0)
             {
-                var report = await _reportService.GetFirstOrDefaultAsync(x => x.created_on >= today);
+                return;
+            }
+
+            foreach (var item in listReport)
+            {
+                var today = DateTime.UtcNow.Date;
+                var report = await _reportService.GetFirstOrDefaultAsync(x => x.created_on >= today && x.FK_UserId == item.UserId);
                 if (report == null)
                 {
                     Report reportEntity = new()
                     {
                         created_on = DateTime.UtcNow,
-                        FK_UserId = 1,
-                        TotalPosts = count.totalpost,
-                        TotalWords = count.totalword
+                        FK_UserId = item.UserId,
+                        TotalPosts = item.totalpost,
+                        TotalWords = item.totalword
                     };
                     var res = await _reportService.AddAsync(reportEntity);
                 }
                 else
                 {
-                    report.TotalWords = count.totalword;
-                    report.TotalPosts = count.totalpost;
+                    report.TotalWords = item.totalword;
+                    report.TotalPosts = item.totalpost;
                     report.created_on = DateTime.UtcNow;
+                    report.FK_UserId = item.UserId;
                     var res = _reportService.UpdateAsync(report);
                 }
-
             }
+
+
 
         }
     }
