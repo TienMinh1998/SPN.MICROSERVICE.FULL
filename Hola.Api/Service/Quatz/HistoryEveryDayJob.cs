@@ -1,4 +1,5 @@
-﻿using Hola.Api.Models;
+﻿using DatabaseCore.Domain.Entities.Normals;
+using Hola.Api.Models;
 using Hola.Api.Models.Accounts;
 using Hola.Api.Service.BaseServices;
 using Hola.Api.Service.UserServices;
@@ -15,13 +16,16 @@ namespace Hola.Api.Service.Quatz
         private readonly IUserService _userServices;
         private readonly AccountService _accountService;
         private readonly DapperBaseService _dapper;
+        private readonly IReportService _reportService;
         public HistoryEveryDayJob(AccountService accountService,
             IUserService userServices,
-            DapperBaseService dapper)
+            DapperBaseService dapper,
+            IReportService reportService)
         {
             _accountService = accountService;
             _userServices = userServices;
             _dapper = dapper;
+            _reportService = reportService;
         }
 
         public async Task Execute(IJobExecutionContext context)
@@ -36,21 +40,32 @@ namespace Hola.Api.Service.Quatz
             }
 
             // Thống kê tổng số từ hôm nay
-            var dateTimeNow = DateTime.UtcNow.ToString("yyyy/dd/MM");
+            var dateTimeNow = DateTime.UtcNow.ToString("yyyy/MM/dd");
             string query = $"\r\nSELECT\r\n (SELECT COUNT(1) FROM \"public\".\"QuestionStandards\" WHERE created_on >= '{dateTimeNow}') AS TotalWord,\r\n    (SELECT COUNT(1) FROM \"usr\".\"Reading\" r WHERE \"CreatedDate\" >= '{dateTimeNow}') AS TotalPost;";
             var count = _dapper.QueryFirstOrDefault<OverviewResult>(query);
+
+            var today = DateTime.UtcNow.Date;
+
             if (count != null)
             {
-                int countToday = _dapper.QueryFirstOrDefault<int>($"SELECT count(1) FROM usr.report where created_on >= '{dateTimeNow}'");
-                if (countToday == 0)
+                var report = await _reportService.GetFirstOrDefaultAsync(x => x.created_on >= today);
+                if (report == null)
                 {
-                    string queryInserst = $"INSERT INTO usr.report\r\n(\"FK_UserId\", \"TotalWords\", \"TotalPosts\", created_on)\r\nVALUES(1, {count.totalword}, {count.totalpost}, '{dateTimeNow}');";
-                    await _dapper.Execute(query);
+                    Report reportEntity = new()
+                    {
+                        created_on = DateTime.UtcNow,
+                        FK_UserId = 1,
+                        TotalPosts = count.totalpost,
+                        TotalWords = count.totalword
+                    };
+                    var res = await _reportService.AddAsync(reportEntity);
                 }
                 else
                 {
-                    string queryInserst = $"UPDATE usr.report\r\nSET \"FK_UserId\"=1, \"TotalWords\"={count.totalword}, \"TotalPosts\"={count.totalpost}, created_on='{dateTimeNow}'\r\nWHERE \"created_on\" >= '{dateTimeNow}';";
-                    await _dapper.Execute(query);
+                    report.TotalWords = count.totalword;
+                    report.TotalPosts = count.totalpost;
+                    report.created_on = DateTime.UtcNow;
+                    var res = _reportService.UpdateAsync(report);
                 }
 
             }
