@@ -88,10 +88,10 @@ namespace Hola.Api.Controllers
         {
             try
             {
+                // lấy ra câu hỏi của người dùng đó
+                int userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == "UserId").Value);
                 bool condition = false;
-                Func<QuestionStandard, bool> searchCondition = x => (!string.IsNullOrEmpty(request.searchKey)) ? x.English.Contains(request.searchKey) : true;
-
-                ;
+                Func<QuestionStandard, bool> searchCondition = x => ((!string.IsNullOrEmpty(request.searchKey)) ? x.English.Contains(request.searchKey) : true) && x.UserId == userid;
 
                 if (request.IsDesc == null || request.IsDesc == false)
                 {

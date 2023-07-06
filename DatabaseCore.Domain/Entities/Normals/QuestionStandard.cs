@@ -22,5 +22,6 @@ namespace DatabaseCore.Domain.Entities.Normals
         public bool Added { get; set; }              // đã add vào topic hay chưa
         public DateTime created_on { get; set; }     // THời gian tạo
         public string Audio { get; set; }
+        public int UserId { get; set; }
     }
 }
