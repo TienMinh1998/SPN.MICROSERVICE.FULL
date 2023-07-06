@@ -126,6 +126,7 @@ namespace Hola.Api.Controllers
             {
                 //  Lấy ra audio của từ đó, nếu không lấy được audio thì mặc định để trống;
                 // Nếu từ đó có dấu cách thì thôi không lấy audio nữa 
+                int userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == "UserId").Value);
                 string camAudio = string.Empty;
                 bool isBasicWord = request.English.Trim().Contains(" ");
 
@@ -151,6 +152,7 @@ namespace Hola.Api.Controllers
                 command.created_on = DateTime.UtcNow;
                 command.IsDeleted = false;
                 command.Audio = camAudio;
+                command.UserId = userid;
                 var checkquestion = await _questionStandardService.GetFirstOrDefaultAsync(x => x.English == request.English);
                 if (checkquestion == null)
                 {
