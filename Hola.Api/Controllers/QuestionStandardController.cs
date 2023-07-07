@@ -39,18 +39,15 @@ namespace Hola.Api.Controllers
         private readonly IMapper _mapper;
         private readonly DapperBaseService _dapper;
         private readonly IWebHostEnvironment _hostEnvironment;
-        private readonly IReportService _reportService;
         public QuestionStandardController(IQuestionStandardService questionStandardService,
             IMapper mapper,
             DapperBaseService dapper,
-            IWebHostEnvironment hostEnvironment,
-            ReportService reportService)
+            IWebHostEnvironment hostEnvironment)
         {
             _questionStandardService = questionStandardService;
             _mapper = mapper;
             _dapper = dapper;
             _hostEnvironment = hostEnvironment;
-            _reportService = reportService;
         }
 
         /// <summary>
