@@ -54,8 +54,7 @@ public class ProductController : ControllerBase
                 CreatedDate = DateTime.UtcNow,
                 Description = model.Description,
                 ImageUrl = url,
-                Price = model.Price,
-                Type = model.Type,
+                Price = model.Price
             };
 
             var response_adding = await _productService.AddAsync(product);

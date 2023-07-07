@@ -8,7 +8,6 @@ namespace Hola.Api.Requests.Product
         public string Name { get; set; }          // tên sản phẩm
         public string Description { get; set; }   // mô tả sản phẩm
         public double Price { get; set; }         // giá sản phẩm
-        public int Type { get; set; }              // Loại sản phẩm
         public IFormFile file { get; set; }       // ảnh sản phẩm
     }
 }
