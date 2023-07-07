@@ -39,7 +39,7 @@ namespace Hola.Api.Controllers
         private readonly IMapper _mapper;
         private readonly DapperBaseService _dapper;
         private readonly IWebHostEnvironment _hostEnvironment;
-        private readonly ReportService _reportService;
+        private readonly IReportService _reportService;
         public QuestionStandardController(IQuestionStandardService questionStandardService,
             IMapper mapper,
             DapperBaseService dapper,
