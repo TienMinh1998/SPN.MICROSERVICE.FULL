@@ -1,6 +1,7 @@
 ﻿namespace Hola.Api.Controllers;
 
 using DatabaseCore.Domain.Entities.Normals;
+using Hola.Api.Attributes;
 using Hola.Api.Common;
 using Hola.Api.Requests.Product;
 using Hola.Api.Requests.Reading;
@@ -38,6 +39,7 @@ public class ProductController : ControllerBase
     }
 
     [HttpPost("add")]
+    [Auth]
     public async Task<JsonResponseModel> Add([FromForm] ProductRequest model)
     {
         try
@@ -78,4 +80,33 @@ public class ProductController : ControllerBase
         var products = await _productService.GetFirstOrDefaultAsync(x => x.Id == id);
         return JsonResponseModel.Success(products);
     }
+
+    /// <summary>
+    /// Xóa sản phẩm, xóa thẳng, không lưu lại gì cả
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    [HttpDelete("{id}")]
+    [Auth]
+    public async Task<JsonResponseModel> Delete(int id)
+    {
+        try
+        {
+            var entity = await _productService.GetFirstOrDefaultAsync(x => x.Id == id);
+            if (entity != null)
+            {
+                var response = _productService.DeleteAsync(entity);
+                return JsonResponseModel.Success(response);
+            }
+            else
+            {
+                return JsonResponseModel.Error($"Không tìm thấy bản ghi có 'id ={id}'", 400);
+            }
+        }
+        catch (Exception ex)
+        {
+            return JsonResponseModel.SERVER_ERROR(ex.Message);
+        }
+    }
+
 }
