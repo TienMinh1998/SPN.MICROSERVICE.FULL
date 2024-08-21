@@ -8,5 +8,18 @@ services:
       dockerfile: Hola.Api/Dockerfile
 
  
+  dockerservice:
+    image: ${DOCKER_REGISTRY-}dockerservice
+    build:
+      context: .
+      dockerfile: DockerService/Dockerfile
+    ports:
+       - "8011:80"
 
-  
+  apiocelotgetway:
+    image: ${DOCKER_REGISTRY-}apiocelotgetway
+    build:
+      context: .
+      dockerfile: APIOcelotGetway/Dockerfile
+    ports:
+      - "8022:80" 
