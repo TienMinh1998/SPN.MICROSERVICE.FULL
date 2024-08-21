@@ -2,3 +2,5 @@
 - Ocelot getway
 - microservice
 - docker
+- Enitity Framework
+- Dapper ORM
