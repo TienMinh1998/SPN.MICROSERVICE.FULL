@@ -81,7 +81,7 @@ namespace Hola.Api.Controllers
             try
             {
                 Func<Cours, bool> lastCondition = m => true;
-                var questions = _coursService.GetListPaged(requestModel.pageNumber, requestModel.pageSize, lastCondition, requestModel.columnSort,requestModel.isDesc);
+                var questions = _coursService.GetListPaged(requestModel.pageNumber, requestModel.pageSize, lastCondition, requestModel.columnSort, requestModel.isDesc);
                 questions.currentPage = requestModel.pageNumber;
                 if (questions != null)
                 {
@@ -89,7 +89,7 @@ namespace Hola.Api.Controllers
                 }
                 else
                 {
-                    return JsonResponseModel.Success(new List<string>(),"Danh sách rỗng");
+                    return JsonResponseModel.Success(new List<string>(), "Danh sách rỗng");
                 }
             }
             catch (System.Exception ex)
@@ -128,9 +128,9 @@ namespace Hola.Api.Controllers
                     }
                     catch (Exception ex)
                     {
-                        return JsonResponseModel.Error( $"File image is Lagest {ex.Message}",500);
+                        return JsonResponseModel.Error($"File image is Lagest {ex.Message}", 500);
                     }
-                 
+
                 }
                 else
                 {
@@ -175,7 +175,7 @@ namespace Hola.Api.Controllers
                 entity.Code = course.Code;
                 entity.created_on = course.created_on;
                 entity.CoursImage = resultUrl;
-                var updateCourse =await _coursService.UpdateAsync(entity);
+                var updateCourse = await _coursService.UpdateAsync(entity);
                 if (updateCourse != null)
                     return JsonResponseModel.Success(updateCourse, "Cập nhật thông tin khóa học thành công");
                 return JsonResponseModel.Error("Server quá tải, vui lòng thử lại sau", 500);

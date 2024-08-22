@@ -26,10 +26,10 @@ namespace Hola.Core.Service
         private readonly IOptions<SettingModel> _options;
         protected BaseService(IOptions<SettingModel> options)
         {
-          
+
         }
 
-    
+
 
         protected List<T> QueryToList<T>(string connection, string querySQl)
         {
@@ -42,7 +42,7 @@ namespace Hola.Core.Service
                     throw new NullReferenceException(nameof(NpgsqlTsQuery));
                 using (var con = new NpgsqlConnection(connection))
                 {
-                   
+
                     return con.Query<T>(querySQl).ToList();
                 }
             }
@@ -87,7 +87,7 @@ namespace Hola.Core.Service
                 throw;
             }
         }
-        protected async  Task<T> FirstOrDefaultAsync<T>(string connection, string querySQl)
+        protected async Task<T> FirstOrDefaultAsync<T>(string connection, string querySQl)
         {
             try
             {

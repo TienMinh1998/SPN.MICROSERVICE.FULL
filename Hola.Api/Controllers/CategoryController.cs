@@ -8,6 +8,8 @@ using Hola.Api.Models.Categories;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Hola.Api.Service.CateporyServices;
+using MediatR;
+using SPNApplication.Commnands;
 
 namespace Hola.Api.Controllers;
 
@@ -17,12 +19,14 @@ public class CategoryController : ControllerBase
     private readonly CategoryService categoryService;
     private readonly QuestionService _questionService;
     private readonly ICategoryService _service;
-    public CategoryController(IOptions<SettingModel> config, CategoryService categoryService, QuestionService questionService, ICategoryService service = null)
+    private readonly IMediator _mediator;
+    public CategoryController(IOptions<SettingModel> config, CategoryService categoryService, QuestionService questionService, ICategoryService service = null, IMediator mediator = null)
     {
         _config = config;
         this.categoryService = categoryService;
         _questionService = questionService;
         _service = service;
+        _mediator = mediator;
     }
 
 
@@ -32,11 +36,19 @@ public class CategoryController : ControllerBase
     /// <param name="model"></param>
     /// <returns></returns>
     [HttpPost("AddCategory")]
-    [Authorize]
     public async Task<JsonResponseModel> AddQuestion([FromBody] AddCategoryModel model)
     {
-        int userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == "UserId").Value);
-        var result = await categoryService.AddCategory(model, userid);
+        // int userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == "UserId").Value);
+        int userid = 123;
+        //var result = await categoryService.AddCategory(model, userid);
+        AddCatagoriesCommand command = new()
+        {
+            userid = userid,
+            Define = model.Define,
+            Image = model.Image,
+            Name = model.Name,
+        };
+        var result = await _mediator.Send(command);
         return JsonResponseModel.Success(result);
     }
     /// <summary>

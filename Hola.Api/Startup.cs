@@ -8,10 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using DatabaseCore.Infrastructure.ConfigurationEFContext;
 using Hola.Api.Installers;
+using Hola.Api.Repositories;
 using Hola.Api.Service;
 using Hola.Core.Authorization;
 using Hola.Core.Middleware;
 using Hola.Core.Model;
+using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -23,6 +25,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using SPNApplication;
+using SPNApplication.Repositories;
 using Swashbuckle.AspNetCore.SwaggerUI;
 
 
@@ -95,8 +99,12 @@ namespace Hola.Api
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:Secret"]))
                     };
                 });
+            services.AddMediatR(typeof(MediatorEnpoint).Assembly);
             services.Configure<SettingModel>(Configuration.GetSection("SettingApp"));
             services.AddSingleton<IActiveTokenHandler>(new ActiveTokenHandler());
+            services.AddScoped<ICatagoryRepository, CatagoryRepository>();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
