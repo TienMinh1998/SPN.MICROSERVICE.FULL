@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DatabaseCore.Infrastructure.Migrations
 {
     [DbContext(typeof(EFContext))]
-    [Migration("20230705040426_add_news_table")]
-    partial class add_news_table
+    [Migration("20240822105038_innit_data")]
+    partial class innit_data
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -153,6 +153,9 @@ namespace DatabaseCore.Infrastructure.Migrations
                     b.Property<string>("ImageUrl")
                         .HasColumnType("text");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
                     b.Property<string>("Title")
                         .HasColumnType("text");
 
@@ -245,6 +248,40 @@ namespace DatabaseCore.Infrastructure.Migrations
                     b.ToTable("phrase", "usr");
                 });
 
+            modelBuilder.Entity("DatabaseCore.Domain.Entities.Normals.Product", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("text");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("double precision");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("product", "public");
+                });
+
             modelBuilder.Entity("DatabaseCore.Domain.Entities.Normals.Question", b =>
                 {
                     b.Property<int>("id")
@@ -328,6 +365,9 @@ namespace DatabaseCore.Infrastructure.Migrations
 
                     b.Property<string>("Phonetic")
                         .HasColumnType("text");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
 
                     b.Property<DateTime>("created_on")
                         .HasColumnType("timestamp with time zone");
