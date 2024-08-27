@@ -9,3 +9,5 @@
 -  docker build -t <image_name> -f Dockerfile .
 -  docker run -d -p 8888:80 --name <container_name> <image_name>
    vd : docker run -d -p 8888:8080 container_name image_name
+   // run with default port NET 8.0
+- docker run -d -p 2009:8080 hola_api
