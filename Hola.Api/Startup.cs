@@ -27,6 +27,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using SPNApplication;
 using SPNApplication.Repositories;
+using SPNApplication.Services;
 using Swashbuckle.AspNetCore.SwaggerUI;
 
 
@@ -103,7 +104,7 @@ namespace Hola.Api
             services.Configure<SettingModel>(Configuration.GetSection("SettingApp"));
             services.AddSingleton<IActiveTokenHandler>(new ActiveTokenHandler());
             services.AddScoped<ICatagoryRepository, CatagoryRepository>();
-
+            services.AddScoped<IDapperService, DapperService>();
 
         }
 

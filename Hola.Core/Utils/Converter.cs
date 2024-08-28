@@ -41,7 +41,7 @@ namespace Hola.Core.Utils
                 row = new Dictionary<string, object>();
                 foreach (DataColumn dataColumn in dataTable.Columns)
                 {
-                    row.Add(dataColumn.ColumnName,dataTableRow[dataColumn]);
+                    row.Add(dataColumn.ColumnName, dataTableRow[dataColumn]);
                 }
                 list.Add(row);
             }

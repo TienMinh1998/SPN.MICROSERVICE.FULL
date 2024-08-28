@@ -1,19 +1,19 @@
-﻿using System.Data.SqlClient;
-using System;
-using Dapper;
-using System.Configuration;
+﻿using Dapper;
 using Microsoft.Extensions.Configuration;
-using System.Threading.Tasks;
-using System.Collections.Generic;
 using Npgsql;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Hola.Api.Service.BaseServices
+namespace SPNApplication.Services
 {
-    public class DapperBaseService
+    public class DapperService : IDapperService
     {
         private string _connectionString;
 
-        public DapperBaseService(IConfiguration configuration)
+        public DapperService(IConfiguration configuration)
         {
             _connectionString = configuration.GetConnectionString("HolaCoreConnectionString");
         }

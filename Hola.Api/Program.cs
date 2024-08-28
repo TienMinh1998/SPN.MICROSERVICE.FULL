@@ -15,6 +15,7 @@ namespace Hola.Api
 {
     public class Program
     {
+        [Obsolete]
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
@@ -29,7 +30,7 @@ namespace Hola.Api
                 services.AddQuartz(q =>
                 {
                     // Use a Scoped container to create jobs. I'll touch on this later
-                    q.UseMicrosoftDependencyInjectionScopedJobFactory();
+
                     q.AddJobAndTrigger<JobClass>(hostContext.Configuration);
                     q.AddJob<EveryDayNotificationClass>(hostContext.Configuration);
                     q.AddJobAndTrigger<HistoryEveryDayJob>(hostContext.Configuration);

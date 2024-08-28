@@ -52,7 +52,7 @@ namespace Hola.Core.Venly.Base
         {
             try
             {
-                var getResponse = await PostAsync( url, new StringContent(requestPayload, Encoding.UTF8,"application/json"));
+                var getResponse = await PostAsync(url, new StringContent(requestPayload, Encoding.UTF8, "application/json"));
                 if (getResponse.IsSuccessStatusCode)
                 {
                     var data = new VenlyResponseBase<T>();
@@ -125,7 +125,7 @@ namespace Hola.Core.Venly.Base
             }
             catch (Exception ex)
             {
-              return default(T);
+                return default(T);
             }
         }
 
@@ -137,7 +137,7 @@ namespace Hola.Core.Venly.Base
                 if (true)
                 {
                     var content = await getResponse.Content.ReadAsStringAsync();
-                    var  data = JsonConvert.DeserializeObject<T>(content);
+                    var data = JsonConvert.DeserializeObject<T>(content);
                     if (data != null) return data;
                     if (data == null) return default(T);
                 }

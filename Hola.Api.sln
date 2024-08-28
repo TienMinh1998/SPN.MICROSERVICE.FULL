@@ -17,8 +17,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "YomainBaseEntityStruct", "Y
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntitiesCommon", "EntitiesCommon\EntitiesCommon.csproj", "{D5DD1724-83FB-439D-BFFA-F30473AD157A}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{43F7C9FD-7AA9-4E83-98D3-8309E1C7217C}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BF1F23FB-8DC7-4978-920D-B68D1E9EF896}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
@@ -28,7 +26,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DockerService", "DockerServ
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APIOcelotGetway", "APIOcelotGetway\APIOcelotGetway.csproj", "{1982FEEC-088D-4AF1-B9FD-898A5DC241C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPNApplication", "SPNApplication\SPNApplication.csproj", "{0F21227A-F23D-4C3C-981E-3CED916820C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SPNApplication", "SPNApplication\SPNApplication.csproj", "{0F21227A-F23D-4C3C-981E-3CED916820C1}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{4E030BE0-456B-45CE-A89E-B9AAECB70742}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -60,10 +60,6 @@ Global
 		{D5DD1724-83FB-439D-BFFA-F30473AD157A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5DD1724-83FB-439D-BFFA-F30473AD157A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5DD1724-83FB-439D-BFFA-F30473AD157A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{43F7C9FD-7AA9-4E83-98D3-8309E1C7217C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{43F7C9FD-7AA9-4E83-98D3-8309E1C7217C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{43F7C9FD-7AA9-4E83-98D3-8309E1C7217C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{43F7C9FD-7AA9-4E83-98D3-8309E1C7217C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{77583D46-EC36-4D25-AB63-29C4764625D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{77583D46-EC36-4D25-AB63-29C4764625D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77583D46-EC36-4D25-AB63-29C4764625D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -76,6 +72,10 @@ Global
 		{0F21227A-F23D-4C3C-981E-3CED916820C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F21227A-F23D-4C3C-981E-3CED916820C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F21227A-F23D-4C3C-981E-3CED916820C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E030BE0-456B-45CE-A89E-B9AAECB70742}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E030BE0-456B-45CE-A89E-B9AAECB70742}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E030BE0-456B-45CE-A89E-B9AAECB70742}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E030BE0-456B-45CE-A89E-B9AAECB70742}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

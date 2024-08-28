@@ -1,25 +1,44 @@
-version: '3.4'
+networks:
+    mynetwork:
+      driver: bridge 
 
-services:
+services:    
+  db: 
+   image: postgres:latest
+   container_name: postgres_db
+   environment:
+      POSTGRES_USER: admin      # Tên người dùng PostgreSQL
+      POSTGRES_PASSWORD: admin@123  # Mật khẩu cho người dùng
+      POSTGRES_DB: my_database    # Tên database mặc định được tạo
+      POSTGRES_HOST_AUTH_METHOD: trust # remove certificate
+   ports:
+      - "5555:5432"  # Map port 5432 của host tới port 5432 của container
+   volumes:
+      - db_data:/var/lib/postgresql/data  # Lưu trữ dữ liệu trên host để giữ dữ liệu sau khi container bị xóa
+   networks:
+      - mynetwork
+
   hola.api:
     image: ${DOCKER_REGISTRY-}holaapi
+    container_name: hola_application
+    ports: 
+       - "8080" 
     build:
       context: .
       dockerfile: Hola.Api/Dockerfile
-
- 
-  dockerservice:
-    image: ${DOCKER_REGISTRY-}dockerservice
-    build:
-      context: .
-      dockerfile: DockerService/Dockerfile
-    ports:
-       - "8011:80"
-
+    networks:
+      - mynetwork
+  
   apiocelotgetway:
     image: ${DOCKER_REGISTRY-}apiocelotgetway
+    container_name: get_way
+    ports:
+     - "8888:8080"
     build:
       context: .
       dockerfile: APIOcelotGetway/Dockerfile
-    ports:
-      - "8022:80" 
+    networks:
+     - mynetwork
+
+volumes:
+  db_data: {}

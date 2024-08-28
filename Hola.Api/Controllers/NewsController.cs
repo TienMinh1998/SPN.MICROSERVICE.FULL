@@ -38,7 +38,6 @@ namespace Hola.Api.Controllers
 
         [HttpPost("addnews")]
         [Auth]
-        [Permission(Permissions = new PermissionKeyNames[] { PermissionKeyNames.NewsAdding })]
         public async Task<JsonResponseModel> Add(NewsAddingRequest model)
         {
             try

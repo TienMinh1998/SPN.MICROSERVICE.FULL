@@ -45,7 +45,7 @@ namespace Hola.Core.Authorization
 
                 var get = await aPICrossHelper.Get<JsonResponseModel>("https://holapayuser.axolotl18.com/Token/GetUserActiveToken?UserId=" + userId
                 + "&LoginProvider=" + LoginProvider.ClientAPI);
-               
+
                 if (get != null && get.Status == 200)
                 {
                     return Newtonsoft.Json.JsonConvert.DeserializeObject<GetUserActiveTokenResponseCore>(get.Data.ToString()).TokenId;

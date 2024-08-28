@@ -27,6 +27,8 @@ using Hola.GoogleCloudStorage;
 using Sentry;
 using Hola.Api.Service.BaseServices;
 using Hola.Api.Authorize;
+using MediatR;
+using SPNApplication.Queries;
 
 namespace Hola.Api.Controllers
 {
@@ -39,11 +41,11 @@ namespace Hola.Api.Controllers
         private readonly Service.QuestionService daper_questionService;
         public readonly IUploadFileGoogleCloudStorage _GoogleCloudStorage;
         private readonly DapperBaseService _dapper;
-
+        private readonly IMediator _mediator;
         public UserController(AccountService accountService,
             IUserService userService, IConfiguration configuration,
             IQuestionService questionService, Service.QuestionService daper_questionService,
-            IUploadFileGoogleCloudStorage googleCloudStorage = null, DapperBaseService dapper = null)
+            IUploadFileGoogleCloudStorage googleCloudStorage = null, DapperBaseService dapper = null, IMediator mediator = null)
         {
             this.accountService = accountService;
             this.userService = userService;
@@ -52,6 +54,7 @@ namespace Hola.Api.Controllers
             this.daper_questionService = daper_questionService;
             _GoogleCloudStorage = googleCloudStorage;
             _dapper = dapper;
+            _mediator = mediator;
         }
 
         /// <summary>
@@ -97,21 +100,23 @@ namespace Hola.Api.Controllers
         public async Task<JsonResponseModel> Login([FromBody] LoginRequest request)
         {
             var user = await userService.GetFirstOrDefaultAsync(x => x.Username.Equals(request.UserName));
+
             if (user != null)
             {
                 var isPasswordOk = BCrypt.Net.BCrypt.EnhancedVerify(request.Password, user.Password, BCrypt.Net.HashType.SHA384);
                 if (isPasswordOk)
                 {
-                    // Kiểm tra quền và phần quyền 
-
-                    // Update Devide Token of User 
                     user.DeviceToken = request.DevideToken;
                     var userUpdateDevice = await userService.UpdateAsync(user);
-                    // Tạo Token và trả cho người dùng
-                    var newToken = CreateToken(user);
+                    var new_token = await _mediator.Send(new LoginApplicationQuery
+                    {
+                        passwork = request.Password,
+                        username = user.Username,
+                        user_id = user.Id,
+                    });
                     LoginResponse loginResponse = new LoginResponse
                     {
-                        Token = newToken,
+                        Token = new_token,
                         user = user
                     };
                     return JsonResponseModel.Success(loginResponse);
@@ -140,6 +145,7 @@ namespace Hola.Api.Controllers
                         "INNER JOIN usr.rolepermission rp ON ur.\"FK_RoleID\" = rp.\"FK_RoleID\" " +
                         $"INNER JOIN usr.\"permission\" p ON rp.\"FK_PermissionID\" = p.\"Id\" WHERE u.\"Id\" = {userID} ";
                     var permistion = (await _dapper.GetAllAsync<string>(sql)).ToArray();
+
                     var newToken = CreateToken(user, permistion);
                     LoginResponse loginResponse = new LoginResponse
                     {
@@ -295,9 +301,9 @@ namespace Hola.Api.Controllers
                 }
             }
 
-            var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(
                 _configuration.GetSection("JWT:Secret").Value));
-            var cred = new SigningCredentials(key, SecurityAlgorithms.HmacSha384Signature);
+            var cred = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
             var token = new JwtSecurityToken(
                 claims: claims,
                 expires: DateTime.UtcNow.AddDays(3),

@@ -10,9 +10,12 @@ using Microsoft.AspNetCore.Authorization;
 using Hola.Api.Service.CateporyServices;
 using MediatR;
 using SPNApplication.Commnands;
+using Hola.Api.Common;
+using Hola.Api.Attributes;
 
 namespace Hola.Api.Controllers;
 
+[Route("categories")]
 public class CategoryController : ControllerBase
 {
     private readonly IOptions<SettingModel> _config;
@@ -27,6 +30,14 @@ public class CategoryController : ControllerBase
         _questionService = questionService;
         _service = service;
         _mediator = mediator;
+    }
+
+    [HttpPost("test_get_way")]
+    [Permission(Permissions = new PermissionKeyNames[] { PermissionKeyNames.READ })]
+    public async Task<JsonResponseModel> AddQuestion()
+    {
+        int userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == "UserId").Value);
+        return JsonResponseModel.Success("Test OK");
     }
 
 

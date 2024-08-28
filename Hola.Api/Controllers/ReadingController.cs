@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 using System;
 using Hola.Api.Requests.Reading;
 using Hola.Core.DapperExtension;
-using OfficeOpenXml.FormulaParsing.ExpressionGraph;
+
 using System.Linq.Expressions;
 using AutoMapper;
 using Hola.Api.Repositories;
@@ -47,7 +47,7 @@ namespace Hola.Api.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost("search")]
-        [Permission(Permissions = new PermissionKeyNames[] { PermissionKeyNames.ReadingView })]
+
         public async Task<JsonResponseModel> Search([FromBody] SearchReadingRequest model)
         {
             try
@@ -100,7 +100,7 @@ namespace Hola.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        [Permission(Permissions = new PermissionKeyNames[] { PermissionKeyNames.ReadingView })]
+
         public async Task<JsonResponseModel> Detail(int id)
         {
             try
@@ -128,7 +128,6 @@ namespace Hola.Api.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost("add")]
-        [Permission(Permissions = new PermissionKeyNames[] { PermissionKeyNames.ReadingAdd })]
         public async Task<JsonResponseModel> Add([FromForm] AddReadingRequest model)
         {
             try
@@ -176,7 +175,7 @@ namespace Hola.Api.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPut("update")]
-        [Permission(Permissions = new PermissionKeyNames[] { PermissionKeyNames.ReadingEdit })]
+
         public async Task<JsonResponseModel> update([FromBody] UpdateReadingRequest model)
         {
             try
@@ -215,7 +214,6 @@ namespace Hola.Api.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        [Permission(Permissions = new PermissionKeyNames[] { PermissionKeyNames.ReadingDelete })]
         public async Task<JsonResponseModel> Delete(int id)
         {
             try

@@ -8,6 +8,6 @@ namespace Hola.Core.Venly.Base
 {
     public class VenlyUrlFactory
     {
-      
+
     }
 }
