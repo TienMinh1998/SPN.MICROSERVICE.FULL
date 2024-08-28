@@ -3,57 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hola.Api", "Hola.Api\Hola.Api.csproj", "{120434E6-6698-444E-B658-241450200F2E}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hola.Core", "Hola.Core\Hola.Core.csproj", "{D1F30AEA-6A0B-4CCE-A4EA-2BAB53341E03}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hola.GoogleCloudStorage", "Hola.GoogleCloudStorage\Hola.GoogleCloudStorage.csproj", "{D96C4AE9-12EC-4849-A82E-D12CE079BDD4}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatabaseCore.Domain", "DatabaseCore.Domain\DatabaseCore.Domain.csproj", "{2CAD2823-BB68-4FC6-9D89-01F03A7E1DFE}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatabaseCore.Infrastructure", "DatabaseCore.Infrastructure\DatabaseCore.Infrastructure.csproj", "{1DF72863-A0AD-49DF-B41C-D0AB596FE8E8}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "YomainBaseEntityStruct", "YomainBaseEntityStruct", "{79E25028-FFD0-4303-BB89-04E2BC7CFA91}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntitiesCommon", "EntitiesCommon\EntitiesCommon.csproj", "{D5DD1724-83FB-439D-BFFA-F30473AD157A}"
-EndProject
 Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{120434E6-6698-444E-B658-241450200F2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{120434E6-6698-444E-B658-241450200F2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{120434E6-6698-444E-B658-241450200F2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{120434E6-6698-444E-B658-241450200F2E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D1F30AEA-6A0B-4CCE-A4EA-2BAB53341E03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D1F30AEA-6A0B-4CCE-A4EA-2BAB53341E03}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D1F30AEA-6A0B-4CCE-A4EA-2BAB53341E03}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D1F30AEA-6A0B-4CCE-A4EA-2BAB53341E03}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D96C4AE9-12EC-4849-A82E-D12CE079BDD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D96C4AE9-12EC-4849-A82E-D12CE079BDD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D96C4AE9-12EC-4849-A82E-D12CE079BDD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D96C4AE9-12EC-4849-A82E-D12CE079BDD4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2CAD2823-BB68-4FC6-9D89-01F03A7E1DFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2CAD2823-BB68-4FC6-9D89-01F03A7E1DFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2CAD2823-BB68-4FC6-9D89-01F03A7E1DFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2CAD2823-BB68-4FC6-9D89-01F03A7E1DFE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1DF72863-A0AD-49DF-B41C-D0AB596FE8E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1DF72863-A0AD-49DF-B41C-D0AB596FE8E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1DF72863-A0AD-49DF-B41C-D0AB596FE8E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1DF72863-A0AD-49DF-B41C-D0AB596FE8E8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D5DD1724-83FB-439D-BFFA-F30473AD157A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D5DD1724-83FB-439D-BFFA-F30473AD157A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D5DD1724-83FB-439D-BFFA-F30473AD157A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D5DD1724-83FB-439D-BFFA-F30473AD157A}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{2CAD2823-BB68-4FC6-9D89-01F03A7E1DFE} = {79E25028-FFD0-4303-BB89-04E2BC7CFA91}
-		{1DF72863-A0AD-49DF-B41C-D0AB596FE8E8} = {79E25028-FFD0-4303-BB89-04E2BC7CFA91}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4A6CA6BE-40D7-410E-8166-15A8101BE80A}
