@@ -6,7 +6,8 @@
       "serviceActions": {
         "dockerservice": "StartDebugging",
         "hola.api": "StartDebugging",
-        "apiocelotgetway": "StartDebugging"
+        "apiocelotgetway": "StartDebugging",
+        "hola.webadmin": "StartDebugging"
       }
     }
   }

@@ -3,132 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4E030BE0-456B-45CE-A89E-B9AAECB70742}|docker-compose.dcproj|c:\\users\\tiennvm\\desktop\\asembly_demo\\spn_pro2022\\docker-compose.override.yml||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{4E030BE0-456B-45CE-A89E-B9AAECB70742}|docker-compose.dcproj|solutionrelative:docker-compose.override.yml||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\asembly_demo\\spn_pro2022\\hola.api\\controllers\\questionstandardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\controllers\\questionstandardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4E030BE0-456B-45CE-A89E-B9AAECB70742}|docker-compose.dcproj|c:\\users\\tiennvm\\desktop\\asembly_demo\\spn_pro2022\\docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{4E030BE0-456B-45CE-A89E-B9AAECB70742}|docker-compose.dcproj|solutionrelative:docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\asembly_demo\\spn_pro2022\\hola.api\\controllers\\questioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\controllers\\questioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4E030BE0-456B-45CE-A89E-B9AAECB70742}|docker-compose.dcproj|c:\\users\\tiennvm\\desktop\\asembly_demo\\spn_pro2022\\docker-compose.dcproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{4E030BE0-456B-45CE-A89E-B9AAECB70742}|docker-compose.dcproj|solutionrelative:docker-compose.dcproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{1982FEEC-088D-4AF1-B9FD-898A5DC241C7}|APIOcelotGetway\\APIOcelotGetway.csproj|c:\\users\\tiennvm\\desktop\\asembly_demo\\spn_pro2022\\apiocelotgetway\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1982FEEC-088D-4AF1-B9FD-898A5DC241C7}|APIOcelotGetway\\APIOcelotGetway.csproj|solutionrelative:apiocelotgetway\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\asembly_demo\\spn_pro2022\\hola.api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0F21227A-F23D-4C3C-981E-3CED916820C1}|SPNApplication\\SPNApplication.csproj|c:\\users\\tiennvm\\desktop\\asembly_demo\\spn_pro2022\\spnapplication\\handler\\loginqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0F21227A-F23D-4C3C-981E-3CED916820C1}|SPNApplication\\SPNApplication.csproj|solutionrelative:spnapplication\\handler\\loginqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\asembly_demo\\spn_pro2022\\hola.api\\common\\systemparam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\common\\systemparam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\asembly_demo\\spn_pro2022\\hola.api\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0F21227A-F23D-4C3C-981E-3CED916820C1}|SPNApplication\\SPNApplication.csproj|c:\\users\\tiennvm\\desktop\\asembly_demo\\spn_pro2022\\spnapplication\\queries\\loginapplicationquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0F21227A-F23D-4C3C-981E-3CED916820C1}|SPNApplication\\SPNApplication.csproj|solutionrelative:spnapplication\\queries\\loginapplicationquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0F21227A-F23D-4C3C-981E-3CED916820C1}|SPNApplication\\SPNApplication.csproj|c:\\users\\tiennvm\\desktop\\asembly_demo\\spn_pro2022\\spnapplication\\repositories\\icatagoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0F21227A-F23D-4C3C-981E-3CED916820C1}|SPNApplication\\SPNApplication.csproj|solutionrelative:spnapplication\\repositories\\icatagoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0F21227A-F23D-4C3C-981E-3CED916820C1}|SPNApplication\\SPNApplication.csproj|c:\\users\\tiennvm\\desktop\\asembly_demo\\spn_pro2022\\spnapplication\\services\\dapperservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0F21227A-F23D-4C3C-981E-3CED916820C1}|SPNApplication\\SPNApplication.csproj|solutionrelative:spnapplication\\services\\dapperservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0F21227A-F23D-4C3C-981E-3CED916820C1}|SPNApplication\\SPNApplication.csproj|c:\\users\\tiennvm\\desktop\\asembly_demo\\spn_pro2022\\spnapplication\\repositories\\catagoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0F21227A-F23D-4C3C-981E-3CED916820C1}|SPNApplication\\SPNApplication.csproj|solutionrelative:spnapplication\\repositories\\catagoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\asembly_demo\\spn_pro2022\\hola.api\\attributes\\permissionattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\attributes\\permissionattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\asembly_demo\\spn_pro2022\\hola.api\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0F21227A-F23D-4C3C-981E-3CED916820C1}|SPNApplication\\SPNApplication.csproj|c:\\users\\tiennvm\\desktop\\asembly_demo\\spn_pro2022\\spnapplication\\services\\idapperservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0F21227A-F23D-4C3C-981E-3CED916820C1}|SPNApplication\\SPNApplication.csproj|solutionrelative:spnapplication\\services\\idapperservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0F21227A-F23D-4C3C-981E-3CED916820C1}|SPNApplication\\SPNApplication.csproj|c:\\users\\tiennvm\\desktop\\asembly_demo\\spn_pro2022\\spnapplication\\mediatorenpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0F21227A-F23D-4C3C-981E-3CED916820C1}|SPNApplication\\SPNApplication.csproj|solutionrelative:spnapplication\\mediatorenpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0F21227A-F23D-4C3C-981E-3CED916820C1}|SPNApplication\\SPNApplication.csproj|c:\\users\\tiennvm\\desktop\\asembly_demo\\spn_pro2022\\spnapplication\\authentication\\jwthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0F21227A-F23D-4C3C-981E-3CED916820C1}|SPNApplication\\SPNApplication.csproj|solutionrelative:spnapplication\\authentication\\jwthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0F21227A-F23D-4C3C-981E-3CED916820C1}|SPNApplication\\SPNApplication.csproj|c:\\users\\tiennvm\\desktop\\asembly_demo\\spn_pro2022\\spnapplication\\handler\\catagoriescommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0F21227A-F23D-4C3C-981E-3CED916820C1}|SPNApplication\\SPNApplication.csproj|solutionrelative:spnapplication\\handler\\catagoriescommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\asembly_demo\\spn_pro2022\\hola.api\\service\\baseservices\\dapperbaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\baseservices\\dapperbaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0F21227A-F23D-4C3C-981E-3CED916820C1}|SPNApplication\\SPNApplication.csproj|c:\\users\\tiennvm\\desktop\\asembly_demo\\spn_pro2022\\spnapplication\\spnapplication.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{0F21227A-F23D-4C3C-981E-3CED916820C1}|SPNApplication\\SPNApplication.csproj|solutionrelative:spnapplication\\spnapplication.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0F21227A-F23D-4C3C-981E-3CED916820C1}|SPNApplication\\SPNApplication.csproj|c:\\users\\tiennvm\\desktop\\asembly_demo\\spn_pro2022\\spnapplication\\authentication\\jwtconstant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0F21227A-F23D-4C3C-981E-3CED916820C1}|SPNApplication\\SPNApplication.csproj|solutionrelative:spnapplication\\authentication\\jwtconstant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\asembly_demo\\spn_pro2022\\hola.api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0F21227A-F23D-4C3C-981E-3CED916820C1}|SPNApplication\\SPNApplication.csproj|c:\\users\\tiennvm\\desktop\\asembly_demo\\spn_pro2022\\spnapplication\\commnands\\addcatagoriescommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0F21227A-F23D-4C3C-981E-3CED916820C1}|SPNApplication\\SPNApplication.csproj|solutionrelative:spnapplication\\commnands\\addcatagoriescommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\asembly_demo\\spn_pro2022\\hola.api\\service\\userservices\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\userservices\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\asembly_demo\\spn_pro2022\\hola.api\\controllers\\newscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\controllers\\newscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\asembly_demo\\spn_pro2022\\hola.api\\controllers\\readingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\controllers\\readingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\asembly_demo\\spn_pro2022\\hola.api\\controllers\\grammarcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\controllers\\grammarcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\asembly_demo\\spn_pro2022\\hola.api\\controllers\\firebasecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\controllers\\firebasecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\asembly_demo\\spn_pro2022\\hola.api\\controllers\\courscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\controllers\\courscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1DF72863-A0AD-49DF-B41C-D0AB596FE8E8}|DatabaseCore.Infrastructure\\DatabaseCore.Infrastructure.csproj|c:\\users\\tiennvm\\desktop\\asembly_demo\\spn_pro2022\\databasecore.infrastructure\\migrations\\efcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1DF72863-A0AD-49DF-B41C-D0AB596FE8E8}|DatabaseCore.Infrastructure\\DatabaseCore.Infrastructure.csproj|solutionrelative:databasecore.infrastructure\\migrations\\efcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\asembly_demo\\spn_pro2022\\hola.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\asembly_demo\\spn_pro2022\\hola.api\\controllers\\uploadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\controllers\\uploadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\asembly_demo\\spn_pro2022\\hola.api\\service\\baimportexcel\\studenttestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\baimportexcel\\studenttestmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1982FEEC-088D-4AF1-B9FD-898A5DC241C7}|APIOcelotGetway\\APIOcelotGetway.csproj|c:\\users\\tiennvm\\desktop\\asembly_demo\\spn_pro2022\\apiocelotgetway\\ocelot.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{1982FEEC-088D-4AF1-B9FD-898A5DC241C7}|APIOcelotGetway\\APIOcelotGetway.csproj|solutionrelative:apiocelotgetway\\ocelot.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -142,419 +30,54 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "SPNApplication",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\SPNApplication\\SPNApplication.csproj",
-              "RelativeDocumentMoniker": "SPNApplication\\SPNApplication.csproj",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\SPNApplication\\SPNApplication.csproj",
-              "RelativeToolTip": "SPNApplication\\SPNApplication.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-08-28T08:06:53.704Z",
-              "IsPinned": true,
+              "DocumentIndex": 1,
+              "Title": "QuestionController.cs",
+              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\Hola.Api\\Controllers\\QuestionController.cs",
+              "RelativeDocumentMoniker": "Hola.Api\\Controllers\\QuestionController.cs",
+              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\Hola.Api\\Controllers\\QuestionController.cs",
+              "RelativeToolTip": "Hola.Api\\Controllers\\QuestionController.cs",
+              "ViewState": "AgIAAHwAAAAAAAAAAAAgwIMAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-30T04:06:03.675Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "docker-compose.override.yml",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\docker-compose.override.yml",
-              "RelativeDocumentMoniker": "docker-compose.override.yml",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\docker-compose.override.yml",
-              "RelativeToolTip": "docker-compose.override.yml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
-              "WhenOpened": "2024-08-28T08:35:28.723Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "docker-compose.yml",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\docker-compose.yml",
-              "RelativeDocumentMoniker": "docker-compose.yml",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\docker-compose.yml",
-              "RelativeToolTip": "docker-compose.yml",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAACQAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
-              "WhenOpened": "2024-08-28T08:34:08.34Z",
+              "Title": "QuestionStandardController.cs",
+              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\Hola.Api\\Controllers\\QuestionStandardController.cs",
+              "RelativeDocumentMoniker": "Hola.Api\\Controllers\\QuestionStandardController.cs",
+              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\Hola.Api\\Controllers\\QuestionStandardController.cs",
+              "RelativeToolTip": "Hola.Api\\Controllers\\QuestionStandardController.cs",
+              "ViewState": "AgIAAKMAAAAAAAAAAAAIwLcAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-30T04:00:14.185Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "docker-compose",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\docker-compose.dcproj",
-              "RelativeDocumentMoniker": "docker-compose.dcproj",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\docker-compose.dcproj",
-              "RelativeToolTip": "docker-compose.dcproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-08-28T08:34:04.481Z",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\APIOcelotGetway\\Program.cs",
+              "RelativeDocumentMoniker": "APIOcelotGetway\\Program.cs",
+              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\APIOcelotGetway\\Program.cs",
+              "RelativeToolTip": "APIOcelotGetway\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-30T02:31:24.086Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\Hola.Api\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Controllers\\UserController.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\Hola.Api\\Controllers\\UserController.cs",
-              "RelativeToolTip": "Hola.Api\\Controllers\\UserController.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAqwBQAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T06:32:48.712Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ICatagoryRepository.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\SPNApplication\\Repositories\\ICatagoryRepository.cs",
-              "RelativeDocumentMoniker": "SPNApplication\\Repositories\\ICatagoryRepository.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\SPNApplication\\Repositories\\ICatagoryRepository.cs",
-              "RelativeToolTip": "SPNApplication\\Repositories\\ICatagoryRepository.cs",
+              "Title": "ocelot.json",
+              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\APIOcelotGetway\\ocelot.json",
+              "RelativeDocumentMoniker": "APIOcelotGetway\\ocelot.json",
+              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\APIOcelotGetway\\ocelot.json",
+              "RelativeToolTip": "APIOcelotGetway\\ocelot.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T07:48:53.258Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "LoginApplicationQuery.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\SPNApplication\\Queries\\LoginApplicationQuery.cs",
-              "RelativeDocumentMoniker": "SPNApplication\\Queries\\LoginApplicationQuery.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\SPNApplication\\Queries\\LoginApplicationQuery.cs",
-              "RelativeToolTip": "SPNApplication\\Queries\\LoginApplicationQuery.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwA8AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T08:18:16.685Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "CatagoryRepository.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\SPNApplication\\Repositories\\CatagoryRepository.cs",
-              "RelativeDocumentMoniker": "SPNApplication\\Repositories\\CatagoryRepository.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\SPNApplication\\Repositories\\CatagoryRepository.cs",
-              "RelativeToolTip": "SPNApplication\\Repositories\\CatagoryRepository.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAB8AAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T07:35:17.808Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "DapperService.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\SPNApplication\\Services\\DapperService.cs",
-              "RelativeDocumentMoniker": "SPNApplication\\Services\\DapperService.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\SPNApplication\\Services\\DapperService.cs",
-              "RelativeToolTip": "SPNApplication\\Services\\DapperService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T08:07:24.915Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "LoginQueryHandler.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\SPNApplication\\Handler\\LoginQueryHandler.cs",
-              "RelativeDocumentMoniker": "SPNApplication\\Handler\\LoginQueryHandler.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\SPNApplication\\Handler\\LoginQueryHandler.cs",
-              "RelativeToolTip": "SPNApplication\\Handler\\LoginQueryHandler.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAQwB0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T07:43:35.941Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "CategoryController.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\Hola.Api\\Controllers\\CategoryController.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Controllers\\CategoryController.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\Hola.Api\\Controllers\\CategoryController.cs",
-              "RelativeToolTip": "Hola.Api\\Controllers\\CategoryController.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAACMAAABLAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T06:44:19.965Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "SystemParam.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\Hola.Api\\Common\\SystemParam.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Common\\SystemParam.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\Hola.Api\\Common\\SystemParam.cs",
-              "RelativeToolTip": "Hola.Api\\Common\\SystemParam.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAtwBEAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T07:14:56.495Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "PermissionAttribute.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\Hola.Api\\Attributes\\PermissionAttribute.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Attributes\\PermissionAttribute.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\Hola.Api\\Attributes\\PermissionAttribute.cs",
-              "RelativeToolTip": "Hola.Api\\Attributes\\PermissionAttribute.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T07:31:05.954Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "DapperBaseService.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\Hola.Api\\Service\\BaseServices\\DapperBaseService.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\BaseServices\\DapperBaseService.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\Hola.Api\\Service\\BaseServices\\DapperBaseService.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\BaseServices\\DapperBaseService.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAxwHgAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T08:04:02.809Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "CatagoriesCommandHandler.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\SPNApplication\\Handler\\CatagoriesCommandHandler.cs",
-              "RelativeDocumentMoniker": "SPNApplication\\Handler\\CatagoriesCommandHandler.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\SPNApplication\\Handler\\CatagoriesCommandHandler.cs",
-              "RelativeToolTip": "SPNApplication\\Handler\\CatagoriesCommandHandler.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABYAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T07:35:06.289Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Startup.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\Hola.Api\\Startup.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Startup.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\Hola.Api\\Startup.cs",
-              "RelativeToolTip": "Hola.Api\\Startup.cs",
-              "ViewState": "AgIAAFQAAAAAAAAAAAAwwGoAAABAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T07:04:14.354Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "JWTHandler.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\SPNApplication\\Authentication\\JWTHandler.cs",
-              "RelativeDocumentMoniker": "SPNApplication\\Authentication\\JWTHandler.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\SPNApplication\\Authentication\\JWTHandler.cs",
-              "RelativeToolTip": "SPNApplication\\Authentication\\JWTHandler.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T07:55:16.942Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "IDapperService.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\SPNApplication\\Services\\IDapperService.cs",
-              "RelativeDocumentMoniker": "SPNApplication\\Services\\IDapperService.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\SPNApplication\\Services\\IDapperService.cs",
-              "RelativeToolTip": "SPNApplication\\Services\\IDapperService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T08:10:38.282Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "MediatorEnpoint.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\SPNApplication\\MediatorEnpoint.cs",
-              "RelativeDocumentMoniker": "SPNApplication\\MediatorEnpoint.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\SPNApplication\\MediatorEnpoint.cs",
-              "RelativeToolTip": "SPNApplication\\MediatorEnpoint.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T08:17:13.728Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "JWTConstant.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\SPNApplication\\Authentication\\JWTConstant.cs",
-              "RelativeDocumentMoniker": "SPNApplication\\Authentication\\JWTConstant.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\SPNApplication\\Authentication\\JWTConstant.cs",
-              "RelativeToolTip": "SPNApplication\\Authentication\\JWTConstant.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T07:56:03.411Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "appsettings.Development.json",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\Hola.Api\\appsettings.Development.json",
-              "RelativeDocumentMoniker": "Hola.Api\\appsettings.Development.json",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\Hola.Api\\appsettings.Development.json",
-              "RelativeToolTip": "Hola.Api\\appsettings.Development.json",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABcAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-08-28T07:04:12.198Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "IUserService.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\Hola.Api\\Service\\UserServices\\IUserService.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\UserServices\\IUserService.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\Hola.Api\\Service\\UserServices\\IUserService.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\UserServices\\IUserService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T07:45:25.844Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "AddCatagoriesCommand.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\SPNApplication\\Commnands\\AddCatagoriesCommand.cs",
-              "RelativeDocumentMoniker": "SPNApplication\\Commnands\\AddCatagoriesCommand.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\SPNApplication\\Commnands\\AddCatagoriesCommand.cs",
-              "RelativeToolTip": "SPNApplication\\Commnands\\AddCatagoriesCommand.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T07:34:59.499Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "CoursController.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\Hola.Api\\Controllers\\CoursController.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Controllers\\CoursController.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\Hola.Api\\Controllers\\CoursController.cs",
-              "RelativeToolTip": "Hola.Api\\Controllers\\CoursController.cs",
-              "ViewState": "AgIAAFwAAAAAAAAAAAAIwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T07:09:30.7Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "FireBaseController.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\Hola.Api\\Controllers\\FireBaseController.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Controllers\\FireBaseController.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\Hola.Api\\Controllers\\FireBaseController.cs",
-              "RelativeToolTip": "Hola.Api\\Controllers\\FireBaseController.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T07:09:36.857Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "ReadingController.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\Hola.Api\\Controllers\\ReadingController.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Controllers\\ReadingController.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\Hola.Api\\Controllers\\ReadingController.cs",
-              "RelativeToolTip": "Hola.Api\\Controllers\\ReadingController.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAAOYAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T06:28:58.98Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "NewsController.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\Hola.Api\\Controllers\\NewsController.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Controllers\\NewsController.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\Hola.Api\\Controllers\\NewsController.cs",
-              "RelativeToolTip": "Hola.Api\\Controllers\\NewsController.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAA7wCYAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T07:09:45.731Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "GrammarController.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\Hola.Api\\Controllers\\GrammarController.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Controllers\\GrammarController.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\Hola.Api\\Controllers\\GrammarController.cs",
-              "RelativeToolTip": "Hola.Api\\Controllers\\GrammarController.cs",
-              "ViewState": "AgIAACkAAAAAAAAAAAA9wAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T07:09:36.651Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "EFContextModelSnapshot.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\DatabaseCore.Infrastructure\\Migrations\\EFContextModelSnapshot.cs",
-              "RelativeDocumentMoniker": "DatabaseCore.Infrastructure\\Migrations\\EFContextModelSnapshot.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\DatabaseCore.Infrastructure\\Migrations\\EFContextModelSnapshot.cs",
-              "RelativeToolTip": "DatabaseCore.Infrastructure\\Migrations\\EFContextModelSnapshot.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T06:37:21.835Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\Hola.Api\\Program.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Program.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\Hola.Api\\Program.cs",
-              "RelativeToolTip": "Hola.Api\\Program.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAswBYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T06:29:14.065Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "UploadController.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\Hola.Api\\Controllers\\UploadController.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Controllers\\UploadController.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\Hola.Api\\Controllers\\UploadController.cs",
-              "RelativeToolTip": "Hola.Api\\Controllers\\UploadController.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAADwvyEAAABBAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T06:28:58.143Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "StudentTestModel.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\Hola.Api\\Service\\BAImportExcel\\StudentTestModel.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\BAImportExcel\\StudentTestModel.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\asembly_demo\\SPN_pro2022\\Hola.Api\\Service\\BAImportExcel\\StudentTestModel.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\BAImportExcel\\StudentTestModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T06:28:51.626Z",
+              "WhenOpened": "2024-08-30T02:31:23.21Z",
               "EditorCaption": ""
             }
           ]

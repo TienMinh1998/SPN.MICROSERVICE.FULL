@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Win32;
 using Quartz.Util;
 using StackExchange.Redis;
 using System;
@@ -128,6 +129,10 @@ namespace Hola.Api.Controllers
                 // Nếu từ đó có dấu cách thì thôi không lấy audio nữa 
                 int userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == "UserId").Value);
                 string camAudio = string.Empty;
+                string camPhonetic = string.Empty;
+                string note = string.Empty;
+                string camType = string.Empty;
+
                 bool isBasicWord = request.English.Trim().Contains(" ");
 
                 if (!isBasicWord)
@@ -139,13 +144,37 @@ namespace Hola.Api.Controllers
                         APICrossHelper api = new APICrossHelper();
                         // Chạy bất đồng bộ để lấy về của nghĩa tiếng việt
                         Task<CambridgeDictionaryModel> cambridgeDicTask = api.GetWord(word);
-                        await Task.WhenAll(cambridgeDicTask);
+                        Task<CambridgeDictionaryVietNamModel> vietnamMeaningTask = api.GetVietNamMeaning(word);
+
+                        await Task.WhenAll(cambridgeDicTask, vietnamMeaningTask);
                         var cambridgeDicResponse = cambridgeDicTask.Result;
+                        var vietNamMeaningResponse = vietnamMeaningTask.Result;
                         camAudio = cambridgeDicResponse?.Mp3;
+                        camPhonetic = cambridgeDicResponse?.Phonetic;
+                        note = $",{string.Join(',', vietNamMeaningResponse.Meaning)} ";
+                        camType = cambridgeDicResponse.Type;
                     }
                     catch (Exception)
                     {
                     }
+                }
+                string typeNote = "";
+                typeNote = camType.Trim();
+                if (camType.Trim().ToLower() == "adverb")
+                {
+                    typeNote = "(adv)";
+                }
+                else if (camType.Trim().ToLower() == "adjective")
+                {
+                    typeNote = "(adj)";
+                }
+                else if (camType.Trim().ToLower() == "noun")
+                {
+                    typeNote = "(n)";
+                }
+                else if (camType.Trim().ToLower() == "verb")
+                {
+                    typeNote = "(v)";
                 }
 
                 var command = _mapper.Map<QuestionStandard>(request);
@@ -153,6 +182,9 @@ namespace Hola.Api.Controllers
                 command.IsDeleted = false;
                 command.Audio = camAudio;
                 command.UserId = userid;
+                command.Phonetic = camPhonetic;
+                command.Note = $"{typeNote} " + note;
+
 
                 var checkquestion = await _questionStandardService.GetFirstOrDefaultAsync(x => x.English == request.English && x.UserId == userid);
                 if (checkquestion != null)

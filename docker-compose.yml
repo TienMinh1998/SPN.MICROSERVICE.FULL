@@ -40,5 +40,14 @@ services:
     networks:
      - mynetwork
 
+  hola.webadmin:
+    image: ${DOCKER_REGISTRY-}holawebadmin
+    build:
+      context: .
+      dockerfile: Hola.WebAdmin/Dockerfile
+    networks:
+     - mynetwork
+
 volumes:
   db_data: {}
+

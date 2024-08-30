@@ -105,7 +105,6 @@ namespace Hola.Api
             services.AddSingleton<IActiveTokenHandler>(new ActiveTokenHandler());
             services.AddScoped<ICatagoryRepository, CatagoryRepository>();
             services.AddScoped<IDapperService, DapperService>();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -32,9 +32,17 @@ builder.Services.AddAuthentication(options =>
                });
 
 builder.Services.AddOcelot(configuration);
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPolicy",
+        builder => builder
+            .AllowAnyOrigin() // Or specify origins using WithOrigins("http://example.com")
+            .AllowAnyMethod()
+            .AllowAnyHeader());
+});
 
 var app = builder.Build();
-
+app.UseCors("CorsPolicy");
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseOcelot().Wait();

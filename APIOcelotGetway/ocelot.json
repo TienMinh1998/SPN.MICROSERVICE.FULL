@@ -9,10 +9,11 @@
           "Port": 8080
         }
       ],
-      "UpstreamPathTemplate": "/api/userlogin",
+      "UpstreamPathTemplate": "/api/Login",
       "UpstreamHttpMethod": [ "Get", "Post" ]
 
     },
+    // config for categories controller router.
     {
       "DownstreamPathTemplate": "/categories/{everything}",
       "DownstreamScheme": "http",
@@ -24,6 +25,23 @@
       ],
       "UpstreamPathTemplate": "/api/categories/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    // config for question controller router.
+    {
+      "DownstreamPathTemplate": "/QuestionStandard/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "hola_application",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/QuestionStandard/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post","Put" ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "Bearer",
         "AllowedScopes": []

@@ -124,7 +124,7 @@ namespace Hola.Core.Helper
             return Result;
         }
 
-        public  Task<CambridgeDictionaryModel> GetWord(string word)
+        public Task<CambridgeDictionaryModel> GetWord(string word)
         {
             CambridgeDictionaryModel response = new CambridgeDictionaryModel();
             try
