@@ -21,6 +21,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Win32;
 using Quartz.Util;
+using SPNApplication.Models;
 using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
@@ -78,6 +79,102 @@ namespace Hola.Api.Controllers
             }
 
         }
+
+        [HttpGet("admin_infomation")]
+        public JsonResponseModel GetInfomation()
+        {
+            try
+            {
+                string sql = "SELECT count(1) from public.\"QuestionStandards\";";
+                int? _count = _dapper.QueryFirstOrDefault<int>(sql);
+
+                if (_count != null)
+                {
+                    return JsonResponseModel.Success(_count.Value, $"SUCCESS");
+                }
+                else
+                {
+                    return JsonResponseModel.Error("Có lỗi trong quá trình lấy câu hỏi", 400);
+                }
+            }
+            catch (Exception ex)
+            {
+                return JsonResponseModel.SERVER_ERROR(ex.Message);
+            }
+
+        }
+
+        [HttpGet("admin_search/{word}")]
+        public async Task<JsonResponseModel> Search(string word)
+        {
+            try
+            {
+                //  Lấy ra audio của từ đó, nếu không lấy được audio thì mặc định để trống;
+                // Nếu từ đó có dấu cách thì thôi không lấy audio nữa 
+                int userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == "UserId").Value);
+                string camAudio = string.Empty;
+                string camPhonetic = string.Empty;
+                string note = string.Empty;
+                string camType = string.Empty;
+
+                bool isBasicWord = word.Trim().ToLower().Contains(" ");
+
+                if (!isBasicWord)
+                {
+                    try
+                    {
+                        APICrossHelper api = new APICrossHelper();
+                        Task<CambridgeDictionaryModel> cambridgeDicTask = api.GetWord(word);
+                        Task<CambridgeDictionaryVietNamModel> vietnamMeaningTask = api.GetVietNamMeaning(word);
+
+                        await Task.WhenAll(cambridgeDicTask, vietnamMeaningTask);
+                        var cambridgeDicResponse = cambridgeDicTask.Result;
+                        var vietNamMeaningResponse = vietnamMeaningTask.Result;
+                        camAudio = cambridgeDicResponse?.Mp3;
+                        camPhonetic = cambridgeDicResponse?.Phonetic;
+                        note = $",{string.Join(',', vietNamMeaningResponse.Meaning)} ";
+                        camType = cambridgeDicResponse.Type;
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+                }
+                SearchVocabularyModel searchResult = new SearchVocabularyModel();
+                searchResult.phonetic = camPhonetic;
+                searchResult.audio = camAudio;
+                searchResult.Type = camType;
+                searchResult.searchText = word;
+
+
+
+                string typeNote = camType.Trim().ToLower();
+                switch (typeNote)
+                {
+                    case "adverb":
+                        typeNote = "(adv)";
+                        break;
+                    case "adjective":
+                        typeNote = "(adj)";
+                        break;
+                    case "noun":
+                        typeNote = "(N)";
+                        break;
+                    case "verb":
+                        typeNote = "(V)";
+                        break;
+                }
+
+                return JsonResponseModel.Success(searchResult);
+
+            }
+            catch (Exception ex)
+            {
+                return JsonResponseModel.SERVER_ERROR(ex.Message);
+            }
+
+        }
+
         /// <summary>
         /// Lấy ra tất cả các từ, column nhập vào tên trường muốn sắp xếp
         /// </summary>
@@ -120,7 +217,6 @@ namespace Hola.Api.Controllers
         /// <param name="request"></param>
         /// <returns></returns>
         [HttpPost("AddStandardQuestion")]
-        [Authorize]
         public async Task<JsonResponseModel> Add([FromBody] AddQuestionStandardModel request)
         {
             try
@@ -133,16 +229,14 @@ namespace Hola.Api.Controllers
                 string note = string.Empty;
                 string camType = string.Empty;
 
-                bool isBasicWord = request.English.Trim().Contains(" ");
+                bool isBasicWord = request.English.Trim().ToLower().Contains(" ");
 
                 if (!isBasicWord)
                 {
                     try
                     {
-                        var rootPath = _hostEnvironment.WebRootPath != null ? _hostEnvironment.WebRootPath : _hostEnvironment.ContentRootPath;
                         string word = request.English;
                         APICrossHelper api = new APICrossHelper();
-                        // Chạy bất đồng bộ để lấy về của nghĩa tiếng việt
                         Task<CambridgeDictionaryModel> cambridgeDicTask = api.GetWord(word);
                         Task<CambridgeDictionaryVietNamModel> vietnamMeaningTask = api.GetVietNamMeaning(word);
 
@@ -156,25 +250,25 @@ namespace Hola.Api.Controllers
                     }
                     catch (Exception)
                     {
+
                     }
                 }
-                string typeNote = "";
-                typeNote = camType.Trim();
-                if (camType.Trim().ToLower() == "adverb")
+
+                string typeNote = camType.Trim().ToLower();
+                switch (typeNote)
                 {
-                    typeNote = "(adv)";
-                }
-                else if (camType.Trim().ToLower() == "adjective")
-                {
-                    typeNote = "(adj)";
-                }
-                else if (camType.Trim().ToLower() == "noun")
-                {
-                    typeNote = "(n)";
-                }
-                else if (camType.Trim().ToLower() == "verb")
-                {
-                    typeNote = "(v)";
+                    case "adverb":
+                        typeNote = "(adv)";
+                        break;
+                    case "adjective":
+                        typeNote = "(adj)";
+                        break;
+                    case "noun":
+                        typeNote = "(N)";
+                        break;
+                    case "verb":
+                        typeNote = "(V)";
+                        break;
                 }
 
                 var command = _mapper.Map<QuestionStandard>(request);
@@ -189,7 +283,7 @@ namespace Hola.Api.Controllers
                 var checkquestion = await _questionStandardService.GetFirstOrDefaultAsync(x => x.English == request.English && x.UserId == userid);
                 if (checkquestion != null)
                 {
-                    return JsonResponseModel.SERVER_ERROR($"{request.English} đã tồn tại rồi");
+                    return JsonResponseModel.SERVER_ERROR($"{request.English} is available");
                 }
                 var respoinse = await _questionStandardService.AddAsync(command);
                 return JsonResponseModel.Success(respoinse);
@@ -370,7 +464,6 @@ namespace Hola.Api.Controllers
 
             }
         }
-
 
 
         [HttpPost("ExportWordForTopic")]
