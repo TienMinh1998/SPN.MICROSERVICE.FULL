@@ -1,8 +1,7 @@
 ﻿using DatabaseCore.Domain.Entities.Normals;
-using Hola.Api.Repositories;
-using Hola.Api.Repositories.CoursRepo;
+using DatabaseCore.Infrastructure.Repositories;
 using Hola.Api.Service.BaseServices;
-using Hola.Api.Service.GrammarServices;
+
 
 namespace Hola.Api.Service.CoursServices.V1;
 

@@ -1,6 +1,5 @@
 ﻿using DatabaseCore.Domain.Entities.Normals;
-using Hola.Api.Repositories;
-using Hola.Api.Repositories.QuestionrRepo;
+using DatabaseCore.Infrastructure.Repositories;
 using Hola.Api.Service.BaseServices;
 using Hola.Api.Service.TargetServices;
 using System.Threading.Tasks;
@@ -24,13 +23,13 @@ public class QuestionService : BaseService<Question>, IQuestionService
         try
         {
             string query = $"SELECT count(1) FROM usr.question where fk_userid = {UserID} and created_on::TIMESTAMP::DATE = CURRENT_DATE::TIMESTAMP::DATE;";
-            var response =  _dapper.QueryFirstOrDefault<int>(query);
+            var response = _dapper.QueryFirstOrDefault<int>(query);
             return response;
         }
         catch (System.Exception)
         {
             return await Task.FromResult(0);
         }
-       
+
     }
 }

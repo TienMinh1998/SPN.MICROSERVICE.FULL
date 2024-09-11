@@ -4,7 +4,8 @@ using System.Linq.Expressions;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
-using Hola.Api.Repositories;
+using DatabaseCore.Infrastructure.Repositories;
+
 
 namespace Hola.Api.Service.BaseServices
 {

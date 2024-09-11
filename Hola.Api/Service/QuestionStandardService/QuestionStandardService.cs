@@ -1,5 +1,5 @@
 ﻿using DatabaseCore.Domain.Entities.Normals;
-using Hola.Api.Repositories;
+using DatabaseCore.Infrastructure.Repositories;
 using Hola.Api.Service.BaseServices;
 using Hola.Api.Service.V1;
 

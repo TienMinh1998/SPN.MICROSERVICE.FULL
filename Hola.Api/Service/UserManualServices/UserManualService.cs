@@ -1,8 +1,8 @@
 ﻿using DatabaseCore.Domain.Entities.Normals;
-using Hola.Api.Repositories;
-using Hola.Api.Repositories.UserManualRepo;
+using DatabaseCore.Infrastructure.Repositories;
+
 using Hola.Api.Service.BaseServices;
-using Hola.Api.Service.UserServices;
+
 
 namespace Hola.Api.Service.UserManualServices
 {

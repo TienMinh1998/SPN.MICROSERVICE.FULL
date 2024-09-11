@@ -1,15 +1,8 @@
-﻿using Hola.Api.AutoMappers;
-using Hola.Api.Repositories;
-using Hola.Api.Repositories.CoursRepo;
-using Hola.Api.Repositories.Grammar;
-using Hola.Api.Repositories.QuestionrRepo;
-using Hola.Api.Repositories.TargetRepo;
-using Hola.Api.Repositories.UserManualRepo;
-using Hola.Api.Repositories.UserRepository;
+﻿using DatabaseCore.Infrastructure.Repositories;
+using Hola.Api.AutoMappers;
 using Hola.Api.Service;
 using Hola.Api.Service.BaseServices;
 using Hola.Api.Service.CateporyServices;
-using Hola.Api.Service.CateporyServices.v1;
 using Hola.Api.Service.CoursServices;
 using Hola.Api.Service.CoursServices.V1;
 using Hola.Api.Service.GrammarServices;

@@ -30,7 +30,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SPNApplication", "SPNApplic
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{4E030BE0-456B-45CE-A89E-B9AAECB70742}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hola.WebAdmin", "Hola.WebAdmin\Hola.WebAdmin.csproj", "{55AF7E82-A273-409B-94C6-4A735D04830A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hola.WebAdmin", "Hola.WebAdmin\Hola.WebAdmin.csproj", "{55AF7E82-A273-409B-94C6-4A735D04830A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.Shared", "..\Project.Shared\Project.Shared.csproj", "{1623D829-1038-4151-8EE5-751D44ABAF5C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -82,6 +84,10 @@ Global
 		{55AF7E82-A273-409B-94C6-4A735D04830A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55AF7E82-A273-409B-94C6-4A735D04830A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55AF7E82-A273-409B-94C6-4A735D04830A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1623D829-1038-4151-8EE5-751D44ABAF5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1623D829-1038-4151-8EE5-751D44ABAF5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1623D829-1038-4151-8EE5-751D44ABAF5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1623D829-1038-4151-8EE5-751D44ABAF5C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -89,6 +95,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{2CAD2823-BB68-4FC6-9D89-01F03A7E1DFE} = {79E25028-FFD0-4303-BB89-04E2BC7CFA91}
 		{1DF72863-A0AD-49DF-B41C-D0AB596FE8E8} = {79E25028-FFD0-4303-BB89-04E2BC7CFA91}
+		{1623D829-1038-4151-8EE5-751D44ABAF5C} = {79E25028-FFD0-4303-BB89-04E2BC7CFA91}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4A6CA6BE-40D7-410E-8166-15A8101BE80A}

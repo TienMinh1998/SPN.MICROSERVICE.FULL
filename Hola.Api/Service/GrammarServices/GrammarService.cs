@@ -1,9 +1,7 @@
 ﻿using DatabaseCore.Domain.Entities.Normals;
-using Hola.Api.Repositories;
-using Hola.Api.Repositories.Grammar;
-using Hola.Api.Repositories.UserRepository;
+using DatabaseCore.Infrastructure.Repositories;
 using Hola.Api.Service.BaseServices;
-using Hola.Api.Service.UserServices;
+
 
 namespace Hola.Api.Service.GrammarServices
 {

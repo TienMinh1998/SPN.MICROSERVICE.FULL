@@ -1,13 +1,6 @@
-﻿using Hola.Api.Repositories.UserRepository;
-using Hola.Api.Repositories;
-using Hola.Api.Service.BaseServices;
-using Hola.Core.Enums;
-using Hola.Core.Model.CommonModel;
-using Microsoft.Extensions.Configuration.UserSecrets;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System;
+﻿using Hola.Api.Service.BaseServices;
 using DatabaseCore.Domain.Entities.Normals;
+using DatabaseCore.Infrastructure.Repositories;
 
 namespace Hola.Api.Service.UserServices
 {

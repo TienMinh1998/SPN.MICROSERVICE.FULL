@@ -17,7 +17,7 @@ using Hola.Core.DapperExtension;
 
 using System.Linq.Expressions;
 using AutoMapper;
-using Hola.Api.Repositories;
+
 using Hola.Api.Models.Readings;
 using Hola.Api.Common;
 using OpenAI_API.Models;

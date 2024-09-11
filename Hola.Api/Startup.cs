@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using DatabaseCore.Infrastructure.ConfigurationEFContext;
 using Hola.Api.Installers;
-using Hola.Api.Repositories;
 using Hola.Api.Service;
 using Hola.Core.Authorization;
 using Hola.Core.Middleware;
