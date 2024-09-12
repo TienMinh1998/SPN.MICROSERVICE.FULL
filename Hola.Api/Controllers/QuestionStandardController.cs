@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using DatabaseCore.Domain.Entities.Normals;
+using DatabaseCore.Domain.Questions;
+using DatabaseCore.Infrastructure.ConfigurationEFContext;
 using Hola.Api.Models;
 using Hola.Api.Requests;
 using Hola.Api.Service;
@@ -37,72 +39,26 @@ namespace Hola.Api.Controllers
     [Route("QuestionStandard")]
     public class QuestionStandardController : ControllerBase
     {
-        private IQuestionStandardService _questionStandardService;
+
         private readonly IMapper _mapper;
         private readonly DapperBaseService _dapper;
         private readonly IWebHostEnvironment _hostEnvironment;
-        public QuestionStandardController(IQuestionStandardService questionStandardService,
+
+        EFContext _EFContext;
+        public QuestionStandardController(
             IMapper mapper,
             DapperBaseService dapper,
-            IWebHostEnvironment hostEnvironment)
+            IWebHostEnvironment hostEnvironment,
+            EFContext eFContext)
         {
-            _questionStandardService = questionStandardService;
+
             _mapper = mapper;
             _dapper = dapper;
             _hostEnvironment = hostEnvironment;
+            _EFContext = eFContext;
         }
 
-        /// <summary>
-        /// Lấy về câu hỏi theo ID
-        /// </summary>
-        /// <param name="Id"></param>
-        /// <returns></returns>
-        [HttpGet("GetQuestionById/{Id}")]
-        [Authorize]
-        public async Task<JsonResponseModel> GetQuestionById(int Id)
-        {
-            try
-            {
-                var response = await _questionStandardService.GetFirstOrDefaultAsync(x => x.Pk_QuestionStandard_Id == Id);
-                if (response != null)
-                {
-                    return JsonResponseModel.Success(response, $"Lấy về từ có Id = {Id} thành công!");
-                }
-                else
-                {
-                    return JsonResponseModel.Error("Có lỗi trong quá trình lấy câu hỏi", 400);
-                }
-            }
-            catch (Exception ex)
-            {
-                return JsonResponseModel.SERVER_ERROR(ex.Message);
-            }
 
-        }
-
-        [HttpGet("admin_infomation")]
-        public JsonResponseModel GetInfomation()
-        {
-            try
-            {
-                string sql = "SELECT count(1) from public.\"QuestionStandards\";";
-                int? _count = _dapper.QueryFirstOrDefault<int>(sql);
-
-                if (_count != null)
-                {
-                    return JsonResponseModel.Success(_count.Value, $"SUCCESS");
-                }
-                else
-                {
-                    return JsonResponseModel.Error("Có lỗi trong quá trình lấy câu hỏi", 400);
-                }
-            }
-            catch (Exception ex)
-            {
-                return JsonResponseModel.SERVER_ERROR(ex.Message);
-            }
-
-        }
 
         [HttpGet("admin_search/{word}")]
         public async Task<JsonResponseModel> Search(string word)
@@ -175,41 +131,7 @@ namespace Hola.Api.Controllers
 
         }
 
-        /// <summary>
-        /// Lấy ra tất cả các từ, column nhập vào tên trường muốn sắp xếp
-        /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
-        [HttpPost("AllQuestion")]
-        [Authorize]
-        public async Task<JsonResponseModel> Search([FromBody] QuestionModelStandard request)
-        {
-            try
-            {
-                // lấy ra câu hỏi của người dùng đó
-                int userid = int.Parse(User.Claims.FirstOrDefault(c => c.Type == "UserId").Value);
-                bool condition = false;
-                Func<QuestionStandard, bool> searchCondition = x => ((!string.IsNullOrEmpty(request.searchKey)) ? x.English.Contains(request.searchKey) : true) && x.UserId == userid;
 
-                if (request.IsDesc == null || request.IsDesc == false)
-                {
-                    condition = false;
-                }
-                else
-                {
-                    condition = true;
-                }
-                var question = _questionStandardService.GetListPaged(request.PageNumber, request.PageSize, searchCondition, request.columnname, condition);
-                question.currentPage = request.PageNumber;
-                return JsonResponseModel.Success(question);
-            }
-            catch (Exception ex)
-            {
-
-                return JsonResponseModel.SERVER_ERROR(ex.Message);
-            }
-
-        }
 
         /// <summary>
         /// Thêm một từ mới 
@@ -280,13 +202,13 @@ namespace Hola.Api.Controllers
                 command.Note = $"{typeNote} " + note;
 
 
-                var checkquestion = await _questionStandardService.GetFirstOrDefaultAsync(x => x.English == request.English && x.UserId == userid);
-                if (checkquestion != null)
-                {
-                    return JsonResponseModel.SERVER_ERROR($"{request.English} is available");
-                }
-                var respoinse = await _questionStandardService.AddAsync(command);
-                return JsonResponseModel.Success(respoinse);
+                //var checkquestion = await _questionStandardService.GetFirstOrDefaultAsync(x => x.English == request.English && x.UserId == userid);
+                //if (checkquestion != null)
+                //{
+                //    return JsonResponseModel.SERVER_ERROR($"{request.English} is available");
+                //}
+                //var respoinse = await _questionStandardService.AddAsync(command);
+                return JsonResponseModel.Success();
 
 
             }
@@ -402,30 +324,6 @@ namespace Hola.Api.Controllers
             }
 
         }
-        /// <summary>
-        /// Xóa câu hỏi
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        [HttpDelete("QuestionStandard/{id}")]
-        public async Task<JsonResponseModel> DeleteQuestion(int id)
-        {
-            try
-            {
-                var question = await _questionStandardService.GetFirstOrDefaultAsync(x => x.Pk_QuestionStandard_Id == id);
-                if (question == null)
-                    return JsonResponseModel.Error($"Từ mới Id='{id}' không tồn tại", 400);
-                question.IsDeleted = true;
-                await _questionStandardService.UpdateAsync(question);
-                return JsonResponseModel.Success(new List<string>(), $"Xóa thành công từ mới Id ='{id}'");
-            }
-            catch (Exception ex)
-            {
-                return JsonResponseModel.Error(ex.Message, 500);
-            }
-
-        }
-
 
         [HttpGet("History")]
         [Authorize]
@@ -918,6 +816,28 @@ namespace Hola.Api.Controllers
             }
         }
 
+
+        // Thông kê
+        [HttpPost("test")]
+        public async Task<JsonResponseModel> TestDOmain([FromBody] OverviewRequest request)
+        {
+            try
+            {
+
+                QuestionStandard question = new QuestionStandard();
+                question.English = "English";
+                question.Note = "(n)";
+                question.AddNote("Sửa lần 1");
+                _EFContext.QuestionStandards.Add(question);
+                await this._EFContext.SaveEntityAsync();
+                return JsonResponseModel.Success("OK");
+            }
+            catch (Exception)
+            {
+                return JsonResponseModel.Error("Thêm thất bại. Từ đã tồn tại", 400);
+
+            }
+        }
     }
 }
 

@@ -1,19 +1,22 @@
 ﻿using DatabaseCore.Domain.Entities.Normals;
+using DatabaseCore.Domain.Questions;
 using DatabaseCore.Infrastructure.ConfigurationEntities;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace DatabaseCore.Infrastructure.ConfigurationEFContext
 {
     public class EFContext : DbContext
     {
-        public EFContext(DbContextOptions<EFContext> options) : base(options)
+        public EFContext(DbContextOptions<EFContext> options, IMediator mediator) : base(options)
         {
-
+            this.mediator = mediator;
         }
         // Define table
         public DbSet<User> Users { get; set; }
@@ -66,5 +69,16 @@ namespace DatabaseCore.Infrastructure.ConfigurationEFContext
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
             base.OnModelCreating(modelBuilder);
         }
+
+
+        private IMediator mediator;
+
+        public async Task<bool> SaveEntityAsync(CancellationToken cancellationToken = default)
+        {
+            await mediator.DispatDomain(this);
+            _ = await base.SaveChangesAsync();
+            return true;
+        }
+
     }
 }

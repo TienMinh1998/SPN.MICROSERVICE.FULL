@@ -1,4 +1,4 @@
-﻿using DatabaseCore.Domain.Entities.Normals;
+﻿using DatabaseCore.Domain.Questions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;

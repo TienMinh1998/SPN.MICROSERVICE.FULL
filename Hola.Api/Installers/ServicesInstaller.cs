@@ -72,8 +72,8 @@ namespace Hola.Api.Installers
             services.AddTransient<ITopicService, TopicService>();
 
             // QuestionStandard
-            services.AddScoped<IQuestionStandardRepository, QuestionStandardRepository>();
-            services.AddTransient<IQuestionStandardService, QuestionStandardService>();
+
+
 
             // Reading
             services.AddTransient<IReadingRepository, ReadingRepository>();

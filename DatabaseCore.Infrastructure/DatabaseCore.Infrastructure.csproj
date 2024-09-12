@@ -21,4 +21,8 @@
     <ProjectReference Include="..\DatabaseCore.Domain\DatabaseCore.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Repositories\QuestionStandard\" />
+  </ItemGroup>
+
 </Project>

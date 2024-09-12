@@ -1,4 +1,4 @@
-﻿using DatabaseCore.Domain.Entities.Normals;
+﻿using DatabaseCore.Domain.Questions;
 using Hola.Api.Models.Accounts;
 using Hola.Api.Service.BaseServices;
 using Hola.Api.Service.UserServices;
@@ -11,14 +11,14 @@ namespace Hola.Api.Service.Quatz
 {
     public class jobStanStandardQuestion : IJob
     {
-        private readonly IQuestionStandardService _questionStandardService;
+
         private readonly IUserService _userServices;
         private readonly FirebaseService firebaseService;
         private readonly DapperBaseService _dapper;
 
-        public jobStanStandardQuestion(IQuestionStandardService questionStandardService, IUserService userServices, FirebaseService firebaseService, DapperBaseService dapper)
+        public jobStanStandardQuestion(IUserService userServices, FirebaseService firebaseService, DapperBaseService dapper)
         {
-            _questionStandardService = questionStandardService;
+
             _userServices = userServices;
             this.firebaseService = firebaseService;
             _dapper = dapper;

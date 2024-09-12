@@ -5,10 +5,12 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DatabaseCore.Domain.SeedWork;
+using DatabaseCore.Domain.Events;
 
-namespace DatabaseCore.Domain.Entities.Normals
+namespace DatabaseCore.Domain.Questions
 {
-    public class QuestionStandard
+    public class QuestionStandard : Entity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -23,5 +25,14 @@ namespace DatabaseCore.Domain.Entities.Normals
         public DateTime created_on { get; set; }     // THời gian tạo
         public string Audio { get; set; }
         public int UserId { get; set; }
+
+        public void AddNote(string noteForQuestion)
+        {
+            if (!string.IsNullOrEmpty(noteForQuestion))
+            {
+                Note = Note + ", " + noteForQuestion;
+                AddDomainEvent(new ChangeNoteQuestionStanDomainEvent(Id, noteForQuestion));
+            }
+        }
     }
 }

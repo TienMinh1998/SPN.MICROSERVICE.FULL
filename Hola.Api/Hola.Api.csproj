@@ -41,6 +41,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\DatabaseCore.Domain\DatabaseCore.Domain.csproj" />
       <ProjectReference Include="..\DatabaseCore.Infrastructure\DatabaseCore.Infrastructure.csproj" />
       <ProjectReference Include="..\EntitiesCommon\EntitiesCommon.csproj" />
       <ProjectReference Include="..\Hola.Core\Hola.Core.csproj" />

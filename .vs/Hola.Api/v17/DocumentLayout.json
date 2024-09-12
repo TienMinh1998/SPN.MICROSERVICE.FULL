@@ -3,228 +3,115 @@
   "WorkspaceRootPath": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\targetservices\\targetservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\targetservices\\targetservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\controllers\\questionstandardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\controllers\\questionstandardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\topic\\topicservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\topic\\topicservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1DF72863-A0AD-49DF-B41C-D0AB596FE8E8}|DatabaseCore.Infrastructure\\DatabaseCore.Infrastructure.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\databasecore.infrastructure\\configurationentities\\questionstandardconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1DF72863-A0AD-49DF-B41C-D0AB596FE8E8}|DatabaseCore.Infrastructure\\DatabaseCore.Infrastructure.csproj|solutionrelative:databasecore.infrastructure\\configurationentities\\questionstandardconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\report\\reportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\report\\reportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1DF72863-A0AD-49DF-B41C-D0AB596FE8E8}|DatabaseCore.Infrastructure\\DatabaseCore.Infrastructure.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\databasecore.infrastructure\\configurationefcontext\\efcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1DF72863-A0AD-49DF-B41C-D0AB596FE8E8}|DatabaseCore.Infrastructure\\DatabaseCore.Infrastructure.csproj|solutionrelative:databasecore.infrastructure\\configurationefcontext\\efcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\questionservice\\questionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\questionservice\\questionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2CAD2823-BB68-4FC6-9D89-01F03A7E1DFE}|DatabaseCore.Domain\\DatabaseCore.Domain.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\databasecore.domain\\questions\\questionstandard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2CAD2823-BB68-4FC6-9D89-01F03A7E1DFE}|DatabaseCore.Domain\\DatabaseCore.Domain.csproj|solutionrelative:databasecore.domain\\questions\\questionstandard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1DF72863-A0AD-49DF-B41C-D0AB596FE8E8}|DatabaseCore.Infrastructure\\DatabaseCore.Infrastructure.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\databasecore.infrastructure\\repositories\\usermanualrepo\\usermanualrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1DF72863-A0AD-49DF-B41C-D0AB596FE8E8}|DatabaseCore.Infrastructure\\DatabaseCore.Infrastructure.csproj|solutionrelative:databasecore.infrastructure\\repositories\\usermanualrepo\\usermanualrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1DF72863-A0AD-49DF-B41C-D0AB596FE8E8}|DatabaseCore.Infrastructure\\DatabaseCore.Infrastructure.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\databasecore.infrastructure\\mediatorextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1DF72863-A0AD-49DF-B41C-D0AB596FE8E8}|DatabaseCore.Infrastructure\\DatabaseCore.Infrastructure.csproj|solutionrelative:databasecore.infrastructure\\mediatorextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1DF72863-A0AD-49DF-B41C-D0AB596FE8E8}|DatabaseCore.Infrastructure\\DatabaseCore.Infrastructure.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\databasecore.infrastructure\\repositories\\notification\\notificationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1DF72863-A0AD-49DF-B41C-D0AB596FE8E8}|DatabaseCore.Infrastructure\\DatabaseCore.Infrastructure.csproj|solutionrelative:databasecore.infrastructure\\repositories\\notification\\notificationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0F21227A-F23D-4C3C-981E-3CED916820C1}|SPNApplication\\SPNApplication.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\spnapplication\\domaineventhandler\\changenotequestiondomainhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0F21227A-F23D-4C3C-981E-3CED916820C1}|SPNApplication\\SPNApplication.csproj|solutionrelative:spnapplication\\domaineventhandler\\changenotequestiondomainhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1DF72863-A0AD-49DF-B41C-D0AB596FE8E8}|DatabaseCore.Infrastructure\\DatabaseCore.Infrastructure.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\databasecore.infrastructure\\repositories\\reading\\readingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1DF72863-A0AD-49DF-B41C-D0AB596FE8E8}|DatabaseCore.Infrastructure\\DatabaseCore.Infrastructure.csproj|solutionrelative:databasecore.infrastructure\\repositories\\reading\\readingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2CAD2823-BB68-4FC6-9D89-01F03A7E1DFE}|DatabaseCore.Domain\\DatabaseCore.Domain.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\databasecore.domain\\seedwork\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2CAD2823-BB68-4FC6-9D89-01F03A7E1DFE}|DatabaseCore.Domain\\DatabaseCore.Domain.csproj|solutionrelative:databasecore.domain\\seedwork\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1DF72863-A0AD-49DF-B41C-D0AB596FE8E8}|DatabaseCore.Infrastructure\\DatabaseCore.Infrastructure.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\databasecore.infrastructure\\repositories\\grammar\\grammarrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1DF72863-A0AD-49DF-B41C-D0AB596FE8E8}|DatabaseCore.Infrastructure\\DatabaseCore.Infrastructure.csproj|solutionrelative:databasecore.infrastructure\\repositories\\grammar\\grammarrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0F21227A-F23D-4C3C-981E-3CED916820C1}|SPNApplication\\SPNApplication.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\spnapplication\\mediatorenpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0F21227A-F23D-4C3C-981E-3CED916820C1}|SPNApplication\\SPNApplication.csproj|solutionrelative:spnapplication\\mediatorenpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1DF72863-A0AD-49DF-B41C-D0AB596FE8E8}|DatabaseCore.Infrastructure\\DatabaseCore.Infrastructure.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\databasecore.infrastructure\\repositories\\topic\\topicrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1DF72863-A0AD-49DF-B41C-D0AB596FE8E8}|DatabaseCore.Infrastructure\\DatabaseCore.Infrastructure.csproj|solutionrelative:databasecore.infrastructure\\repositories\\topic\\topicrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2CAD2823-BB68-4FC6-9D89-01F03A7E1DFE}|DatabaseCore.Domain\\DatabaseCore.Domain.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\databasecore.domain\\domainmediatorendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2CAD2823-BB68-4FC6-9D89-01F03A7E1DFE}|DatabaseCore.Domain\\DatabaseCore.Domain.csproj|solutionrelative:databasecore.domain\\domainmediatorendpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\phrase\\phraseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\phrase\\phraseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\uploadservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\uploadservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\questionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\questionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\iuploadfileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\iuploadfileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\firebaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\firebaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\userservices\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\userservices\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\userservices\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\userservices\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\usermanualservices\\usermanualservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\usermanualservices\\usermanualservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\usermanualservices\\iusermanualservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\usermanualservices\\iusermanualservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\topic\\itopicservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\topic\\itopicservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\report\\ireportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\report\\ireportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\reading\\readingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\reading\\readingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\reading\\ireadingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\reading\\ireadingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\questionstandardservice\\questionstandardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\questionstandardservice\\questionstandardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\questionstandardservice\\iquestionstandardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\questionstandardservice\\iquestionstandardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\questionservice\\iquestionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\questionservice\\iquestionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\quatz\\jobstanstandardquestion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\quatz\\jobstanstandardquestion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\quatz\\jobscheduler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\quatz\\jobscheduler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\quatz\\jobclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\quatz\\jobclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\quatz\\historyeverydayjob.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\quatz\\historyeverydayjob.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\quatz\\everydaynotificationclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\quatz\\everydaynotificationclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\product\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\product\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\product\\iproductservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\product\\iproductservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\phrase\\iphraseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\phrase\\iphraseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\notification\\notificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\notification\\notificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\notification\\inotificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\notification\\inotificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\news\\newsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\news\\newsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\news\\inewsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\news\\inewsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\grammarservices\\igrammarservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\grammarservices\\igrammarservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\grammarservices\\grammarservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\grammarservices\\grammarservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\excelservices\\excelservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\excelservices\\excelservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\excelservices\\body.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\excelservices\\body.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\coursservices\\icoursservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\coursservices\\icoursservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\coursservices\\coursservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\coursservices\\coursservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\cateporyservices\\icategoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\cateporyservices\\icategoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\cateporyservices\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\cateporyservices\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\baseservices\\ibaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\baseservices\\ibaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\baseservices\\dapperbaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\baseservices\\dapperbaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\baseservices\\baseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\baseservices\\baseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2CAD2823-BB68-4FC6-9D89-01F03A7E1DFE}|DatabaseCore.Domain\\DatabaseCore.Domain.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\databasecore.domain\\repositories\\iquestionstandarddomainrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2CAD2823-BB68-4FC6-9D89-01F03A7E1DFE}|DatabaseCore.Domain\\DatabaseCore.Domain.csproj|solutionrelative:databasecore.domain\\repositories\\iquestionstandarddomainrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\installers\\servicesinstaller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\installers\\servicesinstaller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\controllers\\readingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\controllers\\readingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\quatz\\jobstanstandardquestion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\quatz\\jobstanstandardquestion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\baimportexcel\\mapdataconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\baimportexcel\\mapdataconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2CAD2823-BB68-4FC6-9D89-01F03A7E1DFE}|DatabaseCore.Domain\\DatabaseCore.Domain.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\databasecore.domain\\questions\\iquestionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2CAD2823-BB68-4FC6-9D89-01F03A7E1DFE}|DatabaseCore.Domain\\DatabaseCore.Domain.csproj|solutionrelative:databasecore.domain\\questions\\iquestionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\baimportexcel\\excellibimport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\baimportexcel\\excellibimport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0F21227A-F23D-4C3C-981E-3CED916820C1}|SPNApplication\\SPNApplication.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\spnapplication\\globalusing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0F21227A-F23D-4C3C-981E-3CED916820C1}|SPNApplication\\SPNApplication.csproj|solutionrelative:spnapplication\\globalusing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\service\\baimportexcel\\excelimportrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\service\\baimportexcel\\excelimportrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0F21227A-F23D-4C3C-981E-3CED916820C1}|SPNApplication\\SPNApplication.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\spnapplication\\handler\\addquestioncommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0F21227A-F23D-4C3C-981E-3CED916820C1}|SPNApplication\\SPNApplication.csproj|solutionrelative:spnapplication\\handler\\addquestioncommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\installers\\iinstaller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\installers\\iinstaller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\installers\\cacheinstaller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\installers\\cacheinstaller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\installers\\installerextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\installers\\installerextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\installers\\systeminstaller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\installers\\systeminstaller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{21C7319D-5B79-46B6-AB9B-F545C44A725C}|..\\TestProjects\\TestProjects.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\testprojects\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.api\\controllers\\questioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{120434E6-6698-444E-B658-241450200F2E}|Hola.Api\\Hola.Api.csproj|solutionrelative:hola.api\\controllers\\questioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55AF7E82-A273-409B-94C6-4A735D04830A}|Hola.WebAdmin\\Hola.WebAdmin.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\hola.webadmin\\hola.webadmin.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{55AF7E82-A273-409B-94C6-4A735D04830A}|Hola.WebAdmin\\Hola.WebAdmin.csproj|solutionrelative:hola.webadmin\\hola.webadmin.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2CAD2823-BB68-4FC6-9D89-01F03A7E1DFE}|DatabaseCore.Domain\\DatabaseCore.Domain.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\databasecore.domain\\entities\\normals\\userstandardquestion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2CAD2823-BB68-4FC6-9D89-01F03A7E1DFE}|DatabaseCore.Domain\\DatabaseCore.Domain.csproj|solutionrelative:databasecore.domain\\entities\\normals\\userstandardquestion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2CAD2823-BB68-4FC6-9D89-01F03A7E1DFE}|DatabaseCore.Domain\\DatabaseCore.Domain.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\databasecore.domain\\entities\\normals\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2CAD2823-BB68-4FC6-9D89-01F03A7E1DFE}|DatabaseCore.Domain\\DatabaseCore.Domain.csproj|solutionrelative:databasecore.domain\\entities\\normals\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2CAD2823-BB68-4FC6-9D89-01F03A7E1DFE}|DatabaseCore.Domain\\DatabaseCore.Domain.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\databasecore.domain\\entities\\normals\\grammar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2CAD2823-BB68-4FC6-9D89-01F03A7E1DFE}|DatabaseCore.Domain\\DatabaseCore.Domain.csproj|solutionrelative:databasecore.domain\\entities\\normals\\grammar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2CAD2823-BB68-4FC6-9D89-01F03A7E1DFE}|DatabaseCore.Domain\\DatabaseCore.Domain.csproj|c:\\users\\tiennvm\\desktop\\microservice.full\\spn.microservice.full\\databasecore.domain\\iaggregateroot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2CAD2823-BB68-4FC6-9D89-01F03A7E1DFE}|DatabaseCore.Domain\\DatabaseCore.Domain.csproj|solutionrelative:databasecore.domain\\iaggregateroot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -234,123 +121,162 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "UserManualRepository.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\DatabaseCore.Infrastructure\\Repositories\\UserManualRepo\\UserManualRepository.cs",
-              "RelativeDocumentMoniker": "DatabaseCore.Infrastructure\\Repositories\\UserManualRepo\\UserManualRepository.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\DatabaseCore.Infrastructure\\Repositories\\UserManualRepo\\UserManualRepository.cs",
-              "RelativeToolTip": "DatabaseCore.Infrastructure\\Repositories\\UserManualRepo\\UserManualRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "QuestionStandardConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\DatabaseCore.Infrastructure\\ConfigurationEntities\\QuestionStandardConfiguration.cs",
+              "RelativeDocumentMoniker": "DatabaseCore.Infrastructure\\ConfigurationEntities\\QuestionStandardConfiguration.cs",
+              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\DatabaseCore.Infrastructure\\ConfigurationEntities\\QuestionStandardConfiguration.cs",
+              "RelativeToolTip": "DatabaseCore.Infrastructure\\ConfigurationEntities\\QuestionStandardConfiguration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:56:51.267Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ReadingRepository.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\DatabaseCore.Infrastructure\\Repositories\\Reading\\ReadingRepository.cs",
-              "RelativeDocumentMoniker": "DatabaseCore.Infrastructure\\Repositories\\Reading\\ReadingRepository.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\DatabaseCore.Infrastructure\\Repositories\\Reading\\ReadingRepository.cs",
-              "RelativeToolTip": "DatabaseCore.Infrastructure\\Repositories\\Reading\\ReadingRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:56:36.939Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "TopicRepository.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\DatabaseCore.Infrastructure\\Repositories\\Topic\\TopicRepository.cs",
-              "RelativeDocumentMoniker": "DatabaseCore.Infrastructure\\Repositories\\Topic\\TopicRepository.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\DatabaseCore.Infrastructure\\Repositories\\Topic\\TopicRepository.cs",
-              "RelativeToolTip": "DatabaseCore.Infrastructure\\Repositories\\Topic\\TopicRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:56:30.583Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "GrammarRepository.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\DatabaseCore.Infrastructure\\Repositories\\Grammar\\GrammarRepository.cs",
-              "RelativeDocumentMoniker": "DatabaseCore.Infrastructure\\Repositories\\Grammar\\GrammarRepository.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\DatabaseCore.Infrastructure\\Repositories\\Grammar\\GrammarRepository.cs",
-              "RelativeToolTip": "DatabaseCore.Infrastructure\\Repositories\\Grammar\\GrammarRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:56:29.053Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "NotificationRepository.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\DatabaseCore.Infrastructure\\Repositories\\Notification\\NotificationRepository.cs",
-              "RelativeDocumentMoniker": "DatabaseCore.Infrastructure\\Repositories\\Notification\\NotificationRepository.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\DatabaseCore.Infrastructure\\Repositories\\Notification\\NotificationRepository.cs",
-              "RelativeToolTip": "DatabaseCore.Infrastructure\\Repositories\\Notification\\NotificationRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAA5AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:56:27.285Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "QuestionService.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\QuestionService\\QuestionService.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\QuestionService\\QuestionService.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\QuestionService\\QuestionService.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\QuestionService\\QuestionService.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAwwBoAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:48:29.739Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "TargetService.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\TargetServices\\TargetService.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\TargetServices\\TargetService.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\TargetServices\\TargetService.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\TargetServices\\TargetService.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAowAsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:51:58.894Z",
+              "WhenOpened": "2024-09-12T15:37:17.195Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "ReportService.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\Report\\ReportService.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\Report\\ReportService.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\Report\\ReportService.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\Report\\ReportService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Title": "EFContext.cs",
+              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\DatabaseCore.Infrastructure\\ConfigurationEFContext\\EFContext.cs",
+              "RelativeDocumentMoniker": "DatabaseCore.Infrastructure\\ConfigurationEFContext\\EFContext.cs",
+              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\DatabaseCore.Infrastructure\\ConfigurationEFContext\\EFContext.cs",
+              "RelativeToolTip": "DatabaseCore.Infrastructure\\ConfigurationEFContext\\EFContext.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAQwE4AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:54:46.705Z",
+              "WhenOpened": "2024-09-12T15:11:16.296Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "TopicService.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\Topic\\TopicService.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\Topic\\TopicService.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\Topic\\TopicService.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\Topic\\TopicService.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAowBEAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 6,
+              "Title": "Entity.cs",
+              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\DatabaseCore.Domain\\SeedWork\\Entity.cs",
+              "RelativeDocumentMoniker": "DatabaseCore.Domain\\SeedWork\\Entity.cs",
+              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\DatabaseCore.Domain\\SeedWork\\Entity.cs",
+              "RelativeToolTip": "DatabaseCore.Domain\\SeedWork\\Entity.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAApwBsAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:54:53.996Z",
+              "WhenOpened": "2024-09-12T14:56:38.77Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MediatorEnpoint.cs",
+              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\SPNApplication\\MediatorEnpoint.cs",
+              "RelativeDocumentMoniker": "SPNApplication\\MediatorEnpoint.cs",
+              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\SPNApplication\\MediatorEnpoint.cs",
+              "RelativeToolTip": "SPNApplication\\MediatorEnpoint.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-12T14:40:11.059Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "GlobalUsing.cs",
+              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\SPNApplication\\GlobalUsing.cs",
+              "RelativeDocumentMoniker": "SPNApplication\\GlobalUsing.cs",
+              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\SPNApplication\\GlobalUsing.cs",
+              "RelativeToolTip": "SPNApplication\\GlobalUsing.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-12T14:28:43.08Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ChangeNoteQuestionDomainHandler.cs",
+              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\SPNApplication\\DomainEventHandler\\ChangeNoteQuestionDomainHandler.cs",
+              "RelativeDocumentMoniker": "SPNApplication\\DomainEventHandler\\ChangeNoteQuestionDomainHandler.cs",
+              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\SPNApplication\\DomainEventHandler\\ChangeNoteQuestionDomainHandler.cs",
+              "RelativeToolTip": "SPNApplication\\DomainEventHandler\\ChangeNoteQuestionDomainHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-12T14:24:22.721Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ServicesInstaller.cs",
+              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Installers\\ServicesInstaller.cs",
+              "RelativeDocumentMoniker": "Hola.Api\\Installers\\ServicesInstaller.cs",
+              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Installers\\ServicesInstaller.cs",
+              "RelativeToolTip": "Hola.Api\\Installers\\ServicesInstaller.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAAAIwE8AAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-12T14:38:48.907Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "QuestionStandardController.cs",
+              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Controllers\\QuestionStandardController.cs",
+              "RelativeDocumentMoniker": "Hola.Api\\Controllers\\QuestionStandardController.cs",
+              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Controllers\\QuestionStandardController.cs",
+              "RelativeToolTip": "Hola.Api\\Controllers\\QuestionStandardController.cs",
+              "ViewState": "AgIAAHoCAAAAAAAAAAAAwD0DAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-12T14:33:08.772Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "QuestionStandard.cs",
+              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\DatabaseCore.Domain\\Questions\\QuestionStandard.cs",
+              "RelativeDocumentMoniker": "DatabaseCore.Domain\\Questions\\QuestionStandard.cs",
+              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\DatabaseCore.Domain\\Questions\\QuestionStandard.cs",
+              "RelativeToolTip": "DatabaseCore.Domain\\Questions\\QuestionStandard.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAIA2wCMAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-12T02:56:40.743Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MediatorExtension.cs",
+              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\DatabaseCore.Infrastructure\\MediatorExtension.cs",
+              "RelativeDocumentMoniker": "DatabaseCore.Infrastructure\\MediatorExtension.cs",
+              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\DatabaseCore.Infrastructure\\MediatorExtension.cs",
+              "RelativeToolTip": "DatabaseCore.Infrastructure\\MediatorExtension.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-12T15:33:13.222Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "DomainMediatorEndPoint.cs",
+              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\DatabaseCore.Domain\\DomainMediatorEndPoint.cs",
+              "RelativeDocumentMoniker": "DatabaseCore.Domain\\DomainMediatorEndPoint.cs",
+              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\DatabaseCore.Domain\\DomainMediatorEndPoint.cs",
+              "RelativeToolTip": "DatabaseCore.Domain\\DomainMediatorEndPoint.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-12T14:53:04.66Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Program.cs",
+              "RelativeDocumentMoniker": "Hola.Api\\Program.cs",
+              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Program.cs",
+              "RelativeToolTip": "Hola.Api\\Program.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAQwCcAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-12T14:39:27.153Z",
               "EditorCaption": ""
             },
             {
@@ -361,607 +287,204 @@
               "RelativeDocumentMoniker": "Hola.Api\\Startup.cs",
               "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Startup.cs",
               "RelativeToolTip": "Hola.Api\\Startup.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAAACwAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAwwGUAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:56:18.451Z",
+              "WhenOpened": "2024-09-12T14:39:38.151Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 11,
-              "Title": "UploadService.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\UploadService.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\UploadService.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\UploadService.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\UploadService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "IQuestionStandardDomainRepository.cs",
+              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\DatabaseCore.Domain\\Repositories\\IQuestionStandardDomainRepository.cs",
+              "RelativeDocumentMoniker": "DatabaseCore.Domain\\Repositories\\IQuestionStandardDomainRepository.cs",
+              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\DatabaseCore.Domain\\Repositories\\IQuestionStandardDomainRepository.cs",
+              "RelativeToolTip": "DatabaseCore.Domain\\Repositories\\IQuestionStandardDomainRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:55:48.152Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "QuestionService.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\QuestionService.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\QuestionService.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\QuestionService.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\QuestionService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:55:47.41Z",
+              "WhenOpened": "2024-09-12T14:09:38.811Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 13,
-              "Title": "IUploadFileService.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\IUploadFileService.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\IUploadFileService.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\IUploadFileService.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\IUploadFileService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:55:45.761Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "FirebaseService.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\FirebaseService.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\FirebaseService.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\FirebaseService.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\FirebaseService.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:55:42.997Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "CategoryService.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\CategoryService.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\CategoryService.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\CategoryService.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\CategoryService.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:55:40.597Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "AccountService.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\AccountService.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\AccountService.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\AccountService.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\AccountService.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:55:38.437Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "UserService.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\UserServices\\UserService.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\UserServices\\UserService.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\UserServices\\UserService.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\UserServices\\UserService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:55:24.589Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "IUserService.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\UserServices\\IUserService.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\UserServices\\IUserService.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\UserServices\\IUserService.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\UserServices\\IUserService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:55:22.137Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "PhraseService.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\Phrase\\PhraseService.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\Phrase\\PhraseService.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\Phrase\\PhraseService.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\Phrase\\PhraseService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:53:48.786Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "UserManualService.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\UserManualServices\\UserManualService.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\UserManualServices\\UserManualService.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\UserManualServices\\UserManualService.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\UserManualServices\\UserManualService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:55:11.592Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "IUserManualService.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\UserManualServices\\IUserManualService.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\UserManualServices\\IUserManualService.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\UserManualServices\\IUserManualService.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\UserManualServices\\IUserManualService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:55:09.888Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "ITopicService.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\Topic\\ITopicService.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\Topic\\ITopicService.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\Topic\\ITopicService.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\Topic\\ITopicService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:54:51.609Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "IReportService.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\Report\\IReportService.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\Report\\IReportService.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\Report\\IReportService.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\Report\\IReportService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:54:45.384Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "ReadingService.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\Reading\\ReadingService.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\Reading\\ReadingService.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\Reading\\ReadingService.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\Reading\\ReadingService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:54:35.496Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "IReadingService.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\Reading\\IReadingService.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\Reading\\IReadingService.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\Reading\\IReadingService.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\Reading\\IReadingService.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:54:31.565Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "QuestionStandardService.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\QuestionStandardService\\QuestionStandardService.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\QuestionStandardService\\QuestionStandardService.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\QuestionStandardService\\QuestionStandardService.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\QuestionStandardService\\QuestionStandardService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:54:22.205Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "IQuestionStandardService.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\QuestionStandardService\\IQuestionStandardService.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\QuestionStandardService\\IQuestionStandardService.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\QuestionStandardService\\IQuestionStandardService.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\QuestionStandardService\\IQuestionStandardService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:54:21.144Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "IQuestionService.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\QuestionService\\IQuestionService.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\QuestionService\\IQuestionService.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\QuestionService\\IQuestionService.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\QuestionService\\IQuestionService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:54:09.043Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
               "Title": "jobStanStandardQuestion.cs",
               "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\Quatz\\jobStanStandardQuestion.cs",
               "RelativeDocumentMoniker": "Hola.Api\\Service\\Quatz\\jobStanStandardQuestion.cs",
               "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\Quatz\\jobStanStandardQuestion.cs",
               "RelativeToolTip": "Hola.Api\\Service\\Quatz\\jobStanStandardQuestion.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABIAAAB8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-12T14:43:46.356Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "AddQuestionCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\SPNApplication\\Handler\\AddQuestionCommandHandler.cs",
+              "RelativeDocumentMoniker": "SPNApplication\\Handler\\AddQuestionCommandHandler.cs",
+              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\SPNApplication\\Handler\\AddQuestionCommandHandler.cs",
+              "RelativeToolTip": "SPNApplication\\Handler\\AddQuestionCommandHandler.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:54:05.661Z",
+              "WhenOpened": "2024-09-12T14:39:20.908Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "JobScheduler.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\Quatz\\JobScheduler.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\Quatz\\JobScheduler.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\Quatz\\JobScheduler.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\Quatz\\JobScheduler.cs",
+              "DocumentIndex": 17,
+              "Title": "IInstaller.cs",
+              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Installers\\IInstaller.cs",
+              "RelativeDocumentMoniker": "Hola.Api\\Installers\\IInstaller.cs",
+              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Installers\\IInstaller.cs",
+              "RelativeToolTip": "Hola.Api\\Installers\\IInstaller.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:54:05.059Z",
+              "WhenOpened": "2024-09-12T14:38:44.736Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "JobClass.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\Quatz\\JobClass.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\Quatz\\JobClass.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\Quatz\\JobClass.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\Quatz\\JobClass.cs",
+              "DocumentIndex": 14,
+              "Title": "IQuestionRepository.cs",
+              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\DatabaseCore.Domain\\Questions\\IQuestionRepository.cs",
+              "RelativeDocumentMoniker": "DatabaseCore.Domain\\Questions\\IQuestionRepository.cs",
+              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\DatabaseCore.Domain\\Questions\\IQuestionRepository.cs",
+              "RelativeToolTip": "DatabaseCore.Domain\\Questions\\IQuestionRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-12T02:56:39.778Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "CacheInstaller.cs",
+              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Installers\\CacheInstaller.cs",
+              "RelativeDocumentMoniker": "Hola.Api\\Installers\\CacheInstaller.cs",
+              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Installers\\CacheInstaller.cs",
+              "RelativeToolTip": "Hola.Api\\Installers\\CacheInstaller.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:54:03.484Z",
+              "WhenOpened": "2024-09-12T14:39:00.24Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "HistoryEveryDayJob.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\Quatz\\HistoryEveryDayJob.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\Quatz\\HistoryEveryDayJob.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\Quatz\\HistoryEveryDayJob.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\Quatz\\HistoryEveryDayJob.cs",
+              "DocumentIndex": 19,
+              "Title": "InstallerExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Installers\\InstallerExtensions.cs",
+              "RelativeDocumentMoniker": "Hola.Api\\Installers\\InstallerExtensions.cs",
+              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Installers\\InstallerExtensions.cs",
+              "RelativeToolTip": "Hola.Api\\Installers\\InstallerExtensions.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:54:02.311Z",
+              "WhenOpened": "2024-09-12T14:38:45.939Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "EveryDayNotificationClass.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\Quatz\\EveryDayNotificationClass.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\Quatz\\EveryDayNotificationClass.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\Quatz\\EveryDayNotificationClass.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\Quatz\\EveryDayNotificationClass.cs",
+              "DocumentIndex": 20,
+              "Title": "SystemInstaller.cs",
+              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Installers\\SystemInstaller.cs",
+              "RelativeDocumentMoniker": "Hola.Api\\Installers\\SystemInstaller.cs",
+              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Installers\\SystemInstaller.cs",
+              "RelativeToolTip": "Hola.Api\\Installers\\SystemInstaller.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:54:01.368Z",
+              "WhenOpened": "2024-09-12T14:38:47.642Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
-              "Title": "ProductService.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\Product\\ProductService.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\Product\\ProductService.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\Product\\ProductService.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\Product\\ProductService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "DocumentIndex": 21,
+              "Title": "UnitTest1.cs",
+              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\TestProjects\\UnitTest1.cs",
+              "RelativeDocumentMoniker": "..\\TestProjects\\UnitTest1.cs",
+              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\TestProjects\\UnitTest1.cs",
+              "RelativeToolTip": "..\\TestProjects\\UnitTest1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:53:52.623Z",
+              "WhenOpened": "2024-09-12T14:36:03.741Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
-              "Title": "IProductService.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\Product\\IProductService.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\Product\\IProductService.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\Product\\IProductService.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\Product\\IProductService.cs",
+              "DocumentIndex": 22,
+              "Title": "QuestionController.cs",
+              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Controllers\\QuestionController.cs",
+              "RelativeDocumentMoniker": "Hola.Api\\Controllers\\QuestionController.cs",
+              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Controllers\\QuestionController.cs",
+              "RelativeToolTip": "Hola.Api\\Controllers\\QuestionController.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-12T14:33:04.682Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Hola.WebAdmin",
+              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.WebAdmin\\Hola.WebAdmin.csproj",
+              "RelativeDocumentMoniker": "Hola.WebAdmin\\Hola.WebAdmin.csproj",
+              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.WebAdmin\\Hola.WebAdmin.csproj",
+              "RelativeToolTip": "Hola.WebAdmin\\Hola.WebAdmin.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-09-12T14:32:51.627Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "UserStandardQuestion.cs",
+              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\DatabaseCore.Domain\\Entities\\Normals\\UserStandardQuestion.cs",
+              "RelativeDocumentMoniker": "DatabaseCore.Domain\\Entities\\Normals\\UserStandardQuestion.cs",
+              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\DatabaseCore.Domain\\Entities\\Normals\\UserStandardQuestion.cs",
+              "RelativeToolTip": "DatabaseCore.Domain\\Entities\\Normals\\UserStandardQuestion.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:53:51.057Z",
+              "WhenOpened": "2024-09-12T14:11:01.771Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
-              "Title": "IPhraseService.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\Phrase\\IPhraseService.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\Phrase\\IPhraseService.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\Phrase\\IPhraseService.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\Phrase\\IPhraseService.cs",
+              "DocumentIndex": 25,
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\DatabaseCore.Domain\\Entities\\Normals\\Product.cs",
+              "RelativeDocumentMoniker": "DatabaseCore.Domain\\Entities\\Normals\\Product.cs",
+              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\DatabaseCore.Domain\\Entities\\Normals\\Product.cs",
+              "RelativeToolTip": "DatabaseCore.Domain\\Entities\\Normals\\Product.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:53:35.423Z",
+              "WhenOpened": "2024-09-12T14:10:58.66Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
-              "Title": "NotificationService.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\Notification\\NotificationService.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\Notification\\NotificationService.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\Notification\\NotificationService.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\Notification\\NotificationService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 26,
+              "Title": "Grammar.cs",
+              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\DatabaseCore.Domain\\Entities\\Normals\\Grammar.cs",
+              "RelativeDocumentMoniker": "DatabaseCore.Domain\\Entities\\Normals\\Grammar.cs",
+              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\DatabaseCore.Domain\\Entities\\Normals\\Grammar.cs",
+              "RelativeToolTip": "DatabaseCore.Domain\\Entities\\Normals\\Grammar.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:53:33.267Z",
+              "WhenOpened": "2024-09-12T14:10:54.973Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
-              "Title": "INotificationService.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\Notification\\INotificationService.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\Notification\\INotificationService.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\Notification\\INotificationService.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\Notification\\INotificationService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 27,
+              "Title": "IAggregateRoot.cs",
+              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\DatabaseCore.Domain\\IAggregateRoot.cs",
+              "RelativeDocumentMoniker": "DatabaseCore.Domain\\IAggregateRoot.cs",
+              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\DatabaseCore.Domain\\IAggregateRoot.cs",
+              "RelativeToolTip": "DatabaseCore.Domain\\IAggregateRoot.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:53:31.344Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 39,
-              "Title": "INewsService.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\News\\INewsService.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\News\\INewsService.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\News\\INewsService.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\News\\INewsService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:53:20.953Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 40,
-              "Title": "IGrammarService.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\GrammarServices\\IGrammarService.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\GrammarServices\\IGrammarService.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\GrammarServices\\IGrammarService.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\GrammarServices\\IGrammarService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:53:16.766Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 41,
-              "Title": "GrammarService.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\GrammarServices\\GrammarService.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\GrammarServices\\GrammarService.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\GrammarServices\\GrammarService.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\GrammarServices\\GrammarService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:53:05.609Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 42,
-              "Title": "ExcelService.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\ExcelServices\\ExcelService.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\ExcelServices\\ExcelService.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\ExcelServices\\ExcelService.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\ExcelServices\\ExcelService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:53:02.865Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 43,
-              "Title": "Body.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\ExcelServices\\Body.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\ExcelServices\\Body.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\ExcelServices\\Body.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\ExcelServices\\Body.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:53:02.139Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 44,
-              "Title": "ICoursService.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\CoursServices\\ICoursService.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\CoursServices\\ICoursService.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\CoursServices\\ICoursService.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\CoursServices\\ICoursService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:52:56.99Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 48,
-              "Title": "IBaseService.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\BaseServices\\IBaseService.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\BaseServices\\IBaseService.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\BaseServices\\IBaseService.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\BaseServices\\IBaseService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:52:18.137Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 46,
-              "Title": "ICategoryService.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\CateporyServices\\ICategoryService.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\CateporyServices\\ICategoryService.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\CateporyServices\\ICategoryService.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\CateporyServices\\ICategoryService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:49:26.706Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 49,
-              "Title": "DapperBaseService.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\BaseServices\\DapperBaseService.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\BaseServices\\DapperBaseService.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\BaseServices\\DapperBaseService.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\BaseServices\\DapperBaseService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:49:04.629Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 38,
-              "Title": "NewsService.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\News\\NewsService.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\News\\NewsService.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\News\\NewsService.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\News\\NewsService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:48:20.734Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 53,
-              "Title": "MapDataConfig.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\BAImportExcel\\MapDataConfig.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\BAImportExcel\\MapDataConfig.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\BAImportExcel\\MapDataConfig.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\BAImportExcel\\MapDataConfig.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:49:00.288Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 47,
-              "Title": "CategoryService.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\CateporyServices\\CategoryService.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\CateporyServices\\CategoryService.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\CateporyServices\\CategoryService.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\CateporyServices\\CategoryService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABBAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:48:53.859Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 45,
-              "Title": "CoursService.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\CoursServices\\CoursService.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\CoursServices\\CoursService.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\CoursServices\\CoursService.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\CoursServices\\CoursService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:47:55.044Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 52,
-              "Title": "ReadingController.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Controllers\\ReadingController.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Controllers\\ReadingController.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Controllers\\ReadingController.cs",
-              "RelativeToolTip": "Hola.Api\\Controllers\\ReadingController.cs",
-              "ViewState": "AgIAACIAAAAAAAAAAAAkwBMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:47:03.436Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 51,
-              "Title": "ServicesInstaller.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Installers\\ServicesInstaller.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Installers\\ServicesInstaller.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Installers\\ServicesInstaller.cs",
-              "RelativeToolTip": "Hola.Api\\Installers\\ServicesInstaller.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:47:09.353Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 50,
-              "Title": "BaseService.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\BaseServices\\BaseService.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\BaseServices\\BaseService.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\BaseServices\\BaseService.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\BaseServices\\BaseService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:47:28.4Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 54,
-              "Title": "ExcelLibImport.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\BAImportExcel\\ExcelLibImport.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\BAImportExcel\\ExcelLibImport.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\BAImportExcel\\ExcelLibImport.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\BAImportExcel\\ExcelLibImport.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:48:56.3Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 55,
-              "Title": "ExcelImportRequest.cs",
-              "DocumentMoniker": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\BAImportExcel\\ExcelImportRequest.cs",
-              "RelativeDocumentMoniker": "Hola.Api\\Service\\BAImportExcel\\ExcelImportRequest.cs",
-              "ToolTip": "C:\\Users\\TienNVM\\Desktop\\MICROSERVICE.FULL\\SPN.MICROSERVICE.FULL\\Hola.Api\\Service\\BAImportExcel\\ExcelImportRequest.cs",
-              "RelativeToolTip": "Hola.Api\\Service\\BAImportExcel\\ExcelImportRequest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T09:48:55.363Z",
+              "WhenOpened": "2024-09-12T02:56:18.485Z",
               "EditorCaption": ""
             }
           ]

@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DatabaseCore.Domain\DatabaseCore.Domain.csproj" />
     <ProjectReference Include="..\Hola.Core\Hola.Core.csproj" />
   </ItemGroup>
 
